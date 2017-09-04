@@ -1,3 +1,46 @@
+ <!--INI DIV ERRO-->
+<div id="ERROR" ></div>
+
+<!--ERROR -->
+
+<div id="ErrorModal" class="modal fade" role="dialog">
+
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" onclick="javascript:history.go(-1);" class="close" data-dismiss="modal">&times;</button>
+        <h3 >Error</h3>
+      </div>
+
+      <div class="col-lg-12 modal-body">
+
+      <!--ini Modal  body-->  
+
+            <div id='ErrorMsg'></div>
+
+      <!--fin Modal  body-->
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" onclick="javascript:history.go(-1); return true;" data-dismiss="modal" class="btn btn-primary" >OK</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!--modal-->
+<!--INI DIV ERROR-->
+
+
  <?php
  if (isset($_REQUEST['smtp'])) {
 
@@ -76,47 +119,7 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 
 <div class="page col-xs-12">
 
-<!--INI DIV ERRO-->
-<div id="ERROR" ></div>
 
-<!--ERROR -->
-
-<div id="ErrorModal" class="modal fade" role="dialog">
-
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-
-        <button type="button" onclick="javascript:history.go(-1);" class="close" data-dismiss="modal">&times;</button>
-        <h3 >Error</h3>
-      </div>
-
-      <div class="col-lg-12 modal-body">
-
-      <!--ini Modal  body-->  
-
-            <div id='ErrorMsg'></div>
-
-      <!--fin Modal  body-->
-
-      </div>
-
-      <div class="modal-footer">
-
-        <button type="button" onclick="javascript:history.go(-1); return true;" data-dismiss="modal" class="btn btn-primary" >OK</button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!--modal-->
-<!--INI DIV ERROR-->
 
 <div  class="col-xs-12">
 <!-- contenido -->
