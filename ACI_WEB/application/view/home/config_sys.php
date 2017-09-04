@@ -53,7 +53,7 @@ $value  = array(
 'PASSWORD' => $_REQUEST['emailpass'],
 'Auth' => 'true',
 'SMTPSecure' => 'false',
-'SMTPDebug' => '');
+'SMTPDebug' => '0');
 
 $this->model->Query('DELETE from CONF_SMTP;');
 
