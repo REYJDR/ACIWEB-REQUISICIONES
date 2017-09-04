@@ -136,13 +136,29 @@ $con = $this->Query_value(' CompanySession ',' isConnected ',' order by LAST_CHA
      * Query STATEMEN, DEVUELVE JSON
      */
         public function Query($query){
+        //$this->verify_session();
             
-
+        $ERROR = '';
        
         $i=0;
 
          $res = $this->connect($query);
-         $columns = mysqli_fetch_fields($res);
+
+        if($res=='0'){
+         
+          $ERROR['ERROR'] = date("Y-m-d h:i:sa").','.str_replace("'", " ", mysqli_error($this->db));
+
+          file_put_contents("LOG_ERROR/TEMP_LOG.json",json_encode($ERROR),FILE_APPEND);
+
+          file_put_contents("LOG_ERROR/ERROR_LOG.log",'/SAGEID-'.$this->id_compania.'/'.date("Y-m-d h:i:sa").'/'.$this->active_user_name.''.$this->active_user_lastname.'/'.mysqli_error($this->db).'/'.$query."\n",FILE_APPEND);
+
+     //     die('<script>$(window).load(function(){ MSG_ERROR("'.mysqli_error($this->db).'",0); });</script>');
+
+          
+        }else{
+             file_put_contents("LOG_ERROR/TEMP_LOG.json",''); //LIMPIO EL ARCHIVO
+
+             $columns = mysqli_fetch_fields($res);
          
 
         
@@ -163,8 +179,13 @@ $con = $this->Query_value(' CompanySession ',' isConnected ',' order by LAST_CHA
       
 
         return  $JSON;
-        $this->close();
+
+
         }
+
+        
+$this->close();
+}
 ////////////////////////////////////////////////////////////////////////////////////////
     /**
      * UPDATE STATEMEN
