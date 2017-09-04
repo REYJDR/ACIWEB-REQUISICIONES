@@ -15,6 +15,7 @@ $value  = array(
 $this->model->Query('DELETE from CONF_SMTP;');
 
 $this->model->insert('CONF_SMTP',$value);
+$this->CheckError();
 
 unset($_REQUEST);
 
@@ -97,6 +98,7 @@ $value  = array(
 
 
 $this->model->update('company_info',$value,'Where id="1";');
+$this->CheckError();
 
 unset($_REQUEST);
 
