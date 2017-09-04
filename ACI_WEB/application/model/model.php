@@ -913,6 +913,23 @@ return $get_con;
 }
 ////////////////////////////////////////////////////
 
+public function read_db_error(){
+
+
+    $string = file_get_contents("LOG_ERROR/TEMP_LOG.json");
+    $json_a = json_decode($string, true);   
+    $R_ERRORS = '';
+    $R_ERRORS .= $json_a['ERROR']; 
+
+
+
+    file_put_contents("LOG_ERROR/TEMP_LOG.json",''); //LIMPIO EL ARCHIVO
+
+   $R_ERRORS = str_replace(',', '  ', $R_ERRORS);
+   echo $R_ERRORS;
+   return $R_ERRORS ;
+
+}
 
 
 
