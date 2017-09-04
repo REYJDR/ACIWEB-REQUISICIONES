@@ -79,7 +79,7 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 	// Check if image file is a actual image or fake image
 
-   if ($imageFileType=='jpg'){ 
+   if ($imageFileType=='jpg' || $imageFileType=='jpeg' ){ 
 
 	      
 	        $uploadOk = 1;
