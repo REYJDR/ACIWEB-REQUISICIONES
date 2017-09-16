@@ -394,10 +394,10 @@ var x=document.getElementById(UNIID).innerHTML;
         
  <div  class="title col-lg-12"></div>
 		
-	 <div class="col-lg-12">
+	 <div class="col-lg-8">
          <fieldset>
        	
-         	<div class="comment-text-area col-lg-8">
+         	<div class="comment-text-area col-lg-12">
          		<strong>Nota: </strong><textarea class="textinput" onkeyup="checkNOTA();" rows="5" cols="70" id="nota" name="nota"></textarea>
         		
          	</div>
