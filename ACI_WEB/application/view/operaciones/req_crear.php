@@ -406,11 +406,9 @@ var x=document.getElementById(UNIID).innerHTML;
    
 						
 </fieldset>
-</div>
 
-<div id='opt' class="collapse in col-lg-6" >
 
-<div class=" col-lg-3">
+<div class=" col-lg-4">
 <fieldset>
 	
 	
@@ -422,8 +420,10 @@ var x=document.getElementById(UNIID).innerHTML;
 	
 </fieldset>
 </div>
-</div>
 
+
+
+</div>
 <div class="separador col-lg-12"></div>		
 
 <div class=" col-lg-12"> 
