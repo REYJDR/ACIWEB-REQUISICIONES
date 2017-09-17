@@ -2280,8 +2280,8 @@ $Item = json_decode($datos);
 $ID = '"'.$Item->{'job'}.'"';
 
 $table.= "<tr >    
-              <td width='10%' >".$Item->{'job'}."</a></td>
-              <td width='10%' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a></td>
+              <td width='10%' class='numb'  >".$Item->{'job'}."</a></td>
+              <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a></td>
           </tr>";
  
 
@@ -5342,7 +5342,7 @@ $this->SESSION();
 $table = '';
 $clause='';
 
-$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and job="'.$job.'"';
+$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
 
 if($date1!=''){
    if($date2!=''){
@@ -5444,7 +5444,7 @@ filter_reset_button_text: false});
     <tbody>';
 
 
-$Item = $this->model->get_req_to_report($sort,$limit,$clause);
+$Item = $this->model->get_req_to_report('DESC','10000',$clause);
 
 
 
