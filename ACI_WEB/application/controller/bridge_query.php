@@ -2236,6 +2236,7 @@ if($date1!=''){
  $table.= '<script type="text/javascript">
  jQuery(document).ready(function($)
   {
+
    var table = $("#table_report").dataTable({
       
       responsive: false,
@@ -2243,18 +2244,14 @@ if($date1!=''){
       dom: "Bfrtip",
       bSort: false,
       select: false,
- 
       info: false
     });
    
-    });
-table.yadcf(
-[
-{column_number : 0},
 
-],
-{cumulative_filtering: true, 
-filter_reset_button_text: false}); 
+table.yadcf(
+[ {column_number : 0} ],
+  {cumulative_filtering: true, 
+  filter_reset_button_text: false }); 
 });
 
   </script>
