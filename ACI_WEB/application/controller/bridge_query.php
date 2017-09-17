@@ -2254,6 +2254,7 @@ table.yadcf(
 });
 
   </script>
+  <div class="col-lg-4">
    <table id="table_report" class="display nowrap table table-condensed table-striped table-bordered" >
    
     <thead>
@@ -2276,7 +2277,7 @@ foreach ($Item as $datos) {
 
 $Item = json_decode($datos);
 
-$ID = "'".$Item->{'job'}."'";
+$ID = '"'.$Item->{'job'}.'"';
 
 $table.= "<tr >    
               <td width='10%' >".$Item->{'job'}."</a></td>
@@ -2287,7 +2288,7 @@ $table.= "<tr >
       }
 
    
-$table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="reqInfo"></div>'; 
+$table.= '</tbody></table> </div><div class="separador col-lg-12"></div><div id="reqInfo"></div>'; 
 
 break;
 
