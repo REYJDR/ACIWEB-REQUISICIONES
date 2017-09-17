@@ -2244,58 +2244,14 @@ if($date1!=''){
       bSort: false,
       select: false,
  
-      info: false,
-        buttons: [
-          {
-          extend: "excelHtml5",
-          text: "Exportar",
-          title: "Reporte_Requisiciones_x_Proyectos_Urgentes",
-           
-          exportOptions: {
-                columns: ":visible",
-                 format: {
-                    header: function ( data ) {
-                      var StrPos = data.indexOf("<div");
-                        if (StrPos<=0){
-                          
-                          var ExpDataHeader = data;
-                        }else{
-                       
-                          var ExpDataHeader = data.substr(0, StrPos); 
-                        }
-                       
-                      return ExpDataHeader;
-                      }
-                    }
-                 
-                  }
-                
-          },
-          {
-          extend:  "colvis",
-          text: "Seleccionar",
-          columns: ":gt(0)"           
-         },
-         {
-          extend: "colvisGroup",
-          text: "Ninguno",
-          show: [0],
-          hide: [":gt(0)"]
-          },
-          {
-            extend: "colvisGroup",
-            text: "Todo",
-            show: ["*"]
-          }
-          ]
+      info: false
+    });
    
     });
 table.yadcf(
 [
 {column_number : 0},
-{column_number : 1,
- column_data_type: "html",
- html_data_type: "text"}
+
 ],
 {cumulative_filtering: true, 
 filter_reset_button_text: false}); 
