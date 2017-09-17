@@ -3534,7 +3534,8 @@ $this->SESSION();
 $Req_NO = $this->model->Get_Req_No($JobID);
 
 $value_to_set  = array( 
-  'NO_REQ' => $Req_NO,   
+  'NO_REQ' => $Req_NO, 
+  'job'  => $JobID, 
   'ID_compania' => $this->model->id_compania, 
   'NOTA' => $nota , 
   'USER' => $this->model->active_user_id, 
