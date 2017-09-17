@@ -2241,7 +2241,6 @@ if($date1!=''){
       
       responsive: false,
       pageLength: 10,
-      dom: "Bfrtip",
       bSort: false,
       select: false,
       info: false
