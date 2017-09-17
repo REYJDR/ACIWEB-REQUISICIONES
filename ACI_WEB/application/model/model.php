@@ -802,7 +802,7 @@ return $get_req;
 
 public function get_req_to_report_urge($sort,$limit,$clause){
 
-$sql='SELECT count(*) as cuenta, job FROM `REQ_HEADER` 
+ECHO $sql='SELECT count(*) as cuenta, job FROM `REQ_HEADER` 
 '.$clause.' group by job order by ID '.$sort.' limit '.$limit.';';
 
 $get_req = $this->Query($sql);
