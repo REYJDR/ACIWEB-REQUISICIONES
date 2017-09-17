@@ -2219,7 +2219,7 @@ case "ReqUrg":
 $table = '';
 $clause='';
 
-$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'"';
+$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0"';
 
 if($date1!=''){
    if($date2!=''){
