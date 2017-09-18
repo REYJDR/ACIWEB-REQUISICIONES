@@ -4179,7 +4179,7 @@ $CREACION = $this->model->Query("SELECT DATE, USER FROM REQ_HEADER WHERE  ID_com
         $value = json_decode($value);
 
         $date = strtotime($value->{'DATE'});
-        $date = date('m/d/Y',$date );
+        $date = date('d/M/Y G:i:s',$date );
 
         echo '<tr><td>Creación de Requisición</td><td class="numb" >'.$date.'</td><td>'.$this->model->Get_User_Name($value->{'USER'}).'</td></tr>';
 
@@ -4192,7 +4192,7 @@ $QUOTA  = $this->model->Query("SELECT DATE, USER FROM REQ_QUOTA WHERE  ID_compan
         $value = json_decode($value);
 
         $date = strtotime($value->{'DATE'});
-        $date = date('m/d/Y',$date );
+        $date = date('d/M/Y G:i:s',$date );
 
         echo '<tr><td>Inicio de cotización</td><td class="numb" >'.$date.'</td><td>'.$this->model->Get_User_Name($value->{'USER'}).'</td></tr>';
 
@@ -4240,7 +4240,7 @@ $i=1;
 
     list($msg,$user) = explode(';', $value);
 
-    $date = date('m/d/Y',$date);
+    $date = date('d/M/Y G:i:s',$date );
 
     if($msg!=''){
      
@@ -4260,7 +4260,7 @@ $FIN = $this->model->Query_value('REQ_RECEPT','DATE',"WHERE  ID_compania='".$thi
                                                                                   ORDER BY DATE DESC LIMIT 1");
 
  $date = strtotime($FIN);
- $date = date('m/d/Y',$date );
+ $date = date('d/M/Y G:i:s',$date );
 
 
  echo '<tr><td>Proceso FINALIZADO </td><td class="numb" >'.$date.'</td><td>SISTEMA ACIWEB</td></tr>';
@@ -4273,7 +4273,7 @@ if($status_gen=='CERRADA'){
  $CERRADO= $this->model->Query_value('REQ_HEADER','LAST_CHANGE',"WHERE  ID_compania='".$this->model->id_compania."' 
                                                                                   AND NO_REQ='".$ORDER_detail->{'NO_REQ'}."'");
  $date = strtotime($CERRADO);
- $date = date('m/d/Y',$date );
+ $date = date('d/M/Y G:i:s',$date );
 
  $MOTIVO= $this->model->Query_value('REQ_HEADER','desc_closed',"WHERE  ID_compania='".$this->model->id_compania."' 
                                                                        AND NO_REQ='".$ORDER_detail->{'NO_REQ'}."'");
