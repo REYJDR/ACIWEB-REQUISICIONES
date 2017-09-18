@@ -564,9 +564,9 @@ if (r == true) {
         	
 	        var JOBID = document.getElementById('JOBID').value;
 	        var nota  = document.getElementById('nota').value;
-	          
+	        var date_ini = document.getElementById('date_ini').value;
 
-	        	var datos= "url=bridge_query/set_req_header/"+JOBID+"/"+nota+"/"+set_urgent; //LINK DEL METODO EN BRIDGE_QUERY
+	        	var datos= "url=bridge_query/set_req_header/"+JOBID+"/"+nota+"/"+set_urgent+"/"+date_ini; //LINK DEL METODO EN BRIDGE_QUERY
 
 
 

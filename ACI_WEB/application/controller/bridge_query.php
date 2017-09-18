@@ -3533,6 +3533,17 @@ $this->SESSION();
 
 $Req_NO = $this->model->Get_Req_No($JobID);
 
+if($date_ini!=''){
+
+$date_ini, = date("Y-m-d H:i:s", strtotime($date_ini));
+
+
+}else{
+
+$date_ini= '';
+
+}
+
 $value_to_set  = array( 
   'NO_REQ' => $Req_NO, 
   'job'  => $JobID, 
@@ -3540,7 +3551,7 @@ $value_to_set  = array(
   'NOTA' => $nota , 
   'USER' => $this->model->active_user_id, 
   'DATE' => date("Y-m-d H:i:s"),
-  'DATE_INI' => date("Y-m-d H:i:s", strtotime($date_ini)),
+  'DATE_INI' => $date_ini,
   'isUrgent' => $flag  
   );
 
