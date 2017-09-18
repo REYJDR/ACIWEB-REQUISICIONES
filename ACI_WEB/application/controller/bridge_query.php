@@ -4950,7 +4950,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
 
 
     $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
-           <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y G:i a',strtotime($value->{'Date'})).'</td></tr>
+           <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
            <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
            <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>
            <tr><th style="text-align:left;" width="10%">Estado</th> <td >'.$value->{'WorkflowStatusName'}.'</td></tr>
