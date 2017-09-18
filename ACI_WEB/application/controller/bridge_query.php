@@ -2670,7 +2670,7 @@ table.yadcf(
 
      $date = strtotime($value->{'Date'});
 
-     $date = date('m/d/Y',$date);
+     $date = date('d/M/Y g:i a',$date);
 
 
     $PO_NO = trim ($value->{'PurchaseOrderNumber'});
