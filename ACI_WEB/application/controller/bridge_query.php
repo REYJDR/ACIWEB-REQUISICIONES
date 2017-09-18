@@ -3535,7 +3535,7 @@ $Req_NO = $this->model->Get_Req_No($JobID);
 
 if($date_ini!=''){
 
-$date_ini, = date("Y-m-d H:i:s", strtotime($date_ini));
+$date_ini = date("Y-m-d H:i:s", strtotime($date_ini));
 
 
 }else{
