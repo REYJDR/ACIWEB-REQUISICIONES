@@ -3969,11 +3969,22 @@ switch ($status_gen) {
 
 }
 
+if($ORDER_detail->{'DATE_INI'}!=''){
+
+  $data_ini = date('d/M/Y',strtotime($ORDER_detail->{'DATE_INI'}));
+}else{
+  
+  $data_ini = '';
+
+}
+
+
 
 
 
 echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td class='InfsalesTd order'>".$ORDER_detail->{'NO_REQ'}."</td><tr>
-          <tr><th style='text-align:left;'><strong>Fecha</strong></th><td class='InfsalesTd'>".date('d/M/Y g:i a',strtotime($ORDER_detail->{'DATE'}))."</td><tr>
+          <tr><th style='text-align:left;'><strong>Fecha solicitud</strong></th><td class='InfsalesTd'>".date('d/M/Y g:i a',strtotime($ORDER_detail->{'DATE'}))."</td><tr>
+          <tr><th style='text-align:left;'><strong>Fecha inicipo actividad</strong></th><td class='InfsalesTd'>".$data_ini."</td><tr>
           <tr><th style='text-align:left;'><strong>Solicitado por:</strong></th><td class='InfsalesTd'>".$name.' '.$lastname.'</td><tr>
           <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status_gen.'</td><tr>';
 
@@ -5085,9 +5096,19 @@ switch ($status) {
 
 }
 
+if($ORDER_detail->{'DATE_INI'}!=''){
+
+  $data_ini = date('d/M/Y',strtotime($ORDER_detail->{'DATE_INI'}));
+}else{
+  
+  $data_ini = '';
+
+}
+
 
 echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td class='InfsalesTd order'>".$ORDER_detail->{'NO_REQ'}."</td><tr>
           <tr><th style='text-align:left;'><strong>Fecha Solicitud</strong></th><td class='InfsalesTd'>".date('d/M/Y g:i a',strtotime($ORDER_detail->{'DATE'}))."</td><tr>
+          <tr><th style='text-align:left;'><strong>Fecha inicio actividad</strong></th><td class='InfsalesTd'>".$data_ini."</td><tr>          
           <tr><th style='text-align:left;'><strong>Solicitado por:</strong></th><td class='InfsalesTd'>".$name.' '.$lastname.'</td><tr>
           <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status.'</td><tr>';
 
