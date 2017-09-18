@@ -3528,7 +3528,7 @@ echo $codes;
 
 
 //REQUISICIONES//////////////////////////////////////////////////////////////////////////////////////////////////////////
-public function set_req_header($JobID,$nota,$flag){
+public function set_req_header($JobID,$nota,$flag,$date_ini){
 $this->SESSION();
 
 $Req_NO = $this->model->Get_Req_No($JobID);
@@ -3540,6 +3540,7 @@ $value_to_set  = array(
   'NOTA' => $nota , 
   'USER' => $this->model->active_user_id, 
   'DATE' => date("Y-m-d H:i:s"),
+  'DATE_INI' => date("Y-m-d H:i:s", strtotime($date_ini)),
   'isUrgent' => $flag  
   );
 
