@@ -389,7 +389,7 @@ var x=document.getElementById(UNIID).innerHTML;
   <input style="text-align: center;" class="input-control" name="date" id="date" value="<?php echo date("Y-m-d"); ?>" readonly/>
  </div>
 <div  class="separador col-lg-12"></div>
-  <div   class="col-lg-2">
+  <div   class="col-lg-5">
   <label style="display:inline" > Fecha inicio actividad: </label>
   <input type='date' style="text-align: center;" class="input-control" name="date_ini" id="date_ini" value="" />
  </div>
