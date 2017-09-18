@@ -72,7 +72,7 @@ public function req_print($id){
               $rep = $name.' '.$lastname;
 
               $date = $value->{'DATE'};
-
+              $date_ini = $value->{'DATE_INI'};
               $desc = $value->{'NOTA'};
 
 
