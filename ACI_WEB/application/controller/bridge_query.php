@@ -2198,7 +2198,7 @@ $table.="<tr  >
               
               <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
               <td width='10%' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
-              <td width='45%' >".$Item->{'NOTA'}.'</td>
+              <td width='45%' class='rowtable_req' >".$Item->{'NOTA'}.'</td>
               <td width="25%" >'.$name.' '.$lastname.'</td>
               <td width="10%" '.$style.' >'.$status.'</td>
           </tr>';
