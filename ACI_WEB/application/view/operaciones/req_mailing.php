@@ -144,7 +144,7 @@ foreach ($smtp as $smtp_val) {
 
 }
 
-$mail->Body = $message_to_send;
+echo $mail->Body = $message_to_send;
 
   if ($flag == 0) {
   
