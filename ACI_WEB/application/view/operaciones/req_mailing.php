@@ -30,7 +30,7 @@ foreach ($ORDER as  $value) {
     $rep = $name.' '.$lastname;
 
     $date = $value->{'DATE'};
-    $date_ini =  = $value->{'DATE_INI'};
+    $date_ini = $value->{'DATE_INI'};
     $desc = $value->{'NOTA'};
 }
 
