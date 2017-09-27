@@ -103,7 +103,7 @@ public function req_mailing($id,$flag){
       $mail = new PHPMailer;
 
 
-      $ORDER = $this->model->get_req_to_print($id);
+     echo $ORDER = $this->model->get_req_to_print($id);
 
             // load views
             require APP . 'view/_templates/header.php';
