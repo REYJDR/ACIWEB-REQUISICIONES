@@ -144,7 +144,7 @@ foreach ($smtp as $smtp_val) {
 
 }
 
-echo $mail->Body = $message_to_send;
+$mail->Body = $message_to_send;
 
   if ($flag == 0) {
   
@@ -155,7 +155,7 @@ echo $mail->Body = $message_to_send;
 
   }else{
 
-    $subject ='Requisicion-'.$ref;
+   echo  $subject ='Requisicion-'.$ref;
 
 }
 
