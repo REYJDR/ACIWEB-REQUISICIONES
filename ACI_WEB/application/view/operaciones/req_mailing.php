@@ -141,6 +141,7 @@ foreach ($smtp as $smtp_val) {
   $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
 
   $mail->SetFrom($smtp_val->{'USERNAME'});
+  $mail->SingleTo = true;
 
 }
 
