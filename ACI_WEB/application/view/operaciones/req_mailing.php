@@ -121,7 +121,7 @@ $message_to_send ='<html>
 
 
 
-$mail->IsSMTP(); // enable SMTP
+$mail->IsMail(); // enable SMTP
 $mail->IsHTML(true);
 
 
