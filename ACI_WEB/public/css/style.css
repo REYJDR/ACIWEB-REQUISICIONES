@@ -196,6 +196,7 @@ table {
 
  border: 1px solid #ddd !important;
  white-space: nowrap;
+ table-layout: fixed;
 
 }
 
@@ -242,8 +243,8 @@ fieldset {
   width: 100%;
   max-width: 100%;
   
-  /*overflow-x: scroll;
-  overflow-x: hidden;*/
+  overflow-x: scroll;
+  overflow-x: hidden;
 }
 
 .numb{
