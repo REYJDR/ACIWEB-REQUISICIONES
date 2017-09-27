@@ -2,7 +2,7 @@
 
 $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
-
+echo 'aqui';
 //company
 $comp = $this->model->Get_company_Info();
 
@@ -118,7 +118,7 @@ $message_to_send ='<html>
 <body>'.$message.'</body>
 </html>';
 
-echo $message_to_send;
+
 
 
 $mail->IsSMTP(); // enable SMTP
