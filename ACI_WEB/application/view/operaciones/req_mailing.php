@@ -118,7 +118,7 @@ $message_to_send ='<html>
 <body>'.$message.'</body>
 </html>';
 
-
+echo $message_to_send;
 
 
 $mail->IsSMTP(); // enable SMTP
