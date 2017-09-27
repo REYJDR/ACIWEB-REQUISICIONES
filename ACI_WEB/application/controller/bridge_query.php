@@ -2139,10 +2139,10 @@ filter_reset_button_text: false});
       <tr>
         
         <th width="10%">No. Ref.</th>
-        <th width="10%">Fecha Solicitud</th>
-        <th width="45%">Descripcion</th>
-        <th width="25%">Solicitado por:</th>
-        <th width="10%">Estado</th>
+        <th width="15%">Fecha Solicitud</th>
+        <th width="40%">Descripcion</th>
+        <th width="15%">Solicitado por:</th>
+        <th width="20%">Estado</th>
         
       </tr>
     </thead>
