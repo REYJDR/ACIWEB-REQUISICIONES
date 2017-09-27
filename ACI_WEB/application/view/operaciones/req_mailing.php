@@ -121,7 +121,7 @@ $message_to_send ='<html>
 
 
 
-$mail->IsMail(); // enable SMTP
+$mail->IsSMTP(); // enable SMTP
 $mail->IsHTML(true);
 
 
@@ -155,7 +155,7 @@ $mail->Body = $message_to_send;
 
   }else{
 
-   echo  $subject ='Requisicion-'.$ref;
+    $subject ='Requisicion-'.$ref;
 
 }
 
