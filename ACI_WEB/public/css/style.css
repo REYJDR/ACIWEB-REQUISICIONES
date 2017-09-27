@@ -223,7 +223,8 @@ font-size: 12px;
   height: 200px;
   max-width: 100%;
   max-height: 200px;
-
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .table_reportPurOrd{
@@ -241,8 +242,8 @@ fieldset {
   width: 100%;
   max-width: 100%;
   
-  overflow-x: scroll;
-  overflow-x: hidden;
+  /*overflow-x: scroll;
+  overflow-x: hidden;*/
 }
 
 .numb{
