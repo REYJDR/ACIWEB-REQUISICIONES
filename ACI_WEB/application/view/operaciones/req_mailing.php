@@ -41,6 +41,24 @@ foreach ($ORDER as  $value) {
 
 <?php
 
+
+if ($Pay_flag == 0) {
+  
+  $Pay_req = 'Si';
+}else{
+
+  $Pay_req = 'No';
+}
+
+
+if ($flag == 0) {
+  
+  $isUrgent = 'Si';
+}else{
+
+  $isUrgent = 'No';
+}
+
 $message .='<h2 class="h_invoice_header" >Requisicion</h2>
                  <table BORDER="1">
                     
@@ -58,6 +76,14 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
                     </tr>
                     <tr>
                       <th style="text-align:left;"><strong>Solicitante: </strong>'.$rep.'</th>
+                      
+                    </tr>
+                    <tr>
+                      <th style="text-align:left;"><strong>Pago Adelantado: </strong>'.$Pay_req.'</th>
+                      
+                    </tr>
+                    <tr>
+                      <th style="text-align:left;"><strong>Requisicion Urgente: </strong>'.$isUrgent.'</th>
                       
                     </tr>
 </table>
@@ -153,12 +179,12 @@ $mail->Body = $message_to_send;
     $mail->AddCustomHeader("X-MSMail-Priority: High");
     $mail->AddCustomHeader("Importance: High");
     $subject ='Pedido Urgente!. Requisicion-'.$ref;
-
+    
   }else{
 
     $subject ='Requisicion-'.$ref;
 
-}
+  }
 
 $mail->Subject = utf8_decode($subject);
 
