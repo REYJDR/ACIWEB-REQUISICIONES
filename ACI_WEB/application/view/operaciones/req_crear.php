@@ -422,6 +422,7 @@ var x=document.getElementById(UNIID).innerHTML;
 	<input type="CHECKBOX" name="urgent_chk" id="urgent_chk" value="0" />&nbsp<label>Requisicion Urgente</label><br>
 	<input type="CHECKBOX" name="pay_chk" id="pay_chk" value="0" />&nbsp<label>Pago Adelantado</label>
 
+
 	
 </fieldset>
 </div>
@@ -547,7 +548,7 @@ if (r == true) {
         spin_show();
 
         var link = URL+"index.php";
-               
+
 
         if (document.getElementById('urgent_chk').checked) {
 
@@ -565,6 +566,7 @@ if (r == true) {
         }else{
 
         	var isPay = 1;
+
         }
 
         //REGITRO DE CABECERA
@@ -574,12 +576,10 @@ if (r == true) {
 	        var JOBID = document.getElementById('JOBID').value;
 	        var nota  = document.getElementById('nota').value;
 	        var date_ini = document.getElementById('date_ini').value;
-
-	        	var datos= "url=bridge_query/set_req_header/"+JOBID+"/"+nota+"/"+set_urgent+"/"+date_ini+"/"+isPay; //LINK DEL METODO EN BRIDGE_QUERY
-
+	        var datos= "url=bridge_query/set_req_header/"+JOBID+"/"+nota+"/"+set_urgent+"/"+date_ini+"/"+isPay; //LINK DEL METODO EN BRIDGE_QUERY
 
 
-	               return   $.ajax({
+	     return   $.ajax({
 					type: "GET",
 					url: link,
 					data: datos,
@@ -610,7 +610,6 @@ if (r == true) {
 					if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
 									
 						send_mail(link,Req_NO,set_urgent,isPay);
-				
 					}
 
 				   }
@@ -667,12 +666,12 @@ function FIND_COLUMN_NAME(item){
 return val;
 							
 }
-	
+
 function send_mail(link,Req_NO,flag_urgent,isPay){
 
-       //ENVIO POR MAIL 
+ //ENVIO POR MAIL 
 	var datos= "url=ges_requisiciones/req_mailing/"+Req_NO+"/"+flag_urgent+"/"+isPay; //LINK A LA PAGINA DE MAILING
-    
+
 
 	$.ajax({
 		type: "GET",

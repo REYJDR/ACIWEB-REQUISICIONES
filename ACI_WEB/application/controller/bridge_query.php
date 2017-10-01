@@ -2143,17 +2143,16 @@ filter_reset_button_text: false});
 });
 
   </script>
-   <table id="table_reportReqStat" class="display nowrap table table-condensed table-striped table-bordered" >
+   <table id="table_reportReqStat" class="display table table-condensed table-striped table-bordered" >
    
     <thead>
       <tr>
         
         <th width="10%">No. Ref.</th>
-        <th width="10%">Fecha Solicitud</th>
-        <th width="45%">Descripcion</th>
-        <th width="25%">Solicitado por:</th>
-        <th width="10%">Estado</th>
-        
+        <th width="15%">Fecha Solicitud</th>
+        <th width="40%">Descripcion</th>
+        <th width="15%">Solicitado por:</th>
+        <th width="20%">Estado</th>
       </tr>
     </thead>
     <tbody>';
@@ -2208,7 +2207,7 @@ $table.="<tr  >
               
               <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
               <td width='10%' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
-              <td width='45%' >".$Item->{'NOTA'}.'</td>
+              <td width='45%' class='rowtable_req' >".$Item->{'NOTA'}.'</td>
               <td width="25%" >'.$name.' '.$lastname.'</td>
               <td width="10%" '.$style.' >'.$status.'</td>
           </tr>';
@@ -2224,9 +2223,7 @@ break;
 //Fin Reporte de requisiciones
 
 //REPORTE DE ITEM POR REQUISICIONES
-
 case 'ItemXReq':
-
 
 $table ='';
 $sql_item ='';
@@ -2377,6 +2374,7 @@ case "ReqUrg":
 $table = '';
 $clause='';
 
+
 if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
   
     $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'"  and REQ_HEADER.USER="'.$this->model->active_user_id.'" and REQ_HEADER.isUrgent="0" ';
@@ -2386,7 +2384,6 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
     $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0"';
 
 }
-
 
 
 if($date1!=''){
@@ -3696,7 +3693,9 @@ echo $codes;
 
 
 //REQUISICIONES//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public function set_req_header($JobID,$nota,$flag,$date_ini,$Pay_flag){
+
 $this->SESSION();
 
 $Req_NO = $this->model->Get_Req_No($JobID);
@@ -3721,8 +3720,7 @@ $value_to_set  = array(
   'DATE' => date("Y-m-d H:i:s"),
   'DATE_INI' => $date_ini,
   'isUrgent' => $flag,
-  'isPay' => $Pay_flag
-  );
+  'isPay' => $Pay_flag );
 
 $res = $this->model->insert('REQ_HEADER',$value_to_set);
 
