@@ -280,6 +280,257 @@ public function del_jobs($id){
 }
 
 
+
+public function list_job_modal($id){
+
+$this->model->verify_session();
+
+  $sql = 'SELECT * FROM Jobs_Exp where ID_compania="'.$this->model->id_compania.'" and IsActive="1" order by JobID asc';
+
+  $jobs = $this->model->Query($sql);
+
+  $sql_user = 'SELECT * FROM JOBS_USERS WHERE USER_ID ="'.$id.'" and ID_compania="'.$this->model->id_compania.'"';
+
+  $jobs_user = $this->model->Query($sql_user);
+
+
+$table = '<script type="text/javascript">
+
+ jQuery(document).ready(function($)
+
+  {
+
+   var table = $("#table_job").dataTable({
+   rowReorder: {
+            selector: "td:nth-child(2)"
+        },
+      paging: false,
+      responsive: true,
+      pageLength: 5,
+      dom: "Bfrtip",
+      bSort: false,
+      select: false,
+
+      info: false,
+        buttons: [
+
+          {
+
+          extend: "excelHtml5",
+
+          text: "Exportar",
+
+          title: "Lista",
+
+           
+          exportOptions: {
+
+                columns: ":visible",
+
+                 format: {
+                    header: function ( data ) {
+
+                      var StrPos = data.indexOf("<div");
+
+                        if (StrPos<=0){
+
+                          
+                          var ExpDataHeader = data;
+
+                        }else{
+                       
+                          var ExpDataHeader = data.substr(0, StrPos); 
+
+                        }
+                       
+                      return ExpDataHeader;
+                      }
+                    }
+                 
+                  }
+                
+
+          },
+
+          {
+
+          extend:  "colvis",
+
+          text: "Seleccionar",
+
+          columns: ":gt(0)"           
+
+         },
+
+         {
+
+          extend: "colvisGroup",
+
+          text: "Ninguno",
+
+          show: [0],
+
+          hide: [":gt(0)"]
+
+          },
+
+          {
+
+            extend: "colvisGroup",
+
+            text: "Todo",
+
+            show: ["*"]
+
+          }
+
+          ]
+
+   
+
+    });
+
+
+table.yadcf(
+[
+{column_number : 0,
+ column_data_type: "html",
+ html_data_type: "text" 
+},
+{column_number : 1}
+],
+{cumulative_filtering: true}); 
+
+});
+
+
+  </script>
+
+
+  <table id="table_job"  class="display nowrap table  table-condensed table-striped table-bordered" cellspacing="0" >
+
+    <thead>
+      <tr>
+        <th width="1%"></th>
+        <th width="3%">Job Id</th>
+        <th width="20%">Descripcion</th>
+      </tr>
+    </thead>
+   <tbody>';
+
+   $i = 1;
+
+    foreach ($jobs as $value) {
+
+
+        $value = json_decode($value);
+
+
+        $check = '';
+        $job_id = $value->{'JobID'};
+
+
+            foreach ($jobs_user as $value_user) {
+
+
+            $value_user = json_decode($value_user);
+
+            $user_job_id = $value_user->{'JOB_ID'};
+
+              if ($job_id == $user_job_id) {
+
+                $check = 'checked="checked"';
+                
+              }
+
+
+            }
+
+
+          $table.= '<tr>
+            <td width="1%" ><CENTER><input type="checkbox" name="'.$i.'" id="'.$i.'" value="'.$job_id.'" '.$check.' ></CENTER></td>
+            <td width="3%" style="text-align:center">'.$value->{'JobID'}.'</td>
+            <td width="20%">'.$value->{'Description'}.'</td>
+          </tr>';
+
+          $i++;
+
+    }
+
+    $table .= '</tbody>
+         </table>';
+
+  echo $table;
+
+}
+
+public function clear_assigment($userid){
+
+$this->model->verify_session();
+
+$del_sql = 'DELETE FROM JOBS_USERS WHERE ID_compania ="'.$this->model->id_compania.'" and USER_ID="'.$userid.'";';
+$res = $this->model->Query($del_sql);
+
+return 1;
+}
+
+public function set_assigment($userid){
+
+$this->model->verify_session();
+
+$del = $this->clear_assigment($userid);
+
+if($del == 1){
+
+$data = json_decode($_GET['Data']);
+
+
+
+  foreach ($data as $key => $value) {
+   
+
+    if($value){
+
+      list($jobid,$desc,$userid) = explode('@', $value );
+
+        $values1 = array(
+            'ID_compania' => $this->model->id_compania,
+            'JOB_ID'=>$jobid,
+            'DESCRIPTION'=>$desc,
+            'USER_ID'=>$userid
+             );
+
+
+      $this->model->insert('JOBS_USERS',$values1);
+      $this->CheckError();
+
+    }
+  }
+
+  }
+
+}
+
+
+public function CheckError(){
+
+
+  $CHK_ERROR =  $this->model->read_db_error();
+
+
+  if ($CHK_ERROR!=''){ 
+
+   
+    die( "<script>  $(window).on('load', function () {   
+                           $('#ErrorModal').modal('show');
+                           $('#ErrorMsg').html('".$CHK_ERROR."');
+                         }); 
+          </script>");
+
+  }
+
+}
+
 ///////Corchete de la clase/////////
 }
 
