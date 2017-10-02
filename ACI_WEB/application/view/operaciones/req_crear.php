@@ -523,6 +523,30 @@ MSG_ERROR_RELEASE();
 	 CHK_VALIDATION = true;
 	}
 
+   //VALIDAR FECHA DE INICIO
+   DATE = document.getElementById('date_ini').value;
+
+   if (!DATE ){
+
+	  MSG_ERROR('Es obligatorio completar el campo de fecha de inicio',1);
+	 
+	 CHK_VALIDATION = true;
+	}
+
+   //VALIDAR FECHA DE INICIO FUTURO
+   DATE = document.getElementById('date_ini').value;
+
+   var now = new Date();
+	now.setHours(0,0,0,0);
+	
+	if (DATE < now) {
+	  MSG_ERROR('La fecha de inicio debe ser en el futuro',1);
+		 
+		 CHK_VALIDATION = true;
+	}
+
+
+
 
 }
 
