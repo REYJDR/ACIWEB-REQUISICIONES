@@ -391,7 +391,7 @@ var x=document.getElementById(UNIID).innerHTML;
 <div  class="separador col-lg-12"></div>
   <div   class="col-lg-5">
   <label style="display:inline" > Fecha inicio actividad: </label>
-  <input type='date' style="text-align: center;" class="input-control" name="date_ini" id="date_ini" value="" />
+  <input type='date' style="text-align: center;" class="input-control" name="date_ini" id="date_ini" min='<?php echo date("Y-m-d"); ?>' value="" />
  </div>
 
 </div>
