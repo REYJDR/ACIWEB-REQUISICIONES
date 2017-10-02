@@ -2426,7 +2426,7 @@ table.yadcf(
 
   </script>
   <div class="col-lg-4">
-   <table id="table_report" class="display nowrap table table-condensed table-striped table-bordered" >
+   <table id="table_report" class="display table table-condensed table-striped table-bordered" >
    
     <thead>
       <tr>
@@ -2817,7 +2817,7 @@ table.yadcf(
   </script>
 
 
-  <table id="table_reportPurOrd"  class="display nowrap table  table-condensed table-striped table-bordered" >
+  <table id="table_reportPurOrd"  class="display table  table-condensed table-striped table-bordered" >
 
     <thead>
       <tr>
