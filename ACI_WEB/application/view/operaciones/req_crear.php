@@ -534,9 +534,8 @@ MSG_ERROR_RELEASE();
 	}
 
 
-    var now = new Date();
 
-	if (DATE < now) {
+	if (isFutureDate(DATE) == false ) {
 	
 	  MSG_ERROR('La fecha de inicio debe ser en el futuro',1);
 		 
@@ -547,6 +546,15 @@ MSG_ERROR_RELEASE();
 
 
 }
+
+function isFutureDate(idate){
+var today = new Date().getTime(),
+    idate = idate.split("/");
+
+idate = new Date(idate[2], idate[1] - 1, idate[0]).getTime();
+return (today - idate) < 0 ? true : false;
+}
+
 
 function send_req_order(){
 
