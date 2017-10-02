@@ -1,3 +1,17 @@
+<script type="text/javascript">
+// ********************************************************
+// * Aciones cuando la pagina ya esta cargada
+// ********************************************************
+$(window).load(function(){
+   
+
+$('#ERROR').hide();
+
+modal_job_list();
+
+});
+</script>
+
 <!--INI DIV ERRO-->
 <div id="ERROR" ></div>
 
@@ -278,7 +292,7 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 <div class="col-lg-4">
 <?php if ($INF_rol_2 == 1){ ?>
 
-<a title="modificar Item" data-toggle="modal" data-target="#jobModal"  href="javascript:void(0)" onclick="modal_job_list();"><input type="button" id="modify_button" name="modify_button"  class="btn btn-warning btn-sm btn-icon icon-left" value="Asignar Proyectos"/></a>
+<a title="modificar Item" data-toggle="modal" data-target="#jobModal"  href="javascript:void(0)" ><input type="button" id="modify_button" name="modify_button"  class="btn btn-warning btn-sm btn-icon icon-left" value="Asignar Proyectos"/></a>
 
 <?php } ?>
 </div>
@@ -339,6 +353,8 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 
 
 <script type="text/javascript">
+
+
 	
 function modal_job_list(){
 
