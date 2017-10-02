@@ -533,6 +533,7 @@ MSG_ERROR_RELEASE();
 	 CHK_VALIDATION = true;
 	}
 
+console.log(DATE);
 console.log(isFutureDate(DATE));
 
 	if (isFutureDate(DATE) == false ) {
