@@ -5670,7 +5670,7 @@ filter_reset_button_text: false});
 });
 
   </script>
-   <table id="table_reportReqUrg" class="display nowrap table table-condensed table-striped table-bordered" >
+   <table id="table_reportReqUrg" class="display  table table-condensed table-striped table-bordered" >
    
     <thead>
       <tr>
