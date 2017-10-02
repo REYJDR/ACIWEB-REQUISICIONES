@@ -24,13 +24,15 @@ class home extends Controller
 
         if($res=='0'){
         
-          if($this->model->rol_campo=='1'){ 
+          if($this->model->rol_compras=='1' && $this->model->rol_campo=='1'){ 
             
             // load views
             require APP . 'view/_templates/header.php';
             require APP . 'view/_templates/panel.php';
-            require APP . 'view/operaciones/req_crear.php';
+            require APP . 'view/home/index.php';
             require APP . 'view/_templates/footer.php';
+
+
 
           }elseif ($this->model->rol_compras=='1' ){ 
            
@@ -41,11 +43,11 @@ class home extends Controller
             require APP . 'view/_templates/footer.php';
 
 
-          }elseif ($this->model->rol_compras=='1' && $this->model->rol_campo=='1'){
-            // load views
+          }elseif ($this->model->rol_campo=='1'){
+             // load views
             require APP . 'view/_templates/header.php';
             require APP . 'view/_templates/panel.php';
-            require APP . 'view/home/index.php';
+            require APP . 'view/operaciones/req_crear.php';
             require APP . 'view/_templates/footer.php';
 
           }else{
@@ -56,7 +58,7 @@ class home extends Controller
             require APP . 'view/home/index.php';
             require APP . 'view/_templates/footer.php';
 
-            
+
           }
         }
        
