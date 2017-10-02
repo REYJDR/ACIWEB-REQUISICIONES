@@ -67,13 +67,6 @@ select, input{
 }
 
 
-table {
- 
-    border: 1px solid #ddd !important;
- 
-
-}
-
 
 
 .help-block{
@@ -196,6 +189,7 @@ table {
 
  border: 1px solid #ddd !important;
  table-layout: fixed;
+ word-wrap: break-all;
 
 }
 
