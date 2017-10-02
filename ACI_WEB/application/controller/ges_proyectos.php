@@ -301,11 +301,9 @@ $table = '<script type="text/javascript">
   {
 
    var table = $("#table_job").dataTable({
-   rowReorder: {
-            selector: "td:nth-child(2)"
-        },
+
       paging: false,
-      responsive: true,
+      responsive: false,
       pageLength: 5,
       dom: "Bfrtip",
       bSort: false,
@@ -393,11 +391,8 @@ $table = '<script type="text/javascript">
 
 table.yadcf(
 [
-{column_number : 0,
- column_data_type: "html",
- html_data_type: "text" 
-},
-{column_number : 1}
+{column_number : 1},
+{column_number : 2}
 ],
 {cumulative_filtering: true}); 
 
@@ -407,11 +402,11 @@ table.yadcf(
   </script>
 
 
-  <table id="table_job"  class="display nowrap table  table-condensed table-striped table-bordered" cellspacing="0" >
+  <table id="table_job"  class="display  table  table-condensed table-striped table-bordered"  >
 
     <thead>
       <tr>
-        <th width="1%"></th>
+        <th width="2%"></th>
         <th width="3%">Job Id</th>
         <th width="20%">Descripcion</th>
       </tr>
