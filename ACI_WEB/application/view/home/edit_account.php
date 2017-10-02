@@ -337,9 +337,12 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
              
         </div>        
           
-      <div class="col-lg-12" ></div>  
-
-      <div id='job_list' class="proy"></div>
+      <div class="separador col-lg-12" ></div>  
+      
+      <fieldset>
+       <div id='job_list'></div>
+      </fieldset>
+      
 
       </div>
       <div class="modal-footer">
@@ -350,7 +353,7 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 
   </div>
 </div>
-
+2
 
 <script type="text/javascript">
 
@@ -358,6 +361,7 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 	
 function modal_job_list(){
 
+$('#job_list').html(''); //LIMPIO LA TABLA PRIMERO
 
 var id = document.getElementById('user_2').value;
 
