@@ -543,11 +543,11 @@ if(r==true){
 
     if(!$date_db){
 
-     echo '<i style="color:red;">Tablas NO han sincronizado aún</i>';
+     echo '<i style="font-weight:bold; color:red; font-size:12; ">Tablas NO han sincronizado aún</i>';
 
     }else{
 
-     echo '<i style="color:green;">'.$dateInLocal.'</i>';
+     echo '<i style="font-weight:bold; color:green; font-size:12;">'.$dateInLocal.'</i>';
 
     }
 
