@@ -109,8 +109,8 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 
 }
 
-
-	  
+//GET LAST SYNC
+$date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
 ?>	
 
@@ -537,7 +537,6 @@ if(r==true){
 	 Esta opcion borra las tablas referentes a los registros de Ordenes de Compras sincronizadas desde Peachtree 
 	 <p class='help-block'>La ultima sincronizacion fue: <?php 
 
-	echo $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');
 
 	$date  = strtotime($date_db.' -7:00');
     $dateInLocal = date("Y-m-d H:i:s",  $date);

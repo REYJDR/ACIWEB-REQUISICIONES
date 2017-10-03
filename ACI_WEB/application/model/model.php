@@ -233,7 +233,7 @@ $this->close();
 
 function Query_value($table,$columns,$clause){
 
-echo $query = 'SELECT '.$columns.' FROM '.$table.' '.$clause.';';
+$query = 'SELECT '.$columns.' FROM '.$table.' '.$clause.';';
 
 $res= $this->connect($query);
 $columns= mysqli_fetch_fields($res);
