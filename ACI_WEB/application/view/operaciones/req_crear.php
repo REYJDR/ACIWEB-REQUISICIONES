@@ -555,7 +555,7 @@ var today = new Date().getTime(),
 
 idate = new Date(idate[0], idate[1] , idate[2]).getTime();
 
-return (today - idate) <= 0 ? true : false;
+return (today - idate) < 0 ? true : false;
 }
 
 
