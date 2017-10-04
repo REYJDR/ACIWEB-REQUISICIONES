@@ -35,10 +35,22 @@ class home extends Controller
 
 
           }elseif ($this->model->rol_compras=='1' ){ 
+
            
             // load views
             require APP . 'view/_templates/header.php';
             require APP . 'view/_templates/panel.php';
+                
+             echo       '<script>
+                        // ********************************************************
+                        // * Aciones cuando la pagina ya esta cargada
+                        // ********************************************************
+                        $(window).load(function(){
+
+                        FiltrarReq();
+                        });
+                       </script>';
+
             require APP . 'view/operaciones/rep_reportes.php';
             require APP . 'view/_templates/footer.php';
 

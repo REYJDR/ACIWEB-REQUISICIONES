@@ -126,6 +126,40 @@ $('#table').html('<P>CARGANDO ...</P>');
 
 }
 
+function FiltrarReq(){
+
+
+var limit = $('#limit').val();
+var sort =  $('#sort').val();
+var type =  $('#reportType').val();
+var date1 = $('#date1').val();
+var date2 = $('#date2').val();
+
+
+
+URL = document.getElementById('URL').value;
+
+var datos= "url=bridge_query/get_report/"+ReqStat+"/"+sort+"/"+limit+"/"+date1+"/"+date2;
+   
+var link= URL+"index.php";
+
+$('#table').html('<P>CARGANDO ...</P>');
+
+  $.ajax({
+      type: "GET",
+      url: link,
+      data: datos,
+      success: function(res){
+      
+       $('#table').html(res);
+       // alert(res);
+
+        }
+   });
+
+
+
+}
 
 </script>
 
