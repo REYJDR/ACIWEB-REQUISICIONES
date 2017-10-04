@@ -139,7 +139,7 @@ var date2 = $('#date2').val();
 
 URL = document.getElementById('URL').value;
 
-var datos= "url=bridge_query/get_report/"+ReqStat+"/"+sort+"/"+limit+"/"+date1+"/"+date2;
+var datos= "url=bridge_query/get_report/ReqStat/"+sort+"/"+limit+"/"+date1+"/"+date2;
    
 var link= URL+"index.php";
 
