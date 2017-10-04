@@ -157,7 +157,7 @@ $('#table').html('<P>CARGANDO ...</P>');
         }
    });
 
-
+$("#reportType").val("ReqStat").change();
 
 }
 
