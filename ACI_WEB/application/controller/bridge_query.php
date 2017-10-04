@@ -2244,11 +2244,11 @@ inner join REQ_HEADER ON REQ_HEADER.NO_REQ = REQ_DETAIL.NO_REQ ';
 
     if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
   
-        $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.USER="'.$this->model->active_user_id.'" ';
+        $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.USER="'.$this->model->active_user_id.'" AND REQ_HEADER.DATE > DATE_SUB(now(), INTERVAL 6 MONTH) ';
        
     }else{
  
-        $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" ';
+        $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" AND REQ_HEADER.DATE > DATE_SUB(now(), INTERVAL 6 MONTH) ';
 
     }
 
