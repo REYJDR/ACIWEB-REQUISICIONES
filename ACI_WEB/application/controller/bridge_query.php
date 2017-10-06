@@ -2446,7 +2446,7 @@ table.yadcf(
       <tr>
         
         <th width="10%">Proyecto</th>
-        <th width="10%">Requisiciones Urgentes</th>
+        <th width="10%">Requisiciones</th>
         
       </tr>
     </thead>
@@ -2455,17 +2455,56 @@ table.yadcf(
 
 
 
-$Item = $this->model->get_req_to_report_urge($sort,$limit,$clause);
+$Item = $this->model->GetQtyReqUrg($sort,$limit,$clause);
 
 
 foreach ($Item as $datos) {
 
+
 $Item = json_decode($datos);
+
+
+
+        if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
+          
+            $clause2.= 'where A.ID_compania="'.$this->model->id_compania.'"  
+                         and A.USER="'.$this->model->active_user_id.'" 
+                         and A.ID_compania="'.$this->model->id_compania.'"
+                         and A.isUrgent="1" 
+                         and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
+                         and A.job = "'.$Item->{'job'}.'"';
+               
+        }else{
+         
+           $clause2.= 'where A.ID_compania="'.$this->model->id_compania.'"  
+                         and A.ID_compania="'.$this->model->id_compania.'"
+                         and A.isUrgent="0" 
+                         and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1)
+                           and A.job = "'.$Item->{'job'}.'"';
+
+        }
+
+
+        if($date1!=''){
+           if($date2!=''){
+              $clause2.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
+            }
+           if($date2==''){ 
+             $clause2.= ' and  DATE like "'.$date1.'%" ';
+           }
+        }
+
+      $ReqNotUrg =  $this->model->GetQtyReqNotUrg($sort,$limit,$clause2);
+
+
+
+
+
 
 $ID = '"'.$Item->{'job'}.'"';
 
 $table.= "<tr >    
-              <td width='10%' class='numb'  >".$Item->{'job'}."</a></td>
+              <td width='10%' class='numb'  >".$Item->{'job'}." (".$ReqNotUrg.")</a></td>
               <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a></td>
           </tr>";
  

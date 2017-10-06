@@ -800,7 +800,7 @@ $get_req = $this->Query($sql);
 return $get_req;
 }
 
-public function get_req_to_report_urge($sort,$limit,$clause){
+public function GetQtyReqUrg($sort,$limit,$clause){
 
 
 
@@ -814,6 +814,19 @@ $get_req = $this->Query($sql);
 return $get_req;
 }
 
+public function GetQtyReqNotUrg($sort,$limit,$clause){
+
+
+
+$sql='SELECT count(*) as cuenta
+        FROM `REQ_HEADER` as A 
+        '.$clause.' group by A.job order by A.ID '.$sort.' limit '.$limit.';';
+
+$get_req = $this->Query($sql);
+
+
+return $get_req;
+}
 
 
 public function get_inv_qty_disp($sort,$limit,$clause){
