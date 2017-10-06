@@ -2478,9 +2478,9 @@ $Item = json_decode($datos);
          
            $clause2.= 'where A.ID_compania="'.$this->model->id_compania.'"  
                          and A.ID_compania="'.$this->model->id_compania.'"
-                         and A.isUrgent="0" 
+                         and A.isUrgent="1" 
                          and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1)
-                           and A.job = "'.$Item->{'job'}.'"';
+                         and A.job = "'.$Item->{'job'}.'"';
 
         }
 
@@ -2495,9 +2495,6 @@ $Item = json_decode($datos);
         }
 
       $ReqNotUrg =  $this->model->GetQtyReqNotUrg($sort,$limit,$clause2);
-
-
-
 
 
 
