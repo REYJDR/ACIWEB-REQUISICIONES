@@ -810,7 +810,6 @@ $sql='SELECT count(*) as cuenta, A.job
 
 $get_req = $this->Query($sql);
 
-
 return $get_req;
 }
 
@@ -823,6 +822,8 @@ $sql='SELECT count(*) as cuenta
         '.$clause.' group by A.job order by A.ID '.$sort.' limit '.$limit.';';
 
 $get_req = $this->Query($sql);
+
+$get_req = json_decode($get_req[0]);
 
 
 return $get_req;
