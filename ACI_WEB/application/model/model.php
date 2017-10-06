@@ -805,7 +805,7 @@ public function GetQtyReqUrg($sort,$limit,$clause){
 
 $sql='SELECT count(*) as cuenta, A.job , MONTH(A.DATE) as MES
         FROM `REQ_HEADER` as A 
-        '.$clause.' group by A.job, A.MES order by A.ID '.$sort.' limit '.$limit.';';
+        '.$clause.' group by A.job, MES order by A.ID '.$sort.' limit '.$limit.';';
 
 $get_req = $this->Query($sql);
 

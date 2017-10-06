@@ -2394,14 +2394,14 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
                  and A.USER="'.$this->model->active_user_id.'" 
                  and A.ID_compania="'.$this->model->id_compania.'"
                  and A.isUrgent="0" 
-                 and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1)';
+                 and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) ';
        
 }else{
  
    $clause.= 'where A.ID_compania="'.$this->model->id_compania.'"  
                  and A.ID_compania="'.$this->model->id_compania.'"
                  and A.isUrgent="0" 
-                 and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1)';
+                 and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) ';
 
 }
 
