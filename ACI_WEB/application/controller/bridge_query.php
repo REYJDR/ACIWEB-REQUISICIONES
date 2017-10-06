@@ -1649,7 +1649,7 @@ if($date1!=''){
 
       responsive: true,
 
-      dom: "Bfrtip",
+      dom: "Blfrtip",
 
       bSort: false,
 
@@ -1883,7 +1883,7 @@ $clause.= 'where  s.qty > "0"  and p.id_compania="'.$this->model->id_compania.' 
       responsive: true,
 
 
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select:true,
       
@@ -2078,7 +2078,7 @@ if($date1!=''){
       
       responsive: false,
       pageLength: 10,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select: false,
  
@@ -2273,7 +2273,7 @@ $table.= '<script type="text/javascript">
       
       responsive: false,
       pageLength: 10,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select: false,
  
@@ -2515,7 +2515,7 @@ if($date1!=''){
       responsive: true,
 
 
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select:true,
       scrollY: "200px",
@@ -2728,7 +2728,7 @@ if($date1!=''){
 
       responsive: true,
       pageLength: 10,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select: false,
 
@@ -2917,7 +2917,7 @@ if($date1!=''){
 
       responsive: true,
       pageLength: 50,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       
       scrollY: "200px",
@@ -5619,7 +5619,7 @@ if($date1!=''){
       
       responsive: false,
       pageLength: 10,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select: false,
  
