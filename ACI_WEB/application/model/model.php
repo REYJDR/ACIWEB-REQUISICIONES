@@ -803,7 +803,7 @@ return $get_req;
 public function GetQtyReqUrg($sort,$limit,$clause){
 
 
-$sql='SELECT count(*) as cuenta, A.job 
+$sql='SELECT count(*) as cuenta, A.job , MONTH(A.DATE) as MES
         FROM `REQ_HEADER` as A 
         '.$clause.' group by A.job order by A.ID '.$sort.' limit '.$limit.';';
 
