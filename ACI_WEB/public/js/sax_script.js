@@ -406,6 +406,10 @@ function show_sales(URL,id){
                  }
             });
 
+        $('html, body').animate({
+        scrollTop: $("#info").offset().top
+    }, 500);
+
 
  }
 
@@ -428,6 +432,10 @@ function show_invoice(URL,id){
                  }
             });
 
+      $('html, body').animate({
+        scrollTop: $("#info").offset().top
+    }, 500);
+
 
  }
 function show_req(URL,id){
@@ -448,6 +456,10 @@ function show_req(URL,id){
 
                  }
             });
+
+ $('html, body').animate({
+        scrollTop: $("#info").offset().top
+    }, 500);
 
 
  }
@@ -475,10 +487,10 @@ $('#reqInfo').html('<P>CARGANDO ...</P>');
         }
    });
 
-  
+
  $('html, body').animate({
         scrollTop: $("#reqInfo").offset().top
-    }, 2000);
+    }, 500);
 }
 
 function show_req_nourg(job){
