@@ -2467,12 +2467,12 @@ $Item = json_decode($datos);
 
         if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
           
-            $clause2.= 'where A.ID_compania="'.$this->model->id_compania.'"  
-                         and A.USER="'.$this->model->active_user_id.'" 
-                         and A.ID_compania="'.$this->model->id_compania.'"
-                         and A.isUrgent="1" 
-                         and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
-                         and A.job = "'.$Item->{'job'}.'"';
+             $clause2.= 'where A.ID_compania="'.$this->model->id_compania.'"  
+                           and A.USER="'.$this->model->active_user_id.'" 
+                           and A.ID_compania="'.$this->model->id_compania.'"
+                           and A.isUrgent="1" 
+                           and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
+                           and A.job = "'.$Item->{'job'}.'" and MES = "'.$Item->{'MES'}.'"';
                
         }else{
          
@@ -2480,7 +2480,7 @@ $Item = json_decode($datos);
                          and A.ID_compania="'.$this->model->id_compania.'"
                          and A.isUrgent="1" 
                          and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1)
-                         and A.job = "'.$Item->{'job'}.'"';
+                         and A.job = "'.$Item->{'job'}.'" and MES = "'.$Item->{'MES'}.'"';
 
         }
 
@@ -4210,7 +4210,7 @@ if($ORDER_detail->{'DATE_INI'}!=''){
 
 
 echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td class='InfsalesTd order'>".$ORDER_detail->{'NO_REQ'}."</td><tr>
-          <tr><th style='text-align:right;'><strong>Fecha solicitud</strong></th><td class='InfsalesTd'>".date('d/M/Y g:i a',strtotime($ORDER_detail->{'DATE'}))."</td><tr>
+          <tr><th style='text-align:left;'><strong>Fecha solicitud</strong></th><td class='InfsalesTd'>".date('d/M/Y g:i a',strtotime($ORDER_detail->{'DATE'}))."</td><tr>
           <tr><th style='text-align:left;'><strong>Fecha inicio actividad</strong></th><td class='InfsalesTd'>".$data_ini."</td><tr>
           <tr><th style='text-align:left;'><strong>Solicitado por:</strong></th><td class='InfsalesTd'>".$name.' '.$lastname.'</td><tr>
           <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status_gen.'</td><tr>';

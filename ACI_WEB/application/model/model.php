@@ -815,9 +815,9 @@ return $get_req;
 
 public function GetQtyReqNotUrg($sort,$limit,$clause){
 
-$sql='SELECT count(*) as cuenta
+$sql='SELECT count(*) as cuenta , MONTH(A.DATE) as MES
         FROM `REQ_HEADER` as A 
-        '.$clause.' ;';
+        '.$clause.'  group by MES ;';
 
 $get_req = $this->Query($sql);
 
