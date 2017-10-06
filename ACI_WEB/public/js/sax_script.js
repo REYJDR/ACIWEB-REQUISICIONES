@@ -408,7 +408,7 @@ function show_sales(URL,id){
 
         $('html, body').animate({
         scrollTop: $("#info").offset().top
-    }, 500);
+    }, 1000);
 
 
  }
@@ -434,7 +434,7 @@ function show_invoice(URL,id){
 
       $('html, body').animate({
         scrollTop: $("#info").offset().top
-    }, 500);
+    }, 1000);
 
 
  }
@@ -459,7 +459,7 @@ function show_req(URL,id){
 
  $('html, body').animate({
         scrollTop: $("#info").offset().top
-    }, 500);
+    }, 1000);
 
 
  }
@@ -490,7 +490,7 @@ $('#reqInfo').html('<P>CARGANDO ...</P>');
 
  $('html, body').animate({
         scrollTop: $("#reqInfo").offset().top
-    }, 500);
+    }, 1000);
 }
 
 function show_req_nourg(job){
