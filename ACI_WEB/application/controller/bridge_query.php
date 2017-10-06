@@ -2329,8 +2329,8 @@ table.yadcf(
  column_data_type: "html",
  html_data_type: "text"
  },
-{column_number : 2},
-{column_number : 3}
+{column_number : 3},
+{column_number : 4}
 ],
 {cumulative_filtering: true, 
 filter_reset_button_text: false}); 
@@ -2343,6 +2343,7 @@ filter_reset_button_text: false});
       <tr>
         
         <th width="10%">No. Ref.</th>
+        <th width="10%">Fecha creacion</th>
         <th width="25%">Descripcion</th>
         <th width="10%">Cant.</th>
         <th width="10%">Unidad</th>
@@ -2365,6 +2366,7 @@ filter_reset_button_text: false});
 
               $table.="<tr  >
                 <td width='10%' style='text-align:center'><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
+                <td width='10%' >".$Item->{'DATE'}."</td>
                 <td width='25%' >".$Item->{'DESCRIPCION'}."</td>
                 <td width='10%' style='text-align:right'>".$Item->{'CANTIDAD'}."</td>
                 <td width='10%' style='text-align:center'>".$Item->{'UNIDAD'}."</td>
