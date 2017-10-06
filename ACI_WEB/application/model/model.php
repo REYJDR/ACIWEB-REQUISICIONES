@@ -803,7 +803,6 @@ return $get_req;
 public function GetQtyReqUrg($sort,$limit,$clause){
 
 
-
 $sql='SELECT count(*) as cuenta, A.job 
         FROM `REQ_HEADER` as A 
         '.$clause.' group by A.job order by A.ID '.$sort.' limit '.$limit.';';
@@ -813,13 +812,12 @@ $get_req = $this->Query($sql);
 return $get_req;
 }
 
+
 public function GetQtyReqNotUrg($sort,$limit,$clause){
-
-
 
 $sql='SELECT count(*) as cuenta
         FROM `REQ_HEADER` as A 
-        '.$clause.' group by A.job order by A.ID '.$sort.' limit '.$limit.';';
+        '.$clause.' ;';
 
 $get_req = $this->Query($sql);
 
