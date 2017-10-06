@@ -5785,7 +5785,7 @@ switch ($status) {
 }
 
 
-if($type == '1'){
+if($type == '0'){
 
 $notifyUrg = '<label style="color:red;"> ! </label>';
 
