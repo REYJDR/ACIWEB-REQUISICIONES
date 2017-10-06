@@ -2503,7 +2503,7 @@ $ID = '"'.$Item->{'job'}.'"';
 $table.= "<tr >    
               <td width='10%' class='numb'  >".$Item->{'job'}."</a></td>
               <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a>
-              <a href='#' onclick='javascript: show_req(".$ID.");'>(".$ReqNotUrg.")</a></td>
+              <a href='#' onclick='javascript: show_req_nourg(".$ID.");'>(".$ReqNotUrg.")</a></td>
           </tr>";
  
 
@@ -5628,14 +5628,14 @@ $this->SESSION();
 
 
 
-public function get_ReqJob($job){
+public function get_ReqJob($job,$type){
 
 $this->SESSION();
 
 $table = '';
 $clause='';
 
-$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
+$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="'.$type.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
 
 if($date1!=''){
    if($date2!=''){

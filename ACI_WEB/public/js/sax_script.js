@@ -457,7 +457,31 @@ function show_req_urg(job){
 
 URL = document.getElementById('URL').value;
 
-var datos= "url=bridge_query/get_ReqJob/"+job;
+var datos= "url=bridge_query/get_ReqJob/"+job+'/'+type;
+   
+var link= URL+"index.php";
+
+$('#reqInfo').html('<P>CARGANDO ...</P>');
+
+  $.ajax({
+      type: "GET",
+      url: link,
+      data: datos,
+      success: function(res){
+      
+       $('#reqInfo').html(res);
+       // alert(res);
+
+        }
+   });
+}
+
+function show_req_nourg(job){
+
+
+URL = document.getElementById('URL').value;
+
+var datos= "url=bridge_query/get_ReqJob/"+job+'/'+type;
    
 var link= URL+"index.php";
 
