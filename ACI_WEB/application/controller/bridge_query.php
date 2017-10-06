@@ -2263,7 +2263,7 @@ if($date1!=''){
 }
 
 
-$sql_item.= $clause;
+$sql_item.= $clause.' ORDER BY DATE '.$sort.' limit '.$limit;
 
 
 $table.= '<script type="text/javascript">
