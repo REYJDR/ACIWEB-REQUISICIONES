@@ -2344,7 +2344,7 @@ filter_reset_button_text: false});
       <tr>
         
         <th width="10%">No. Ref.</th>
-        <th width="10%">Fecha creacion</th>
+        <th width="10%">Fecha solicitud</th>
         <th width="25%">Descripcion</th>
         <th width="10%">Cant.</th>
         <th width="10%">Unidad</th>
@@ -2367,7 +2367,7 @@ filter_reset_button_text: false});
 
               $table.="<tr  >
                 <td width='10%' style='text-align:center'><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
-                <td width='10%' class='numb' >".$Item->{'DATE'}."</td>
+                <td width='10%' class='numb' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
                 <td width='25%' >".$Item->{'DESCRIPCION'}."</td>
                 <td width='10%' class='numb'>".$Item->{'CANTIDAD'}."</td>
                 <td width='10%' style='text-align:center'>".$Item->{'UNIDAD'}."</td>
@@ -4170,7 +4170,7 @@ if($ORDER_detail->{'DATE_INI'}!=''){
 
 
 echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td class='InfsalesTd order'>".$ORDER_detail->{'NO_REQ'}."</td><tr>
-          <tr><th style='text-align:left;'><strong>Fecha solicitud</strong></th><td class='InfsalesTd'>".date('d/M/Y g:i a',strtotime($ORDER_detail->{'DATE'}))."</td><tr>
+          <tr><th style='text-align:right;'><strong>Fecha solicitud</strong></th><td class='InfsalesTd'>".date('d/M/Y g:i a',strtotime($ORDER_detail->{'DATE'}))."</td><tr>
           <tr><th style='text-align:left;'><strong>Fecha inicio actividad</strong></th><td class='InfsalesTd'>".$data_ini."</td><tr>
           <tr><th style='text-align:left;'><strong>Solicitado por:</strong></th><td class='InfsalesTd'>".$name.' '.$lastname.'</td><tr>
           <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status_gen.'</td><tr>';
