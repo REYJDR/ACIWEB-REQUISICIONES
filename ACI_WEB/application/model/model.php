@@ -803,7 +803,7 @@ return $get_req;
 public function GetQtyReqUrg($sort,$limit,$clause){
 
 
-echo $sql='SELECT count(*) as cuenta, A.job 
+$sql='SELECT count(*) as cuenta, A.job 
         FROM `REQ_HEADER` as A 
         '.$clause.' group by A.job order by A.ID '.$sort.' limit '.$limit.';';
 
@@ -815,7 +815,7 @@ return $get_req;
 
 public function GetQtyReqNotUrg($sort,$limit,$clause){
 
-$sql='SELECT count(*) as cuenta
+echo $sql='SELECT count(*) as cuenta
         FROM `REQ_HEADER` as A 
         '.$clause.' ;';
 
@@ -824,7 +824,7 @@ $get_req = $this->Query($sql);
 $get_req = json_decode($get_req[0]);
 
 
-return $get_req;
+return $get_req->{'cuenta'};
 }
 
 
