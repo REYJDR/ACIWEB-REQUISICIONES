@@ -474,6 +474,11 @@ $('#reqInfo').html('<P>CARGANDO ...</P>');
 
         }
    });
+
+  
+ $('html, body').animate({
+        scrollTop: $("#reqInfo").offset().top
+    }, 2000);
 }
 
 function show_req_nourg(job){
@@ -498,6 +503,11 @@ $('#reqInfo').html('<P>CARGANDO ...</P>');
 
         }
    });
+
+ $('html, body').animate({
+        scrollTop: $("#reqInfo").offset().top
+    }, 2000);
+
 }
 
 function close_req(id){ 
