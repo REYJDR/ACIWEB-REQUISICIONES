@@ -2503,7 +2503,7 @@ $ID = '"'.$Item->{'job'}.'"';
 $table.= "<tr >    
               <td width='10%' class='numb'  >".$Item->{'job'}."</a></td>
               <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a>
-              <a href='#' onclick='javascript: show_req_urg(".$ID.");'>(".$ReqNotUrg.")</a></td>
+              <a href='#' onclick='javascript: show_req(".$ID.");'>(".$ReqNotUrg.")</a></td>
           </tr>";
  
 
