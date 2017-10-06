@@ -2463,7 +2463,7 @@ foreach ($Item as $datos) {
 
 $Item = json_decode($datos);
 
-
+        $clause2 = '';
 
         if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
           
@@ -2502,7 +2502,8 @@ $ID = '"'.$Item->{'job'}.'"';
 
 $table.= "<tr >    
               <td width='10%' class='numb'  >".$Item->{'job'}."</a></td>
-              <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}." (".$ReqNotUrg.")</a></td>
+              <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a>
+              <a href='#' onclick='javascript: show_req_urg(".$ID.");'>(".$ReqNotUrg.")</a></td>
           </tr>";
  
 
