@@ -457,7 +457,7 @@ function show_req_urg(job){
 
 URL = document.getElementById('URL').value;
 
-var datos= "url=bridge_query/get_ReqJob/"+job+'/'+type;
+var datos= "url=bridge_query/get_ReqJob/"+job+'/0';
    
 var link= URL+"index.php";
 
@@ -481,7 +481,7 @@ function show_req_nourg(job){
 
 URL = document.getElementById('URL').value;
 
-var datos= "url=bridge_query/get_ReqJob/"+job+'/'+type;
+var datos= "url=bridge_query/get_ReqJob/"+job+'/1';
    
 var link= URL+"index.php";
 
