@@ -2504,8 +2504,8 @@ $Item = json_decode($datos);
 $ID = '"'.$Item->{'job'}.'"';
 
 $table.= "<tr >    
-              <td width='10%' class='numb'  >".$Item->{'job'}." (".$ReqNotUrg.")</a></td>
-              <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a></td>
+              <td width='10%' class='numb'  >".$Item->{'job'}."</a></td>
+              <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}." (".$ReqNotUrg.")</a></td>
           </tr>";
  
 
