@@ -2472,7 +2472,7 @@ $Item = json_decode($datos);
                            and A.ID_compania="'.$this->model->id_compania.'"
                            and A.isUrgent="1" 
                            and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
-                           and A.job = "'.$Item->{'job'}.'" and MES = "'.$Item->{'MES'}.'"';
+                           and A.job = "'.$Item->{'job'}.'" ';
                
         }else{
          
@@ -2480,7 +2480,7 @@ $Item = json_decode($datos);
                          and A.ID_compania="'.$this->model->id_compania.'"
                          and A.isUrgent="1" 
                          and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1)
-                         and A.job = "'.$Item->{'job'}.'" and MES = "'.$Item->{'MES'}.'"';
+                         and A.job = "'.$Item->{'job'}.'" ';
 
         }
 
@@ -2500,7 +2500,7 @@ $Item = json_decode($datos);
 
 $ID = '"'.$Item->{'job'}.'"';
 
-$table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}." ".$Item->{'MES'}."</a></td>";
+$table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
 $table.="<td width='10%' class='numb' >
           <a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a>
