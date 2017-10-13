@@ -3771,7 +3771,7 @@ $date_ini= '';
 
 }
 
-$datetime = GetLocalTime();
+$datetime = $this->GetLocalTime();
 
 $value_to_set  = array( 
   'NO_REQ' => $Req_NO, 
@@ -5823,9 +5823,6 @@ $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"
 echo $table;
 }
 
-
-}
-
 public function GetLocalTime(){
 
 
@@ -5834,3 +5831,7 @@ $date = date("Y-m-d H:i:s",$date);
 
 
 }
+
+}
+
+
