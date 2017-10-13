@@ -3771,13 +3771,15 @@ $date_ini= '';
 
 }
 
+$datetime = GetLocalTime();
+
 $value_to_set  = array( 
   'NO_REQ' => $Req_NO, 
   'job'  => $JobID, 
   'ID_compania' => $this->model->id_compania, 
   'NOTA' => $nota , 
   'USER' => $this->model->active_user_id, 
-  'DATE' => date("Y-m-d H:i:s"),
+  'DATE' => $datetime,
   'DATE_INI' => $date_ini,
   'isUrgent' => $flag,
   'isPay' => $Pay_flag );
@@ -5234,6 +5236,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
     $url = "'".URL."'"; 
 
 
+
     $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
            <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
            <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
@@ -5366,6 +5369,7 @@ if($ORDER_detail->{'DATE_INI'}!=''){
   $data_ini = '';
 
 }
+
 
 
 echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td class='InfsalesTd order'>".$ORDER_detail->{'NO_REQ'}."</td><tr>
@@ -5795,12 +5799,15 @@ $notifyUrg = '';
 
 }
 
+$date = strtotime($this->model->GetLocalTime($Item->{'DATE'}));
+$date = date('d/M/Y g:i a',$date);
+
 
 
 $table.="<tr  >
               
               <td width='10%' > ".$notifyUrg." <a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
-              <td width='10%' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
+              <td width='10%' >".$date."</td>
               <td width='45%' >".$Item->{'NOTA'}.'</td>
               <td width="25%" >'.$name.' '.$lastname.'</td>
               <td width="10%" '.$style.' >'.$status.'</td>
@@ -5819,6 +5826,11 @@ echo $table;
 
 }
 
+public function GetLocalTime(){
 
 
+$date = strtotime($this->model->GetLocalTime(date("Y-m-d H:i:s")));
+$date = date("Y-m-d H:i:s",$date);
 
+
+}
