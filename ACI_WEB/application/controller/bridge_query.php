@@ -5827,7 +5827,9 @@ public function GetLocalTime(){
 $date = strtotime($this->model->GetLocalTime(date("Y-m-d H:i:s")));
 $date = date("Y-m-d H:i:s",$date);
 
+echo $date;
 
+return $date;
 }
 
 }
