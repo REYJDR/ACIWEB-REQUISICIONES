@@ -813,7 +813,7 @@ return $get_req;
 }
 
 
-public function GetQtyReqNotUrg($sort,$limit,$clause){
+public function GetQtyReqAll($sort,$limit,$clause){
 
 $sql='SELECT count(*) as cuenta  
         FROM `REQ_HEADER` as A 
