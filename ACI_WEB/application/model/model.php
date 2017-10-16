@@ -980,13 +980,12 @@ public function read_db_error(){
 
 public function GetLocalTime($dateIn){
 
+date_default_timezone_set('UTC');
 
 $test = $_REQUEST['time'];
 
-$timezone = 'America/Panama';
+$timezone = 'America/Panamá';
 $dtUtcDate = strtotime($dateStr. ' '. $timezone);
-
-
 $dateOut = date("Y-m-d H:i:s",  $dtUtcDate);
 
 
