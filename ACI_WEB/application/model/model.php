@@ -986,9 +986,8 @@ $test = $_REQUEST['time'];
 
 if($test == 1){
 
-$timezone = 'America/Panama';
-$ctime = DateTime::createFromFormat("Y-m-d H:i:s" , $dateIn , $timezone);
-$ndate= $ctime->format("Y-m-d H:i:s");
+$t = date_create_from_format("Y-m-d H:i:s",$dateIn);
+$ndate =  date_format($t,"Y-m-d H:i:s");
 
 
 
