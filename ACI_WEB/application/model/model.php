@@ -984,7 +984,7 @@ date_default_timezone_set('UTC');
 
 $test = $_REQUEST['time'];
 
-$timezone = 'America/Panamá';
+$timezone = 'America/Panama';
 $dtUtcDate = strtotime($dateStr. ' '. $timezone);
 $dateOut = date("Y-m-d H:i:s",  $dtUtcDate);
 
