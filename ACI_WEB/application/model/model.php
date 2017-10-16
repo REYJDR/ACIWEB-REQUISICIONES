@@ -987,8 +987,7 @@ $test = $_REQUEST['time'];
 if($test == 1){
 
 
-//$tz   = date_default_timezone_set('America/Panama');
-$date = strtotime($dateIn.' America/Panama');
+$date = strtotime($dateIn.' -7:00');
 $date = date("Y-m-d H:i:s", $date);
 
 
@@ -998,9 +997,8 @@ echo $dateIn.' / '.$date;
 }
 
 
-$dateOut = date("Y-m-d H:i:s",  $dateIn);
 
-return $dateOut;
+return $dateIn;
 }
 
 
