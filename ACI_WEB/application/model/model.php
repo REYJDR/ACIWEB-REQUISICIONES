@@ -995,11 +995,12 @@ $dateOut = DateTime::createFromFormat('Y-m-d H:i:s', $dateIn, $tz);
 
 if($test == 1){
 
-echo $dateIn.' / '.$dt->setTimeZone(new DateTimeZone('UTC'));
+echo $dateIn.' / '.$dateOut;
 
 }
 
 
+$dateOut = date("Y-m-d H:i:s",  $dateIn);
 
 return $dateOut;
 }
