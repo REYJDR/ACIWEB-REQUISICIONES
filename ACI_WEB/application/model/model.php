@@ -980,17 +980,17 @@ public function read_db_error(){
 
 public function GetLocalTime($dateIn){
 
-date_default_timezone_set('UTC');
-
 $test = $_REQUEST['time'];
+
+
+
+if($test == 1){
 
 $timezone = 'America/Panama';
 $ctime = DateTime::createFromFormat("Y-m-d H:i:s" , $dateIn , $timezone);
 $ndate= $ctime->format("Y-m-d H:i:s");
 
 
-
-if($test == 1){
 
 echo $dateIn.' / '.$ndate;
 
