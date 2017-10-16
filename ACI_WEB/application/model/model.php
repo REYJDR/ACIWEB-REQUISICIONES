@@ -983,7 +983,7 @@ public function GetLocalTime($dateIn){
 
 $test = $_REQUEST['time'];
 
-$timezone = 'America/Mexico';
+$timezone = 'Norte America/Mexico';
 
 
 $date  = strtotime($dateIn.' '.$timezone);
@@ -994,7 +994,7 @@ $dateOut = date("Y-m-d H:i:s",  $date);
 if($test == 1){
 
 echo $dateIn.' / '.$dateOut;
-    
+
 }
 
 
