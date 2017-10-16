@@ -989,7 +989,7 @@ if($test == 1){
 
 $timezone = new DateTimeZone('America/Panama'); 
 $dateTime = DateTime::createFromFormat("Y-m-d H:i:s", $dateIn, $timezone); 
-$ndate = $dateTime->format('Y-m-d 00:00:00'); 
+$ndate = $dateTime->format('Y-m-d H:i:s'); 
 
 
 echo $dateIn.' / '.$ndate;
