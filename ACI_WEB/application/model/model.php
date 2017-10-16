@@ -991,7 +991,7 @@ echo $dateIn.' / '.$dateOut;
 }
 
 
-return $$dateOut;
+return $dateOut;
 }
 
 public function convertDateFromTimezone($date,$timezone_to,$format){
