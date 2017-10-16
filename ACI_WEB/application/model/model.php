@@ -986,12 +986,7 @@ $test = $_REQUEST['time'];
 
 if($test == 1){
 
-$UTC = new DateTimeZone("UTC");
-$newTZ = new DateTimeZone("America/Panama");
-$date = new DateTime($dateIn, $newTZ );
-//$date->setTimezone( $newTZ );
-$dateOut = $date->format('Y-m-d H:i:s');
-
+$dateOut = convertDateFromTimezone($dateIn,'America/Panama','Y-m-d H:i:s');
 
 echo $dateIn.' / '.$dateOut;
 
@@ -1002,6 +997,14 @@ $dateIn = date("Y-m-d H:i:s", $dateIn);
 return $dateIn;
 }
 
+public function convertDateFromTimezone($date,$timezone_to,$format){
+
+$timezone = date_default_timezone_get();
+
+ $date = new DateTime($date,new DateTimeZone($timezone));
+ $date->setTimezone( new DateTimeZone($timezone_to) );
+ return $date->format($format);
+}
 
 }
 ?>
