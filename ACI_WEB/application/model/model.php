@@ -986,9 +986,11 @@ $test = $_REQUEST['time'];
 
 if($test == 1){
 
-$t = date_create_from_format("Y-m-d H:i:s",$dateIn,'America/Panama');
-$ndate =  date_format($t,"Y-m-d H:i:s");
 
+$timezone = new DateTimeZone('-7:00'); 
+$t = date_create_from_format("Y-m-d H:i:s",$dateIn, $timezone);
+
+$ndate = $dateTime->format('Y-m-d 00:00:00'); 
 
 
 echo $dateIn.' / '.$ndate;
