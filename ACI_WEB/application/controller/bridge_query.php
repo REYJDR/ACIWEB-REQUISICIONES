@@ -5824,7 +5824,7 @@ echo $table;
 public function GetLocalTime(){
 
 
-$date = $this->model->GetLocalTime(date());
+$date = $this->model->GetLocalTime(date('Y-m-d H:i:s'));
 
 
 return $date;
