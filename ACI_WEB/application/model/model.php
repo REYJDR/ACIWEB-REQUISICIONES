@@ -981,7 +981,7 @@ public function read_db_error(){
 public function GetLocalTime($dateIn){
 
 
-$date  = strtotime($dateIn.' -7:00');
+$date  = strtotime($dateIn.' 7:00');
 $dateOut = date("Y-m-d H:i:s",  $date);
 
 echo $dateIn.' / '.$dateOut;
