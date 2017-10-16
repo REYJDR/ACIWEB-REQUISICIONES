@@ -987,7 +987,7 @@ $test = $_REQUEST['time'];
 if($test == 1){
 
 
-$date = strtotime($dateIn.' -7:00');
+$date = strtotime($dateIn.' America/Panama');
 $date = date("Y-m-d H:i:s", $date);
 
 
@@ -996,7 +996,7 @@ echo $dateIn.' / '.$date;
 
 }
 
-
+$dateIn = date("Y-m-d H:i:s", $dateIn;
 
 return $dateIn;
 }
