@@ -992,7 +992,7 @@ $dateTime = DateTime::createFromFormat("Y-m-d H:i:s", $dateIn, $timezone);
 $ndate = $dateTime->format('Y-m-d H:i:s'); 
 
 
-echo $dateIn.' / '.$ndate;
+echo $dateIn.' / '.$dateTime ;
 
 }
 
