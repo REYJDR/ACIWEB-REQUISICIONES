@@ -986,7 +986,7 @@ $test = $_REQUEST['time'];
 
 if($test == 1){
 
-$t = date_create_from_format("Y-m-d H:i:s",$dateIn);
+$t = date_create_from_format("Y-m-d H:i:s",$dateIn,'America/Panama');
 $ndate =  date_format($t,"Y-m-d H:i:s");
 
 
