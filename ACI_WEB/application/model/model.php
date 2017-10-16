@@ -986,13 +986,11 @@ $test = $_REQUEST['time'];
 
 if($test == 1){
 
-
-$timezone = new DateTimeZone('America/Panama'); 
-$dateTime = DateTime::createFromFormat("Y-m-d H:i:s", $dateIn, $timezone); 
-$ndate = $dateTime->format('Y-m-d H:i:s'); 
+date_default_timezone_set('America/Panama');
+$date= date("Y-m-d H:i:s") ;
 
 
-echo $dateIn.' / '.$dateTime ;
+echo $dateIn.' / '.$date;
 
 }
 
