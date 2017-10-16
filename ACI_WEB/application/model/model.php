@@ -988,8 +988,7 @@ if($test == 1){
 
 
 $timezone = new DateTimeZone('America/Panama'); 
-$t = date_create_from_format("Y-m-d H:i:s",$dateIn, $timezone);
-
+$dateTime = DateTime::createFromFormat("Y-m-d H:i:s", $dateIn, $timezone); 
 $ndate = $dateTime->format('Y-m-d 00:00:00'); 
 
 
