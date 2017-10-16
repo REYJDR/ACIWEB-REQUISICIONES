@@ -987,8 +987,9 @@ $test = $_REQUEST['time'];
 if($test == 1){
 
 
-date_default_timezone_set('America/Panama');
-$date= date("Y-m-d H:i:s", $dateIn);
+$tz   = date_default_timezone_set('America/Panama');
+$date = strtotime($dateIn.' '.$tz);
+$date = date("Y-m-d H:i:s", $date);
 
 
 
