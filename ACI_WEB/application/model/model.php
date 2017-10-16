@@ -985,13 +985,14 @@ date_default_timezone_set('UTC');
 $test = $_REQUEST['time'];
 
 $timezone = 'America/Panama';
-$dtUtcDate = strtotime($dateStr. ' '. $timezone);
-$dateOut = date("Y-m-d H:i:s",  $dtUtcDate);
+$ctime = DateTime::createFromFormat("Y-m-d H:i:s" , $dateIn , $timezone);
+$ndate= $ctime->format("Y-m-d H:i:s");
+
 
 
 if($test == 1){
 
-echo $dateIn.' / '.$dateOut;
+echo $dateIn.' / '.$ndate;
 
 }
 
