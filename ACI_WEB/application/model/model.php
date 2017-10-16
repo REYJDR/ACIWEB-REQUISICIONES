@@ -996,7 +996,7 @@ echo $dateIn.' / '.$date;
 
 }
 
-$dateIn = date("Y-m-d H:i:s", $dateIn;
+$dateIn = date("Y-m-d H:i:s", $dateIn);
 
 return $dateIn;
 }
