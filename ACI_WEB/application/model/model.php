@@ -986,7 +986,7 @@ $test = $_REQUEST['time'];
 
 if($test == 1){
 
-$dateOut = convertDateFromTimezone($dateIn,'America/Panama','Y-m-d H:i:s');
+$dateOut = $this->convertDateFromTimezone($dateIn,'America/Panama','Y-m-d H:i:s');
 
 echo $dateIn.' / '.$dateOut;
 
