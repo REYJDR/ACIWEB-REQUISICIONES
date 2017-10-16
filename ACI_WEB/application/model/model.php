@@ -980,8 +980,10 @@ public function read_db_error(){
 
 public function GetLocalTime($dateIn){
 
+$timezone = 'America/Panama';
 
-$date  = strtotime($dateIn.' 7:00');
+
+$date  = strtotime($dateIn.' '.$timezone);
 $dateOut = date("Y-m-d H:i:s",  $date);
 
 echo $dateIn.' / '.$dateOut;
