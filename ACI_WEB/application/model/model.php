@@ -983,12 +983,14 @@ public function GetLocalTime($dateIn){
 
 $test = $_REQUEST['time'];
 
-$timezone = 'Norte America/Mexico';
+$timezone = 'America/Panama';
+$tz = new DateTimeZone($timezone);
+$dateOut = DateTime::createFromFormat('Y-m-d H:i:s', $dateIn, $tz);
 
 
-$date  = strtotime($dateIn.' '.$timezone);
+//$date  = strtotime($dateIn.' '.$timezone);
 
-$dateOut = date("Y-m-d H:i:s",  $date);
+//$dateOut = date("Y-m-d H:i:s",  $date);
 
 
 if($test == 1){
