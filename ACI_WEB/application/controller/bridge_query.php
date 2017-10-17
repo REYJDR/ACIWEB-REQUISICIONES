@@ -5830,6 +5830,11 @@ $date = $this->model->GetLocalTime(date('Y-m-d H:i:s'));
 return $date;
 }
 
+public function  Testdatime(){
+
+	echo $datetime = $this->GetLocalTime();
+}
+
 }
 
 
