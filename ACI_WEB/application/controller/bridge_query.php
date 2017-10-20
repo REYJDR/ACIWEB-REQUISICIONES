@@ -2143,16 +2143,17 @@ filter_reset_button_text: false});
 });
 
   </script>
-   <table id="table_reportReqStat" class="display table table-condensed table-striped table-bordered" >
+   <table id="table_reportReqStat" class="display nowrap table table-condensed table-striped table-bordered" >
    
     <thead>
       <tr>
         
         <th width="10%">No. Ref.</th>
-        <th width="15%">Fecha Solicitud</th>
-        <th width="40%">Descripcion</th>
-        <th width="15%">Solicitado por:</th>
-        <th width="20%">Estado</th>
+        <th width="10%">Fecha Solicitud</th>
+        <th width="45%">Descripcion</th>
+        <th width="25%">Solicitado por:</th>
+        <th width="10%">Estado</th>
+        
       </tr>
     </thead>
     <tbody>';
@@ -2207,7 +2208,7 @@ $table.="<tr  >
               
               <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
               <td width='10%' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
-              <td width='45%' class='rowtable_req' >".$Item->{'NOTA'}.'</td>
+              <td width='45%' >".$Item->{'NOTA'}.'</td>
               <td width="25%" >'.$name.' '.$lastname.'</td>
               <td width="10%" '.$style.' >'.$status.'</td>
           </tr>';
@@ -2223,7 +2224,9 @@ break;
 //Fin Reporte de requisiciones
 
 //REPORTE DE ITEM POR REQUISICIONES
+
 case 'ItemXReq':
+
 
 $table ='';
 $sql_item ='';
@@ -2374,7 +2377,6 @@ case "ReqUrg":
 $table = '';
 $clause='';
 
-
 if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
   
     $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'"  and REQ_HEADER.USER="'.$this->model->active_user_id.'" and REQ_HEADER.isUrgent="0" ';
@@ -2384,6 +2386,7 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
     $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0"';
 
 }
+
 
 
 if($date1!=''){
@@ -3693,9 +3696,7 @@ echo $codes;
 
 
 //REQUISICIONES//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 public function set_req_header($JobID,$nota,$flag,$date_ini,$Pay_flag){
-
 $this->SESSION();
 
 $Req_NO = $this->model->Get_Req_No($JobID);
@@ -3720,7 +3721,8 @@ $value_to_set  = array(
   'DATE' => date("Y-m-d H:i:s"),
   'DATE_INI' => $date_ini,
   'isUrgent' => $flag,
-  'isPay' => $Pay_flag );
+  'isPay' => $Pay_flag
+  );
 
 $res = $this->model->insert('REQ_HEADER',$value_to_set);
 
@@ -5105,12 +5107,21 @@ public function set_req_quota($REQ_NO,$ID_compania){
 
 $this->SESSION();
 
+$message = '';
+$req_usr = '';
+$req_value = '';
+
 if($_SESSION){
 
 $id_user = $this->model->active_user_id;
 
 $VALID = $this->model->Query_value('REQ_QUOTA','NO_REQ','WHERE  NO_REQ ="'.$REQ_NO.'" 
                                                            AND  ID_compania="'.$ID_compania.'"');
+
+
+$sql = 'SELECT * FROM REQ_HEADER WHERE NO_REQ="'.$REQ_NO.'"';
+$req_value = $this->model->Query($sql);
+
 
 if(!$VALID){
 
@@ -5128,6 +5139,72 @@ if(!$VALID){
        </script>';
 
 
+  
+
+
+       foreach ($req_value as $mail_values) {
+         
+
+          $mail_values = json_decode($mail_values); 
+
+
+          $req_usr = $this->model->Query('SELECT * FROM SAX_USER WHERE id="'.$mail_values->{'USER'}.'"');
+
+
+            $Date = $mail_values->{'DATE'};
+            $Date_ini = $mail_values->{'DATE_INI'};
+            $isClose = $mail_values->{'st_closed'};
+
+
+
+              foreach ($req_usr as $usr_value) {
+
+
+                $usr_value = json_decode($usr_value);
+
+                $name= $usr_value->{'name'};
+                $lastname= $usr_value->{'lastname'};
+
+                $to = $usr_value->{'email'}.';'.$usr_value->{'name'}.';'.$usr_value->{'lastname'}; //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
+
+                $address = array($to);
+                
+              }
+
+    
+          $title = 'Notificacion de Cotizando';
+          $subject.= $this->model->active_user_name.' '.$this->model->active_user_lastname.' esta cotizando tu requisicion '.$REQ_NO;       
+
+          $message.= '<h2 class="h_invoice_header" >Cotizando Requicion #:</h2>
+                 <table BORDER="1">
+                    
+                    <tr>
+                      <th style="text-align:left;"><strong>Referencia: </strong>'.$REQ_NO.'</th>
+                      
+                    </tr>
+                    <tr>
+                      <th style="text-align:left;"><strong>Fecha solicitud:</strong>'.date('d/M/Y g:i a',strtotime($Date)).'</th>
+                      
+                    </tr>
+                    <tr>
+                      <th style="text-align:left;"><strong>Fecha inicio actividad:</strong>'.date('d/M/Y',strtotime($Date_ini)).'</th>
+                      
+                    </tr>
+                    <tr>
+                      <th style="text-align:left;"><strong>Solicitante: </strong>'.$name.' '.$lastname.'</th>
+                      
+                    </tr>
+                    <tr>
+                      <th style="text-align:left;"><strong>Comprador: </strong>'.$this->model->active_user_name.' '.$this->model->active_user_lastname.'</th>
+                      
+                    </tr>
+                    
+          </table>';
+
+        }
+
+       $res = $this->model->send_mail($address,$subject,$title,$message);
+
 }else{
 
 
@@ -5138,11 +5215,8 @@ if(!$VALID){
 
 }
 
+
 }
-
-
-
-
 
 
 }
@@ -5548,25 +5622,108 @@ ECHO $count;
 
 
 
-public function set_req_recept($ITEM,$QTY,$REQ_NO,$COUNT, $ARRGL){
+public function set_req_recept($REQ_NO){
+
 $this->SESSION();
 
-    $value_to_set  = array( 
-      'NO_REQ' => $REQ_NO, 
-      'ITEM' => $ITEM, 
-      'QTY' => $QTY, 
-      'USER' => $this->model->active_user_id, 
-      'ID_compania' => $this->model->id_compania
-      );
+
+$message .='<h2 class="h_invoice_header" >Requisicion</h2>
+                 <table BORDER="1">
+                    
+                    <tr>
+                      <th style="text-align:left;"><strong>Referencia: </strong>'.$REQ_NO.'</th>
+                      
+                    </tr>
+                    <tr>
+                      <th style="text-align:left;"><strong>Personal de Campo: </strong>'.$this->model->active_user_name.' '.$this->model->active_user_lastname.'</th>
+                      
+                    </tr>
+                    <tr>
+                      <th style="text-align:left;"><strong>Fecha inicio actividad: </strong>'.date('d/M/Y').'</th>
+                      
+                    </tr>
+
+</table>
+                  
+<br>
+<TABLE border="1" >
+                  <TR >
+                       <TH width="15%">Item</TH>
+                       <TH width="35%">Descripcion</TH>
+                       <TH width="15%">Cant. Total</TH>
+                       <TH width="15%">Cant. Ordenada</TH>
+                       <TH width="10%">Cant. Recibida</TH>
+                  </TR>';
 
 
-    $res = $this->model->insert('REQ_RECEPT',$value_to_set);
 
-    if($COUNT==$ARRGL){ //SI LOS ITEMS PROCESADOS CONTABILIZADOS CON count ES IGUAL EL NUMERO DE LINEAS EN EL ARRAY (ARRLENG) entonces devuelve 0 para terminar el proceso de insesion de registros
-      echo '1'; 
-    }else{ 
-      echo '0';
-    } 
+  $data = json_decode($_GET['Data']);
+
+
+
+    foreach ($data as $key => $value) {
+   
+
+      if($value){
+
+        list($item,$ord,$qty) = explode('@',$value);
+
+          $values_insert = array(
+            'NO_REQ' => $REQ_NO, 
+            'ITEM' => $item, 
+            'QTY' => $qty, 
+            'USER' => $this->model->active_user_id, 
+            'ID_compania' => $this->model->id_compania
+             );
+
+                $res = $this->model->insert('REQ_RECEPT',$values_insert);
+
+                //CONSTRUCCION DEL EMAIL DE NOTIFICACION
+
+                $clause = 'WHERE ProductID="'.$item.'" and NO_REQ="'.$REQ_NO.'" and ID_compania="'.$this->model->id_compania.'"';
+
+                $total = $this->model->Query_value('REQ_DETAIL','CANTIDAD',$clause);
+
+                $desc = $this->model->Query_value('REQ_DETAIL','DESCRIPCION',$clause);
+
+      $message.= '<tr>
+                     <td width="15%" style="text-align: center;">'.$item.'</td>
+                     <td width="35%" style="text-align: center;">'.$desc.'</td>
+                     <td width="15%" class="numb" style="text-align: center; padding-right">'.number_format($total,2).'</td>
+                     <td width="15%" class="numb" style="text-align: center; padding-right">'.number_format($ord,2).'</td>
+                     <td width="15%" class="numb" style="text-align: center; padding-right">'.number_format($qty,2).'</td>
+                  </tr>';
+     
+      }
+    }
+
+
+    $message .= '</table>';
+
+    $subject .= $this->model->active_user_name.' '.$this->model->active_user_lastname.' ha reportado ingreso de materiales de la requisicion: '.$REQ_NO;
+
+    $title = 'Notificacion de ingreso de materiales';
+
+    //VERIFICA USUARIOS CON OPCION D ENOTIFICACION DE ORDEN DE COMPRAS
+    $sql = 'SELECT name, lastname, email from SAX_USER WHERE notif_oc="1" and onoff="1"';
+    $remitent = $this->model->Query($sql);
+
+      
+      $address =array();
+
+      foreach ($remitent as  $value) {
+          $value = json_decode($value);
+
+          $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
+
+          array_push($address, $to);
+    
+      }
+
+
+      $res = $this->model->send_mail($address,$subject,$title,$message);
+
+
 }
 
 
