@@ -391,7 +391,10 @@ var x=document.getElementById(UNIID).innerHTML;
 <div  class="separador col-lg-12"></div>
   <div   class="col-lg-5">
   <label style="display:inline" > Fecha inicio actividad: </label>
-  <input type='date' style="text-align: center;" class="input-control" name="date_ini" id="date_ini" value="" />
+  <input type='date' style="text-align: center;" class="input-control" name="date_ini" id="date_ini" min='<?php 
+	$datetime = new DateTime('tomorrow');
+	echo $datetime->format('Y-m-d');
+	?>' value="" />
  </div>
 
 </div>
@@ -523,8 +526,41 @@ MSG_ERROR_RELEASE();
 	 CHK_VALIDATION = true;
 	}
 
+   //VALIDAR FECHA DE INICIO
+   DATE = document.getElementById('date_ini').value;
+
+   if (!DATE ){
+
+	  MSG_ERROR('Es obligatorio completar el campo de fecha de inicio',1);
+	 
+	 CHK_VALIDATION = true;
+	}
+
+console.log(DATE);
+console.log(isFutureDate(DATE));
+
+	if (isFutureDate(DATE) == false ) {
+	
+	  MSG_ERROR('La fecha de inicio debe ser en el futuro',1);
+		 
+		 CHK_VALIDATION = true;
+	}
+
+
+
 
 }
+
+function isFutureDate(idate){
+var today = new Date().getTime(),
+    idate = idate.split("-");
+
+
+idate = new Date(idate[0], idate[1] , idate[2]).getTime();
+
+return (today - idate) < 0 ? true : false;
+}
+
 
 function send_req_order(){
 

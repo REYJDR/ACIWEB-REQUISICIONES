@@ -406,6 +406,10 @@ function show_sales(URL,id){
                  }
             });
 
+        $('html, body').animate({
+        scrollTop: $("#info").offset().top
+    }, 2000);
+
 
  }
 
@@ -428,6 +432,10 @@ function show_invoice(URL,id){
                  }
             });
 
+      $('html, body').animate({
+        scrollTop: $("#info").offset().top
+     },  2000);
+
 
  }
 function show_req(URL,id){
@@ -449,6 +457,10 @@ function show_req(URL,id){
                  }
             });
 
+ $('html, body').animate({
+        scrollTop: $("#info").offset().top
+     },  2000);
+
 
  }
 
@@ -457,7 +469,7 @@ function show_req_urg(job){
 
 URL = document.getElementById('URL').value;
 
-var datos= "url=bridge_query/get_ReqJob/"+job;
+var datos= "url=bridge_query/get_ReqJob/"+job+'/0';
    
 var link= URL+"index.php";
 
@@ -474,6 +486,40 @@ $('#reqInfo').html('<P>CARGANDO ...</P>');
 
         }
    });
+
+
+ $('html, body').animate({
+        scrollTop: $("#reqInfo").offset().top
+     },  2000);
+}
+
+function show_req_nourg(job){
+
+
+URL = document.getElementById('URL').value;
+
+var datos= "url=bridge_query/get_ReqJob/"+job+'/1';
+   
+var link= URL+"index.php";
+
+$('#reqInfo').html('<P>CARGANDO ...</P>');
+
+  $.ajax({
+      type: "GET",
+      url: link,
+      data: datos,
+      success: function(res){
+      
+       $('#reqInfo').html(res);
+       // alert(res);
+
+        }
+   });
+
+ $('html, body').animate({
+        scrollTop: $("#reqInfo").offset().top
+    },  2000);
+
 }
 
 function close_req(id){ 

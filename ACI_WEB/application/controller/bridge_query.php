@@ -1649,7 +1649,7 @@ if($date1!=''){
 
       responsive: true,
 
-      dom: "Bfrtip",
+      dom: "Blfrtip",
 
       bSort: false,
 
@@ -1883,7 +1883,7 @@ $clause.= 'where  s.qty > "0"  and p.id_compania="'.$this->model->id_compania.' 
       responsive: true,
 
 
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select:true,
       
@@ -2078,7 +2078,7 @@ if($date1!=''){
       
       responsive: false,
       pageLength: 10,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select: false,
  
@@ -2203,10 +2203,19 @@ switch ($status) {
 
 }
 
+if($Item->{'isUrgent'} == '1'){
+
+$notifyUrg = '<label style="color:red;"> ! </label>';
+
+}else{
+
+$notifyUrg = '';
+
+}
 
 $table.="<tr  >
               
-              <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
+              <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$notifyUrg." ".$Item->{'NO_REQ'}."</a></td>
               <td width='10%' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
               <td width='45%' >".$Item->{'NOTA'}.'</td>
               <td width="25%" >'.$name.' '.$lastname.'</td>
@@ -2238,11 +2247,11 @@ inner join REQ_HEADER ON REQ_HEADER.NO_REQ = REQ_DETAIL.NO_REQ ';
 
     if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
   
-        $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.USER="'.$this->model->active_user_id.'" ';
+        $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.USER="'.$this->model->active_user_id.'" AND REQ_HEADER.DATE > DATE_SUB(now(), INTERVAL 6 MONTH) ';
        
     }else{
  
-        $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" ';
+        $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" AND REQ_HEADER.DATE > DATE_SUB(now(), INTERVAL 6 MONTH) ';
 
     }
 
@@ -2257,7 +2266,7 @@ if($date1!=''){
 }
 
 
-$sql_item.= $clause;
+$sql_item.= $clause.' ORDER BY DATE '.$sort.' limit '.$limit;
 
 
 $table.= '<script type="text/javascript">
@@ -2267,7 +2276,7 @@ $table.= '<script type="text/javascript">
       
       responsive: false,
       pageLength: 10,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select: false,
  
@@ -2323,8 +2332,9 @@ table.yadcf(
  column_data_type: "html",
  html_data_type: "text"
  },
-{column_number : 2},
-{column_number : 3}
+{column_number : 1},
+{column_number : 3},
+{column_number : 5}
 ],
 {cumulative_filtering: true, 
 filter_reset_button_text: false}); 
@@ -2337,6 +2347,7 @@ filter_reset_button_text: false});
       <tr>
         
         <th width="10%">No. Ref.</th>
+        <th width="10%">Fecha solicitud</th>
         <th width="25%">Descripcion</th>
         <th width="10%">Cant.</th>
         <th width="10%">Unidad</th>
@@ -2359,8 +2370,9 @@ filter_reset_button_text: false});
 
               $table.="<tr  >
                 <td width='10%' style='text-align:center'><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
+                <td width='10%' class='numb' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
                 <td width='25%' >".$Item->{'DESCRIPCION'}."</td>
-                <td width='10%' style='text-align:right'>".$Item->{'CANTIDAD'}."</td>
+                <td width='10%' class='numb'>".$Item->{'CANTIDAD'}."</td>
                 <td width='10%' style='text-align:center'>".$Item->{'UNIDAD'}."</td>
                       </tr>";
 
@@ -2377,13 +2389,21 @@ case "ReqUrg":
 $table = '';
 $clause='';
 
+
 if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
   
-    $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'"  and REQ_HEADER.USER="'.$this->model->active_user_id.'" and REQ_HEADER.isUrgent="0" ';
+    $clause.= 'where A.ID_compania="'.$this->model->id_compania.'"  
+                 and A.USER="'.$this->model->active_user_id.'" 
+                 and A.ID_compania="'.$this->model->id_compania.'"
+                 and A.isUrgent="0" 
+                 and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) ';
        
 }else{
  
-    $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0"';
+   $clause.= 'where A.ID_compania="'.$this->model->id_compania.'"  
+                 and A.ID_compania="'.$this->model->id_compania.'"
+                 and A.isUrgent="0" 
+                 and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) ';
 
 }
 
@@ -2423,13 +2443,13 @@ table.yadcf(
 
   </script>
   <div class="col-lg-4">
-   <table id="table_report" class="display nowrap table table-condensed table-striped table-bordered" >
+   <table id="table_report" class="display table table-condensed table-striped table-bordered" >
    
     <thead>
       <tr>
         
         <th width="10%">Proyecto</th>
-        <th width="10%">Requisiciones Urgentes</th>
+        <th width="10%">Requisiciones</th>
         
       </tr>
     </thead>
@@ -2438,19 +2458,57 @@ table.yadcf(
 
 
 
-$Item = $this->model->get_req_to_report_urge($sort,$limit,$clause);
+$Item = $this->model->GetQtyReqUrg($sort,$limit,$clause);
 
 
 foreach ($Item as $datos) {
 
+
 $Item = json_decode($datos);
+
+        $clause2 = '';
+
+        if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
+          
+             $clause2.= 'where A.ID_compania="'.$this->model->id_compania.'"  
+                           and A.USER="'.$this->model->active_user_id.'" 
+                           and A.ID_compania="'.$this->model->id_compania.'"
+                           and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
+                           and A.job = "'.$Item->{'job'}.'" ';
+               
+        }else{
+         
+           $clause2.= 'where A.ID_compania="'.$this->model->id_compania.'"  
+                         and A.ID_compania="'.$this->model->id_compania.'"
+                         and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1)
+                         and A.job = "'.$Item->{'job'}.'" ';
+
+        }
+
+
+        if($date1!=''){
+           if($date2!=''){
+              $clause2.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
+            }
+           if($date2==''){ 
+             $clause2.= ' and  DATE like "'.$date1.'%" ';
+           }
+        }
+
+      $ReqALL=  $this->model->GetQtyReqAll($sort,$limit,$clause2);
+
+
 
 $ID = '"'.$Item->{'job'}.'"';
 
-$table.= "<tr >    
-              <td width='10%' class='numb'  >".$Item->{'job'}."</a></td>
-              <td width='10%' class='numb' ><a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a></td>
-          </tr>";
+$table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
+
+$table.="<td width='10%' class='numb' >
+          <a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a>
+          <a href='#' onclick='javascript: show_req_nourg(".$ID.");'>(".$ReqALL.")</a>
+        </td>";
+
+$table.="</tr>";
  
 
       }
@@ -2498,7 +2556,7 @@ if($date1!=''){
       responsive: true,
 
 
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select:true,
       scrollY: "200px",
@@ -2711,7 +2769,7 @@ if($date1!=''){
 
       responsive: true,
       pageLength: 10,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select: false,
 
@@ -2814,7 +2872,7 @@ table.yadcf(
   </script>
 
 
-  <table id="table_reportPurOrd"  class="display nowrap table  table-condensed table-striped table-bordered" >
+  <table id="table_reportPurOrd"  class="display table  table-condensed table-striped table-bordered" >
 
     <thead>
       <tr>
@@ -2900,7 +2958,7 @@ if($date1!=''){
 
       responsive: true,
       pageLength: 50,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       
       scrollY: "200px",
@@ -3712,13 +3770,15 @@ $date_ini= '';
 
 }
 
+$datetime = $this->GetLocalTime();
+
 $value_to_set  = array( 
   'NO_REQ' => $Req_NO, 
   'job'  => $JobID, 
   'ID_compania' => $this->model->id_compania, 
   'NOTA' => $nota , 
   'USER' => $this->model->active_user_id, 
-  'DATE' => date("Y-m-d H:i:s"),
+  'DATE' => $datetime,
   'DATE_INI' => $date_ini,
   'isUrgent' => $flag,
   'isPay' => $Pay_flag
@@ -5248,6 +5308,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
     $url = "'".URL."'"; 
 
 
+
     $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
            <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
            <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
@@ -5380,6 +5441,7 @@ if($ORDER_detail->{'DATE_INI'}!=''){
   $data_ini = '';
 
 }
+
 
 
 echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td class='InfsalesTd order'>".$ORDER_detail->{'NO_REQ'}."</td><tr>
@@ -5728,14 +5790,14 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 
 
 
-public function get_ReqJob($job){
+public function get_ReqJob($job,$type){
 
 $this->SESSION();
 
 $table = '';
 $clause='';
 
-$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="0" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
+$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="'.$type.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
 
 if($date1!=''){
    if($date2!=''){
@@ -5756,7 +5818,7 @@ if($date1!=''){
       
       responsive: false,
       pageLength: 10,
-      dom: "Bfrtip",
+      dom: "Blfrtip",
       bSort: false,
       select: false,
  
@@ -5821,7 +5883,7 @@ filter_reset_button_text: false});
 });
 
   </script>
-   <table id="table_reportReqUrg" class="display nowrap table table-condensed table-striped table-bordered" >
+   <table id="table_reportReqUrg" class="display  table table-condensed table-striped table-bordered" >
    
     <thead>
       <tr>
@@ -5882,10 +5944,25 @@ switch ($status) {
 }
 
 
+if($type == '0'){
+
+$notifyUrg = '<label style="color:red;"> ! </label>';
+
+}else{
+
+$notifyUrg = '';
+
+}
+
+$date = strtotime($this->model->GetLocalTime($Item->{'DATE'}));
+$date = date('d/M/Y g:i a',$date);
+
+
+
 $table.="<tr  >
               
-              <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
-              <td width='10%' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
+              <td width='10%' > ".$notifyUrg." <a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$Item->{'NO_REQ'}."</a></td>
+              <td width='10%' >".$date."</td>
               <td width='45%' >".$Item->{'NOTA'}.'</td>
               <td width="25%" >'.$name.' '.$lastname.'</td>
               <td width="10%" '.$style.' >'.$status.'</td>
@@ -5901,9 +5978,20 @@ $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"
 echo $table;
 }
 
+public function GetLocalTime(){
 
+
+$date = $this->model->GetLocalTime(date('Y-m-d H:i:s'));
+
+
+return $date;
 }
 
+public function  Testdatime(){
 
+	echo $datetime = $this->GetLocalTime();
+}
+
+}
 
 

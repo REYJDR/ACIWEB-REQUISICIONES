@@ -800,17 +800,32 @@ $get_req = $this->Query($sql);
 return $get_req;
 }
 
-public function get_req_to_report_urge($sort,$limit,$clause){
+public function GetQtyReqUrg($sort,$limit,$clause){
 
-$sql='SELECT count(*) as cuenta, job FROM `REQ_HEADER` 
-'.$clause.' group by job order by ID '.$sort.' limit '.$limit.';';
+
+$sql='SELECT count(*) as cuenta, A.job 
+        FROM `REQ_HEADER` as A 
+        '.$clause.' group by A.job order by A.ID '.$sort.' limit '.$limit.';';
 
 $get_req = $this->Query($sql);
-
 
 return $get_req;
 }
 
+
+public function GetQtyReqAll($sort,$limit,$clause){
+
+$sql='SELECT count(*) as cuenta  
+        FROM `REQ_HEADER` as A 
+        '.$clause.'   ;';
+
+$get_req = $this->Query($sql);
+
+$get_req = json_decode($get_req[0]);
+
+
+return $get_req->{'cuenta'};
+}
 
 
 public function get_inv_qty_disp($sort,$limit,$clause){
@@ -963,9 +978,33 @@ public function read_db_error(){
 
 }
 
+public function GetLocalTime($dateIn){
 
+$test = $_REQUEST['time'];
+
+$dateOut = $this->convertDateFromTimezone($dateIn,'America/Panama','Y-m-d H:i:s');
+
+if($test == 1){
+
+echo $dateIn.' / '.$dateOut;
+
+}
+
+return $dateOut;
+}
+
+  
+public function convertDateFromTimezone($date,$timezone_to,$format){
+
+$timezone = date_default_timezone_get();
+
+ $date = new DateTime($date,new DateTimeZone($timezone));
+ $date->setTimezone( new DateTimeZone($timezone_to) );
+ return $date->format($format);
+}
+
+  
 public function send_mail($address,$subject,$title,$body){
-
 $res = $this->verify_session();
 
 

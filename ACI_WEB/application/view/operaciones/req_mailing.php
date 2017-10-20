@@ -45,9 +45,11 @@ foreach ($ORDER as  $value) {
 if ($Pay_flag == 0) {
   
   $Pay_req = 'Si';
+  $SubjectPay = ' - pago x adelantado ';
 }else{
 
   $Pay_req = 'No';
+   $SubjectPay = '';
 }
 
 
@@ -182,7 +184,7 @@ $mail->Body = $message_to_send;
     
   }else{
 
-    $subject ='Requisicion-'.$ref;
+    $subject ='Requisicion-'.$ref.' '.$SubjectPay;
 
   }
 
