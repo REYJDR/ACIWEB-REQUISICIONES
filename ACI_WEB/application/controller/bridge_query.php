@@ -5992,6 +5992,25 @@ public function  Testdatime(){
 	echo $datetime = $this->GetLocalTime();
 }
 
+
+public function  SendPurOrdNotificacion(){
+  
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
+$res = $this->model->Query($SQL);
+
+foreach ($res as $key => $value) {
+ 
+  $value = json_decode($value);
+
+  $SQL = 'SELECT * FROM PurOrder_Header_Exp WHERE FLAG IS NULL;';
+
+
+}
+
+
+  }
+
+
 }
 
 
