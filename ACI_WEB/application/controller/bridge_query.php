@@ -5356,7 +5356,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
     echo $table;
 
 
-
+return $table;
 
 }
 
@@ -6013,7 +6013,7 @@ foreach ($res as $key => $value) {
     $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
     $title = 'Notificacion de compra de materiales';
 
-    $message .= $this->get_PO_details($PURNO);
+    $message = $this->get_PO_details($PURNO);
 
      //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
      $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
