@@ -5353,7 +5353,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
   $table.='</tbody></table></fieldset>';
 
 
-    echo $table;
+  echo $table;
 
 
 }
@@ -6014,7 +6014,7 @@ foreach ($res as $value) {
     $message = $this->get_PO_details($PURNO);
 
      //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
-     $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+ ECHO    $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
      $remitent = $this->model->Query($sql);  
      $address =array();
 
