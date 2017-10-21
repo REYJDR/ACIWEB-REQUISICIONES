@@ -5997,17 +5997,16 @@ $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
 $res = $this->model->Query($SQL);
 $subject = '';
 
-var_dump($res);
 
 foreach ($res as $value) {
  
   $value = json_decode($value);
   
- ECHO $REQ_NO = $value->{'REQNO'};
- ECHO $PURNO  = $value->{'PURNO'};
- ECHO $TXID   = $value->{'TXID'};
+ $REQ_NO = $value->{'REQNO'};
+ $PURNO  = $value->{'PURNO'};
+ $TXID   = $value->{'TXID'};
 
-  $USERID = $this->model->Query_value('Select USER from REQ_HEADER where NO_REQ ="'.$REQ_NO.'";');
+ echo  $USERID = $this->model->Query_value('Select USER from REQ_HEADER where NO_REQ ="'.trim($REQ_NO).'";');
 
 //ARMAR CUERPO DEL MENSAJE
     $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
