@@ -5995,7 +5995,7 @@ public function  Testdatime(){
 
 public function  SendPurOrdNotificacion(){
   
-$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL OR FLAG = "";';
 $res = $this->model->Query($SQL);
 $subject = '';
 
