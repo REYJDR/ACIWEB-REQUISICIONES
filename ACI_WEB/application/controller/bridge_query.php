@@ -5997,6 +5997,8 @@ $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
 $res = $this->model->Query($SQL);
 $subject = '';
 
+var_dump($res);
+
 foreach ($res as $value) {
  
   $value = json_decode($value);
