@@ -6001,9 +6001,9 @@ foreach ($res as $value) {
  
   $value = json_decode($value);
   
-  $REQ_NO = $value->{'REQNO'};
-  $PURNO  = $value->{'PURNO'};
-  $TXID   = $value->{'TXID'};
+ ECHO $REQ_NO = $value->{'REQNO'};
+ ECHO $PURNO  = $value->{'PURNO'};
+ ECHO $TXID   = $value->{'TXID'};
 
   $USERID = $this->model->Query_value('Select USER from REQ_HEADER where NO_REQ ="'.$REQ_NO.'";');
 
@@ -6014,13 +6014,13 @@ foreach ($res as $value) {
     $message = $this->get_PO_details($PURNO);
 
      //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
- ECHO    $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+     $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
      $remitent = $this->model->Query($sql);  
      $address =array();
 
      //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
       $value = json_decode($remitent[0]);
-  ECHO    $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
+      $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
  
       array_push($address, $to);
 
