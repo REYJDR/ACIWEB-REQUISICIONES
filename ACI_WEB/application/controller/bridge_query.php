@@ -5356,8 +5356,6 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
     echo $table;
 
 
-return $table;
-
 }
 
 public function get_reception($id){
@@ -5995,11 +5993,11 @@ public function  Testdatime(){
 
 public function  SendPurOrdNotificacion(){
   
-$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL OR FLAG = "";';
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
 $res = $this->model->Query($SQL);
 $subject = '';
 
-foreach ($res as $key => $value) {
+foreach ($res as $value) {
  
   $value = json_decode($value);
   
@@ -6022,7 +6020,7 @@ foreach ($res as $key => $value) {
 
      //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
       $value = json_decode($remitent[0]);
-      $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
+  ECHO    $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
  
       array_push($address, $to);
 
