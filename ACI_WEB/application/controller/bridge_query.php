@@ -5997,18 +5997,55 @@ public function  SendPurOrdNotificacion(){
   
 $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
 $res = $this->model->Query($SQL);
+$subject = '';
 
 foreach ($res as $key => $value) {
  
   $value = json_decode($value);
+  
+  $REQ_NO = $value->{'REQNO'};
+  $PURNO  = $value->{'PURNO'};
+  $TXID   = $value->{'TXID'};
 
-  $SQL = 'SELECT * FROM PurOrder_Header_Exp WHERE FLAG IS NULL;';
+  $USERID = $this->model->Query_value('Select USER from REQ_HEADER where NO_REQ ="'.$REQ_NO.'";');
+
+//ARMAR CUERPO DEL MENSAJE
+    $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
+    $title = 'Notificacion de compra de materiales';
+
+    $message .= $this->get_PO_details($PURNO);
+
+     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
+     $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+     $remitent = $this->model->Query($sql);  
+     $address =array();
+
+     //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
+      $value = json_decode($remitent[0]);
+      $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
+ 
+      array_push($address, $to);
+
+ //ARMAR CUERPO DEL MENSAJE
+      
+       $this->model->send_mail($address,$subject,$title,$message);
+    
+      //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
+       $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
+       $res = $this->model->Query($SQL);
+       
+  
+ }
+
+
+
+ 
+ 
+      
+
 
 
 }
-
-
-  }
 
 
 }
