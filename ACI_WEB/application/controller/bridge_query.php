@@ -6006,7 +6006,7 @@ foreach ($res as $value) {
  $PURNO  = $value->{'PURNO'};
  $TXID   = $value->{'TXID'};
 
- $USERID = $this->model->Query_value('REQ_HEADER','REQ_HEADER',' where NO_REQ ="'.trim($REQ_NO).'";');
+ $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
 
 //ARMAR CUERPO DEL MENSAJE
     $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
