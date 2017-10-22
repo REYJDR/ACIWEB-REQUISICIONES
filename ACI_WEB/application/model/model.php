@@ -1005,8 +1005,6 @@ $timezone = date_default_timezone_get();
 
   
 public function send_mail($address,$subject,$title,$body){
-$res = $this->verify_session();
-
 
 $message_to_send ='<html>
 <head>

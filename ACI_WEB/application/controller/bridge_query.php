@@ -5355,7 +5355,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
 
   echo $table;
 
-
+return $table;
 }
 
 public function get_reception($id){
@@ -6034,7 +6034,7 @@ foreach ($res as $value) {
         $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
         $res = $this->model->Query($SQL);
        }
-       
+
  }
 
 
