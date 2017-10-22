@@ -1069,6 +1069,7 @@ if(!$mail->send()) {
   ECHO '1';
 
 }
+
 }
 //CORCHETE DE FIN DE LA CLASE
 }
