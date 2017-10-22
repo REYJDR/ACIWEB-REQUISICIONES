@@ -6029,8 +6029,8 @@ foreach ($res as $value) {
 
      //ARMAR CUERPO DEL MENSAJE
       
-      $res =  $this->model->send_mail($address,$subject,$title,$message);
-     
+      //$res =  $this->model->send_mail($address,$subject,$title,$message);
+     $res=0;
       echo 'res:'.$res;
 
       if($res==1){
