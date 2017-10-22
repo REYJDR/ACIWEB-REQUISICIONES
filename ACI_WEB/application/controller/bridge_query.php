@@ -6016,26 +6016,26 @@ foreach ($res as $value) {
 
     $message .= $this->get_PO_details($PURNO);
 
-    //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
-    $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
-    $remitent = $this->model->Query($sql);  
-    $address =array();
+    // //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
+    // $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+    // $remitent = $this->model->Query($sql);  
+    // $address =array();
 
-    //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
-      $value = json_decode($remitent[0]);
-      $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
+    // //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
+    //   $value = json_decode($remitent[0]);
+    //   $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
 
-      array_push($address, $to);
+    //   array_push($address, $to);
 
-     //ARMAR CUERPO DEL MENSAJE
+    //  //ARMAR CUERPO DEL MENSAJE
       
-      $res =  $this->model->send_mail($address,$subject,$title,$message);
+    //   $res =  $this->model->send_mail($address,$subject,$title,$message);
 
-      if($res==1){
-        //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
-        $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
-        $res = $this->model->Query($SQL);
-      }
+    //   if($res==1){
+    //     //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
+    //     $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
+    //     $res = $this->model->Query($SQL);
+    //   }
    }
 
  }
