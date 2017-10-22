@@ -1008,7 +1008,7 @@ public function send_mail($address,$subject,$title,$body){
 $res = $this->verify_session();
 
 
-echo $message_to_send ='<html>
+$message_to_send ='<html>
 <head>
 <meta charset="UTF-8">
 <title>'.$title.'</title>

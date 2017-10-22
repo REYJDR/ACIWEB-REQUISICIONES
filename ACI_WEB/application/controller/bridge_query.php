@@ -6027,13 +6027,14 @@ foreach ($res as $value) {
 
  //ARMAR CUERPO DEL MENSAJE
       
-       $this->model->send_mail($address,$subject,$title,$message);
+      $res =  $this->model->send_mail($address,$subject,$title,$message);
     
-      //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
-       $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
-       $res = $this->model->Query($SQL);
+       if ( $res == 1){
+        //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
+        $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
+        $res = $this->model->Query($SQL);
+       }
        
-  
  }
 
 
