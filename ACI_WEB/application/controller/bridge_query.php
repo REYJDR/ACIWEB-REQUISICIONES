@@ -6029,9 +6029,7 @@ foreach ($res as $value) {
 
      //ARMAR CUERPO DEL MENSAJE
       
-      //$res =  $this->model->send_mail($address,$subject,$title,$message);
-     $res=0;
-      echo 'res:'.$res;
+      $res =  $this->model->send_mail($address,$subject,$title,$message);
 
       if($res==1){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA

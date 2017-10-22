@@ -1067,7 +1067,7 @@ if(!$mail->send()) {
 } else {
 
   ECHO '1';
-
+  return 1;
 }
 
 }
