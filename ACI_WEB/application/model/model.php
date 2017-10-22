@@ -382,9 +382,18 @@ public function verify_session(){
         //echo "<script>alert('Usuario no auntenticado');</script>";/"'.$_GET['url'].'"
 
         $temp_url = str_replace('/', '@', $_GET['url']);
+
+        if(isset($_REQUEST['user'])){
+            $res = '1';
+            echo '<script>self.location ="index.php?url=login/index/'.$temp_url.'&user='.$_REQUEST['user'].'&pass='.$_REQUEST['pass'].';</script>';
+            
+        }else{
   
-        $res = '1';
-        echo '<script>self.location ="index.php?url=login/index/'.$temp_url.'";</script>';
+            $res = '1';
+         echo '<script>self.location ="index.php?url=login/index/'.$temp_url.'";</script>';
+
+        }
+  
 
         
         }else{
