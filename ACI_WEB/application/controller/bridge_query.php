@@ -6000,7 +6000,7 @@ $message = '';
 
 foreach ($res as $value) {
  
-  $value = json_decode($value);
+ $value = json_decode($value);
   
  $REQ_NO = $value->{'REQNO'};
  $PURNO  = $value->{'PURNO'};
@@ -6027,15 +6027,14 @@ foreach ($res as $value) {
 
       array_push($address, $to);
 
-    //ARMAR CUERPO DEL MENSAJE
+     //ARMAR CUERPO DEL MENSAJE
       
       $res =  $this->model->send_mail($address,$subject,$title,$message);
 
-      if ( $res == '1'){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
         $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
         $res = $this->model->Query($SQL);
-      }
+
 
    }
 
