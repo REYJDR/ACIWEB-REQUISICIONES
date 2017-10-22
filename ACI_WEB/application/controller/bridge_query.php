@@ -5996,7 +5996,7 @@ public function  SendPurOrdNotificacion(){
 $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
 $res = $this->model->Query($SQL);
 $subject = '';
-
+$message = '';
 
 foreach ($res as $value) {
  
@@ -6012,7 +6012,7 @@ foreach ($res as $value) {
     $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
     $title = 'Notificacion de compra de materiales';
 
-    $message = $this->get_PO_details($PURNO);
+    $message .= $this->get_PO_details($PURNO);
 
      //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
      $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
