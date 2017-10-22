@@ -6029,7 +6029,7 @@ foreach ($res as $value) {
       
       $res =  $this->model->send_mail($address,$subject,$title,$message);
     
-       if ( $res == 1){
+       if ( $res == '1'){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
         $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
         $res = $this->model->Query($SQL);
@@ -6037,11 +6037,6 @@ foreach ($res as $value) {
 
  }
 
-
-
- 
- 
-      
 
 
 
