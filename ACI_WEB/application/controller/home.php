@@ -19,16 +19,7 @@ class home extends Controller
     public function index()
     {
         
-       
-        if(isset($_REQUEST['user']))
-        {
 
-        //inicio variables de session
-        $user = $_REQUEST['user'];
-        $pass = md5($_REQUEST['pass']);
-        $this->model->login_in($user,$pass,$temp_url);
-
-        }
 
         $res = $this->model->verify_session();
 

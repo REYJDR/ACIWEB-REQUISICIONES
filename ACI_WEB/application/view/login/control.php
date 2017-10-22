@@ -10,7 +10,7 @@ echo "<script> alert('SageConnect no se encuentra activo o no esta debidamente c
 }
 ////////////////////////////////
 
-if(isset($_REQUEST['flag']))
+if(isset($_REQUEST['flag']) || isset($_REQUEST['user']))
 {
 
 
