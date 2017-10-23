@@ -6014,8 +6014,64 @@ foreach ($res as $value) {
     $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
     $title = 'Notificacion de compra de materiales';
 
-    $message .= $this->get_PO_details($PURNO);
-    $message .= '<br>'.$PURNO;
+
+//mensaje 
+$oc = $this->model->get_items_by_OC($PURNO);
+
+$table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_DIV('."'table2'".');" >
+          <span STYLE="color:red" aria-hidden="true">&times; </span> Cerrar
+          </button>
+
+          <fieldset>
+          
+          <legend>Detalle de Orden de Compra</legend>
+
+          <table   class="table table-striped table-bordered" cellspacing="0"  >
+    <tbody>';
+  
+    $value = json_decode($oc[0]);
+
+    $inv = "'".$value->{'PurchaseID'}."'";
+    $url = "'".URL."'"; 
+
+
+
+    $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>';
+  
+    $table.= '</tbody></table>
+
+    <table id="Items" class="table table-striped" cellspacing="0"  >
+    <thead>
+      <tr>
+        <th width="20%">Codigo Item</th>
+        <th width="30%">Descripcion</th>
+        <th width="10%">Cantidad</th>
+      </tr>
+    </thead>
+ 
+ <tbody >';
+ 
+  foreach ($oc as $value) {
+
+    $value = json_decode($value);
+
+    $inv = "'".$value->{'PurchaseID'}."'";
+    $url = "'".URL."'"; 
+
+          $table.= "<tr>
+            <td >".$value->{'Item_id'}.'</td>
+            <td >'.$value->{'Description'}.'</td>
+          </tr>';
+
+    }     
+  $table.='</tbody></table></fieldset>';
+
+
+  $message .=   $table;
+
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
     $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
