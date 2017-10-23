@@ -21,6 +21,17 @@ $this->model->login_in($user,$pass,$temp_url);
 
 }
 
+if(isset($_REQUEST['user']))
+{
+
+
+//inicio variables de session
+$user = $_REQUEST['user'];
+$pass = md5($_REQUEST['pass']);
+$this->model->login_in($user,$pass,$temp_url);
+
+}
+
 ?>
 
 <div  class="col-lg-3"></div>
