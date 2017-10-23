@@ -6037,7 +6037,7 @@ foreach ($res as $value) {
   
     $table.= '</tbody></table>
 
-    <table id="Items" class="table table-striped" cellspacing="0"  >
+    <table id="Items" class="table table-striped table-bordered" cellspacing="0"  >
     <thead>
       <tr>
         <th width="20%">Codigo Item</th>
@@ -6052,12 +6052,11 @@ foreach ($res as $value) {
 
     $value = json_decode($value);
 
-    $inv = "'".$value->{'PurchaseID'}."'";
-    $url = "'".URL."'"; 
 
           $table.= "<tr>
             <td >".$value->{'Item_id'}.'</td>
             <td >'.$value->{'Description'}.'</td>
+            <td >'.$value->{'Quantity'}.'</td>
           </tr>';
 
     }     
