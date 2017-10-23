@@ -5995,7 +5995,9 @@ public function  SendPurOrdNotificacion(){
 
 $this->SESSION();
 
-ECHO $this->model->id_compania;
+var_dump($_SESSION);
+
+
   
 $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
 $res = $this->model->Query($SQL);
