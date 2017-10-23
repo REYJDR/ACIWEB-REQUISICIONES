@@ -5992,6 +5992,8 @@ public function  Testdatime(){
 
 
 public function  SendPurOrdNotificacion(){
+
+$this->model->verify_session();
   
 $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
 $res = $this->model->Query($SQL);
