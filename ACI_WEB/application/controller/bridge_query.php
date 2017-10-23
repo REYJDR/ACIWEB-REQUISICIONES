@@ -5993,10 +5993,6 @@ public function  Testdatime(){
 
 public function  SendPurOrdNotificacion(){
 
-$this->SESSION();
-
-var_dump($_SESSION);
-
 
   
 $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
@@ -6022,7 +6018,7 @@ foreach ($res as $value) {
 
 
 //mensaje 
-	$oc = $this->model->get_items_by_OC($PURNO);
+	$oc = $this->model->get_items_by_OC_notif($PURNO);
 
 	$table.= '<fieldset>
           
@@ -6093,6 +6089,25 @@ foreach ($res as $value) {
    }
 
  }
+}
+
+
+////////////////////////////////////////////////////
+//Orden de compras por id
+public function get_items_by_OC_notif($invoice){
+
+
+
+$query ='SELECT * 
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+WHERE PurOrdr_Header_Exp.ID_compania="1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber ="'.$invoice.'"';
+
+$res = $this->model->Query($query);
+
+
+return $res;
 }
 
 
