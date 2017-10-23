@@ -6037,7 +6037,7 @@ foreach ($res as $value) {
   
     $table.= '</tbody></table>
 
-    <table id="Items" class="table table-striped table-bordered" cellspacing="0"  >
+    <table id="Items" class="table table-striped table-bordered" border="1" cellspacing="0"  >
     <thead>
       <tr>
         <th width="20%">Codigo Item</th>
