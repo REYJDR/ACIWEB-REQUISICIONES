@@ -6018,7 +6018,7 @@ foreach ($res as $value) {
 
 
 //mensaje 
-	$oc = $this->model->get_items_by_OC_notif($PURNO);
+	$oc = $this->get_items_by_OC_notif($PURNO);
 
 	$table.= '<fieldset>
           
