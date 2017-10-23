@@ -883,7 +883,7 @@ return $req_info ;
 //Orden de compras por id
 public function get_items_by_OC($invoice){
 
-$query ='SELECT * 
+echo $query ='SELECT * 
 FROM PurOrdr_Header_Exp
 INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
 WHERE PurOrdr_Header_Exp.ID_compania="'.$this->id_compania.'"

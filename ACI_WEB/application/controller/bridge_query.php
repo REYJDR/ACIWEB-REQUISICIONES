@@ -6063,8 +6063,7 @@ foreach ($res as $value) {
     }     
   $table.='</tbody></table></fieldset>';
 
-
-  echo $message =   $table;
+  $message =   $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
