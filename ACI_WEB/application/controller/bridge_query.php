@@ -6016,13 +6016,9 @@ foreach ($res as $value) {
 
 
 //mensaje 
-$oc = $this->model->get_items_by_OC($PURNO);
+	$oc = $this->model->get_items_by_OC($PURNO);
 
-$table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_DIV('."'table2'".');" >
-          <span STYLE="color:red" aria-hidden="true">&times; </span> Cerrar
-          </button>
-
-          <fieldset>
+	$table.= '<fieldset>
           
           <legend>Detalle de Orden de Compra</legend>
 
@@ -6030,10 +6026,6 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
     <tbody>';
   
     $value = json_decode($oc[0]);
-
-    $inv = "'".$value->{'PurchaseID'}."'";
-    $url = "'".URL."'"; 
-
 
 
     $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
@@ -6070,7 +6062,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
   $table.='</tbody></table></fieldset>';
 
 
-  $message .=   $table;
+  $message =   $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
