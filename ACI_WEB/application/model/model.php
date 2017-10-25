@@ -270,7 +270,7 @@ public function insert($table,$values){
 
 $fields = array_keys($values);
 
-echo $query= "INSERT INTO ".$table." (`".implode('`,`', $fields)."`) VALUES ('".implode("','", $values)."');";
+$query= "INSERT INTO ".$table." (`".implode('`,`', $fields)."`) VALUES ('".implode("','", $values)."');";
 
 
 
