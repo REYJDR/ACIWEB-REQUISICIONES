@@ -3757,6 +3757,10 @@ echo $codes;
 public function set_req_header(){
 $this->SESSION();
 
+
+ECHO  $_REQUEST['Data'] ; 
+
+
 list($JobID,$nota,$flag,$date_ini,$Pay_flag) =  explode('@', $_REQUEST['Data']);
 
 $Req_NO = $this->model->Get_Req_No($JobID);
@@ -3785,6 +3789,8 @@ $value_to_set  = array(
   'isUrgent' => $flag,
   'isPay' => $Pay_flag
   );
+
+var_dump($value_to_set);
 
 $res = $this->model->insert('REQ_HEADER',$value_to_set);
 

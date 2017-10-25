@@ -194,7 +194,7 @@ if (slash == true){
 
 
 
-/*var patt_comilla = new RegExp("'");
+var patt_comilla = new RegExp("'");
 var comilla = patt_comilla.test( x );
 
 if (comilla  == true){
@@ -206,7 +206,7 @@ if (comilla  == true){
     return false;
   }
 
-
+/*
 var patt_dat = new RegExp("#");
 var dat = patt_dat.test( x );
 
@@ -253,7 +253,7 @@ console.log(val);
 
 
 
-/*var patt_comilla = new RegExp("'");
+var patt_comilla = new RegExp("'");
 var comilla = patt_comilla.test( x );
 
 if (comilla == true){
@@ -263,7 +263,7 @@ if (comilla == true){
     alert("No se permite carecteres especiales en este campo");
     
     return false;
-  }*/
+  }
 
 
   if (x.length > 255) 
