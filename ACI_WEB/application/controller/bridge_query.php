@@ -3754,8 +3754,10 @@ echo $codes;
 
 
 //REQUISICIONES//////////////////////////////////////////////////////////////////////////////////////////////////////////
-public function set_req_header($JobID,$nota,$flag,$date_ini,$Pay_flag){
+public function set_req_header(){
 $this->SESSION();
+
+list($JobID,$nota,$flag,$date_ini,$Pay_flag) =  explode('@', $_REQUEST['Data']);
 
 $Req_NO = $this->model->Get_Req_No($JobID);
 

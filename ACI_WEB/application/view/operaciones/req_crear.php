@@ -176,9 +176,10 @@ while(i <= cantLineas){
 function checkNOTA(){
 
 
+
 var x=document.getElementById('nota').value;
 
-var patt_slash = new RegExp("/");
+var patt_slash = new RegExp("@");
 var slash = patt_slash.test( x );
 
 if (slash == true){
@@ -193,7 +194,7 @@ if (slash == true){
 
 
 
-var patt_comilla = new RegExp("'");
+/*var patt_comilla = new RegExp("'");
 var comilla = patt_comilla.test( x );
 
 if (comilla  == true){
@@ -213,10 +214,10 @@ if (dat == true){
 
   	document.getElementById('nota').value = x.slice(0,-1);
 
-    alert("No se permite carecteres especiales en este campo");
+    alert("No se permite carecteres especiales en este campo");''
     
     return false;
-  }
+  }*/
 
  if (x.length > 1024) 
   {
@@ -252,7 +253,7 @@ console.log(val);
 
 
 
-var patt_comilla = new RegExp("'");
+/*var patt_comilla = new RegExp("'");
 var comilla = patt_comilla.test( x );
 
 if (comilla == true){
@@ -262,21 +263,8 @@ if (comilla == true){
     alert("No se permite carecteres especiales en este campo");
     
     return false;
-  }
+  }*/
 
-
-/*var patt_dat = new RegExp("#");
-var dat = patt_dat.test( x );
-
-if (dat == true){
-
-  	document.getElementById(DESCID).innerHTML = x.slice(0,-1);
-
-    alert("No se permite carecteres especiales en este campo");
-    
-    return false;
-  }
-*/
 
   if (x.length > 255) 
   {
@@ -441,13 +429,7 @@ var x=document.getElementById(UNIID).innerHTML;
 <table id="table_req_tb" class="table table-striped table-condensed table-bordered " cellspacing="0">
 	<thead>
 		<tr >
-			<th width="10%" >
-			<!--<select id="check_val" onchange="init(this.value);">
-			<option value="1" >Renglon</option>
-			<option value="2" >Codigo</option> 
-			</select>-->
-                         Renglon
-                        </th>
+			<th width="10%" >Renglon</th>
 			<th width="35%" class="text-center">Descripcion</th>
 			<th width="15%" class="text-center">Cantidad</th>
 			<th width="15%" class="text-center">Unidad</th>
@@ -612,13 +594,16 @@ if (r == true) {
 	        var JOBID = document.getElementById('JOBID').value;
 	        var nota  = document.getElementById('nota').value;
 	        var date_ini = document.getElementById('date_ini').value;
-	        var datos= "url=bridge_query/set_req_header/"+JOBID+"/"+nota+"/"+set_urgent+"/"+date_ini+"/"+isPay; //LINK DEL METODO EN BRIDGE_QUERY
+
+	        var datos= JOBID+"@"+nota+"@"+set_urgent+"@"+date_ini+"@"+isPay; //LINK DEL METODO EN BRIDGE_QUERY
+ 
+
 
 
 	     return   $.ajax({
 					type: "GET",
 					url: link,
-					data: datos,
+					data: {url: 'bridge_query/set_req_header', Data : datos }, 
 					success: function(res){
 	                                 
 	                                 Req_NO = res;
