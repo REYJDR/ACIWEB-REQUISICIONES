@@ -630,7 +630,7 @@ if (r == true) {
 					      
 					if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
 									
-						send_mail(link,Req_NO,set_urgent,isPay);
+						//send_mail(link,Req_NO,set_urgent,isPay);
 					}
 
 				   }
