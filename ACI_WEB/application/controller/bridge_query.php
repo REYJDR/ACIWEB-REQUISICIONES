@@ -2257,7 +2257,7 @@ switch ($status) {
 
 }
 
-if($Item->{'isUrgent'} == '1'){
+if($Item->{'isUrgent'} == '0'){
 
 $notifyUrg = '<label style="color:red;"> ! </label>';
 
