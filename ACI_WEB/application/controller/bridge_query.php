@@ -1737,16 +1737,31 @@ if($date1!=''){
 
 
 table.yadcf(
-[
-{column_number : 0},
-{column_number : 1},
+[{column_number : 0,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
 {column_number : 2,
  column_data_type: "html",
- html_data_type: "text" 
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
 },
-{column_number : 3}
-],
-{cumulative_filtering: true}); 
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -1969,15 +1984,31 @@ $clause.= 'where  s.qty > "0"  and p.id_compania="'.$this->model->id_compania.' 
 
 
 table.yadcf(
-[
-{column_number : 0},
-{column_number : 1},
-{column_number : 2},
+[{column_number : 0,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
 {column_number : 3,
-column_data_type: "html",
- html_data_type: "text"}
-],
-{cumulative_filtering: true}); 
+ column_data_type: "html",
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -2128,18 +2159,41 @@ if($date1!=''){
           ]
    
     });
+
+
 table.yadcf(
-[
-{column_number : 0,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text"
- },
-{column_number : 1},
-{column_number : 3},
-{column_number : 4}
-],
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
 {cumulative_filtering: true, 
-filter_reset_button_text: false}); 
+filter_reset_button_text: false}
+);
+
+ 
 });
 
   </script>
@@ -2281,6 +2335,7 @@ $table.= '<script type="text/javascript">
       select: false,
  
       info: false,
+
         buttons: [
           {
           extend: "excelHtml5",
@@ -2326,21 +2381,50 @@ $table.= '<script type="text/javascript">
           ]
    
     });
+
 table.yadcf(
-[
-{column_number : 0,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text"
- },
-{column_number : 1},
-{column_number : 3},
-{column_number : 5}
-],
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
 {cumulative_filtering: true, 
-filter_reset_button_text: false}); 
+filter_reset_button_text: false}
+);
+
+
+
+
 });
 
-  </script>
+</script>
+
    <table id="table_reportItemxReq" class="display nowrap table table-condensed table-striped table-bordered" >
    
     <thead>
@@ -2436,9 +2520,17 @@ if($date1!=''){
    
 
 table.yadcf(
-[ {column_number : 0} ],
-  {cumulative_filtering: true, 
-  filter_reset_button_text: false }); 
+[{column_number : 0,
+ column_data_type: "html",
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
+
 });
 
   </script>
@@ -2642,17 +2734,36 @@ if($date1!=''){
 
 
 table.yadcf(
-[
-{column_number : 0},
-{column_number : 1,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text" 
- },
-{column_number : 2},
-{column_number : 3},
-{column_number : 4}
-],
-{cumulative_filtering: true}); 
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -2854,17 +2965,36 @@ if($date1!=''){
 
 
 table.yadcf(
-[
-{column_number : 0,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text" 
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
 },
-{column_number : 1},
-{column_number : 2},
-{column_number : 3},
-{column_number : 4}
-],
-{cumulative_filtering: true}); 
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -3044,16 +3174,31 @@ if($date1!=''){
 
 
 table.yadcf(
-[
-{column_number : 0,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text" 
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
 },
-{column_number : 1},
-{column_number : 2},
-{column_number : 3}
-],
-{cumulative_filtering: true}); 
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 

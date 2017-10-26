@@ -93,6 +93,8 @@
   
 function Filtrar(){
 
+$('#table').html();
+
 
 var limit = $('#limit').val();
 var sort =  $('#sort').val();
@@ -128,6 +130,8 @@ $('#table').html('<P>CARGANDO ...</P>');
 
 function FiltrarReq(){
 
+
+$('#table').html();
 
 var limit = $('#limit').val();
 var sort =  $('#sort').val();
