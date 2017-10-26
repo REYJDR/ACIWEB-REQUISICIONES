@@ -52,7 +52,7 @@ public function req_print($id,$Pay_flag,$urgent_flag){
 
  $res = $this->model->verify_session();
 
-        if ($Pay_flag == 0) {
+        if ($Pay_flag == 1) {
   
              $Pay_req = 'Si';
         }else{
@@ -60,7 +60,7 @@ public function req_print($id,$Pay_flag,$urgent_flag){
               $Pay_req = 'No';
         }
 
-        if ($urgent_flag == 1) {
+        if ($urgent_flag == 0) {
   
           $isUrgent = 'Si';
         }else{
