@@ -538,8 +538,11 @@ if(r==true){
 	 <p class='help-block'>La ultima sincronizacion fue: <?php 
 
 
-	$date  = strtotime($date_db.' -7:00');
-    $dateInLocal = date("Y-m-d H:i:s",  $date);
+
+
+    $date = strtotime($this->model->GetLocalTime($date_db));
+    $dateInLocal = date('d/M/Y g:i a',$date);
+
 
     if(!$date_db){
 
