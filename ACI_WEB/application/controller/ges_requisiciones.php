@@ -60,7 +60,7 @@ public function req_print($id,$Pay_flag,$urgent_flag){
               $Pay_req = 'No';
         }
 
-        if ($urgent_flag == 0) {
+        if ($urgent_flag == 1) {
   
           $isUrgent = 'Si';
         }else{
