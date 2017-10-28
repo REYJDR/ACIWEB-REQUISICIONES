@@ -2592,8 +2592,8 @@ $Item = json_decode($datos);
 
 
 $ID = '"'.$Item->{'job'}.'"';
-$date1 = '"'.$date1.'"';
-$date2 = '"'.$date2.'"';
+$date1 = $date1;
+$date2 = $date2;
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
