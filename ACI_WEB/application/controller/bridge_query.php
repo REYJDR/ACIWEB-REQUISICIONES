@@ -2594,7 +2594,7 @@ $Item = json_decode($datos);
 
 
 $ID = '"'.$Item->{'job'}.'"';
-$date_range =  "'".$date_range."'";
+$date_range =  '"'.$date_range.'"';
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
