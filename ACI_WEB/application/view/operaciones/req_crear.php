@@ -570,7 +570,7 @@ if (r == true) {
 
         if (document.getElementById('urgent_chk').checked) {
 
-        	var set_urgent = document.getElementById('urgent_chk').value;
+        	var set_urgent = 0;
 
         }else{
 
@@ -579,7 +579,7 @@ if (r == true) {
 
         if (document.getElementById('pay_chk').checked) {
 
-        	var isPay = document.getElementById('pay_chk').value;
+        	var isPay = 0;
 
         }else{
 
