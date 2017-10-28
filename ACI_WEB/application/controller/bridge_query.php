@@ -5951,7 +5951,7 @@ $clause='';
 $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="'.$type.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
 
 
-if($date_range!=''){
+if($date_range){
    
       $clause.= $date_range ;          
     
