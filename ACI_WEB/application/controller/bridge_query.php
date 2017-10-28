@@ -2580,10 +2580,12 @@ $Item = json_decode($datos);
 
         if($date1!=''){
            if($date2!=''){
-              $clause2.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
+              $clause2.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';  
+              $date_range =  $clause2;        
             }
            if($date2==''){ 
              $clause2.= ' and  DATE like "'.$date1.'%" ';
+             $date_range =  $clause2;
            }
         }
 
@@ -2592,14 +2594,13 @@ $Item = json_decode($datos);
 
 
 $ID = '"'.$Item->{'job'}.'"';
-$date1 = $date1;
-$date2 = $date2;
+$date_range =  '"'.$date_range.'"';
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
 $table.="<td width='10%' class='numb' >
-          <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date1.",".$date2.");'>".$Item->{'cuenta'}."</a>
-          <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$date1.",".$date2.");'>(".$ReqALL.")</a>
+          <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date_range.");'>".$Item->{'cuenta'}."</a>
+          <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$date_range.");'>(".$ReqALL.")</a>
         </td>";
 
 $table.="</tr>";
@@ -5940,7 +5941,7 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 
 
 
-public function get_ReqJob($job,$type,$date1,$date2){
+public function get_ReqJob($job,$type,$date_range){
 
 $this->SESSION();
 
@@ -5949,16 +5950,14 @@ $clause='';
 
 $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="'.$type.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
 
-if($date1!=''){
-   if($date2!=''){
-      $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
-    }
-   if($date2==''){ 
-     $clause.= ' and  DATE like "'.$date1.'%" ';
-   }
+
+if($date_range!=''){
+   
+      $clause.= $date_range ;          
+    
 }
 
-echo $clause;
+
 
 
  $table.= '<script type="text/javascript">
