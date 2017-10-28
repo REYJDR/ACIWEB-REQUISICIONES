@@ -464,12 +464,12 @@ function show_req(URL,id){
 
  }
 
-function show_req_urg(job){
+function show_req_urg(job,date1,date2){
 
 
 URL = document.getElementById('URL').value;
 
-var datos= "url=bridge_query/get_ReqJob/"+job+'/0';
+var datos= "url=bridge_query/get_ReqJob/"+job+'/0/'+date1+'/'+date2;
    
 var link= URL+"index.php";
 
@@ -493,12 +493,12 @@ $('#reqInfo').html('<P>CARGANDO ...</P>');
      },  2000);
 }
 
-function show_req_nourg(job){
+function show_req_nourg(job,date1,date2){
 
 
 URL = document.getElementById('URL').value;
 
-var datos= "url=bridge_query/get_ReqJob/"+job+'/1';
+var datos= "url=bridge_query/get_ReqJob/"+job+'/1/'+date1+'/'+date2;
    
 var link= URL+"index.php";
 

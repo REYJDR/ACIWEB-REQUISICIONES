@@ -2592,12 +2592,14 @@ $Item = json_decode($datos);
 
 
 $ID = '"'.$Item->{'job'}.'"';
+$date1 = '"'.$date1.'"';
+$date2 = '"'.$date2.'"';
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
 $table.="<td width='10%' class='numb' >
-          <a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a>
-          <a href='#' onclick='javascript: show_req_nourg(".$ID.");'>(".$ReqALL.")</a>
+          <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date1.",".$date2.");'>".$Item->{'cuenta'}."</a>
+          <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$date1.",".$date2.");'>(".$ReqALL.")</a>
         </td>";
 
 $table.="</tr>";
@@ -4300,42 +4302,7 @@ var table = $("#table_info").dataTable({
       paging:    false,
       info:      false });
 
-      table.yadcf(
-        [{column_number : 0,
-         column_data_type: "html",
-         html_data_type: "text" ,
-         select_type: "select2",
-         select_type_options: { width: "100%" }
-        
-        },
-        {column_number : 1,
-         select_type: "select2",
-         select_type_options: { width: "100%" }
-        
-        },
-        {column_number : 2,
-         select_type: "select2",
-         select_type_options: { width: "100%" }
-        
-        },
-        {column_number : 3,
-         select_type: "select2",
-         select_type_options: { width: "100%" }
-        
-        },
-        {column_number : 4,
-         select_type: "select2",
-         select_type_options: { width: "100%" }
-        },
-        {column_number : 4,
-         select_type: "select2",
-         select_type_options: { width: "100%" }
-        
-        }],
-        {cumulative_filtering: true, 
-        filter_reset_button_text: false}
-        );
-        
+
 </script>';
 
 echo '<br/><br/>
@@ -5973,7 +5940,7 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 
 
 
-public function get_ReqJob($job,$type){
+public function get_ReqJob($job,$type,$date1,$date2){
 
 $this->SESSION();
 
