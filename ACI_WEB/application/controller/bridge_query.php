@@ -2581,11 +2581,11 @@ $Item = json_decode($datos);
         if($date1!=''){
            if($date2!=''){
               $clause2.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';  
-              $date_range =  $clause2;        
+              $date_range =  ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';      
             }
            if($date2==''){ 
              $clause2.= ' and  DATE like "'.$date1.'%" ';
-             $date_range =  $clause2;
+             $date_range =  ' and  DATE like "'.$date1.'%" ';
            }
         }
 
