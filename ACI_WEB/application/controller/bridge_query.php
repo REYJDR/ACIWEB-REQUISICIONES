@@ -2591,7 +2591,7 @@ $Item = json_decode($datos);
 
       $ReqALL=  $this->model->GetQtyReqAll($sort,$limit,$clause2);
 
-echo $date_range;
+
 
 $ID = '"'.$Item->{'job'}.'"';
 $date_range =  '';
@@ -5957,7 +5957,7 @@ if($date_range!=''){
     
 }
 
-
+echo $clause;
 
 
  $table.= '<script type="text/javascript">
