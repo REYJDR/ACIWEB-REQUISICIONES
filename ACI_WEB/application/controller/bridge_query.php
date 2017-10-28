@@ -5958,7 +5958,7 @@ if($date1!=''){
    }
 }
 
-
+echo $clause;
 
 
  $table.= '<script type="text/javascript">
