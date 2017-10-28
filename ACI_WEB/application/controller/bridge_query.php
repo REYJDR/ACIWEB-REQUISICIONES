@@ -4300,7 +4300,42 @@ var table = $("#table_info").dataTable({
       paging:    false,
       info:      false });
 
-
+      table.yadcf(
+        [{column_number : 0,
+         column_data_type: "html",
+         html_data_type: "text" ,
+         select_type: "select2",
+         select_type_options: { width: "100%" }
+        
+        },
+        {column_number : 1,
+         select_type: "select2",
+         select_type_options: { width: "100%" }
+        
+        },
+        {column_number : 2,
+         select_type: "select2",
+         select_type_options: { width: "100%" }
+        
+        },
+        {column_number : 3,
+         select_type: "select2",
+         select_type_options: { width: "100%" }
+        
+        },
+        {column_number : 4,
+         select_type: "select2",
+         select_type_options: { width: "100%" }
+        },
+        {column_number : 4,
+         select_type: "select2",
+         select_type_options: { width: "100%" }
+        
+        }],
+        {cumulative_filtering: true, 
+        filter_reset_button_text: false}
+        );
+        
 </script>';
 
 echo '<br/><br/>
