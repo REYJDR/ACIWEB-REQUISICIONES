@@ -1737,16 +1737,31 @@ if($date1!=''){
 
 
 table.yadcf(
-[
-{column_number : 0},
-{column_number : 1},
+[{column_number : 0,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
 {column_number : 2,
  column_data_type: "html",
- html_data_type: "text" 
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
 },
-{column_number : 3}
-],
-{cumulative_filtering: true}); 
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -1969,15 +1984,31 @@ $clause.= 'where  s.qty > "0"  and p.id_compania="'.$this->model->id_compania.' 
 
 
 table.yadcf(
-[
-{column_number : 0},
-{column_number : 1},
-{column_number : 2},
+[{column_number : 0,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
 {column_number : 3,
-column_data_type: "html",
- html_data_type: "text"}
-],
-{cumulative_filtering: true}); 
+ column_data_type: "html",
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -2128,18 +2159,41 @@ if($date1!=''){
           ]
    
     });
+
+
 table.yadcf(
-[
-{column_number : 0,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text"
- },
-{column_number : 1},
-{column_number : 3},
-{column_number : 4}
-],
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
 {cumulative_filtering: true, 
-filter_reset_button_text: false}); 
+filter_reset_button_text: false}
+);
+
+ 
 });
 
   </script>
@@ -2203,7 +2257,7 @@ switch ($status) {
 
 }
 
-if($Item->{'isUrgent'} == '1'){
+if($Item->{'isUrgent'} == '0'){
 
 $notifyUrg = '<label style="color:red;"> ! </label>';
 
@@ -2281,6 +2335,7 @@ $table.= '<script type="text/javascript">
       select: false,
  
       info: false,
+
         buttons: [
           {
           extend: "excelHtml5",
@@ -2326,21 +2381,50 @@ $table.= '<script type="text/javascript">
           ]
    
     });
+
 table.yadcf(
-[
-{column_number : 0,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text"
- },
-{column_number : 1},
-{column_number : 3},
-{column_number : 5}
-],
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
 {cumulative_filtering: true, 
-filter_reset_button_text: false}); 
+filter_reset_button_text: false}
+);
+
+
+
+
 });
 
-  </script>
+</script>
+
    <table id="table_reportItemxReq" class="display nowrap table table-condensed table-striped table-bordered" >
    
     <thead>
@@ -2436,9 +2520,17 @@ if($date1!=''){
    
 
 table.yadcf(
-[ {column_number : 0} ],
-  {cumulative_filtering: true, 
-  filter_reset_button_text: false }); 
+[{column_number : 0,
+ column_data_type: "html",
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
+
 });
 
   </script>
@@ -2488,10 +2580,12 @@ $Item = json_decode($datos);
 
         if($date1!=''){
            if($date2!=''){
-              $clause2.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
+              $clause2.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';  
+              $date_range =   " and  DATE >= '".$date1."%' and DATE <= '".$date2."%' ";      
             }
            if($date2==''){ 
              $clause2.= ' and  DATE like "'.$date1.'%" ';
+             $date_range =  " and  DATE like '".$date1."%' ";
            }
         }
 
@@ -2500,12 +2594,13 @@ $Item = json_decode($datos);
 
 
 $ID = '"'.$Item->{'job'}.'"';
+$date_range =  '';
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
 $table.="<td width='10%' class='numb' >
-          <a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$Item->{'cuenta'}."</a>
-          <a href='#' onclick='javascript: show_req_nourg(".$ID.");'>(".$ReqALL.")</a>
+          <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date_range.");'>".$Item->{'cuenta'}."</a>
+          <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$date_range.");'>(".$ReqALL.")</a>
         </td>";
 
 $table.="</tr>";
@@ -2642,17 +2737,36 @@ if($date1!=''){
 
 
 table.yadcf(
-[
-{column_number : 0},
-{column_number : 1,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text" 
- },
-{column_number : 2},
-{column_number : 3},
-{column_number : 4}
-],
-{cumulative_filtering: true}); 
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -2854,17 +2968,36 @@ if($date1!=''){
 
 
 table.yadcf(
-[
-{column_number : 0,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text" 
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
 },
-{column_number : 1},
-{column_number : 2},
-{column_number : 3},
-{column_number : 4}
-],
-{cumulative_filtering: true}); 
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 4,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -3044,16 +3177,31 @@ if($date1!=''){
 
 
 table.yadcf(
-[
-{column_number : 0,
+[{column_number : 0,
  column_data_type: "html",
- html_data_type: "text" 
+ html_data_type: "text" ,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
 },
-{column_number : 1},
-{column_number : 2},
-{column_number : 3}
-],
-{cumulative_filtering: true}); 
+{column_number : 1,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 2,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+},
+{column_number : 3,
+ select_type: "select2",
+ select_type_options: { width: "100%" }
+
+}],
+{cumulative_filtering: true, 
+filter_reset_button_text: false}
+);
 
 });
 
@@ -3754,8 +3902,11 @@ echo $codes;
 
 
 //REQUISICIONES//////////////////////////////////////////////////////////////////////////////////////////////////////////
-public function set_req_header($JobID,$nota,$flag,$date_ini,$Pay_flag){
+public function set_req_header(){
 $this->SESSION();
+
+
+list($JobID,$nota,$flag,$date_ini,$Pay_flag) =  explode('@', $_REQUEST['Data']);
 
 $Req_NO = $this->model->Get_Req_No($JobID);
 
@@ -3783,6 +3934,8 @@ $value_to_set  = array(
   'isUrgent' => $flag,
   'isPay' => $Pay_flag
   );
+
+
 
 $res = $this->model->insert('REQ_HEADER',$value_to_set);
 
@@ -4351,7 +4504,7 @@ $QTY_FALTANTE = $ORDER->{'CANTIDAD'} - $QTY_TOTAL;
 
 echo '</tbody></table>
 <div style="float:right;" class="col-md-2">
-<a href="'.URL.'index.php?url=ges_requisiciones/req_print/'.$ORDER->{'NO_REQ'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+<a href="'.URL.'index.php?url=ges_requisiciones/req_print/'.$ORDER->{'NO_REQ'}.'/'.$ORDER->{'isPay'}.'/'.$ORDER->{'isUrgent'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
    <img  class="icon" src="img/Printer.png" />
   <span>Imprimir</span>
 </a>
@@ -5353,11 +5506,9 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
   $table.='</tbody></table></fieldset>';
 
 
-    echo $table;
+  echo $table;
 
-
-
-
+return $table;
 }
 
 public function get_reception($id){
@@ -5790,7 +5941,7 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 
 
 
-public function get_ReqJob($job,$type){
+public function get_ReqJob($job,$type,$date_range){
 
 $this->SESSION();
 
@@ -5799,14 +5950,12 @@ $clause='';
 
 $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="'.$type.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
 
-if($date1!=''){
-   if($date2!=''){
-      $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
-    }
-   if($date2==''){ 
-     $clause.= ' and  DATE like "'.$date1.'%" ';
-   }
-}
+
+/*if($date_range){
+   
+      $clause.= $date_range ;          
+    
+}*/
 
 
 
@@ -5868,18 +6017,39 @@ if($date1!=''){
           ]
    
     });
+
 table.yadcf(
-[
-{column_number : 0,
- column_data_type: "html",
- html_data_type: "text"
- },
-{column_number : 1},
-{column_number : 3},
-{column_number : 4}
-],
-{cumulative_filtering: true, 
-filter_reset_button_text: false}); 
+      [{column_number : 0,
+       column_data_type: "html",
+       html_data_type: "text" ,
+       select_type: "select2",
+       select_type_options: { width: "100%" }
+      
+      },
+      {column_number : 1,
+       select_type: "select2",
+       select_type_options: { width: "100%" }
+      
+      },
+      {column_number : 2,
+       select_type: "select2",
+       select_type_options: { width: "100%" }
+      
+      },
+      {column_number : 3,
+       select_type: "select2",
+       select_type_options: { width: "100%" }
+      
+      },
+      {column_number : 4,
+       select_type: "select2",
+       select_type_options: { width: "100%" }
+      
+      }],
+      {cumulative_filtering: true, 
+      filter_reset_button_text: false}
+      );
+      
 });
 
   </script>
@@ -5992,6 +6162,124 @@ public function  Testdatime(){
 	echo $datetime = $this->GetLocalTime();
 }
 
+
+public function  SendPurOrdNotificacion(){
+
+
+  
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
+$res = $this->model->Query($SQL);
+$subject = '';
+$message = '';
+
+foreach ($res as $value) {
+ 
+ $value = json_decode($value);
+  
+ $REQ_NO = $value->{'REQNO'};
+ $PURNO  = $value->{'PURNO'};
+ $TXID   = $value->{'TXID'};
+
+ $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
+
+ if ($USERID){
+
+    //ARMAR CUERPO DEL MENSAJE
+    $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
+    $title = 'Notificacion de compra de materiales';
+
+
+//mensaje 
+	$oc = $this->get_items_by_OC_notif($PURNO);
+
+	$table.= '<fieldset>
+          
+          <legend>Detalle de Orden de Compra</legend>
+
+          <table   class="table table-striped table-bordered" cellspacing="0"  >
+    <tbody>';
+  
+    $value = json_decode($oc[0]);
+
+
+    $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>';
+  
+    $table.= '</tbody></table>
+
+    <table id="Items" class="table table-striped table-bordered" border="1" cellspacing="0"  >
+    <thead>
+      <tr>
+        <th width="20%">Codigo Item</th>
+        <th width="30%">Descripcion</th>
+        <th width="10%">Cantidad</th>
+      </tr>
+    </thead>
+ 
+ <tbody >';
+ 
+  foreach ($oc as $value) {
+
+    $value = json_decode($value);
+
+
+          $table.= "<tr>
+            <td >".$value->{'Item_id'}.'</td>
+            <td >'.$value->{'Description'}.'</td>
+            <td >'.$value->{'Quantity'}.'</td>
+          </tr>';
+
+    }     
+  $table.='</tbody></table></fieldset>';
+
+  $message =   $table;
+
+
+    //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
+    $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+    $remitent = $this->model->Query($sql);  
+    $address =array();
+
+    //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
+      $value = json_decode($remitent[0]);
+      $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
+
+      array_push($address, $to);
+
+     //ARMAR CUERPO DEL MENSAJE
+      
+      $res =  $this->model->send_mail($address,$subject,$title,$message);
+
+      if($res==1){
+        //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
+        $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
+        $res = $this->model->Query($SQL);
+      }
+   }
+
+ }
 }
 
 
+////////////////////////////////////////////////////
+//Orden de compras por id
+public function get_items_by_OC_notif($invoice){
+
+
+
+$query ='SELECT * 
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+WHERE PurOrdr_Header_Exp.ID_compania="1"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber ="'.$invoice.'"';
+
+$res = $this->model->Query($query);
+
+
+return $res;
+}
+
+
+}
