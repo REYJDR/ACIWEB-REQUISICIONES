@@ -6295,15 +6295,12 @@ public function set_job_no(){
 
     if($value->{'job'} ==''){
 
-      ECHO $req = $value->{'NO_REQ'};
-      ECHO "-";
-     ECHO $newjob =  substr($value->{'NO_REQ'},0,strpos($value->{'NO_REQ'},"-"));
-     ECHO "<BR>";
+    $newjob =  substr($value->{'NO_REQ'},0,strpos($value->{'NO_REQ'},"-"));
+     
 
- /*     $values = array('job' => $newjob );
+    $values = array('job' => $newjob );
+         $this->model->update('REQ_HEADER',$values,' NO_REQ = "'.$req.'"');
 
-      $this->model->update('REQ_HEADER',$values,' NO_REQ = "'.$req.'"');
-*/
 
     }
 
