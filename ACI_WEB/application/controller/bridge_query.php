@@ -6295,7 +6295,8 @@ public function set_job_no(){
 
 
 
-        $newjob =  substr($value->{'NO_REQ'},0,strpos($value->{'NO_REQ'},"-"));
+       echo  $newjob =  substr($value->{'NO_REQ'},0,strpos($value->{'NO_REQ'},"-"));
+       echo "<br>";
         $values = array('job' => $newjob );
         $this->model->update('REQ_HEADER',$values,' NO_REQ = "'.$value->{'NO_REQ'}.'"');
 
