@@ -812,9 +812,9 @@ return $get_req;
 
 public function GetQtyReqAll($sort,$limit,$clause){
 
-$sql='SELECT count(*) as cuenta  
+echo $sql='SELECT count(*) as cuenta  
         FROM `REQ_HEADER` as A 
-        '.$clause.'   ;';
+        '.$clause.' ;';
 
 $get_req = $this->Query($sql);
 
