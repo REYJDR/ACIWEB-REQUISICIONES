@@ -6298,7 +6298,7 @@ public function set_job_no(){
       ECHO $req = $value->{'NO_REQ'};
       ECHO "-";
      ECHO $newjob =  substr($value->{'NO_REQ'},0,strpos($value->{'NO_REQ'},"-"));
-     
+     ECHO "<BR>";
 
  /*     $values = array('job' => $newjob );
 
