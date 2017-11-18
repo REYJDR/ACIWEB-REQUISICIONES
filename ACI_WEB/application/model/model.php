@@ -222,7 +222,7 @@ $this->close();
     $res = $this->Query($query);
 
 
-    $this->close();
+    //$this->close();
     return $res;
 
     }
