@@ -6286,25 +6286,20 @@ return $res;
 
 public function set_job_no(){
 
- $sql = "SELECT NO_REQ , job FROM `REQ_HEADER`";
+ $sql = "SELECT NO_REQ , job FROM `REQ_HEADER` WHERE job is null";
  $res = $this->model->Query($sql);
 
   foreach ($res as $key => $value) {
 
     $value = json_decode($value);
 
-    if($value->{'job'} ==''){
-
-    $newjob =  substr($value->{'NO_REQ'},0,strpos($value->{'NO_REQ'},"-"));
-     
-
-    $values = array('job' => $newjob );
-
-         $this->model->update('REQ_HEADER',$values,' NO_REQ = "'.$value->{'NO_REQ'}.'"');
 
 
-    }
+        $newjob =  substr($value->{'NO_REQ'},0,strpos($value->{'NO_REQ'},"-"));
+        $values = array('job' => $newjob );
+        $this->model->update('REQ_HEADER',$values,' NO_REQ = "'.$value->{'NO_REQ'}.'"');
 
+  
 
   }
 
