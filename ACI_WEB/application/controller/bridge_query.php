@@ -6299,7 +6299,8 @@ public function set_job_no(){
      
 
     $values = array('job' => $newjob );
-         $this->model->update('REQ_HEADER',$values,' NO_REQ = "'.$req.'"');
+
+         $this->model->update('REQ_HEADER',$values,' NO_REQ = "'.$value->{'NO_REQ'}.'"');
 
 
     }
