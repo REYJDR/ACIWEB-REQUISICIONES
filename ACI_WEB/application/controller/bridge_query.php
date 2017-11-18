@@ -2478,13 +2478,13 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
   
     $clause.= 'where A.ID_compania="'.$this->model->id_compania.'"  
                  and A.USER="'.$this->model->active_user_id.'" 
-                 and A.isUrgent="0" 
+                 and A.isUrgent = "0"
                  and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) ';
        
 }else{
  
    $clause.= 'where A.ID_compania="'.$this->model->id_compania.'"  
-                 and A.isUrgent="0" 
+                 and A.isUrgent = "0"
                  and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) ';
 
 }
@@ -2493,10 +2493,12 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
 
 if($date1!=''){
    if($date2!=''){
-      $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
+      $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';   
+      $date_range =   " and  DATE >= '".$date1."%' and DATE <= '".$date2."%' ";            
     }
    if($date2==''){ 
      $clause.= ' and  DATE like "'.$date1.'%" ';
+     $date_range =  " and  DATE like '".$date1."%' ";
    }
 }
 
@@ -2587,7 +2589,7 @@ $Item = json_decode($datos);
 
 
 
-$ReqALL=  $this->model->GetQtyReqAll($sort,$limit,$clause2);
+ $ReqALL=  $this->model->GetQtyReqAll($sort,$limit,$clause2);
 
 
 
@@ -2595,6 +2597,8 @@ $ID = '"'.$Item->{'job'}.'"';
 $date_range =  '';
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
+
+
 
 $table.="<td width='10%' class='numb' >
           <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date_range.");'>".$Item->{'cuenta'}."</a>
