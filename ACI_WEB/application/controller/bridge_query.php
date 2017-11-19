@@ -2589,7 +2589,7 @@ $Item = json_decode($datos);
 
 
 
- $ReqALL=  $this->model->GetQtyReqAll($sort,$limit,$clause2);
+$ReqALL=  $this->model->GetQtyReqAll($sort,$limit,$clause2);
 
 
 
