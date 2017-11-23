@@ -6199,11 +6199,11 @@ foreach ($res as $value) {
  
  $value = json_decode($value);
   
- $REQ_NO = $value->{'REQNO'};
- $PURNO  = $value->{'PURNO'};
- $TXID   = $value->{'TXID'};
+ echo  $REQ_NO = $value->{'REQNO'};
+ echo  $PURNO  = $value->{'PURNO'};
+ echo  $TXID   = $value->{'TXID'};
 
- $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
+ echo  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
 
  if ($USERID){
 
@@ -6257,11 +6257,11 @@ foreach ($res as $value) {
     }     
   $table.='</tbody></table></fieldset>';
 
-echo  $message =   $table;
+$message =   $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
- echo   $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+  $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
     $remitent = $this->model->Query($sql);  
     $address =array();
 
