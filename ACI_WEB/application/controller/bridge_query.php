@@ -6190,7 +6190,7 @@ public function  SendPurOrdNotificacion(){
 
 
   
-$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG is null and REQNO <> "" ;';
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG is null and FLAG <> "" and REQNO <> "" ;';
 $res = $this->model->Query($SQL);
 $subject = '';
 $message = '';
