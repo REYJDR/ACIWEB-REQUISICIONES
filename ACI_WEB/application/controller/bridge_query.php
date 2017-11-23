@@ -6203,21 +6203,19 @@ $REQ_NO = $value->{'REQNO'};
 $PURNO  = $value->{'PURNO'};
 $TXID   = $value->{'TXID'};
 
-
- $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
-
- if ($USERID){
-
  echo  $REQ_NO ;
  echo '<br>';
  echo  trim($REQ_NO);
  echo '<br>';
  echo  $PURNO;
- echo '<br>';
- echo  $TXID;
- echo '<br>';
- echo  $USERID;
- echo '<br>';
+  echo '<br>';
+
+ $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
+
+ if ($USERID){
+
+
+
 
     //ARMAR CUERPO DEL MENSAJE
     $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
