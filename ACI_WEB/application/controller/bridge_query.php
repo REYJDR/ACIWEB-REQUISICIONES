@@ -2601,7 +2601,7 @@ $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
 
 $table.="<td width='10%' class='numb' >
-          <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date_range.");'>".$clause2.$Item->{'cuenta'}."</a>
+          <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date_range.");'>".$date_rang.$Item->{'cuenta'}."</a>
           <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$date_range.");'>(".$ReqALL.")</a>
         </td>";
 
