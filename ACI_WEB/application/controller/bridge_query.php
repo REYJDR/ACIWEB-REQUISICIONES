@@ -2500,8 +2500,13 @@ if($date1!=''){
    if($date2==''){ 
      $clause.= ' and  DATE like "'.$date1.'%" ';
      $dateFrom = '"'.$date1.'"';  
-     $dateTo = ''; 
+     $dateTo = '""'; 
    }
+}else{
+
+  $dateFrom = '""';  
+  $dateTo = '""'; 
+
 }
 
 
