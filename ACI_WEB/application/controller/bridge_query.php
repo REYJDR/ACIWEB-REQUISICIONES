@@ -6199,16 +6199,23 @@ foreach ($res as $value) {
  
  $value = json_decode($value);
   
- echo  $REQ_NO = $value->{'REQNO'};
- echo '<br>';
- echo  $PURNO  = $value->{'PURNO'};
- echo '<br>';
- echo  $TXID   = $value->{'TXID'};
- echo '<br>';
+$REQ_NO = $value->{'REQNO'};
+$PURNO  = $value->{'PURNO'};
+$TXID   = $value->{'TXID'};
 
- echo  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
+
+ $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
 
  if ($USERID){
+
+ echo  $REQ_NO ;
+ echo '<br>';
+ echo  $PURNO;
+ echo '<br>';
+ echo  $TXID;
+ echo '<br>';
+ echo  $USERID;
+ echo '<br>';
 
     //ARMAR CUERPO DEL MENSAJE
     $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
