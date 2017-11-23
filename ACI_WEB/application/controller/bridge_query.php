@@ -2494,11 +2494,11 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
 if($date1!=''){
    if($date2!=''){
       $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';   
-      $date_range =   " and  DATE >= '".$date1."%' and DATE <= '".$date2."%' ";            
+                 
     }
    if($date2==''){ 
      $clause.= ' and  DATE like "'.$date1.'%" ';
-     $date_range =  " and  DATE like '".$date1."%' ";
+     
    }
 }
 
@@ -2582,7 +2582,7 @@ $Item = json_decode($datos);
                   
             }
            if($date2==''){ 
-             $clause2.= ' and  DATE like "'.$date1.'%" ';
+              $clause2.= ' and  DATE like "'.$date1.'%" ';
              
            }
         }
@@ -2601,8 +2601,8 @@ $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 $date_range= '"'.$date_range.'"';
 
 $table.="<td width='10%' class='numb' >
-          <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date_range.");'>".$Item->{'cuenta'}."</a>
-          <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$date_range.");'>(".$ReqALL.")</a>
+          <a href='#' onclick='javascript: show_req_urg(".$ID.",'".$date1."','".$date2."');'>".$Item->{'cuenta'}."</a>
+          <a href='#' onclick='javascript: show_req_nourg(".$ID.",'".$date1."','".$date2."');'>(".$ReqALL.")</a>
         </td>";
 
 $table.="</tr>";
@@ -5943,21 +5943,35 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 
 
 
-public function get_ReqJob($job,$type,$date_range){
+public function get_ReqJob($job,$type,$date1,$date2){
 
 $this->SESSION();
 
 $table = '';
 $clause='';
 
-$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.isUrgent="'.$type.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
 
 
-/*if($date_range){
-   
-      $clause.= $date_range ;          
+$clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'"  and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.job="'.$job.'"';
+
+if($type=='0'){
+  
+    $clause .= ' and REQ_HEADER.sUrgent="'.$type.'" ';
+  
+  }
+
+if($date1!=''){ 
+  if($date2!=''){
     
-}*/
+     $clause.= ' and REQ_HEADER.DATE between  "'.$date1.'%" and "'.$date2.'%" ' ;          
+     
+ }
+ if($date2==''){
+  
+   $clause.= ' and REQ_HEADER.DATE like "'.$date1.'"' ;          
+   
+ }  
+}
 
 
 
