@@ -5958,7 +5958,7 @@ $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'"  and REQ
 
 if($type=='0'){
   
-    $clause .= ' and REQ_HEADER.sUrgent="'.$type.'" ';
+    $clause .= ' and REQ_HEADER.isUrgent="'.$type.'" ';
   
   }
 
@@ -6132,14 +6132,14 @@ switch ($status) {
 }
 
 
-if($type == '0'){
-
-$notifyUrg = '<label style="color:red;"> ! </label>';
-
-}else{
-
-$notifyUrg = '';
-
+if($Item->{'isUrgent'} == '0'){
+  
+  $notifyUrg = '<label style="color:red;"> ! </label>';
+  
+  }else{
+  
+  $notifyUrg = '';
+  
 }
 
 $date = strtotime($this->model->GetLocalTime($Item->{'DATE'}));
