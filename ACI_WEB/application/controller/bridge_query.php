@@ -2494,11 +2494,13 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
 if($date1!=''){
    if($date2!=''){
       $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';   
-                 
+      $dateFrom = '"'.$date1.'"';  
+      $dateTo = '"'.$date2.'"';              
     }
    if($date2==''){ 
      $clause.= ' and  DATE like "'.$date1.'%" ';
-     
+     $dateFrom = '"'.$date1.'"';  
+     $dateTo = ''; 
    }
 }
 
@@ -2598,7 +2600,7 @@ $ID = '"'.$Item->{'job'}.'"';
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
-$date_range= '"'.$date_range.'"';
+
 
 $table.="<td width='10%' class='numb' >
           <a href='#' onclick='javascript: show_req_urg(".$ID.",'".$date1."','".$date2."');'>".$Item->{'cuenta'}."</a>
