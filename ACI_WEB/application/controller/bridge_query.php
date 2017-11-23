@@ -6200,8 +6200,11 @@ foreach ($res as $value) {
  $value = json_decode($value);
   
  echo  $REQ_NO = $value->{'REQNO'};
+ echo '<br>';
  echo  $PURNO  = $value->{'PURNO'};
+ echo '<br>';
  echo  $TXID   = $value->{'TXID'};
+ echo '<br>';
 
  echo  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
 
