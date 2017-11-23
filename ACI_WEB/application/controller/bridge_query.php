@@ -6210,6 +6210,8 @@ $TXID   = $value->{'TXID'};
 
  echo  $REQ_NO ;
  echo '<br>';
+ echo  trim($REQ_NO);
+ echo '<br>';
  echo  $PURNO;
  echo '<br>';
  echo  $TXID;
