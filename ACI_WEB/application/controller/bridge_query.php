@@ -6257,11 +6257,11 @@ foreach ($res as $value) {
     }     
   $table.='</tbody></table></fieldset>';
 
-  $message =   $table;
+echo  $message =   $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
-    $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+ echo   $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
     $remitent = $this->model->Query($sql);  
     $address =array();
 
@@ -6273,7 +6273,7 @@ foreach ($res as $value) {
 
      //ARMAR CUERPO DEL MENSAJE
       
-      ECHO $res =  $this->model->send_mail($address,$subject,$title,$message);
+      $res =  $this->model->send_mail($address,$subject,$title,$message);
 
       if($res==1){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
