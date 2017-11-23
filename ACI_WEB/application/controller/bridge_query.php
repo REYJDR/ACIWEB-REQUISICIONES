@@ -2598,7 +2598,7 @@ $ID = '"'.$Item->{'job'}.'"';
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
-$date_range= "'".$date_range."'";
+$date_range= '"'.$date_range.'"';
 
 $table.="<td width='10%' class='numb' >
           <a href='#' onclick='javascript: show_req_urg(".$ID.",".$date_range.");'>".$Item->{'cuenta'}."</a>
