@@ -6203,11 +6203,11 @@ $REQ_NO = $value->{'REQNO'};
 $PURNO  = $value->{'PURNO'};
 $TXID   = $value->{'TXID'};
 
- echo  $REQ_NO ;
+ echo  'req:'.$REQ_NO ;
  echo '<br>';
- echo  trim($REQ_NO);
+ echo  'req:'.trim($REQ_NO);
  echo '<br>';
- echo  $PURNO;
+ echo  'OC:'.$PURNO;
   echo '<br>';
 
  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
