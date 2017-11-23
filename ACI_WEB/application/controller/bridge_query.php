@@ -6190,14 +6190,14 @@ public function  SendPurOrdNotificacion(){
 
 
   
-$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG is null;';
 $res = $this->model->Query($SQL);
 $subject = '';
 $message = '';
 
 foreach ($res as $value) {
  
- $value = json_decode($value);
+$value = json_decode($value);
   
 $REQ_NO = $value->{'REQNO'};
 $PURNO  = $value->{'PURNO'};
@@ -6205,11 +6205,10 @@ $TXID   = $value->{'TXID'};
 
  echo  'req:'.$REQ_NO ;
  echo '<br>';
- echo  'req:'.trim($REQ_NO);
- echo '<br>';
  echo  'OC:'.$PURNO;
-  echo '<br>';
+ echo '<br>';
 
+die();
  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
 
  if ($USERID){
