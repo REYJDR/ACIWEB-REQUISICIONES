@@ -2594,7 +2594,7 @@ $ReqALL=  $this->model->GetQtyReqAll($sort,$limit,$clause2);
 
 
 $ID = '"'.$Item->{'job'}.'"';
-$date_range =  '';
+
 
 $table.="<tr ><td width='10%' class='numb'  >".$Item->{'job'}."</a></td>";
 
