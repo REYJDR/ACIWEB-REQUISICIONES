@@ -2494,7 +2494,7 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
 if($date1!=''){
    if($date2!=''){
       $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';   
-      $dateFrom = '"'.$date1.'"';  
+      $dateFrom = '"'.$date1.'"';
       $dateTo = '"'.$date2.'"';              
     }
    if($date2==''){ 
