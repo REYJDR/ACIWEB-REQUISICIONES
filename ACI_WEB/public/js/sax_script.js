@@ -499,6 +499,8 @@ function show_req_nourg(job,date1,date2){
 URL = document.getElementById('URL').value;
 
 var datos= "url=bridge_query/get_ReqJob/"+job+'/1/'+date1+'/'+date2;
+
+console.log(datos);
    
 var link= URL+"index.php";
 
