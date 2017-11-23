@@ -6273,7 +6273,7 @@ foreach ($res as $value) {
 
      //ARMAR CUERPO DEL MENSAJE
       
-      $res =  $this->model->send_mail($address,$subject,$title,$message);
+      ECHO $res =  $this->model->send_mail($address,$subject,$title,$message);
 
       if($res==1){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
