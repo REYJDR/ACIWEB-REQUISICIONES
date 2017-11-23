@@ -6190,7 +6190,7 @@ public function  SendPurOrdNotificacion(){
 
 
   
-$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG is null;';
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG is null and REQNO <> "" ;';
 $res = $this->model->Query($SQL);
 $subject = '';
 $message = '';
@@ -6208,7 +6208,7 @@ $TXID   = $value->{'TXID'};
  echo  'OC:'.$PURNO;
  echo '<br>';
 
-die();
+
  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
 
  if ($USERID){
