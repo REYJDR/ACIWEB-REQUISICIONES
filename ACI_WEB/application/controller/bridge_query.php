@@ -6190,7 +6190,7 @@ public function  SendPurOrdNotificacion(){
 
 
   
-$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG is null and FLAG <> "" and REQNO <> "" ;';
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLG = "0" and REQNO <> "" ;';
 $res = $this->model->Query($SQL);
 $subject = '';
 $message = '';
@@ -6286,7 +6286,7 @@ $message =   $table;
 
       if($res==1){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
-        $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
+        $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLG="1" WHERE TXID="'.$TXID.'";';
         $res = $this->model->Query($SQL);
       }
    }
