@@ -6189,22 +6189,31 @@ public function  Testdatime(){
 public function  SendPurOrdNotificacion(){
 
   
-$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
+$SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLG = "0" and REQNO <> "" ;';
 $res = $this->model->Query($SQL);
 $subject = '';
 $message = '';
 
 foreach ($res as $value) {
  
- $value = json_decode($value);
+$value = json_decode($value);
   
- $REQ_NO = $value->{'REQNO'};
- $PURNO  = $value->{'PURNO'};
- $TXID   = $value->{'TXID'};
+$REQ_NO = $value->{'REQNO'};
+$PURNO  = $value->{'PURNO'};
+$TXID   = $value->{'TXID'};
+
+ echo  'req:'.$REQ_NO ;
+ echo '<br>';
+ echo  'OC:'.$PURNO;
+ echo '<br>';
+
 
  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
 
  if ($USERID){
+
+
+
 
     //ARMAR CUERPO DEL MENSAJE
     $subject .= 'Se ha reportado la compra de materiales de la requisicion: '.$REQ_NO;
@@ -6256,11 +6265,11 @@ foreach ($res as $value) {
     }     
   $table.='</tbody></table></fieldset>';
 
-  $message =   $table;
+$message =   $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
-    $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+  $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
     $remitent = $this->model->Query($sql);  
     $address =array();
 
@@ -6276,7 +6285,7 @@ foreach ($res as $value) {
 
       if($res==1){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
-        $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLAG="X" WHERE TXID="'.$TXID.'";';
+        $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLG="1" WHERE TXID="'.$TXID.'";';
         $res = $this->model->Query($SQL);
       }
    }
