@@ -6322,7 +6322,6 @@ public function  SendPurOrdUpdateNotificacion(){
   //mensaje 
     $oc = $this->GetOcWorkFlowStatus($PURNO);
 
-    $oc = json_decode($oc[0]);
   
     $table.= '<fieldset>
             
@@ -6394,7 +6393,7 @@ return $res;
 public function GetOcWorkFlowStatus($invoice){
   
 
-  $query ='SELECT WorkflowStatusName, WorkflowNote 
+  $query ='SELECT *
   FROM PurOrdr_Header_Exp
   WHERE PurOrdr_Header_Exp.PurchaseOrderNumber ="'.$invoice.'"';
   
