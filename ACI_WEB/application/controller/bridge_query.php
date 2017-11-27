@@ -6350,7 +6350,7 @@ public function  SendPurOrdUpdateNotificacion(){
   
       //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
         $value = json_decode($remitent[0]);
-        $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
+    echo    $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
   
         array_push($address, $to);
   
@@ -6362,8 +6362,6 @@ public function  SendPurOrdUpdateNotificacion(){
           //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
           $values  = array('FLG' => "1",
                            'SENT_TO' => $value->{'email'});
-
-          //$SQL = 'UPDATE PUR_UPDATE SET FLG="1" , SENT_TO="'.$value->{'email'}.'" WHERE TXID="'.$TXID.'";';
           $res = $this->model->update('PUR_UPDATE',$values,' TXID="'.$TXID.'";');
         }
      }
