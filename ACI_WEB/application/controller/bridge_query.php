@@ -6305,10 +6305,10 @@ public function  SendPurOrdUpdateNotificacion(){
   foreach ($res as $value) {
    
    $value = json_decode($value);
-    
-echo $REQ_NO = $value->{'REQNO'};
- echo  $PURNO  = $value->{'PURNO'};
-  echo $TXID   = $value->{'TXID'};
+  
+  $REQ_NO = $value->{'REQNO'};
+  $PURNO  = $value->{'PURNO'};
+  $TXID   = $value->{'TXID'};
   
    $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
   
@@ -6343,7 +6343,7 @@ echo $REQ_NO = $value->{'REQNO'};
   
      
   
-    $message =   $table;
+   echo $message =   $table;
   
   
       //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
