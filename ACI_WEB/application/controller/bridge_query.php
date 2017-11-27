@@ -6350,7 +6350,7 @@ public function  SendPurOrdUpdateNotificacion(){
   
       //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
         $value = json_decode($remitent[0]);
-    echo    $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
+        $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
   
         array_push($address, $to);
   
