@@ -6321,6 +6321,8 @@ public function  SendPurOrdUpdateNotificacion(){
   
   //mensaje 
     $oc = $this->GetOcWorkFlowStatus($PURNO);
+
+    $oc = json_decode($oc[0]);
   
     $table.= '<fieldset>
             
@@ -6338,7 +6340,7 @@ public function  SendPurOrdUpdateNotificacion(){
                 <tr><th style="text-align:left;" width="25%">Tracking Status</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
 
-      $table.= '</tbody></table>';
+      $table.= '</tbody></table></fieldset>';
   
      
   
