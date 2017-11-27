@@ -6306,9 +6306,9 @@ public function  SendPurOrdUpdateNotificacion(){
    
    $value = json_decode($value);
     
-   $REQ_NO = $value->{'REQNO'};
-   $PURNO  = $value->{'PURNO'};
-   $TXID   = $value->{'TXID'};
+echo $REQ_NO = $value->{'REQNO'};
+ echo  $PURNO  = $value->{'PURNO'};
+  echo $TXID   = $value->{'TXID'};
   
    $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
   
