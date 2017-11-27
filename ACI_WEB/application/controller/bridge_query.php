@@ -6344,7 +6344,7 @@ public function  SendPurOrdUpdateNotificacion(){
   
   
       //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
-     echo $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+      $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
       $remitent = $this->model->Query($sql);  
       $address =array();
   
