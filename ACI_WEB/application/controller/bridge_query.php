@@ -6360,8 +6360,11 @@ public function  SendPurOrdUpdateNotificacion(){
   
         if($res==1){
           //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
-          $SQL = 'UPDATE PUR_UPDATE SET FLG="1" , SENT_TO ="'.$value->{'email'}.'" WHERE TXID="'.$TXID.'";';
-          $res = $this->model->Query($SQL);
+          $values  = array('FLG' => "1",
+                           'SENT_TO' => $value->{'email'});
+
+          //$SQL = 'UPDATE PUR_UPDATE SET FLG="1" , SENT_TO="'.$value->{'email'}.'" WHERE TXID="'.$TXID.'";';
+          $res = $this->model->update('PUR_UPDATE',$values,' TXID="'.$TXID.'";');
         }
      }
   
