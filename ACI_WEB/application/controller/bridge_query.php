@@ -6363,6 +6363,9 @@ public function  SendPurOrdUpdateNotificacion(){
           $values  = array('FLG' => "1",
                            'SENT_TO' => $value->{'email'});
           $res = $this->model->update('PUR_UPDATE',$values,' TXID="'.$TXID.'";');
+          
+          echo 2;
+
         }
      }
   
