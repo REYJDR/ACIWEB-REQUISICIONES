@@ -6310,7 +6310,7 @@ public function  SendPurOrdUpdateNotificacion(){
   $PURNO  = $value->{'PURNO'};
   $TXID   = $value->{'TXID'};
   
-   $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
+  echo $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
   
    if ($USERID){
   
