@@ -6188,7 +6188,6 @@ public function  Testdatime(){
 
 public function  SendPurOrdNotificacion(){
 
-
   
 $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLAG IS NULL;';
 $res = $this->model->Query($SQL);
@@ -6286,6 +6285,82 @@ foreach ($res as $value) {
 }
 
 
+public function  SendPurOrdUpdateNotificacion(){
+  
+    
+  $SQL = 'SELECT * FROM PUR_UPDATE WHERE FLG ="0";';
+  $res = $this->model->Query($SQL);
+  $subject = '';
+  $message = '';
+  
+  foreach ($res as $value) {
+   
+   $value = json_decode($value);
+    
+   $REQ_NO = $value->{'REQNO'};
+   $PURNO  = $value->{'PURNO'};
+   $TXID   = $value->{'TXID'};
+  
+   $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
+  
+   if ($USERID){
+  
+      //ARMAR CUERPO DEL MENSAJE
+      $subject .= 'Se ha reportado modificacion en el workflow de la OC: '.$PURNO.' relacionada a la requisicion: '.$REQ_NO;
+      $title = 'Notificacion modificacion de workflow';
+  
+  
+  //mensaje 
+    $oc = $this->GetOcWorkFlowStatus($PURNO);
+  
+    $table.= '<fieldset>
+            
+            <legend>Detalle </legend>
+  
+            <table   class="table table-striped table-bordered" cellspacing="0"  >
+      <tbody>';
+    
+      $value = json_decode($oc[0]);
+  
+  
+      $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Requisicion</th><td >'.$value->{'CustomerSO'}.'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Tracking Status</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
+
+      $table.= '</tbody></table>';
+  
+     
+  
+    $message =   $table;
+  
+  
+      //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
+      $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+      $remitent = $this->model->Query($sql);  
+      $address =array();
+  
+      //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
+        $value = json_decode($remitent[0]);
+        $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; 
+  
+        array_push($address, $to);
+  
+       //ARMAR CUERPO DEL MENSAJE
+        
+        $res =  $this->model->send_mail($address,$subject,$title,$message);
+  
+        if($res==1){
+          //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
+          $SQL = 'UPDATE PUR_UPDATE SET FLG="1" WHERE TXID="'.$TXID.'";';
+          $res = $this->model->Query($SQL);
+        }
+     }
+  
+   }
+  }
+
 ////////////////////////////////////////////////////
 //Orden de compras por id
 public function get_items_by_OC_notif($invoice){
@@ -6303,6 +6378,22 @@ $res = $this->model->Query($query);
 
 return $res;
 }
+
+
+public function GetOcWorkFlowStatus($invoice){
+  
+
+  $query ='SELECT WorkflowStatusName, WorkflowNote 
+  FROM PurOrdr_Header_Exp
+  WHERE PurOrdr_Header_Exp.PurchaseOrderNumber ="'.$invoice.'"';
+  
+  $res = $this->model->Query($query);
+  
+  
+  return $res;
+  }
+
+
 
 
 public function set_job_no(){
