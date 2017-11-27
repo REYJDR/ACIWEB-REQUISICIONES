@@ -6334,16 +6334,13 @@ public function  SendPurOrdUpdateNotificacion(){
   
   
       $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
-                <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Requisicion</th><td >'.$value->{'CustomerSO'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Tracking Status</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
 
       $table.= '</tbody></table></fieldset>';
   
-     
-  
-   echo $message =   $table;
+      $message =   $table;
   
   
       //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
@@ -6363,7 +6360,7 @@ public function  SendPurOrdUpdateNotificacion(){
   
         if($res==1){
           //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
-          $SQL = 'UPDATE PUR_UPDATE SET FLG="1" WHERE TXID="'.$TXID.'";';
+          $SQL = 'UPDATE PUR_UPDATE SET FLG="1" , SENT_TO ="'.$value->{'email'}.'" WHERE TXID="'.$TXID.'";';
           $res = $this->model->Query($SQL);
         }
      }
