@@ -6310,7 +6310,7 @@ public function  SendPurOrdUpdateNotificacion(){
   $PURNO  = $value->{'PURNO'};
   $TXID   = $value->{'TXID'};
   
-  echo $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
+  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
   
    if ($USERID){
   
@@ -6344,7 +6344,7 @@ public function  SendPurOrdUpdateNotificacion(){
   
   
       //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
-      $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
+     echo $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
       $remitent = $this->model->Query($sql);  
       $address =array();
   
@@ -6364,7 +6364,6 @@ public function  SendPurOrdUpdateNotificacion(){
                            'SENT_TO' => $value->{'email'});
           $res = $this->model->update('PUR_UPDATE',$values,' TXID="'.$TXID.'";');
           
-          echo 2;
 
         }
      }
