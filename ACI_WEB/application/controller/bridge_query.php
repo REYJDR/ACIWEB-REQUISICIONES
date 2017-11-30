@@ -6426,9 +6426,13 @@ public function set_job_no(){
 public function GetOCinfoEmail($id){
 
 
+
+
 $ORDER= $this->model->get_req_to_print($id);
 
-echo '<table id="table_info" class="table table-striped table-bordered" cellspacing="0"  >
+$table = '';
+
+$table .='<table id="table_info" class="table table-striped table-bordered" cellspacing="0"  >
       <thead>
         <tr>
           <th>Codigo</th>
@@ -6446,7 +6450,7 @@ $ORDER = json_decode($datos);
 
 
 //Informacion de ORDEN DE COMPRA PARA ESTE PRODUCTO EN LA REQUISICION
- echo   $sql_OC = 'SELECT 
+ $sql_OC = 'SELECT 
     PurOrdr_Header_Exp.PurchaseOrderNumber,
     sum(PurOrdr_Detail_Exp.Quantity) as Quantity
     FROM PurOrdr_Header_Exp
@@ -6464,7 +6468,6 @@ $ORDER = json_decode($datos);
     foreach ($INFO_OC as $datos) {
 
         $INFO_OC = json_decode($datos);
-        $Qty_Comprada[$INFO_OC->{'PurchaseOrderNumber'}] = $INFO_OC->{'Quantity'};
         $QTY_TOTAL += $INFO_OC->{'Quantity'};
 
       }
