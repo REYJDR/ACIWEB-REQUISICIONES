@@ -6425,7 +6425,8 @@ public function set_job_no(){
 
 public function GetOCinfoEmail($id){
 
-echo $id;
+$this->SESSION();
+
 $ORDER= $this->model->get_req_to_print($id);
 
 $table = '';
@@ -6441,7 +6442,6 @@ $table .='<table id="table_info" class="table table-striped table-bordered" cell
         </tr>
       </thead><tbody>';
 
-      var_dump($ORDER);
 
 foreach ($ORDER as $datos) {
 
