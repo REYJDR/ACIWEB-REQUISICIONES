@@ -6331,7 +6331,11 @@ public function  SendPurOrdUpdateNotificacion(){
                 <tr><th style="text-align:left;" width="25%">Fecha Probable de entrega</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
 
-      $table.= '</tbody></table></fieldset>';
+      $table.= '</tbody></table>
+
+               </fieldset><br>';
+
+      $table .= $this->GetOCinfoEmail(trim($REQ_NO));
   
       $message =   $table;
   
@@ -6431,7 +6435,7 @@ $ORDER= $this->model->get_req_to_print($id);
 
 $table = '';
 
-$table .='<table id="table_info" class="table table-striped table-bordered" cellspacing="0"  >
+$table .='<table id="table_info" class="table table-striped table-bordered" BORDER="1" cellspacing="0"  >
       <thead>
         <tr>
           <th>Codigo</th>
@@ -6475,8 +6479,8 @@ $ORDER = json_decode($datos);
                   <td><label >".$ORDER->{'ProductID'}."</label></td>
                   <td>".$ORDER->{'DESCRIPCION'}."</td>
                   <td class='numb'><label class='numb' >".$ORDER->{'CANTIDAD'}."</label></td>
-                  <td class='numb'><label class='numb'>".$QTY_TOTAL."</label></td>
                   <td class='numb' >".$ORDER->{'UNIDAD'}."</td>
+                  <td class='numb'><label class='numb'>".$QTY_TOTAL."</label></td>
                  </tr>
         </tbody></table>";
 
