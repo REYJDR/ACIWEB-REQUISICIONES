@@ -6433,9 +6433,9 @@ echo '<table id="table_info" class="table table-striped table-bordered" cellspac
         <tr>
           <th>Codigo</th>
           <th>Descripcion</th>
-          <th>Cant. Requerida</th>
+          <th>Requerido</th>
           <th>Unidad</th>
-          <th>Cant. Ordenada</th>
+          <th>Comprado</th>
         </tr>
       </thead><tbody>';
 
@@ -6453,7 +6453,6 @@ $ORDER = json_decode($datos);
     FROM PurOrdr_Header_Exp
     INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
     WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$ORDER_detail->{'NO_REQ'}.'"
-    AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
     AND PurOrdr_Detail_Exp.Item_id = "'.$ORDER->{'ProductID'}.'"
     AND PurOrdr_Header_Exp.PurchaseOrderNumber <> " "';
 
