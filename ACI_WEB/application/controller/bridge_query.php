@@ -6425,7 +6425,7 @@ public function set_job_no(){
 
 public function GetOCinfoEmail($id){
 
-
+echo $id;
 $ORDER= $this->model->get_req_to_print($id);
 
 $table = '';
