@@ -6223,7 +6223,7 @@ $TXID   = $value->{'TXID'};
           
           <legend>Detalle de Orden de Compra</legend>
 
-          <table   class="table table-striped table-bordered" cellspacing="0"  >
+          <table   class="table table-striped table-bordered" border="1" cellspacing="0"  >
     <tbody>';
   
     $value = json_decode($oc[0]);
@@ -6235,33 +6235,14 @@ $TXID   = $value->{'TXID'};
               <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>';
   
     $table.= '</tbody></table>
-
-    <table id="Items" class="table table-striped table-bordered" border="1" cellspacing="0"  >
-    <thead>
-      <tr>
-        <th width="20%">Codigo Item</th>
-        <th width="30%">Descripcion</th>
-        <th width="10%">Cantidad</th>
-      </tr>
-    </thead>
- 
- <tbody >';
- 
-  foreach ($oc as $value) {
-
-    $value = json_decode($value);
+             </fieldset><br>';
+     
+    $table .= $this->GetOCinfoEmail(trim($REQ_NO));
 
 
-          $table.= "<tr>
-            <td >".$value->{'Item_id'}.'</td>
-            <td >'.$value->{'Description'}.'</td>
-            <td >'.$value->{'Quantity'}.'</td>
-          </tr>';
 
-    }     
-  $table.='</tbody></table></fieldset>';
 
-$message =   $table;
+    $message =   utf8_encode($table);
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
@@ -6337,7 +6318,7 @@ public function  SendPurOrdUpdateNotificacion(){
 
       $table .= $this->GetOCinfoEmail(trim($REQ_NO));
   
-      $message =   $table;
+      $message =   utf8_encode($table);
   
   
       //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
