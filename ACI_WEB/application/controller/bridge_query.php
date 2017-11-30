@@ -6202,10 +6202,6 @@ $REQ_NO = $value->{'REQNO'};
 $PURNO  = $value->{'PURNO'};
 $TXID   = $value->{'TXID'};
 
- echo  'req:'.$REQ_NO ;
- echo '<br>';
- echo  'OC:'.$PURNO;
- echo '<br>';
 
 
  $USERID = $this->model->Query_value('REQ_HEADER','USER',' where NO_REQ ="'.trim($REQ_NO).'";');
@@ -6315,27 +6311,24 @@ public function  SendPurOrdUpdateNotificacion(){
    if ($USERID){
   
       //ARMAR CUERPO DEL MENSAJE
-      $subject .= 'Se ha reportado modificacion en el workflow de la OC: '.$PURNO.' relacionada a la requisicion: '.$REQ_NO;
-      $title = 'Notificacion modificacion de workflow';
+      $subject .= 'Actualizacion de requisición: '.$REQ_NO;
+      $title = 'Actualizacion de requisición: '.$REQ_NO;
   
   
   //mensaje 
     $oc = $this->GetOcWorkFlowStatus($PURNO);
 
   
-    $table.= '<fieldset>
-            
-            <legend>Detalle </legend>
-  
-            <table   class="table table-striped table-bordered" cellspacing="0"  >
-      <tbody>';
+      $table.= '<fieldset>
+                <table   class="table table-striped table-bordered" cellspacing="0"  >
+                <tbody>';
     
       $value = json_decode($oc[0]);
   
   
-      $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
-                <tr><th style="text-align:left;" width="25%">Requisicion</th><td >'.$value->{'CustomerSO'}.'</td></tr>
-                <tr><th style="text-align:left;" width="25%">Tracking Status</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
+      $table.= "<tr><th style='text-align:left;' width='25%'>O/C.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Fecha Probable de entrega</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
 
       $table.= '</tbody></table></fieldset>';
@@ -6427,5 +6420,71 @@ public function set_job_no(){
   }
 
 }
+
+
+
+public function GetOCinfoEmail($id){
+
+
+$ORDER= $this->model->get_req_to_print($id);
+
+echo '<table id="table_info" class="table table-striped table-bordered" cellspacing="0"  >
+      <thead>
+        <tr>
+          <th>Codigo</th>
+          <th>Descripcion</th>
+          <th>Cant. Requerida</th>
+          <th>Unidad</th>
+          <th>Cant. Ordenada</th>
+        </tr>
+      </thead><tbody>';
+
+$i=1;
+
+foreach ($ORDER as $datos) {
+
+$ORDER = json_decode($datos);
+
+
+//Informacion de ORDEN DE COMPRA PARA ESTE PRODUCTO EN LA REQUISICION
+    $sql_OC = 'SELECT 
+    PurOrdr_Header_Exp.PurchaseOrderNumber,
+    sum(PurOrdr_Detail_Exp.Quantity) as Quantity
+    FROM PurOrdr_Header_Exp
+    INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+    WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$ORDER_detail->{'NO_REQ'}.'"
+    AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
+    AND PurOrdr_Detail_Exp.Item_id = "'.$ORDER->{'ProductID'}.'"
+    AND PurOrdr_Header_Exp.PurchaseOrderNumber <> " "';
+
+    $INFO_OC = $this->model->Query($sql_OC);
+
+    $QTY_TOTAL=0;
+
+    unset($Qty_Comprada);
+
+    foreach ($INFO_OC as $datos) {
+
+        $INFO_OC = json_decode($datos);
+        $Qty_Comprada[$INFO_OC->{'PurchaseOrderNumber'}] = $INFO_OC->{'Quantity'};
+        $QTY_TOTAL += $INFO_OC->{'Quantity'};
+
+      }
+
+     $table .=  "<tr>
+                  <td><label >".$ORDER->{'ProductID'}."</label></td>
+                  <td>".$ORDER->{'DESCRIPCION'}."</td>
+                  <td class='numb'><label class='numb' >".$ORDER->{'CANTIDAD'}."</label></td>
+                  <td class='numb'><label class='numb'>".$QTY_TOTAL."</label></td>
+                  <td class='numb' >".$ORDER->{'UNIDAD'}."</td>
+                 </tr>
+        </tbody></table>";
+
+  echo $table;
+  return $table;
+}
+
+
+
 
 }
