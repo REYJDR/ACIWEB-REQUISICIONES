@@ -6439,7 +6439,6 @@ echo '<table id="table_info" class="table table-striped table-bordered" cellspac
         </tr>
       </thead><tbody>';
 
-$i=1;
 
 foreach ($ORDER as $datos) {
 
@@ -6452,7 +6451,7 @@ $ORDER = json_decode($datos);
     sum(PurOrdr_Detail_Exp.Quantity) as Quantity
     FROM PurOrdr_Header_Exp
     INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-    WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$ORDER_detail->{'NO_REQ'}.'"
+    WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
     AND PurOrdr_Detail_Exp.Item_id = "'.$ORDER->{'ProductID'}.'"
     AND PurOrdr_Header_Exp.PurchaseOrderNumber <> " "';
 
