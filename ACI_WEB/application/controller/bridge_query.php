@@ -6446,7 +6446,7 @@ $ORDER = json_decode($datos);
 
 
 //Informacion de ORDEN DE COMPRA PARA ESTE PRODUCTO EN LA REQUISICION
-    $sql_OC = 'SELECT 
+ echo   $sql_OC = 'SELECT 
     PurOrdr_Header_Exp.PurchaseOrderNumber,
     sum(PurOrdr_Detail_Exp.Quantity) as Quantity
     FROM PurOrdr_Header_Exp
