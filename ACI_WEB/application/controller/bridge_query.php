@@ -6188,7 +6188,7 @@ public function  Testdatime(){
 
 public function  SendPurOrdNotificacion(){
 
-$this->SESSION();
+
   
 $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLG = "0" and REQNO <> "" ;';
 $res = $this->model->Query($SQL);
@@ -6275,7 +6275,7 @@ $TXID   = $value->{'TXID'};
 
 public function  SendPurOrdUpdateNotificacion(){
 
-  $this->SESSION();
+
   
   
     
@@ -6416,7 +6416,6 @@ public function set_job_no(){
 
 public function GetOCinfoEmail($id){
 
-$this->SESSION();
 
 $ORDER= $this->model->get_req_to_print($id);
 

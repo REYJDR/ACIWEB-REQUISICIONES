@@ -857,8 +857,6 @@ public function get_req_to_print($id){
 $sql='SELECT * FROM `REQ_HEADER` 
 inner join REQ_DETAIL ON REQ_HEADER.NO_REQ = REQ_DETAIL.NO_REQ
 WHERE 
-REQ_HEADER.ID_compania="'.$this->id_compania.'" AND  
-REQ_DETAIL.ID_compania="'.$this->id_compania.'" and 
 REQ_HEADER.NO_REQ="'.$id.'" and 
 REQ_DETAIL.NO_REQ="'.$id.'"
 ORDER BY  `REQ_DETAIL`.`ITEM_UNIQUE_NO` ASC' ;
