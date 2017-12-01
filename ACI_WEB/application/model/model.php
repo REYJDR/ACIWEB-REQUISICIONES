@@ -981,6 +981,8 @@ public function GetLocalTime($dateIn){
 
 $test = $_REQUEST['time'];
 
+echo date_default_timezone_get().'  <br>';
+
 $dateOut = $this->convertDateFromTimezone($dateIn,'America/Panama','Y-m-d H:i:s');
 
 if($test == 1){
