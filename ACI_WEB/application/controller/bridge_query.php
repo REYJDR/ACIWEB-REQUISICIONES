@@ -6464,9 +6464,9 @@ $ORDER = json_decode($datos);
      $table .=  "<tr>
                   <td style='text-align:center;' >".$ORDER->{'ProductID'}."</td>
                   <td style='text-align:center;' >".$ORDER->{'DESCRIPCION'}."</td>
-                  <td style='text-align:center;' >".number_format($ORDER->{'CANTIDAD'},2)."</td>
+                  <td style='text-align:center;' >".number_format($ORDER->{'CANTIDAD'},2,',','.')."</td>
                   <td style='text-align:center;' >".$ORDER->{'UNIDAD'}."</td>
-                  <td style='text-align:center;' >".number_format($QTY_TOTA,2)."</td>
+                  <td style='text-align:center;' >".number_format($QTY_TOTA,2,',','.')."</td>
                  </tr>
         </tbody></table>";
 
