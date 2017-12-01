@@ -6241,7 +6241,7 @@ $TXID   = $value->{'TXID'};
  
     $table .= '</fieldset>';
 
-    $message =  $table;
+  echo  $message =  $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
@@ -6300,7 +6300,7 @@ public function  SendPurOrdUpdateNotificacion(){
 
   
       $table.= '<fieldset>
-                <table   class="table table-striped table-bordered" cellspacing="0"  >
+                <table   class="table table-striped table-bordered" cellspacing="0" border="1"  >
                 <tbody>';
     
       $value = json_decode($oc[0]);
@@ -6336,14 +6336,14 @@ public function  SendPurOrdUpdateNotificacion(){
         
         $res =  $this->model->send_mail($address,$subject,$title,$message);
   
-    /*    if($res==1){
+        if($res==1){
           //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
           $values  = array('FLG' => "1",
                            'SENT_TO' => $value->{'email'});
           $res = $this->model->update('PUR_UPDATE',$values,' TXID="'.$TXID.'";');
           
 
-        }*/
+        }
      }
   
    }
