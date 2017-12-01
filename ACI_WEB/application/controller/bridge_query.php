@@ -6229,9 +6229,12 @@ $TXID   = $value->{'TXID'};
   
     $value = json_decode($oc[0]);
 
+    $date = $this->model->GetLocalTime($value->{'LAST_CHANGE'});
+    $date = strtotime($date);
+    $dateInLocal = date('d/M/Y g:i a',$date);
 
     $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
-              <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.$dateInLocal.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>';
   
