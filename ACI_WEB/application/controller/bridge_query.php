@@ -6237,12 +6237,10 @@ $TXID   = $value->{'TXID'};
     $table.= '</tbody></table>
              </fieldset><br>';
      
-    $table .= $this->GetOCinfoEmail(trim($REQ_NO));
+    $table .= $this->GetOCinfoEmail($REQ_NO);
 
 
-
-
-    $message =   utf8_encode($table);
+    $message =  $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
@@ -6316,9 +6314,9 @@ public function  SendPurOrdUpdateNotificacion(){
 
                </fieldset><br>';
 
-      $table .= $this->GetOCinfoEmail(trim($REQ_NO));
+      $table .= $this->GetOCinfoEmail($REQ_NO);
   
-      $message =   utf8_encode($table);
+      $message =  $table;
   
   
       //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
@@ -6465,7 +6463,7 @@ $ORDER = json_decode($datos);
                  </tr>
         </tbody></table>";
 
-  echo $table;
+//  echo $table;
   return $table;
 }
 
