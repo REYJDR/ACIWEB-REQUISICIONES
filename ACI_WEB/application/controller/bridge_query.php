@@ -6182,7 +6182,7 @@ return $date;
 
 public function  Testdatime($date){
 
-	echo $datetime = $this->GetLocalTime();
+	echo $datetime = $this->GetLocalTime($date);
 }
 
 
