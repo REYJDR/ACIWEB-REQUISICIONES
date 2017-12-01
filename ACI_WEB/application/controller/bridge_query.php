@@ -6311,13 +6311,14 @@ public function  SendPurOrdUpdateNotificacion(){
                 <tr><th style="text-align:left;" width="25%">Fecha Probable de entrega</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
 
-      $table.= '</tbody></table>
-
-               </fieldset><br>';
+      $table.= '</tbody></table>';
 
       $table .= $this->GetOCinfoEmail($REQ_NO);
+
+      $table .= '</fieldset>';
   
       $message =  $table;
+
   
   
       //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
