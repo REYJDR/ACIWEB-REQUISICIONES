@@ -6240,7 +6240,7 @@ $TXID   = $value->{'TXID'};
     $table .= $this->GetOCinfoEmail($REQ_NO);
 
 
-    $message =  $table;
+echo    $message =  $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
