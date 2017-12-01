@@ -6462,11 +6462,11 @@ $ORDER = json_decode($datos);
       }
 
      $table .=  "<tr>
-                  <td><label >".$ORDER->{'ProductID'}."</label></td>
-                  <td>".$ORDER->{'DESCRIPCION'}."</td>
-                  <td class='numb'><label class='numb' >".$ORDER->{'CANTIDAD'}."</label></td>
-                  <td class='numb' >".$ORDER->{'UNIDAD'}."</td>
-                  <td class='numb'><label class='numb'>".$QTY_TOTAL."</label></td>
+                  <td style='text-align:center; ><label >".$ORDER->{'ProductID'}."</label></td>
+                  <td style='text-align:center;>".$ORDER->{'DESCRIPCION'}."</td>
+                  <td style='text-align:center; ><label class='numb' >".number_format($ORDER->{'CANTIDAD'},2)."</label></td>
+                  <td style='text-align:center; >".$ORDER->{'UNIDAD'}."</td>
+                  <td style='text-align:center; ><label class='numb'>".number_format($QTY_TOTA,2)."</label></td>
                  </tr>
         </tbody></table>";
 
