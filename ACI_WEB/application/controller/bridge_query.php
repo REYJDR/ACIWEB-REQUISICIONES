@@ -6317,7 +6317,7 @@ public function  SendPurOrdUpdateNotificacion(){
                 <tr><th style="text-align:left;" width="25%">Fecha Probable de entrega</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
 
-      $table.= '</tbody></table>';
+      $table.= '</tbody></table><br>';
 
       $table .= $this->GetOCinfoEmail($REQ_NO);
 
@@ -6462,11 +6462,11 @@ $ORDER = json_decode($datos);
       }
 
      $table .=  "<tr>
-                  <td style='text-align:center; ><label >".$ORDER->{'ProductID'}."</label></td>
-                  <td style='text-align:center;>".$ORDER->{'DESCRIPCION'}."</td>
-                  <td style='text-align:center; ><label class='numb' >".number_format($ORDER->{'CANTIDAD'},2)."</label></td>
+                  <td style='text-align:center; >".$ORDER->{'ProductID'}."</td>
+                  <td style='text-align:center; >".$ORDER->{'DESCRIPCION'}."</td>
+                  <td style='text-align:center; >".number_format($ORDER->{'CANTIDAD'},2)."</td>
                   <td style='text-align:center; >".$ORDER->{'UNIDAD'}."</td>
-                  <td style='text-align:center; ><label class='numb'>".number_format($QTY_TOTA,2)."</label></td>
+                  <td style='text-align:center; >".number_format($QTY_TOTA,2)."</td>
                  </tr>
         </tbody></table>";
 
