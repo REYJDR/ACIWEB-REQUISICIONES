@@ -6241,7 +6241,9 @@ $TXID   = $value->{'TXID'};
  
     $table .= '</fieldset>';
 
-  echo  $message =  $table;
+    $message =  $table;
+
+    usleep(2000);
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
@@ -6316,10 +6318,10 @@ public function  SendPurOrdUpdateNotificacion(){
       $table .= $this->GetOCinfoEmail($REQ_NO);
 
       $table .= '</fieldset>';
-  
-     echo  $message =  $table;
+     
+      $message =  $table;
 
-  
+      usleep(2000);
   
       //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
       $sql = 'SELECT name, lastname, email from SAX_USER WHERE ID="'.$USERID.'" and onoff="1"';
