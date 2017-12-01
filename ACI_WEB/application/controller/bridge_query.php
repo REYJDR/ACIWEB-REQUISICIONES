@@ -6234,13 +6234,14 @@ $TXID   = $value->{'TXID'};
               <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>';
   
-    $table.= '</tbody></table>
-             </fieldset><br>';
+    $table.= '</tbody></table><br>';
+            
      
     $table .= $this->GetOCinfoEmail($REQ_NO);
+ 
+    $table .= '</fieldset>';
 
-
-echo    $message =  $table;
+    $message =  $table;
 
 
     //VERIFICA USUARIOS CON OPCION DE NOTIFICACION DE ORDEN DE COMPRAS
@@ -6256,13 +6257,13 @@ echo    $message =  $table;
 
      //ARMAR CUERPO DEL MENSAJE
       
-  /*    $res =  $this->model->send_mail($address,$subject,$title,$message);
+      $res =  $this->model->send_mail($address,$subject,$title,$message);
 
       if($res==1){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
         $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLG="1" WHERE TXID="'.$TXID.'";';
         $res = $this->model->Query($SQL);
-      }*/
+      }
    }
 
  }
