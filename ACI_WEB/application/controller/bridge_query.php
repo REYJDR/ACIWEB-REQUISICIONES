@@ -6180,7 +6180,7 @@ $date = $this->model->GetLocalTime(date('Y-m-d H:i:s'));
 return $date;
 }
 
-public function  Testdatime(){
+public function  Testdatime($date){
 
 	echo $datetime = $this->GetLocalTime();
 }
