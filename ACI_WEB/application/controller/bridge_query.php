@@ -6256,13 +6256,13 @@ $TXID   = $value->{'TXID'};
 
      //ARMAR CUERPO DEL MENSAJE
       
-      $res =  $this->model->send_mail($address,$subject,$title,$message);
+  /*    $res =  $this->model->send_mail($address,$subject,$title,$message);
 
       if($res==1){
         //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
         $SQL = 'UPDATE PUR_NOTIFICATION_TBL SET FLG="1" WHERE TXID="'.$TXID.'";';
         $res = $this->model->Query($SQL);
-      }
+      }*/
    }
 
  }
