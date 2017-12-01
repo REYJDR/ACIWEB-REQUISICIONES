@@ -981,15 +981,13 @@ public function GetLocalTime($dateIn){
 
 $test = $_REQUEST['time'];
 
-echo date_default_timezone_get().'  <br>';
-
 $dateOut = $this->convertDateFromTimezone($dateIn,'America/Panama','Y-m-d H:i:s');
 
-if($test == 1){
+    if($test == 1){
 
-echo $dateIn.' / '.$dateOut;
+       echo $dateIn.' / '.$dateOut.'<br>';
 
-}
+    }
 
 return $dateOut;
 }
@@ -997,7 +995,8 @@ return $dateOut;
   
 public function convertDateFromTimezone($date,$timezone_to,$format){
 
-$timezone = date_default_timezone_get();
+//$timezone = date_default_timezone_get();
+$timezone = 'MST';
 
  $date = new DateTime($date,new DateTimeZone($timezone));
  $date->setTimezone( new DateTimeZone($timezone_to) );
