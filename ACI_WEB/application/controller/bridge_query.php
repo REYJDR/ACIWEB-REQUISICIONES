@@ -6317,7 +6317,7 @@ public function  SendPurOrdUpdateNotificacion(){
 
       $table .= '</fieldset>';
   
-      $message =  $table;
+     echo  $message =  $table;
 
   
   
@@ -6336,14 +6336,14 @@ public function  SendPurOrdUpdateNotificacion(){
         
         $res =  $this->model->send_mail($address,$subject,$title,$message);
   
-        if($res==1){
+    /*    if($res==1){
           //ACTUALIZO TABLA DE NOTIFICACIONES POR COMPRA
           $values  = array('FLG' => "1",
                            'SENT_TO' => $value->{'email'});
           $res = $this->model->update('PUR_UPDATE',$values,' TXID="'.$TXID.'";');
           
 
-        }
+        }*/
      }
   
    }
