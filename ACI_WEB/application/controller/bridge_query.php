@@ -6188,6 +6188,7 @@ public function  Testdatime(){
 
 public function  SendPurOrdNotificacion(){
 
+$this->SESSION();
   
 $SQL = 'SELECT * FROM PUR_NOTIFICATION_TBL WHERE FLG = "0" and REQNO <> "" ;';
 $res = $this->model->Query($SQL);
@@ -6273,6 +6274,9 @@ $TXID   = $value->{'TXID'};
 
 
 public function  SendPurOrdUpdateNotificacion(){
+
+  $this->SESSION();
+  
   
     
   $SQL = 'SELECT * FROM PUR_UPDATE WHERE FLG ="0";';
