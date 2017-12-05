@@ -993,7 +993,7 @@ return $dateOut;
 }
 
   
-public function convertDateFromTimezone($timezome,$date,$timezone_to,$format){
+public function convertDateFromTimezone($timezone,$date,$timezone_to,$format){
 
 //$timezone = date_default_timezone_get();
 //$timezone = 'MST';
