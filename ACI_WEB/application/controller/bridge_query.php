@@ -5397,6 +5397,8 @@ if(!$VALID){
           $title = 'Notificacion de Cotizando';
           $subject.= $this->model->active_user_name.' '.$this->model->active_user_lastname.' esta cotizando tu requisicion '.$REQ_NO;       
 
+
+
           $message.= '<h2 class="h_invoice_header" >Cotizando Requicion #:</h2>
                  <table BORDER="1">
                     
@@ -5475,7 +5477,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
            <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
            <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
            <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>
-           <tr><th style="text-align:left;" width="10%">Estado</th> <td >'.$value->{'WorkflowStatusName'}.'</td></tr>
+           <tr><th style="text-align:left;" width="10%">Fecha de entrega</th> <td >'.$value->{'WorkflowStatusName'}.'</td></tr>
            <tr><th style="text-align:left;" width="10%">Asignado a</th> <td >'.$value->{'WorkflowAssignee'}.'</td></tr>
           <tr><th style="text-align:left;" width="30%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
   
@@ -5911,13 +5913,13 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
                 $recibido = $this->model->Query_value('REQ_RECEPT','SUM(QTY)',$clause);
 
 
-      $message.= '<tr>
-                     <td width="15%" style="text-align: center;">'.$item.'</td>
-                     <td width="35%" style="text-align: center;">'.$desc.'</td>
-                     <td width="15%" class="numb" style="text-align: center; ">'.number_format($total,2).'</td>
-                     <td width="15%" class="numb" style="text-align: center; ">'.number_format($ord,2).'</td>
-                     <td width="15%" class="numb" style="text-align: center; ">'.number_format($recibido,2).'</td>
-                  </tr>';
+            $message.= '<tr>
+                           <td width="15%" style="text-align: center;">'.$item.'</td>
+                           <td width="35%" style="text-align: center;">'.$desc.'</td>
+                           <td width="15%" class="numb" style="text-align: center; ">'.number_format($total,2).'</td>
+                           <td width="15%" class="numb" style="text-align: center; ">'.number_format($ord,2).'</td>
+                           <td width="15%" class="numb" style="text-align: center; ">'.number_format($recibido,2).'</td>
+                        </tr>';
      
       }
     }
@@ -6179,6 +6181,7 @@ public function GetLocalTime(){
 
 $date = $this->model->GetLocalTime(date('Y-m-d H:i:s'));
 
+echo $date;
 
 return $date;
 }
