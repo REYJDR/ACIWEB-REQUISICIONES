@@ -4650,9 +4650,11 @@ $i=1;
 
     ksort($TEMP_LOG);
 
-    var_dump($TEMP_LOG);
+
 
     foreach($TEMP_LOG as $key => $value ){
+
+    if($key != ''){
 
     list($date,) = explode(';', $key);
 
@@ -4669,9 +4671,8 @@ $i=1;
 
       }
 
-    
-
     }
+  }
 
 
 if($status_gen=='FINALIZADO'){
