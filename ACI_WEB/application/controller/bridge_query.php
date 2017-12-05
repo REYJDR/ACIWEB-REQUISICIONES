@@ -4626,7 +4626,7 @@ $PO =  $this->model->Query('SELECT LAST_CHANGE, PurchaseOrderNumber FROM PurOrdr
 
         $value = json_decode($value);
 
-        $date = strtotime($value->{'LAST_CHANGE'});
+      echo  $date = strtotime($value->{'LAST_CHANGE'});
 
         $TEMP_LOG[$date.';PO'.$i] = 'Creación de PO en Peachtree ('.$value->{'PurchaseOrderNumber'}.');Usuario Peachtree'; 
 
@@ -4653,7 +4653,6 @@ $i=1;
     foreach($TEMP_LOG as $key => $value ){
 
     list($date,) = explode(';', $key);
-    ECHO $date;
 
     $date = $this->model->GetLocalTime('MST' , $date);
     $date = strtotime($date);
