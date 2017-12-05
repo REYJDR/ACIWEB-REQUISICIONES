@@ -4626,7 +4626,7 @@ $PO =  $this->model->Query('SELECT LAST_CHANGE, PurchaseOrderNumber FROM PurOrdr
 
         $value = json_decode($value);
 
-      echo  $date = strtotime($value->{'LAST_CHANGE'});
+        $date = strtotime($value->{'LAST_CHANGE'});
 
         $TEMP_LOG[$date.';PO'.$i] = 'Creación de PO en Peachtree ('.$value->{'PurchaseOrderNumber'}.');Usuario Peachtree'; 
 
@@ -4641,7 +4641,7 @@ $i=1;
 
         $value = json_decode($value);
 
-        $date = strtotime($value->{'DATE'});
+      echo  $date = strtotime($value->{'DATE'});
 
         $TEMP_LOG[$date.';rep'.$i] = 'Recepción en almacen Item: '.$value->{'ITEM'}.' / Cant.'.$value->{'QTY'}.';'.$this->model->Get_User_Name($value->{'USER'}); 
 
