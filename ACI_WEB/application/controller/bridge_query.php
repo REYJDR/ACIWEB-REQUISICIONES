@@ -4605,10 +4605,12 @@ $QUOTA  = $this->model->Query("SELECT DATE, USER FROM REQ_QUOTA WHERE  ID_compan
 
         $value = json_decode($value);
 
-        $date = strtotime($value->{'DATE'});
-        $date = date('d/M/Y g:i a',$date );
+     
+        $date = $this->model->GetLocalTime('MST',$value->{'DATE'});
+        $date = strtotime($date);
+        $dateInLocal = date('d/M/Y g:i a',$date);
 
-        echo '<tr><td>Inicio de cotización</td><td class="numb" >'.$date.'</td><td>'.$this->model->Get_User_Name($value->{'USER'}).'</td></tr>';
+        echo '<tr><td>Inicio de cotización</td><td class="numb" >'.$dateInLocal.'</td><td>'.$this->model->Get_User_Name($value->{'USER'}).'</td></tr>';
 
         }
 
@@ -4624,9 +4626,12 @@ $PO =  $this->model->Query('SELECT LAST_CHANGE, PurchaseOrderNumber FROM PurOrdr
 
         $value = json_decode($value);
 
-        $date = strtotime($value->{'LAST_CHANGE'});
 
-        $TEMP_LOG[$date.';PO'.$i] = 'Creación de PO en Peachtree ('.$value->{'PurchaseOrderNumber'}.');Usuario Peachtree'; 
+        $date = $this->model->GetLocalTime('MST',$value->{'LAST_CHANGE'});
+        $date = strtotime($date);
+        $dateInLocal = date('d/M/Y g:i a',$date);
+
+        $TEMP_LOG[$dateInLocal.';PO'.$i] = 'Creación de PO en Peachtree ('.$value->{'PurchaseOrderNumber'}.');Usuario Peachtree'; 
 
        $i+=1;
         }
@@ -4639,9 +4644,11 @@ $i=1;
 
         $value = json_decode($value);
 
-        $date = strtotime($value->{'DATE'});
+        $date = $this->model->GetLocalTime('MST',$value->{'DATE'});
+        $date = strtotime($date);
+        $dateInLocal = date('d/M/Y g:i a',$date);
 
-        $TEMP_LOG[$date.';rep'.$i] = 'Recepción en almacen Item: '.$value->{'ITEM'}.' / Cant.'.$value->{'QTY'}.';'.$this->model->Get_User_Name($value->{'USER'}); 
+        $TEMP_LOG[$dateInLocal.';rep'.$i] = 'Recepción en almacen Item: '.$value->{'ITEM'}.' / Cant.'.$value->{'QTY'}.';'.$this->model->Get_User_Name($value->{'USER'}); 
 
         $i+=1;
         }
@@ -4673,11 +4680,12 @@ $FIN = $this->model->Query_value('REQ_RECEPT','DATE',"WHERE  ID_compania='".$thi
                                                                                   AND NO_REQ='".$ORDER_detail->{'NO_REQ'}."'
                                                                                   ORDER BY DATE DESC LIMIT 1");
 
- $date = strtotime($FIN);
- $date = date('d/M/Y g:i a',$date );
+$date = $this->model->GetLocalTime('MST',$FIN);
+$date = strtotime($date);
+$dateInLocal = date('d/M/Y g:i a',$date);
 
 
- echo '<tr><td>Proceso FINALIZADO </td><td class="numb" >'.$date.'</td><td>SISTEMA ACIWEB</td></tr>';
+ echo '<tr><td>Proceso FINALIZADO </td><td class="numb" >'.$dateInLocal.'</td><td>SISTEMA ACIWEB</td></tr>';
 
 
 }
@@ -4686,13 +4694,14 @@ if($status_gen=='CERRADA'){
 
  $CERRADO= $this->model->Query_value('REQ_HEADER','LAST_CHANGE',"WHERE  ID_compania='".$this->model->id_compania."' 
                                                                                   AND NO_REQ='".$ORDER_detail->{'NO_REQ'}."'");
- $date = strtotime($CERRADO);
- $date = date('d/M/Y g:i a',$date );
+$date = $this->model->GetLocalTime('MST',$CERRADO);
+$date = strtotime($date);
+$dateInLocal = date('d/M/Y g:i a',$date);
 
  $MOTIVO= $this->model->Query_value('REQ_HEADER','desc_closed',"WHERE  ID_compania='".$this->model->id_compania."' 
                                                                        AND NO_REQ='".$ORDER_detail->{'NO_REQ'}."'");
  
- echo '<tr><td>CERRADO POR : '. $MOTIVO.'</td><td class="numb" >'.$date.'</td><td>SISTEMA ACIWEB</td></tr>';
+ echo '<tr><td>CERRADO POR : '. $MOTIVO.'</td><td class="numb" >'.$dateInLocal.'</td><td>SISTEMA ACIWEB</td></tr>';
 
 }
 
@@ -6178,11 +6187,7 @@ echo $table;
 
 public function GetLocalTime(){
 
-echo  date("Y-m-d H:i:s").'<br>'.date_default_timezone_get().'<br>';
-
 $date = $this->model->GetLocalTime('UTC',date("Y-m-d H:i:s"));
-
-echo $date;
 
 return $date;
 }
