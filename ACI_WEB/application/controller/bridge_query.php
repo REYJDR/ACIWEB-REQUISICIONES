@@ -6470,13 +6470,16 @@ $ORDER = json_decode($datos);
                   <td style='text-align:center;' >".number_format($ORDER->{'CANTIDAD'},2,'.',',')."</td>
                   <td style='text-align:center;' >".$ORDER->{'UNIDAD'}."</td>
                   <td style='text-align:center;' >".number_format($QTY_TOTAL,2,'.',',')."</td>
-                 </tr>
-        </tbody></table>";
+                 </tr>";
+      
 
 //  echo $table;
-  return $table;
-}
 
+} 
+
+$table .=  "</tbody></table>";
+
+return $table;
 
 }
 
