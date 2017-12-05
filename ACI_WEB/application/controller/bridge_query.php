@@ -4641,7 +4641,7 @@ $i=1;
 
         $value = json_decode($value);
 
-      echo  $date = strtotime($value->{'DATE'});
+        $date = strtotime($value->{'DATE'});
 
         $TEMP_LOG[$date.';rep'.$i] = 'Recepción en almacen Item: '.$value->{'ITEM'}.' / Cant.'.$value->{'QTY'}.';'.$this->model->Get_User_Name($value->{'USER'}); 
 
@@ -4649,6 +4649,8 @@ $i=1;
         }
 
     ksort($TEMP_LOG);
+
+    var_dump($TEMP_LOG);
 
     foreach($TEMP_LOG as $key => $value ){
 
