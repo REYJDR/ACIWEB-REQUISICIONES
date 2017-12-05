@@ -6178,7 +6178,7 @@ echo $table;
 
 public function GetLocalTime(){
 
-echo  date("Y-m-d H:i:s").'<br>';
+echo  date("Y-m-d H:i:s").'<br>'.date_default_timezone_get().'<br>';
 
 $date = $this->model->GetLocalTime(date("Y-m-d H:i:s"));
 
