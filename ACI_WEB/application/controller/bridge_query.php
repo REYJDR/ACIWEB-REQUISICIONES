@@ -6180,7 +6180,7 @@ public function GetLocalTime(){
 
 echo  date("Y-m-d H:i:s").'<br>'.date_default_timezone_get().'<br>';
 
-$date = $this->model->GetLocalTime(date("Y-m-d H:i:s"));
+$date = $this->model->GetLocalTime('UTC',date("Y-m-d H:i:s"));
 
 echo $date;
 

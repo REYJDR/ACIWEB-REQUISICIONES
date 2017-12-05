@@ -977,11 +977,11 @@ public function read_db_error(){
 
 }
 
-public function GetLocalTime($dateIn){
+public function GetLocalTime($timezome, $dateIn){
 
 $test = $_REQUEST['time'];
 
-$dateOut = $this->convertDateFromTimezone($dateIn,'America/Panama','Y-m-d H:i:s');
+$dateOut = $this->convertDateFromTimezone($timezome,$dateIn,'America/Panama','Y-m-d H:i:s');
 
     if($test == 1){
 
@@ -993,10 +993,10 @@ return $dateOut;
 }
 
   
-public function convertDateFromTimezone($date,$timezone_to,$format){
+public function convertDateFromTimezone($timezome,$date,$timezone_to,$format){
 
 //$timezone = date_default_timezone_get();
-$timezone = 'MST';
+//$timezone = 'MST';
 
  $date = new DateTime($date,new DateTimeZone($timezone));
  $date->setTimezone( new DateTimeZone($timezone_to) );
