@@ -4653,19 +4653,20 @@ $i=1;
     foreach($TEMP_LOG as $key => $value ){
 
     list($date,) = explode(';', $key);
+    ECHO $date;
+
+    $date = $this->model->GetLocalTime('MST' , $date);
+    $date = strtotime($date);
+    $date = date('d/M/Y g:i a',$date);
 
     list($msg,$user) = explode(';', $value);
 
-    $date = $this->model->GetLocalTime('MST',$date) ;
-    $date = strtotime($date);
-    $date  = date('d/M/Y g:i a',$date);
 
+      if($msg!=''){
+       
+       echo '<tr><td>'.$msg.'</td><td class="numb" >'.$date.'</td><td>'.$user.'</td></tr>';
 
-    if($msg!=''){
-     
-     echo '<tr><td>'.$msg.'</td><td class="numb" >'.$date.'</td><td>'.$user.'</td></tr>';
-
-    }
+      }
 
     
 
