@@ -4658,6 +4658,7 @@ $i=1;
 
     list($date,) = explode(';', $key);
 
+    $date =  date("Y-m-d H:i:s", $date); 
     $date = $this->model->GetLocalTime('MST' , $date);
     $date = strtotime($date);
     $date = date('d/M/Y g:i a',$date);
