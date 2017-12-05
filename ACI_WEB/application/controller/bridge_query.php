@@ -4656,7 +4656,7 @@ $i=1;
 
     list($msg,$user) = explode(';', $value);
 
-    $date = $this->model->GetLocalTime('MST',$date ;
+    $date = $this->model->GetLocalTime('MST',$date) ;
     $date = strtotime($date);
     $date  = date('d/M/Y g:i a',$date);
 
