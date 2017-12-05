@@ -5872,7 +5872,7 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
                   <TR >
                        <TH width="15%">Item</TH>
                        <TH width="35%">Descripcion</TH>
-                       <TH width="15%">Cant. Total</TH>
+                       <TH width="15%">Cant. Requerida</TH>
                        <TH width="15%">Cant. Ordenada</TH>
                        <TH width="10%">Cant. Recibida</TH>
                   </TR>';
@@ -5908,12 +5908,15 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 
                 $desc = $this->model->Query_value('REQ_DETAIL','DESCRIPCION',$clause);
 
+                $recibido = $this->model->Query_value('REQ_RECEPT','SUM(QTY)',$clause);
+
+
       $message.= '<tr>
                      <td width="15%" style="text-align: center;">'.$item.'</td>
                      <td width="35%" style="text-align: center;">'.$desc.'</td>
-                     <td width="15%" class="numb" style="text-align: center; padding-right">'.number_format($total,2).'</td>
-                     <td width="15%" class="numb" style="text-align: center; padding-right">'.number_format($ord,2).'</td>
-                     <td width="15%" class="numb" style="text-align: center; padding-right">'.number_format($qty,2).'</td>
+                     <td width="15%" class="numb" style="text-align: center; ">'.number_format($total,2).'</td>
+                     <td width="15%" class="numb" style="text-align: center; ">'.number_format($ord,2).'</td>
+                     <td width="15%" class="numb" style="text-align: center; ">'.number_format($recibido,2).'</td>
                   </tr>';
      
       }
@@ -6236,7 +6239,10 @@ $TXID   = $value->{'TXID'};
     $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.$dateInLocal.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
-              <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>';
+              <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Fecha Probable de entrega</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
+
   
     $table.= '</tbody></table><br>';
             
@@ -6315,10 +6321,13 @@ public function  SendPurOrdUpdateNotificacion(){
       $value = json_decode($oc[0]);
   
   
-      $table.= "<tr><th style='text-align:left;' width='25%'>O/C.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
+      $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.$dateInLocal.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Fecha Probable de entrega</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
+
 
       $table.= '</tbody></table><br>';
 
