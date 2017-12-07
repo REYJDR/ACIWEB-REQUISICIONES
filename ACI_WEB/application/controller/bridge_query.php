@@ -6242,7 +6242,7 @@ $TXID   = $value->{'TXID'};
   
     $value = json_decode($oc[0]);
 
-    $date = $this->model->GetLocalTime($value->{'LAST_CHANGE'});
+    $date = $this->model->GetLocalTime('MST',$value->{'LAST_CHANGE'});
     $date = strtotime($date);
     $dateInLocal = date('d/M/Y g:i a',$date);
 
