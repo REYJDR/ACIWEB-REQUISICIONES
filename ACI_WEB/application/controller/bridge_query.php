@@ -4319,7 +4319,7 @@ echo '<br/><br/>
 <button type="button" class="close" aria-label="Close" onclick="CLOSE_DIV('."'info'".');" >
           <span STYLE="color:red" aria-hidden="true">&times; </span> Cerrar
           </button>
-<fieldset><legend>Detalle de Requisición</legend>
+<fieldset><legend>Detalle de Requisicion</legend>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
   foreach ($ORDER_detail as $datos) {
@@ -4535,7 +4535,7 @@ if($this->model->rol_compras=='1' && $status_gen !='FINALIZADO'){
 echo '<div style="float:right;" class="col-md-2">
         <a title="Cerrar Rerquisición" data-toggle="modal" data-target="#myModal" href="javascript:void(0)"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
           <img  class="icon" src="img/Stop.png" />
-          <span>Cerrar Requisición</span>
+          <span>Cerrar Requisicion</span>
         </a>
       </div>';
 
@@ -4595,7 +4595,7 @@ $CREACION = $this->model->Query("SELECT DATE, USER FROM REQ_HEADER WHERE  ID_com
         $date = strtotime($value->{'DATE'});
         $date = date('d/M/Y g:i a',$date );
 
-        echo '<tr><td>Creación de Requisición</td><td class="numb" >'.$date.'</td><td>'.$this->model->Get_User_Name($value->{'USER'}).'</td></tr>';
+        echo '<tr><td>Creación de Requisicion</td><td class="numb" >'.$date.'</td><td>'.$this->model->Get_User_Name($value->{'USER'}).'</td></tr>';
 
         }
 
@@ -4734,7 +4734,7 @@ $MODAL = '
       <div class="col-lg-12 modal-body">
       <!--ini Modal  body-->  
         <textarea class="textinput" rows="5" cols="70" id="req_reason_close" name="req_reason_close"></textarea>  
-        <p class="help-block" >Indique la razón del cierre de la requisición</p>  
+        <p class="help-block" >Indique la razón del cierre de la Requisicion</p>  
       <!--fin Modal  body-->
       </div>
       <div class="modal-footer">
@@ -5485,7 +5485,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
 
     $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
            <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.date('d/M/Y g:i a',strtotime($value->{'Date'})).'</td></tr>
-           <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
+           <tr><th style="text-align:left;" width="25%">Requisicion</th><td >'.$value->{'CustomerSO'}.'</td></tr>
            <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>
            <tr><th style="text-align:left;" width="10%">Fecha de entrega</th> <td >'.$value->{'WorkflowStatusName'}.'</td></tr>
            <tr><th style="text-align:left;" width="10%">Asignado a</th> <td >'.$value->{'WorkflowAssignee'}.'</td></tr>
@@ -5564,7 +5564,7 @@ var table = $("#table_info").dataTable({
 
 </script>';
 
-echo '<br/><br/><fieldset><legend>Detalle de Requisición</legend>
+echo '<br/><br/><fieldset><legend>Detalle de Requisicion</legend>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
   foreach ($ORDER_detail as $datos) {
@@ -5837,7 +5837,7 @@ $RECEPT = $this->model->Query($SQL);
   }else{
 
 
-     echo '<div id="ERROR" class="alert alert-danger">EL ID <strong>'.$id.'</strong> DE REQUISICIÓN NO EXISTE</div>';
+     echo '<div id="ERROR" class="alert alert-danger">EL ID <strong>'.$id.'</strong> DE Requisicion NO EXISTE</div>';
 
   }
 
@@ -6248,7 +6248,7 @@ $TXID   = $value->{'TXID'};
 
     $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.$dateInLocal.'</td></tr>
-              <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
+              <tr><th style="text-align:left;" width="25%">Requisicion</th><td >'.$value->{'CustomerSO'}.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Fecha Probable de entrega</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
               <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
@@ -6316,8 +6316,8 @@ public function  SendPurOrdUpdateNotificacion(){
    if ($USERID){
   
       //ARMAR CUERPO DEL MENSAJE
-      $subject .= 'Actualizacion de requisición: '.$REQ_NO;
-      $title = 'Actualizacion de requisición: '.$REQ_NO;
+      $subject .= 'Actualizacion de Requisicion: '.$REQ_NO;
+      $title = 'Actualizacion de Requisicion: '.$REQ_NO;
   
   
   //mensaje 
@@ -6333,7 +6333,7 @@ public function  SendPurOrdUpdateNotificacion(){
   
       $table.= "<tr><th style='text-align:left;' width='25%'>ID. Compra.</th><td >".$value->{'PurchaseOrderNumber'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Fecha</th><td >'.$dateInLocal.'</td></tr>
-                <tr><th style="text-align:left;" width="25%">Requisición</th><td >'.$value->{'CustomerSO'}.'</td></tr>
+                <tr><th style="text-align:left;" width="25%">Requisicion</th><td >'.$value->{'CustomerSO'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Proveedor</th><td >'.$value->{'VendorName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Fecha Probable de entrega</th><td >'.$value->{'WorkflowStatusName'}.'</td></tr>
                 <tr><th style="text-align:left;" width="25%">Nota</th><td >'.$value->{'WorkflowNote'}.'</td></tr>';
