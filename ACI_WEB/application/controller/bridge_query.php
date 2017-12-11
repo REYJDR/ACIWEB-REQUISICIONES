@@ -5920,7 +5920,7 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 
                 $desc = $this->model->Query_value('REQ_DETAIL','DESCRIPCION',$clause);
 
-                $recibido = $this->model->Query_value('REQ_RECEPT','SUM(QTY)',$clause);
+                $recibido = $this->model->Query_value('REQ_RECEPT','SUM(QTY)','WHERE ITEM="'.$item.'" and NO_REQ="'.$REQ_NO.'" and ID_compania="'.$this->model->id_compania.'"';);
 
 
             $message.= '<tr>
@@ -6388,7 +6388,6 @@ FROM PurOrdr_Header_Exp
 INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
 WHERE PurOrdr_Header_Exp.ID_compania="1"
 AND PurOrdr_Header_Exp.PurchaseOrderNumber ="'.$invoice.'"';
-
 $res = $this->model->Query($query);
 
 
