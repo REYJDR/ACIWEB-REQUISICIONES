@@ -5920,7 +5920,7 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 
                 $desc = $this->model->Query_value('REQ_DETAIL','DESCRIPCION',$clause);
 
-                $recibido = $this->model->Query_value('REQ_RECEPT','SUM(QTY)','WHERE ITEM="'.$item.'" and NO_REQ="'.$REQ_NO.'" and ID_compania="'.$this->model->id_compania.'"';);
+                $recibido = $this->model->Query_value('REQ_RECEPT','SUM(QTY)','WHERE ITEM="'.$item.'" and NO_REQ="'.$REQ_NO.'"';);
 
 
             $message.= '<tr>
