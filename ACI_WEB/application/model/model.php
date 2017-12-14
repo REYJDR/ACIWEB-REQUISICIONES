@@ -1038,7 +1038,7 @@ $smtp= $this->Query($sql);
         $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
         $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
 
-        $mail->SetFrom($smtp_val->{'USERNAME'});
+        $mail->SetFrom($smtp_val->{'USERNAME'},$smtp_val->{'NAME'} );
         $mail->SingleTo = true;
 
     }
