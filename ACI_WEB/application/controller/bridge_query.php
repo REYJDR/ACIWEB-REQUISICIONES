@@ -4797,7 +4797,7 @@ foreach ($smtp as $smtp_val) {
   $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
   $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
 
-  $mail->SetFrom($smtp_val->{'USERNAME'});
+  $mail->SetFrom($smtp_val->{'USERNAME'},$smtp_val->{'NAME'});
 
 }
 
@@ -6162,7 +6162,7 @@ if($Item->{'isUrgent'} == '0'){
   
 }
 
-$date = strtotime($this->model->GetLocalTime($Item->{'DATE'}));
+$date = strtotime($this->model->GetLocalTime('MST',$Item->{'DATE'}));
 $date = date('d/M/Y g:i a',$date);
 
 
