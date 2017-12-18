@@ -44,7 +44,7 @@ class Application
             // check for method: does such a method exist in the controller ?
             if (method_exists($this->url_controller, $this->url_action)) {
 
-                echo 'param'.$this->url_params;
+                echo 'param '.var_dump($this->url_params);
 
                 if (!empty($this->url_params)) {
                     // Call the method and pass arguments to it
