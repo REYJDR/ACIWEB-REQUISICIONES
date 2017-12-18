@@ -6,7 +6,7 @@ class login extends Controller
 public function index($temp_url){
 
 
-
+echo $temp_url;
 
         // load views
         require APP . 'view/_templates/header.php';
