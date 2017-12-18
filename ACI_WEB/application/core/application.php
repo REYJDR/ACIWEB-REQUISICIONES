@@ -47,7 +47,7 @@ class Application
                     call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
                 } else {
                     // If no parameters are given, just call the method without parameters, like $this->home->method();
-                    $this->url_controller->{$this->url_action}();
+                    $this->url_controller->{$this->url_action};
                 }
 
             } else {
