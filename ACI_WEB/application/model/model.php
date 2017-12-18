@@ -367,6 +367,8 @@ session_start();
 
         if(!$_SESSION){
 
+            echo $_GET['url'];
+
             $temp_url = str_replace('/', '#', $_GET['url']);
 
             if(isset($_GET['user'])){
