@@ -97,13 +97,13 @@ class Application
             unset($url[0], $url[1]);
 
             // Rebase array keys and store the URL params
-           
+            
             $this->url_params = array_values($url);
 
             //for debugging. uncomment this if you have problems with the URL
-             echo 'Controller: ' . $this->url_controller . '<br>';
-             echo 'Action: ' . $this->url_action . '<br>';
-             echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
+             //echo 'Controller: ' . $this->url_controller . '<br>';
+             //echo 'Action: ' . $this->url_action . '<br>';
+             //echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
         }
     }
 }
