@@ -44,7 +44,7 @@ class Application
             // check for method: does such a method exist in the controller ?
             if (method_exists($this->url_controller, $this->url_action)) {
 
-                echo 'param '.var_dump($this->url_params);
+
 
                 if (!empty($this->url_params)) {
                     // Call the method and pass arguments to it
@@ -101,9 +101,9 @@ class Application
             $this->url_params = array_values($url);
 
             //for debugging. uncomment this if you have problems with the URL
-            // echo 'Controller: ' . $this->url_controller . '<br>';
-            // echo 'Action: ' . $this->url_action . '<br>';
-            // echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
+             echo 'Controller: ' . $this->url_controller . '<br>';
+             echo 'Action: ' . $this->url_action . '<br>';
+             echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
         }
     }
 }
