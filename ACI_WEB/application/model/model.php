@@ -367,19 +367,38 @@ session_start();
 
         if(!$_SESSION){
 
-            echo $_GET['url'];
+
 
             $temp_url = str_replace('/', '#', $_GET['url']);
 
             if(isset($_GET['user'])){
 
+               if ($temp_url){
+               
                 $res = '1';
                 echo '<script> self.location ="index.php?url=login/index/'.$temp_url.'&user='.$_GET['user'].'&pass='.$_GET['pass'].'; </script>';
 
+               }else{
+                $res = '1';
+                echo '<script> self.location ="index.php?url=login/index&user='.$_GET['user'].'&pass='.$_GET['pass'].'; </script>';
+
+                }
+
+
             }else{
-      
+
+                if ($temp_url){
+               
                 $res = '1';
                 echo '<script> self.location ="index.php?url=login/index/'.$temp_url.'"; </script>';
+
+               }else{
+                $res = '1';
+               echo '<script> self.location ="index.php?url=login/index"; </script>';
+
+                }
+      
+
 
             }
   
