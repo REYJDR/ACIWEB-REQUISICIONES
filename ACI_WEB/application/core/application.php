@@ -34,7 +34,7 @@ class Application
         } elseif (file_exists(APP . 'controller/' . $this->url_controller . '.php')) {
             // here we did check for controller: does such a controller exist ?
 
-            echo $this->url_controller;
+            //echo $this->url_controller;
 
             // if so, then load this file and create this controller
             // example: if controller would be "car", then this line would translate into: $this->car = new car();
@@ -43,6 +43,8 @@ class Application
 
             // check for method: does such a method exist in the controller ?
             if (method_exists($this->url_controller, $this->url_action)) {
+
+                echo 'param'.$this->url_params;
 
                 if (!empty($this->url_params)) {
                     // Call the method and pass arguments to it
