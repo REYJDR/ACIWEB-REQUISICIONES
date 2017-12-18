@@ -3,7 +3,7 @@
 class login extends Controller
 {
 
-public function index($temp_url=''){
+public function index($temp_url='0'){
 
 
         // load views
