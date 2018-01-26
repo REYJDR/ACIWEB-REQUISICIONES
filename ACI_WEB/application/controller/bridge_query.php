@@ -2893,7 +2893,7 @@ if($date1!=''){
       responsive: true,
       pageLength: 10,
       dom: "Blfrtip",
-      bSort: false,
+      
       select: false,
       order: [[ 1, "desc" ]],
 
