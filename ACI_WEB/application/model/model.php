@@ -908,14 +908,13 @@ return $res;
 //Orden de compras total
 public function get_OC($sort,$limit,$clause){
 
-$query ='SELECT * 
+$query ='SELECT distinct * 
 FROM PurOrdr_Header_Exp
 INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
 '.$clause.' 
-group by PurOrdr_Header_Exp.TransactionID 
 Order by PurOrdr_Header_Exp.LAST_CHANGE '.$sort.' limit '.$limit.';';
 
-
+//group by PurOrdr_Header_Exp.TransactionID 
 
 $res = $this->Query($query);
 
