@@ -2895,6 +2895,7 @@ if($date1!=''){
       dom: "Blfrtip",
       bSort: false,
       select: false,
+      order: [[ 1, "desc" ]],
 
       info: false,
         buttons: [
