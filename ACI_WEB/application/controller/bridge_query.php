@@ -3036,9 +3036,10 @@ filter_reset_button_text: false}
     foreach ($oc as $value) {
      $value = json_decode($value);
 
-     $date = strtotime($value->{'LAST_CHANGE'});
 
-     $date = date('d/M/Y g:i a',$date);
+     $date = $this->model->GetLocalTime('MST',$value->{'LAST_CHANGE'});
+     $date = strtotime($date);
+     $date  = date('d/M/Y g:i a',$date);
 
 
     $PO_NO = trim ($value->{'PurchaseOrderNumber'});
