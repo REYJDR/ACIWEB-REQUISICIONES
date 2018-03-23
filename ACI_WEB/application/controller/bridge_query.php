@@ -2084,7 +2084,7 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
   
     $JobsIn = $this->getProjectByUser($this->model->active_user_id);
 
-    $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" 
+   echo  $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" 
                and REQ_HEADER.job '.$JobsIn;
        
 }else{
