@@ -2216,7 +2216,7 @@ filter_reset_button_text: false}
     <tbody>';
 
 
-    echo $clause;
+
 $Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
 
