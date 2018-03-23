@@ -6556,7 +6556,7 @@ echo $dbHour = date('H',$date);
 echo '<br>';
 echo $NowHour = $this->model->GetLocalTime('UTC',date('Y-m-d H:i:s'));
 echo '<br>';
-echo $NowHour = date('H',$almacenNowHour);
+echo $NowHour = date('H',$NowHour);
 echo '<br>';
 
 //echo $dif = $NowHour-$dbHour;
