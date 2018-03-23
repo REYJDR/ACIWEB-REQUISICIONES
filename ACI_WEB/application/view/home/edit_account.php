@@ -290,8 +290,8 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 
 <div class="title col-lg-12"></div>
 <div class="col-lg-4">
-<?php if ($INF_rol_2 == 1 && $this->model->active_user_role == 'admin'){  ?>
-
+<?php if ($INF_rol_2 == 1 && $this->model->active_user_role == 'admin'){ echo $this->model->active_user_role ; ?>
+	
 <a title="modificar Item" data-toggle="modal" data-target="#jobModal"  href="javascript:void(0)"  <?php echo $disable; ?> ><input type="button" id="modify_button" name="modify_button"  class="btn btn-warning btn-sm btn-icon icon-left" value="Asignar Proyectos"/></a>
 
 <?php } ?>
