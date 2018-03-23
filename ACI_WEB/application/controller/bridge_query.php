@@ -6550,11 +6550,11 @@ $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order 
 
 $date = $this->model->GetLocalTime('MST',$date_db);
 $date = strtotime($date);
-$dbHour = date('H',$date);
-
-$NowHour = $this->model->GetLocalTime('UTC',date('H'));
-
-echo $dif = $NowHour-$dbHour;
+echo $dbHour = date('H',$date);
+echo '<br>';
+echo $NowHour = $this->model->GetLocalTime('UTC',date('H'));
+echo '<br>';
+//echo $dif = $NowHour-$dbHour;
 
 /*
 if ($dif >= $difH){
@@ -6587,7 +6587,7 @@ if ($dif >= $difH){
 
 
   }*/
-  
+
 }
 
 
