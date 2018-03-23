@@ -6522,17 +6522,22 @@ public function getProjectByUser($id){
 
   $jobs_assigned = $this->model->Query($sql); 
 
-  $JobIn = ' IN ( '; 
+
+  $i = 0;
   foreach ($jobs_assigned as $value){
 
     $value = json_decode($value);
-    $JobIn .= '"';
-    $JobIn .= $value->{'JOB_ID'};
-    $JobIn .= '",';
-  }
-  $JobIn .= ' ) '; 
 
-  return $JobIn;
+    $JobIn[$i] = $value->{'JOB_ID'};
+
+    $i += 1;
+  }
+
+  $ListJob = implode(",",$JobIn);
+
+  $ListJob = ' IN ( '.$ListJob.' ) '; 
+
+  return $ListJob;
 }
 
 
