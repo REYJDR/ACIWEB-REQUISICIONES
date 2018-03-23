@@ -6199,6 +6199,8 @@ $date = $this->model->GetLocalTime('UTC',date("Y-m-d H:i:s"));
 return $date;
 }
 
+
+
 public function  Testdatime($date){
 
 	echo $datetime = $this->model->GetLocalTime($date);
@@ -6539,6 +6541,55 @@ public function getProjectByUser($id){
 
   return $ListJob;
 }
+
+
+public function getLastPoSync($difH){
+
+//GET LAST SYNC
+$date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
+
+$date = $this->model->GetLocalTime('MST',$date_db);
+$date = strtotime($date);
+$dbHour = date('H',$date);
+
+$NowHour = $this->model->GetLocalTime('UTC',date('H'));
+
+echo $dif = $NowHour-$dbHour;
+
+/*
+if ($dif >= $difH){
+
+    //VERIFICA USUARIOS CON ROLE ADMIN
+    $sql = 'SELECT name, lastname, email from SAX_USER WHERE role="admin"';
+    $remitent = $this->model->Query($sql);
+
+      
+      $address =array();
+
+      foreach ($remitent as  $value) {
+          $value = json_decode($value);
+
+          $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
+
+          array_push($address, $to);
+    
+      }
+
+      
+      $subject = 'NOTIFICACION DE ACIWEB: Tabla de PO No ha sido sincrnizada';
+      $title = 'Tabla de PO No ha sido sincrnizada';
+      $message = 'Si le llego esta notificacion es debido a que el sistema Aciweb no ha recibido sincronizacion en la tabla de Ordenes de Compras con Peachtree desde hace hace '.$difH.' horas. 
+                  Por favor verifique el estado de conexion de los dispositivos involucrados en la sincronizacion.';
+    
+    
+      $res = $this->model->send_mail($address,$subject,$title,$message);
+
+
+
+  }*/
+  
+}
+
 
 
 }
