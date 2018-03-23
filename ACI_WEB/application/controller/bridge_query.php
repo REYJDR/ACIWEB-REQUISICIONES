@@ -6535,7 +6535,7 @@ public function getProjectByUser($id){
 
   $ListJob = implode("','",$JobIn);
 
-  $ListJob = ' IN ( '.$ListJob.' ) '; 
+  $ListJob = " IN ( '".$ListJob."' ) "; 
 
   return $ListJob;
 }
