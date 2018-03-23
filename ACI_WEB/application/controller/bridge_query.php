@@ -6550,10 +6550,12 @@ $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order 
 
 $date = $this->model->GetLocalTime('MST',$date_db);
 $date = strtotime($date);
+
 echo $dbHour = date('H',$date);
 echo '<br>';
 echo $NowHour = $this->model->GetLocalTime('UTC',date('H'));
 echo '<br>';
+
 //echo $dif = $NowHour-$dbHour;
 
 /*
