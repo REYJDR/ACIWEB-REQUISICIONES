@@ -71,11 +71,11 @@ public function req_print($id,$Pay_flag,$urgent_flag){
 
         if($res=='0'){
 
-      $ORDER = $this->model->get_req_to_print($id);
+            $ORDER = $this->model->get_req_to_print($id);
   
             foreach ($ORDER as  $value) {
 
-              $value = json_decode($value);
+            $value = json_decode($value);
 
              $name = $this->model->Query_value('SAX_USER','name','Where ID="'.$value->{'USER'}.'"');
              $lastname =  $this->model->Query_value('SAX_USER','lastname','Where ID="'.$value->{'USER'}.'"');

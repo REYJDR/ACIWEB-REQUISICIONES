@@ -6526,9 +6526,9 @@ public function getProjectByUser($id){
   foreach ($jobs_assigned as $value){
 
     $value = json_decode($value);
-    
+    $JobIn .= '"';
     $JobIn .= $value->{'JOB_ID'};
-    $JobIn .= ',';
+    $JobIn .= '",';
   }
   $JobIn .= ' ) '; 
 
