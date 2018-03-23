@@ -6548,19 +6548,15 @@ public function getLastPoSync($difH){
 //GET LAST SYNC
 $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
-echo $date = $this->model->GetLocalTime('MST',$date_db);
+$date = $this->model->GetLocalTime('MST',$date_db);
 $dbHour = strtotime($date);
-echo '<br>';
 
-echo $NowHour = $this->model->GetLocalTime('UTC',date('Y-m-d H:i:s'));
+$NowHour = $this->model->GetLocalTime('UTC',date('Y-m-d H:i:s'));
 $NowHour = strtotime($NowHour);
-echo '<br>';
-echo $dif = $NowHour - $dbHour;
-echo '<br>';
-echo $dif / 3600;
-//echo $dif = $NowHour-$dbHour;
 
-/*
+$dif = ($NowHour - $dbHour)/3600;
+
+
 if ($dif >= $difH){
 
     //VERIFICA USUARIOS CON ROLE ADMIN
@@ -6589,8 +6585,8 @@ if ($dif >= $difH){
       $res = $this->model->send_mail($address,$subject,$title,$message);
 
 
-
-  }*/
+     echo $res ;
+  }
 
 }
 
