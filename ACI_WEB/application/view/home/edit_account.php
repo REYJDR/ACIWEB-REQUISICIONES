@@ -89,7 +89,7 @@ foreach ($res as $value) {
 	$notif_oc = '';	
 	}
 
-	if($INF_rol_1==1){//notificaciones
+	if($INF_rol_1==1){
 
 	$rol_purc_value = 'checked';
 
@@ -98,7 +98,7 @@ foreach ($res as $value) {
 	$rol_purc_value= '';	
 	}
 
-	if($INF_rol_2==1){//notificaciones
+	if($INF_rol_2==1){
 
 	$rol_field_value = 'checked';
 
@@ -290,9 +290,10 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 
 <div class="title col-lg-12"></div>
 <div class="col-lg-4">
-<?php if ($INF_rol_2 == 1){ ?>
-
-<a title="modificar Item" data-toggle="modal" data-target="#jobModal"  href="javascript:void(0)" ><input type="button" id="modify_button" name="modify_button"  class="btn btn-warning btn-sm btn-icon icon-left" value="Asignar Proyectos"/></a>
+<?php if ($INF_rol_2 == 1 && $this->model->active_user_role == 'admin'){ echo $this->model->active_user_role ; ?>
+	
+<a title="modificar Item" data-toggle="modal" data-target="#jobModal"  href="javascript:void(0)" >
+<input type="button" id="modify_button" name="modify_button"  class="btn btn-warning btn-sm btn-icon icon-left" value="Asignar Proyectos"/></a>
 
 <?php } ?>
 </div>
@@ -353,7 +354,7 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 
   </div>
 </div>
-2
+
 
 <script type="text/javascript">
 
