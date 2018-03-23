@@ -6557,7 +6557,7 @@ $NowHour = strtotime($NowHour);
 echo '<br>';
 echo $dif = $NowHour - $dbHour;
 echo '<br>';
-date('H',$dif);
+echo $dif / 3600;
 //echo $dif = $NowHour-$dbHour;
 
 /*
