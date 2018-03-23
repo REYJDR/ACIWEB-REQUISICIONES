@@ -6549,16 +6549,13 @@ public function getLastPoSync($difH){
 $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
 $date = $this->model->GetLocalTime('MST',$date_db);
-$date = strtotime($date);
-echo $dbHour = date('Y-m-d H:i:s',$date);
+$dbHour = strtotime($date);
 echo '<br>';
-echo $dbHour = date('H',$date);
 
-echo '<br>';
 echo $NowHour = $this->model->GetLocalTime('UTC',date('Y-m-d H:i:s'));
-echo '<br>';
-echo $NowHour = date('H',$NowHour);
-echo '<br>';
+$NowHour = strtotime($NowHour);
+
+echo $dif = $NowHour - $dbHour;
 
 //echo $dif = $NowHour-$dbHour;
 
