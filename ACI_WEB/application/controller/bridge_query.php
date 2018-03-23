@@ -6550,7 +6550,8 @@ $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order 
 
 $date = $this->model->GetLocalTime('MST',$date_db);
 $date = strtotime($date);
-
+echo $dbHour = date('Y-m-d H:i:s',$date);
+echo '<br>';
 echo $dbHour = date('H',$date);
 
 echo '<br>';
