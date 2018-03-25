@@ -383,11 +383,14 @@ var x=document.getElementById(UNIID).innerHTML;
 	$datetime = new DateTime('tomorrow');
 	echo $datetime->format('Y-m-d');
 	?>' value="" />
+   </div>
+   <div   class="col-lg-2"></div>
+   
    <div   class="col-lg-5">
    <label style="display:inline" > Para descontar a: </label>
    <input style="text-align: center;" class="input-control" name="descont" id="descont" />
   </div>
- </div>
+ 
 
 </div>
 
