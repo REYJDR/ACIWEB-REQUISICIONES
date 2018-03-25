@@ -32,6 +32,7 @@ foreach ($ORDER as  $value) {
     $date = $value->{'DATE'};
     $date_ini = $value->{'DATE_INI'};
     $desc = $value->{'NOTA'};
+    $descont = $value->{'descont'};
 }
 
 ?>
@@ -83,6 +84,10 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
                     <tr>
                       <th style="text-align:left;"><strong>Pago Adelantado: </strong>'.$Pay_req.'</th>
                       
+                    </tr>
+                    <tr>
+                    <th style="text-align:left;"><strong>Para descontar a: </strong>'.$decont.'</th>
+                    
                     </tr>
                     <tr>
                       <th style="text-align:left;"><strong>Requisicion Urgente: </strong>'.$isUrgent.'</th>
