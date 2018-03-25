@@ -2200,7 +2200,7 @@ filter_reset_button_text: false}
 });
 
   </script>
-   <table id="table_reportReqStat" class="display nowrap table table-condensed table-striped table-bordered" >
+   <table id="table_reportReqStat" class="display nowrap table  table-striped table-bordered" >
    
     <thead>
       <tr>
