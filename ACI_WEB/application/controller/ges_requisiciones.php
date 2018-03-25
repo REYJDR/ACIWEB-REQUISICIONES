@@ -92,6 +92,8 @@ public function req_print($id,$Pay_flag,$urgent_flag){
               $date_ini = $value->{'DATE_INI'};
               $desc = $value->{'NOTA'};
 
+              $descont = $value->{'descont'};
+
 
 
             }

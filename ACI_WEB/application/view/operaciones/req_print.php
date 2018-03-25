@@ -116,6 +116,10 @@ foreach ($comp as $value) {
                       <th></th>
                     </tr>
                     <tr>
+                      <th><strong>Para decontar a: </strong> <?php echo $descont; ?></th>
+                      <th></th>
+                    </tr>
+                    <tr>
                       <th></th>
                       <th></th>
                     </tr>
