@@ -2200,7 +2200,7 @@ filter_reset_button_text: false}
 });
 
   </script>
-   <table id="table_reportReqStat" class="display nowrap table  table-striped table-bordered" >
+   <table id="table_reportReqStat" class="display table table-condensed table-striped table-bordered" >
    
     <thead>
       <tr>
@@ -2271,8 +2271,7 @@ $notifyUrg = '';
 
 }
 
-$table.="<tr  >
-              
+$table.=" <tr>
               <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$notifyUrg." ".$Item->{'NO_REQ'}."</a></td>
               <td width='10%' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
               <td width='45%' >".$Item->{'NOTA'}.'</td>
