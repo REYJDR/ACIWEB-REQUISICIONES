@@ -3921,7 +3921,7 @@ public function set_req_header(){
 $this->SESSION();
 
 
-list($JobID,$nota,$flag,$date_ini,$Pay_flag) =  explode('@', $_REQUEST['Data']);
+list($JobID,$nota,$flag,$date_ini,$Pay_flag,$discont) =  explode('@', $_REQUEST['Data']);
 
 $Req_NO = $this->model->Get_Req_No($JobID);
 
@@ -3947,7 +3947,8 @@ $value_to_set  = array(
   'DATE' => $datetime,
   'DATE_INI' => $date_ini,
   'isUrgent' => $flag,
-  'isPay' => $Pay_flag
+  'isPay' => $Pay_flag,
+  'discont' => $discont
   );
 
 

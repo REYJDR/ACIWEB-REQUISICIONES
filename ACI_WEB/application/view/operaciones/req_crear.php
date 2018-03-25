@@ -383,6 +383,10 @@ var x=document.getElementById(UNIID).innerHTML;
 	$datetime = new DateTime('tomorrow');
 	echo $datetime->format('Y-m-d');
 	?>' value="" />
+   <div   class="col-lg-5">
+   <label style="display:inline" > Para descontar a: </label>
+   <input style="text-align: center;" class="input-control" name="descont" id="descont" />
+  </div>
  </div>
 
 </div>
@@ -594,8 +598,9 @@ if (r == true) {
 	        var JOBID = document.getElementById('JOBID').value;
 	        var nota  = document.getElementById('nota').value;
 	        var date_ini = document.getElementById('date_ini').value;
+			var descont = document.getElementById('descont').value;
 
-	        var datos= JOBID+"@"+nota+"@"+set_urgent+"@"+date_ini+"@"+isPay; //LINK DEL METODO EN BRIDGE_QUERY
+	        var datos= JOBID+"@"+nota+"@"+set_urgent+"@"+date_ini+"@"+isPay+"@"+descont; //LINK DEL METODO EN BRIDGE_QUERY
  
 
 
@@ -691,7 +696,7 @@ return val;
 function send_mail(link,Req_NO,flag_urgent,isPay){
 
  //ENVIO POR MAIL 
-	var datos= "url=ges_requisiciones/req_mailing/"+Req_NO+"/"+flag_urgent+"/"+isPay; //LINK A LA PAGINA DE MAILING
+	var datos= "	"+flag_urgent+"/"+isPay; //LINK A LA PAGINA DE MAILING
 
 
 	$.ajax({
