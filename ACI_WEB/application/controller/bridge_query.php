@@ -4170,7 +4170,7 @@ if($total_restante == 0 ){
 //RECIBIDO PARCIALMENTE
 if($totel_reciv > 0 && $status <> 'FINALIZADO'){
   
-  $status .= '/ PARCIALMENTE RECIBIDO';
+  $status .= ' / PARCIALMENTE RECIBIDO';
 
 };
 
@@ -5613,6 +5613,10 @@ switch ($status) {
   case 'ORDENADO':
      $style = 'style="background-color:#F2F5A9;"';//AMARILLO
     break;
+  case 'ORDENADO / PARCIALMENTE RECIBIDO':
+    $style = 'style="background-color:#F2F5A9;"';//AMARILLO
+   break;
+    
   case 'PARCIALMENTE ORDENADO':
      $style = 'style="background-color:#F3E2A9;"';//NARANJA
     break;
@@ -6160,6 +6164,9 @@ switch ($status) {
   case 'ORDENADO':
      $style = 'style="background-color:#F2F5A9;"';//AMARILLO
     break;
+  case ' ORDENADO / PARCIALMENTE RECIBIDO':
+    $style = 'style="background-color:#F2F5A9;"';//AMARILLO
+   break;
   case 'PARCIALMENTE ORDENADO':
      $style = 'style="background-color:#F3E2A9;"';//NARANJA
     break;
