@@ -86,7 +86,7 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
                       
                     </tr>
                     <tr>
-                    <th style="text-align:left;"><strong>Para descontar a: </strong>'.$decont.'</th>
+                    <th style="text-align:left;"><strong>Para descontar a: </strong>'.$descont.'</th>
                     
                     </tr>
                     <tr>
