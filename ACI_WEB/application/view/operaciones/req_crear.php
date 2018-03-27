@@ -621,7 +621,7 @@ if (r == true) {
 	                                 $('#req_no_jobid').html(res);
 									
 					 }
-				      });
+				 });
 	 }//FIN REGISTRO DE CABECERA
 
 		
@@ -699,8 +699,7 @@ return val;
 function send_mail(link,Req_NO,flag_urgent,isPay){
 
  //ENVIO POR MAIL 
-	var datos= "	"+flag_urgent+"/"+isPay; //LINK A LA PAGINA DE MAILING
-
+ var datos= 'url=ges_requisiciones/req_mailing/'+Req_NO+"/"+flag_urgent+"/"+isPay; //LINK A LA PAGINA DE MAILING
 
 	$.ajax({
 		type: "GET",
@@ -721,8 +720,6 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 		}
 	}); 
 	//FIN ENVIO POR MAIL 
-
-
 }		 			
 
 //FUNCION PARA SOLICITAR IMPRESION DEL REPORTE
