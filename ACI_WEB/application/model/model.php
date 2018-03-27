@@ -807,7 +807,7 @@ public function get_InvXStk($sort,$limit,$clause){
 
 public function get_req_to_report($sort,$limit,$clause){
 
-$sql='SELECT * FROM `REQ_HEADER` 
+echo $sql='SELECT * FROM `REQ_HEADER` 
 inner join REQ_DETAIL ON REQ_HEADER.NO_REQ = REQ_DETAIL.NO_REQ
 '.$clause.' group by REQ_HEADER.NO_REQ order by ID '.$sort.' limit '.$limit.';';
 
