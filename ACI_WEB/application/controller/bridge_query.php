@@ -2082,7 +2082,7 @@ $clause='';
 
 if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
   
-    $JobsIn = $this->getProjectByUser($this->model->active_user_id);
+   $JobsIn = $this->getProjectByUser($this->model->active_user_id);
 
    $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" 
                and REQ_HEADER.job '.$JobsIn;
@@ -2225,8 +2225,12 @@ foreach ($Item as $datos) {
 
 $Item = json_decode($datos);
 
-$name = $this->model->Query_value('SAX_USER','name','Where ID="'.$Item->{'USER'}.'"');
-$lastname =  $this->model->Query_value('SAX_USER','lastname','Where ID="'.$Item->{'USER'}.'"');
+$uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
+
+$uinfo = json_decode($uinfo[0]);
+
+$name = $uinfo->{'name'}; 
+$lastname =  $name = $uinfo->{'lastname'}; 
 
 $status='';
 
