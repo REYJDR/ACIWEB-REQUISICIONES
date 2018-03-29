@@ -4136,10 +4136,6 @@ $chk_po =$this->model->Query_value('PurOrdr_Header_Exp','PurOrdr_Header_Exp.Tran
                                                                           AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
                                                                           AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
 
-/*$chk_po =$this->model->Query_value('PurOrdr_Header_Exp','TransactionID',' WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
-                                                                          AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-                                                                          AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');*/
-
 if($chk_po){
     $status = 'PARCIALMENTE ORDENADO';
 }
