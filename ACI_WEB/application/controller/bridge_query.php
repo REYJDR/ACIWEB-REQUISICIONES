@@ -2078,6 +2078,7 @@ case "ReqStat":
 $table = '';
 $clause='';
 
+$time_pre = microtime(true);
 
 
 if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
@@ -2472,7 +2473,12 @@ filter_reset_button_text: false}
 
       } 
 
-  $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div>'; 
+      $time_post = microtime(true);
+      $exec_time = $time_post - $time_pre;
+
+  $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.' Sec.</div>'; 
+
+
 
   break;
 //Fin de Reporte de Items x Requisicion
@@ -2823,9 +2829,12 @@ foreach ($Item as $datos) {
 
 $Item = json_decode($datos);
 
-$name = $this->model->Query_value('SAX_USER','name','Where ID="'.$Item->{'USER'}.'"');
-$lastname =  $this->model->Query_value('SAX_USER','lastname','Where ID="'.$Item->{'USER'}.'"');
 
+$uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
+$uinfo = json_decode($uinfo[0]);
+
+$name = $uinfo->{'name'}; 
+$lastname =  $name = $uinfo->{'lastname'}; 
 
 $ID = '"'.$Item->{'REF'}.'"';
 
@@ -4130,11 +4139,10 @@ if($chk_quota){
 
 //CHECO ORDENES DE COMPRAS ASOCIADAS
 $chk_po =$this->model->Query_value('PurOrdr_Header_Exp','PurOrdr_Header_Exp.TransactionID',' INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-                                                                          INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
-                                                                          AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
-                                                                          WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
-                                                                          AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-                                                                          AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
+                                                                                             INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+                                                                                             WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
+                                                                                                AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
+                                                                                                AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
 
 if($chk_po){
     $status = 'PARCIALMENTE ORDENADO';
