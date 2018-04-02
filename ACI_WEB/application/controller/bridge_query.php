@@ -2302,7 +2302,7 @@ $table.=" <tr>
     //  $exec_time = $time_post - $time_pre;
 
 
-$table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.' Sec.</div>'; 
+$table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.'</div>'; 
 
 
 break;
