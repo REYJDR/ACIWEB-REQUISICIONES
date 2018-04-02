@@ -2220,6 +2220,9 @@ filter_reset_button_text: false}
 
 $Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
+$time_post = microtime(true);
+$exec_time = $time_post - $time_pre;
+
 
 
 foreach ($Item as $datos) {
@@ -2243,8 +2246,7 @@ $URL = '"'.URL.'"';
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
 
-$time_post = microtime(true);
-$exec_time = $time_post - $time_pre;
+
 
 switch ($status) {
 
