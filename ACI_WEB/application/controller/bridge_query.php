@@ -2248,6 +2248,7 @@ $Item = json_decode($datos);
 $time_pre = microtime(true);
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
+
 $time_post = microtime(true);
 $exec_time = $time_post - $time_pre;
 
@@ -4146,11 +4147,16 @@ if($chk_quota){
 
 
 //CHECO ORDENES DE COMPRAS ASOCIADAS
-$chk_po =$this->model->Query_value('PurOrdr_Header_Exp','PurOrdr_Header_Exp.TransactionID',' INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+/*$chk_po =$this->model->Query_value('PurOrdr_Header_Exp','PurOrdr_Header_Exp.TransactionID',' INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
                                                                                              INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
                                                                                              WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
                                                                                                 AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-                                                                                                AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
+                                                                                                AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""'); */
+
+
+$chk_po =$this->model->Query_value('PurOrdr_Header_Exp','PurOrdr_Header_Exp.TransactionID',' WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
+                                                                                             AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
+                                                                                             AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
 
 if($chk_po){
     $status = 'PARCIALMENTE ORDENADO';
@@ -4182,6 +4188,7 @@ if($total_restante == 0 ){
     }
 
 }
+
 
 //RECIBIDO PARCIALMENTE
 if($totel_reciv > 0 && $status <> 'FINALIZADO'){
