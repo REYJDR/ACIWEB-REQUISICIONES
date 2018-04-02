@@ -2078,7 +2078,7 @@ case "ReqStat":
 $table = '';
 $clause='';
 
-$time_pre = microtime(true);
+
 
 
 if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
@@ -2220,8 +2220,7 @@ filter_reset_button_text: false}
 
 $Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
-$time_post = microtime(true);
-$exec_time = $time_post - $time_pre;
+
 
 
 
@@ -2242,11 +2241,12 @@ $ID = '"'.$Item->{'NO_REQ'}.'"';
 
 $URL = '"'.URL.'"';
 
-
+$time_pre = microtime(true);
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
 
-
+$time_post = microtime(true);
+$exec_time = $time_post - $time_pre;
 
 switch ($status) {
 
