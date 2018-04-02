@@ -2227,7 +2227,7 @@ foreach ($Item as $datos) {
 
 $Item = json_decode($datos);
 
-$time_pre = microtime(true);
+
 
   $uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
 
@@ -2242,14 +2242,13 @@ $time_pre = microtime(true);
 
   $URL = '"'.URL.'"';
 
-   
-  $time_post = microtime(true);
-  $exec_time = $time_post - $time_pre;
+  
+
 
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
 
-
+$time_pre = microtime(true);
 switch ($status) {
 
   case 'CERRADA':
@@ -2285,6 +2284,9 @@ $notifyUrg = '<label style="color:red;"> ! </label>';
 $notifyUrg = '';
 
 }
+
+$time_post = microtime(true);
+$exec_time = $time_post - $time_pre;
 
 $table.=" <tr>
               <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$notifyUrg." ".$Item->{'NO_REQ'}."</a></td>
