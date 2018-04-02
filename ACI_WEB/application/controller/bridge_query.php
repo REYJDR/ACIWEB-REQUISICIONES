@@ -2292,7 +2292,11 @@ $table.=" <tr>
 
    
 
-$table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div>'; 
+$time_post = microtime(true);
+$exec_time = $time_post - $time_pre;
+
+$table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.' Sec.</div>'; 
+
 
 break;
 //Fin Reporte de requisiciones
@@ -2473,12 +2477,7 @@ filter_reset_button_text: false}
 
       } 
 
-      $time_post = microtime(true);
-      $exec_time = $time_post - $time_pre;
-
-  $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.' Sec.</div>'; 
-
-
+  $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div>'; 
 
   break;
 //Fin de Reporte de Items x Requisicion
