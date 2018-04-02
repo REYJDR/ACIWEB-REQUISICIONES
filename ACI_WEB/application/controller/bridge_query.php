@@ -2220,6 +2220,7 @@ filter_reset_button_text: false}
 
 $Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
+$time_pre = microtime(true);
 
 
 
@@ -2241,12 +2242,10 @@ $ID = '"'.$Item->{'NO_REQ'}.'"';
 
 $URL = '"'.URL.'"';
 
-$time_pre = microtime(true);
+
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
 
-$time_post = microtime(true);
-$exec_time = $time_post - $time_pre;
 
 switch ($status) {
 
@@ -2296,7 +2295,8 @@ $table.=" <tr>
       }
 
    
-
+      $time_post = microtime(true);
+      $exec_time = $time_post - $time_pre;
 
 
 $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.' Sec.</div>'; 
