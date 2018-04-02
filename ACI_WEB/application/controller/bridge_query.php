@@ -2243,6 +2243,9 @@ $URL = '"'.URL.'"';
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
 
+$time_post = microtime(true);
+$exec_time = $time_post - $time_pre;
+
 switch ($status) {
 
   case 'CERRADA':
@@ -2292,8 +2295,7 @@ $table.=" <tr>
 
    
 
-$time_post = microtime(true);
-$exec_time = $time_post - $time_pre;
+
 
 $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.' Sec.</div>'; 
 
