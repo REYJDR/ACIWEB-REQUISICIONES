@@ -2211,6 +2211,7 @@ filter_reset_button_text: false}
         <th width="45%">Descripcion</th>
         <th width="25%">Solicitado por:</th>
         <th width="10%">Estado</th>
+        <th >Sec</th>
         
       </tr>
     </thead>
@@ -2244,11 +2245,12 @@ $Item = json_decode($datos);
 
   
 
-
+$time_pre = microtime(true);
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
+$time_post = microtime(true);
+$exec_time = $time_post - $time_pre;
 
-$time_pre = microtime(true);
 switch ($status) {
 
   case 'CERRADA':
@@ -2285,8 +2287,7 @@ $notifyUrg = '';
 
 }
 
-$time_post = microtime(true);
-$exec_time = $time_post - $time_pre;
+
 
 $table.=" <tr>
               <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$notifyUrg." ".$Item->{'NO_REQ'}."</a></td>
@@ -2294,6 +2295,7 @@ $table.=" <tr>
               <td width='45%' >".$Item->{'NOTA'}.'</td>
               <td width="25%" >'.$name.' '.$lastname.'</td>
               <td width="10%" '.$style.' >'.$status.'</td>
+              <td  >'.$exec_time.'</td>
           </tr>';
  
 
