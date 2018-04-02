@@ -2220,8 +2220,6 @@ filter_reset_button_text: false}
 
 $Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
-$time_pre = microtime(true);
-
 
 
 
@@ -2229,19 +2227,24 @@ foreach ($Item as $datos) {
 
 $Item = json_decode($datos);
 
-$uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
+$time_pre = microtime(true);
 
-$uinfo = json_decode($uinfo[0]);
+  $uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
 
-$name = $uinfo->{'name'}; 
-$lastname =  $name = $uinfo->{'lastname'}; 
+  $uinfo = json_decode($uinfo[0]);
 
-$status='';
+  $name = $uinfo->{'name'}; 
+  $lastname =  $name = $uinfo->{'lastname'}; 
 
-$ID = '"'.$Item->{'NO_REQ'}.'"';
+  $status='';
 
-$URL = '"'.URL.'"';
+  $ID = '"'.$Item->{'NO_REQ'}.'"';
 
+  $URL = '"'.URL.'"';
+
+   
+  $time_post = microtime(true);
+  $exec_time = $time_post - $time_pre;
 
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
@@ -2294,9 +2297,7 @@ $table.=" <tr>
 
       }
 
-   
-      $time_post = microtime(true);
-      $exec_time = $time_post - $time_pre;
+
 
 
 $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.' Sec.</div>'; 
