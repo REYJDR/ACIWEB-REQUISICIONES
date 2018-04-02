@@ -4055,7 +4055,6 @@ $i=0;
 
 $total_comprado = $this->model->Query_value('PurOrdr_Header_Exp','sum(PurOrdr_Detail_Exp.Quantity)','
                                               INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-                                              AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
                                               WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
                                               AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
                                               AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
