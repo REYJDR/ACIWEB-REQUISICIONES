@@ -4048,16 +4048,23 @@ public function get_req_status($id){
 $this->SESSION();
 $i=0;
 
-$total_comprado = $this->model->Query_value('PurOrdr_Header_Exp','sum(PurOrdr_Detail_Exp.Quantity)','
+/*$total_comprado = $this->model->Query_value('PurOrdr_Header_Exp','sum(PurOrdr_Detail_Exp.Quantity)','
                                               INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
                                               INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
+                                              AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+                                              WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
+                                              AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
+                                              AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""'); */
+
+$total_comprado = $this->model->Query_value('PurOrdr_Header_Exp','sum(PurOrdr_Detail_Exp.Quantity)','
+                                              INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
                                               AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
                                               WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
                                               AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
                                               AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
 
 /*repara el caso en el que en una OC se haya pedido mas de lo solicitado*/
-$SQL = 'SELECT PurOrdr_Detail_Exp.Quantity, 
+/*$SQL = 'SELECT PurOrdr_Detail_Exp.Quantity, 
                PurOrdr_Detail_Exp.Item_id
           FROM PurOrdr_Header_Exp
           INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
@@ -4065,7 +4072,15 @@ $SQL = 'SELECT PurOrdr_Detail_Exp.Quantity,
           AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
           WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
           AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-          AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';
+          AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';*/
+
+$SQL = 'SELECT PurOrdr_Detail_Exp.Quantity, 
+               PurOrdr_Detail_Exp.Item_id
+        FROM PurOrdr_Header_Exp
+        INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+        WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
+        AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
+        AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';
 
 $total_comprado_by_item = $this->model->Query($SQL);
 
@@ -4106,12 +4121,20 @@ $this->SESSION();
 
 
 //saco estatus de REQUISICION
-$sql_total = 'SELECT 
+/*$sql_total = 'SELECT 
 sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
 FROM PurOrdr_Header_Exp
 INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
 INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
 AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
+WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
+AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
+AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';*/
+
+$sql_total = 'SELECT 
+sum(PurOrdr_Detail_Exp.Quantity) as TOTAL_COMPRADO
+FROM PurOrdr_Header_Exp
+INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
 WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
 AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
 AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';
