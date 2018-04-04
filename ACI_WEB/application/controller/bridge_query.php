@@ -2233,7 +2233,7 @@ $Item = json_decode($datos);
   $uinfo = json_decode($uinfo[0]);
 
   $name = $uinfo->{'name'}; 
-  $lastname =  $name = $uinfo->{'lastname'}; 
+  $lastname = $uinfo->{'lastname'}; 
 
   $status='';
 
@@ -2840,7 +2840,7 @@ $uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$I
 $uinfo = json_decode($uinfo[0]);
 
 $name = $uinfo->{'name'}; 
-$lastname =  $name = $uinfo->{'lastname'}; 
+$lastname = $uinfo->{'lastname'}; 
 
 $ID = '"'.$Item->{'REF'}.'"';
 
