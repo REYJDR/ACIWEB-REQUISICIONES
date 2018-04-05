@@ -14,7 +14,7 @@
 
     //$dif = ($NowHour - $dbHour)/3600;
 
-    echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$date.'-'.$Nowdate.'</i>';
+    echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$date_db.'-'.$date.'-'.$Nowdate.'</i>';
 
     if ($dif >= 2){
 
