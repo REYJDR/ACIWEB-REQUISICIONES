@@ -4,7 +4,7 @@
 <?php
 sleep(1);
     //GET LAST SYNC
-    $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
+ echo   $date_db = $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
     $date = $this->model->GetLocalTime(UTC,$date_db);
     //$dbHour = strtotime($date);
@@ -14,7 +14,7 @@ sleep(1);
 
     //$dif = ($NowHour - $dbHour)/3600;
 
-    echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$date_db.'-'.$date.'-'.$Nowdate.'</i>';
+    echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$date.'-'.$Nowdate.'</i>';
 
     if ($dif >= 2){
 
