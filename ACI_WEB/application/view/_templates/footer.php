@@ -16,7 +16,7 @@ $Nowdate = $this->model->GetLocalTime(UTC,date('Y-m-d H:i:s'));
 
 //$dif = ($NowHour - $dbHour)/3600;
 
-echo '<i style="font-weight:bold; color:red; font-size:12; ">'.UTC.'-'.$Nowdate.'-'.$date.'</i>';
+echo '<i style="font-weight:bold; color:red; font-size:12; ">'.UTC.'-'.$this->model->GetLocalTime(UTC,date('Y-m-d H:i:s')).'-'. $this->model->GetLocalTime('MST',$date_db).'</i>';
 
 if ($dif >= 2){
 
