@@ -61,4 +61,5 @@ define('DB_NAME', 'daoutqw3_sage_ga');
 define('DB_USER', 'daoutqw3');
 define('DB_PASS', 'daoutel2016');
 define('DB_CHARSET', 'utf8');
+define('UTC', '-7:00');
 
