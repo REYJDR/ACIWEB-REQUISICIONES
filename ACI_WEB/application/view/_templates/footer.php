@@ -18,7 +18,7 @@
     $Nowdate = $this->model->GetLocalTime(UTC,''); 
     $NowHour = strtotime($Nowdate);
 
-    echo $dif = ($NowHour - $dbHour)/3600;
+    $dif = ($NowHour - $dbHour)/3600;
 
     
     if ($dif >= 2){

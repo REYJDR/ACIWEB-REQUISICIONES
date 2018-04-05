@@ -6615,7 +6615,7 @@ $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order 
 $date = $this->model->GetLocalTime('MST',$date_db);
 $dbHour = strtotime($date);
 
-$NowHour = $this->model->GetLocalTime('UTC',date('Y-m-d H:i:s'));
+$NowHour = $this->model->GetLocalTime(UTC,'');
 $NowHour = strtotime($NowHour);
 
 $dif = ($NowHour - $dbHour)/3600;
