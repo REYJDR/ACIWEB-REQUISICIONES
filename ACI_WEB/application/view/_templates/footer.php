@@ -6,15 +6,17 @@
   //GET LAST SYNC
 $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
+
 $date = $this->model->GetLocalTime('MST',$date_db);
-$dbHour = strtotime($date);
+//$dbHour = strtotime($date);
+
 
 $Nowdate = $this->model->GetLocalTime(UTC,date('Y-m-d H:i:s'));
-$NowHour = strtotime($Nowdate);
+//$NowHour = strtotime($Nowdate);
 
-$dif = ($NowHour - $dbHour)/3600;
+//$dif = ($NowHour - $dbHour)/3600;
 
-echo '<i style="font-weight:bold; color:red; font-size:12; ">'.UTC.'-'.$Nowdate.'-'.$date.'-'.$dif.'</i>';
+echo '<i style="font-weight:bold; color:red; font-size:12; ">'.UTC.'-'.$Nowdate.'-'.$date.'</i>';
 
 if ($dif >= 2){
 
