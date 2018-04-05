@@ -10,6 +10,7 @@
         $date = $this->model->GetLocalTime('MST',$date_db);
     }
 
+    echo $date .'--';
     
     $dbHour = strtotime($date);
 
