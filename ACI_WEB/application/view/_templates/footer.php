@@ -2,9 +2,13 @@
 
 <div    class="crop col-xs-6">
 <?php
-sleep(1);
+
     //GET LAST SYNC
-    $date_db = $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
+    if($date_db==''){
+
+        $date_db = $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
+        
+    }
 
     $date = $this->model->GetLocalTime('MST',$date_db);
     $dbHour = strtotime($date);
@@ -14,8 +18,7 @@ sleep(1);
 
     $dif = ($NowHour - $dbHour)/3600;
 
-    echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$dif.'</i>';
-
+    
     if ($dif >= 2){
 
         echo '<i style="font-weight:bold; color:red; font-size:12; ">Informacion de OC no sincronizada desde hace 2h</i>';
