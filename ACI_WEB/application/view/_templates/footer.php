@@ -9,7 +9,7 @@ sleep(1);
     $date = $this->model->GetLocalTime('MST',$date_db);
     //$dbHour = strtotime($date);
 
-    $Nowdate = $this->model->GetLocalTime(UTC,date('Y-m-d H:i:s')); 
+    $Nowdate = $this->model->GetLocalTime(UTC,''); 
     //$NowHour = strtotime($Nowdate);
 
     //$dif = ($NowHour - $dbHour)/3600;
