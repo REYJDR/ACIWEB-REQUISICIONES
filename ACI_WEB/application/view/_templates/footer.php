@@ -9,12 +9,12 @@ $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order 
 $date = $this->model->GetLocalTime('MST',$date_db);
 $dbHour = strtotime($date);
 
-$NowHour = $this->model->GetLocalTime('UTC',date('Y-m-d H:i:s'));
-$NowHour = strtotime($NowHour);
+$Nowdate = $this->model->GetLocalTime('UTC',date('Y-m-d H:i:s'));
+$NowHour = strtotime($Nowdate);
 
 $dif = ($NowHour - $dbHour)/3600;
 
-echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$NowHour.'-'.$dbHour.'-'.$dif.'</i>';
+echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$NowHour.'-'.$date.'-'.$dif.'</i>';
 
 if ($dif >= 2){
 
