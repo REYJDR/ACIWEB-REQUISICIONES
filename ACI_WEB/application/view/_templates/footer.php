@@ -14,7 +14,7 @@ $NowHour = strtotime($Nowdate);
 
 $dif = ($NowHour - $dbHour)/3600;
 
-echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$Nowdate.'-'.$date.'-'.$dif.'</i>';
+echo '<i style="font-weight:bold; color:red; font-size:12; ">'.UTC.'-'.$Nowdate.'-'.$date.'-'.$dif.'</i>';
 
 if ($dif >= 2){
 
