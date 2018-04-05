@@ -3,26 +3,24 @@
 <div    class="crop col-xs-6">
 <?php
 
-  //GET LAST SYNC
-$date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
+    //GET LAST SYNC
+    $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
+    $date = $this->model->GetLocalTime(UTC,$date_db);
+    //$dbHour = strtotime($date);
 
-$date = $this->model->GetLocalTime('MST',$date_db);
-//$dbHour = strtotime($date);
+    $Nowdate = $this->model->GetLocalTime(UTC,date('Y-m-d H:i:s'));
+    //$NowHour = strtotime($Nowdate);
 
+    //$dif = ($NowHour - $dbHour)/3600;
 
-$Nowdate = $this->model->GetLocalTime('MST',date('Y-m-d H:i:s'));
-//$NowHour = strtotime($Nowdate);
+    echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$date.'-'.$Nowdate.'</i>';
 
-//$dif = ($NowHour - $dbHour)/3600;
+    if ($dif >= 2){
 
-echo '<i style="font-weight:bold; color:red; font-size:12; ">'.UTC.'-'.$this->model->GetLocalTime(UTC,date('Y-m-d H:i:s')).'-'. $this->model->GetLocalTime('MST',$date_db).'</i>';
-
-if ($dif >= 2){
-
-    echo '<i style="font-weight:bold; color:red; font-size:12; ">Informacion de OC no sincronizada desde hace 2h</i>';
-    
-}
+        echo '<i style="font-weight:bold; color:red; font-size:12; ">Informacion de OC no sincronizada desde hace 2h</i>';
+        
+    }
 ?>
 </div> 
 
