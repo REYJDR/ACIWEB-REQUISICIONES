@@ -21,9 +21,9 @@
     $dif = ($NowHour - $dbHour)/3600;
 
     
-    if ($dif >= 2){
+    if ($dif >= 4){
 
-        echo '<i style="font-weight:bold; color:red; font-size:12; ">Informacion de OC no sincronizada desde hace 2h</i>';
+        echo '<i style="font-weight:bold; color:red; font-size:12; ">Informacion de OC no sincronizada desde hace 4h</i>';
         
     }
 ?>
