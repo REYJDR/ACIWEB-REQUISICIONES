@@ -1,8 +1,27 @@
 <div id="footer" class="footer  col-xs-12">
 
-<!-- <div    class="crop col-xs-6">
-<?php echo  '    '.$this->model->ConexionSage(); ?>
-</div> -->
+<div    class="crop col-xs-6">
+<?php
+
+  //GET LAST SYNC
+$date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
+
+$date = $this->model->GetLocalTime('MST',$date_db);
+$dbHour = strtotime($date);
+
+$NowHour = $this->model->GetLocalTime('UTC',date('Y-m-d H:i:s'));
+$NowHour = strtotime($NowHour);
+
+$dif = ($NowHour - $dbHour)/3600;
+
+
+if ($dif >= 2){
+
+    echo '<i style="font-weight:bold; color:red; font-size:12; ">Informacion de OC no sincronizada desde hace 2h</i>';
+    
+}
+?>
+</div> 
 
 
 <div style="float: right; text-align:right;" class="crop col-xs-6">
