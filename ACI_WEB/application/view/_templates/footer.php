@@ -6,7 +6,7 @@ sleep(1);
     //GET LAST SYNC
     $date_db = $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
-    $date = $this->model->GetLocalTime('MTS',$date_db);
+    $date = $this->model->GetLocalTime('MST',$date_db);
     //$dbHour = strtotime($date);
 
     $Nowdate = $this->model->GetLocalTime(UTC,date('Y-m-d H:i:s')); 
