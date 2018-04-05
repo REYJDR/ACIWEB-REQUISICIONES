@@ -2,14 +2,14 @@
 
 <div    class="crop col-xs-6">
 <?php
-
+sleep(1000);
     //GET LAST SYNC
     $date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
     $date = $this->model->GetLocalTime(UTC,$date_db);
     //$dbHour = strtotime($date);
 
-    $Nowdate = $this->model->GetLocalTime(UTC,date('Y-m-d H:i:s'));
+    $Nowdate = $this->model->GetLocalTime(UTC,date('Y-m-d H:i:s')); 
     //$NowHour = strtotime($Nowdate);
 
     //$dif = ($NowHour - $dbHour)/3600;
