@@ -7,14 +7,14 @@ sleep(1);
     $date_db = $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
 
     $date = $this->model->GetLocalTime('MST',$date_db);
-    //$dbHour = strtotime($date);
+    $dbHour = strtotime($date);
 
     $Nowdate = $this->model->GetLocalTime(UTC,''); 
-    //$NowHour = strtotime($Nowdate);
+    $NowHour = strtotime($Nowdate);
 
-    //$dif = ($NowHour - $dbHour)/3600;
+    $dif = ($NowHour - $dbHour)/3600;
 
-    echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$date.'-'.$Nowdate.'</i>';
+    echo '<i style="font-weight:bold; color:red; font-size:12; ">'.$dif.'</i>';
 
     if ($dif >= 2){
 
