@@ -6640,10 +6640,10 @@ if ($dif >= $difH){
       }
 
       
-      $subject = 'NOTIFICACION DE ACIWEB: Tabla de PO No ha sido sincrnizada';
+      $subject = 'NOTIFICACION DE ACIWEB: Tabla de PO No ha sido sincronizada';
       $title = 'Tabla de PO No ha sido sincrnizada';
-      $message = 'Si le llego esta notificacion es debido a que el sistema Aciweb no ha recibido sincronizacion en la tabla de Ordenes de Compras con Peachtree desde hace hace '.$difH.' horas. 
-                  Por favor verifique el estado de conexion de los dispositivos involucrados en la sincronizacion.';
+      $message = 'Si le llego esta notificacion es debido a que el sistema Aciweb no ha recibido sincronizacion en la tabla de Ordenes de Compras con Peachtree desde hace mas de '.$difH.' horas.'."\n". 
+                 'Por favor verifique el estado de conexion de los dispositivos involucrados en la sincronizacion.';
     
     
       $res = $this->model->send_mail($address,$subject,$title,$message);
