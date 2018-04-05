@@ -8,11 +8,12 @@
 
         $date_db = $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
         $date = $this->model->GetLocalTime('MST',$date_db);
-    }
+        $dbHour = strtotime($date);
+    }else{
+        $dbHour =  $date;
 
-    echo $date .'--';
-    
-    $dbHour = strtotime($date);
+    }
+   
 
     $Nowdate = $this->model->GetLocalTime(UTC,''); 
     $NowHour = strtotime($Nowdate);
