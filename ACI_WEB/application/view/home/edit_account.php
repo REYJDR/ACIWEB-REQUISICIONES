@@ -319,7 +319,7 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 </div>		
 
 </form>
-<?php if($this->model->active_user_role!='admin'){  ?>
+<?php if($this->model->active_user_role=='admin'){  ?>
 	<div class="col-lg-2">
 	<button  onclick="erase_user('<?php echo URL; ?>');" class="btn btn-danger btn-sm btn-icon icon-left"  >Eliminar</button>
 	</div>	
