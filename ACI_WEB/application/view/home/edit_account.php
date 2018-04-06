@@ -63,6 +63,7 @@ error_reporting(0);
 if($id){
 
 
+
 //UPDATE INFORMATION
 if($_POST['flag2']=='1'){
 
@@ -131,59 +132,7 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 </script>';
 }
 
-$sql = 'SELECT * FROM SAX_USER  where SAX_USER.onoff="1" and SAX_USER.id="'.$id.'";';
 
-$res = $this->model->Query($sql);
-
-foreach ($res as $value) {
-
-   $value = json_decode($value);
-
-   $id = $value->{'id'};
-   $name = $value->{'name'};
-   $lastname = $value->{'lastname'};
-   $email = $value->{'email'};
-   $pass = $value->{'pass'};
-   $role= $value->{'role'};
-   $INF_OC= $value->{'notif_oc'};
-   $INF_rol_1= $value->{'role_purc'};
-   $INF_rol_2= $value->{'role_fiel'};
-
-   if($INF_OC==1){//notificaciones
-
-   $notif_oc = 'checked';
-
-   }else{
-
-   $notif_oc = '';	
-   }
-
-   if($INF_rol_1==1){
-
-   $rol_purc_value = 'checked';
-
-   }else{
-
-   $rol_purc_value= '';	
-   }
-
-   if($INF_rol_2==1){
-
-   $rol_field_value = 'checked';
-
-   }else{
-
-   $rol_field_value = '';	
-   }
-
-}
-
-if($this->model->active_user_role!='admin'){ 
-   $notif_oc .= ' disabled';
-   $rol_purc_value .= ' disabled';
-   $rol_field_value .= ' disabled';
-
-	}
 
 }
 
