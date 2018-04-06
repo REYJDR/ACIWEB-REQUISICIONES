@@ -120,6 +120,9 @@ if($this->model->active_user_role!='admin'){
 //UPDATE INFORMATION
 if($_POST['flag2']=='1'){
 
+
+	if($this->model->active_user_role!='admin'){ 
+
 		if($_POST['oc_chk']==true){//notificaciones
 
 		$not_oc_value = '1';
@@ -147,7 +150,7 @@ if($_POST['flag2']=='1'){
 		$rol_field_value = '0';	
 		}
 
-
+	}
 
 $pass_ck = $this->model->Query_value('SAX_USER','pass','where SAX_USER.onoff="1" and SAX_USER.id="'.$id.'"');
 
@@ -162,14 +165,26 @@ $pass_ck = $this->model->Query_value('SAX_USER','pass','where SAX_USER.onoff="1"
 		
 	}
 
-$columns  = array( 'name' => $_POST['name2'],
-	               'lastname' => $_POST['lastname2'],
-	               'pass' => $pass,
-	               'role'=> $_POST['priv'],
-	               'notif_oc' => $not_oc_value,
-	               'role_purc' => $rol_purc_value,
-		           'role_fiel' => $rol_field_value
-	                );
+if($this->model->active_user_role!='admin'){ 
+		
+	$columns  = array( 'name' => $_POST['name2'],
+					'lastname' => $_POST['lastname2'],
+					'pass' => $pass,
+
+						);
+}else{
+
+	$columns  = array(  'name' => $_POST['name2'],
+						'lastname' => $_POST['lastname2'],
+						'pass' => $pass,
+						'role'=> $_POST['priv'],
+						'notif_oc' => $not_oc_value,
+						'role_purc' => $rol_purc_value,
+						'role_fiel' => $rol_field_value
+						);
+
+}					
+
 
 $clause = 'id="'.$_POST['user_2'].'"';
 
@@ -304,9 +319,11 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 </div>		
 
 </form>
-<div class="col-lg-2">
-<button  onclick="erase_user('<?php echo URL; ?>');" class="btn btn-danger btn-sm btn-icon icon-left"  >Eliminar</button>
-</div>	
+<?php if($this->model->active_user_role!='admin'){  ?>
+	<div class="col-lg-2">
+	<button  onclick="erase_user('<?php echo URL; ?>');" class="btn btn-danger btn-sm btn-icon icon-left"  >Eliminar</button>
+	</div>	
+<?php } ?>
 </fieldset>
 <div class="separador col-lg-12"></div>
 
