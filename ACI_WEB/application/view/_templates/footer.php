@@ -6,7 +6,7 @@
     //GET LAST SYNC
     if($date_db==''){
 
-        $date_db = $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
+        $date_db = $this->model->Query_value('CompanyLogSync','LastSync',' limit 1 ');	  
         $date = $this->model->GetLocalTime('MST',$date_db);
         $dbHour = strtotime($date);
     }else{

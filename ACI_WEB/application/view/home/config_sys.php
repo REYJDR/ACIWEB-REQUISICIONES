@@ -110,7 +110,7 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 }
 
 //GET LAST SYNC
-$date_db =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	  
+$date_db =  $this->model->Query_value('CompanyLogSync','LastSync',' limit 1');	  
 
 ?>	
 
