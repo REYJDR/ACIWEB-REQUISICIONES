@@ -13,9 +13,8 @@
         $dbHour =  $date;
 
     }
-   
-echo $date_db.'/';
-   echo $Nowdate = $this->model->GetLocalTime(UTC,''); 
+
+    $Nowdate = $this->model->GetLocalTime(UTC,''); 
     $NowHour = strtotime($Nowdate);
 
    $dif = ($NowHour - $dbHour)/3600;
