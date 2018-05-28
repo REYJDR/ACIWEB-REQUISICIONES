@@ -537,9 +537,9 @@ if(r==true){
 	 Esta opcion borra las tablas referentes a los registros de Ordenes de Compras sincronizadas desde Peachtree 
 	 <p class='help-block'>La ultima sincronizacion fue: <?php 
 
-    $date = $this->model->GetLocalTime('MST',$date_db);
-    $date = strtotime($date);
-    $dateInLocal = date('d/M/Y g:i a',$date);
+   /* $date = $this->model->GetLocalTime('MST',$date_db);
+    $date = strtotime($date);*/
+    $dateInLocal = date('d/M/Y g:i a',$date_db);
 
 
     if(!$date_db){

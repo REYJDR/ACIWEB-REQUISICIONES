@@ -7,8 +7,8 @@
     if($date_db==''){
 
         $date_db = $this->model->Query_value('CompanyLogSync','LastSync',' limit 1 ');	  
-        $date = $this->model->GetLocalTime('MST',$date_db);
-        $dbHour = strtotime($date);
+        /*$date = $this->model->GetLocalTime('MST',$date_db);*/
+        $dbHour = strtotime($date_db);
     }else{
         $dbHour =  $date;
 
@@ -18,7 +18,7 @@
     $Nowdate = $this->model->GetLocalTime(UTC,''); 
     $NowHour = strtotime($Nowdate);
 
-    $dif = ($NowHour - $dbHour)/3600;
+   echo  $dif = ($NowHour - $dbHour)/3600;
 
     
     if ($dif >= 4){
