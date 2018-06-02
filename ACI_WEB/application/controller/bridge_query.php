@@ -2762,8 +2762,7 @@ $urg30 = json_decode($datos);
 
   //TOTAL REQUISICIONES 30 DIAS
 
-     $clause30= 'where A.ID_compania="'.$this->model->id_compania.'"  
-                and A.USER="'.$this->model->active_user_id.'" 
+     $clause30= 'where A.ID_compania="'.$this->model->id_compania.'"
                 and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
                 and DATE >="'.$Date_30.'%" and DATE <= "'.$currentDate.'%" and A.job = "'.$urg30->{'job'}.'"';
 
@@ -2779,8 +2778,7 @@ $urg30 = json_decode($datos);
       $urg60 = $this->model->GetQtyReqUrgAll($sort,$limit,$clause_urg60);
         
 
-      $clause60= 'where A.ID_compania="'.$this->model->id_compania.'"  
-                  and A.USER="'.$this->model->active_user_id.'" 
+      $clause60= 'where A.ID_compania="'.$this->model->id_compania.'"
                   and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
                   and DATE >="'.$Date_60.'%" and DATE <= "'.$currentDate.'%" and A.job = "'.$urg30->{'job'}.'"';
 
@@ -2798,7 +2796,6 @@ $urg30 = json_decode($datos);
         
 
       $clause90= 'where A.ID_compania="'.$this->model->id_compania.'"  
-                  and A.USER="'.$this->model->active_user_id.'" 
                   and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
                   and DATE >="'.$Date_90.'%" and DATE <= "'.$currentDate.'%" and A.job = "'.$urg30->{'job'}.'"';
 
@@ -2815,8 +2812,7 @@ $urg30 = json_decode($datos);
       $urg180 = $this->model->GetQtyReqUrgAll($sort,$limit,$clause_urg180);
         
 
-      $clause180= 'where A.ID_compania="'.$this->model->id_compania.'"  
-                  and A.USER="'.$this->model->active_user_id.'" 
+      $clause180= 'where A.ID_compania="'.$this->model->id_compania.'"
                   and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
                   and DATE >="'.$Date_180.'%" and DATE <= "'.$currentDate.'%" and A.job = "'.$urg30->{'job'}.'"';
 
@@ -2833,8 +2829,7 @@ $urg30 = json_decode($datos);
       $urg365 = $this->model->GetQtyReqUrgAll($sort,$limit,$clause_urg365);
         
 
-      $clause365= 'where A.ID_compania="'.$this->model->id_compania.'"  
-                  and A.USER="'.$this->model->active_user_id.'" 
+      $clause365= 'where A.ID_compania="'.$this->model->id_compania.'"
                   and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
                   and DATE >="'.$Date_365.'%" and DATE <= "'.$currentDate.'%" and A.job = "'.$urg30->{'job'}.'"';
 
@@ -2842,26 +2837,34 @@ $urg30 = json_decode($datos);
 
 //TOTAL REQUISICIONES POR PROYECTO
 
-      $clause_urgTotal ='where A.ID_compania="'.$this->model->id_compania.'"  
+     $clause_urgTotal ='where A.ID_compania="'.$this->model->id_compania.'"  
                          and A.isUrgent = "0"
                          and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1)
                          and A.job = "'.$urg30->{'job'}.'"';
 
-      $urgTotal = $this->model->GetQtyReqUrgAll($sort,$limit,$clause_urgTotal);
+     $urgTotal = $this->model->GetQtyReqUrgAll($sort,$limit,$clause_urgTotal);
         
 
-      $clauseTotal=  'where A.ID_compania="'.$this->model->id_compania.'"  
-                      and A.USER="'.$this->model->active_user_id.'" 
+     $clauseTotal=  'where A.ID_compania="'.$this->model->id_compania.'"
                       and A.NO_REQ = (SELECT NO_REQ FROM `REQ_DETAIL` WHERE  REQ_DETAIL.NO_REQ = A.NO_REQ LIMIT 1) 
                       and A.job = "'.$urg30->{'job'}.'"';
 
-      $valueTotal = $this->model->GetQtyReqAll($sort,$limit,$clauseTotal);
+     $valueTotal = $this->model->GetQtyReqAll($sort,$limit,$clauseTotal);
 
 
+//ANADIENDO COMILLAS PARA EL JS
 
 $ID = '"'.$urg30->{'job'}.'"';
-$dateFrom = '';
-$dateTo ='';
+$currentDate_js = '"'.$currentDate.'"';
+$currentDate_total = '""';
+$Date_total = '""';
+
+$Date_30_js = '"'.$Date_30.'"';
+$Date_60_js = '"'.$Date_60.'"';
+$Date_90_js = '"'.$Date_90.'"';
+$Date_180_js = '"'.$Date_180.'"';
+$Date_365_js = '"'.$Date_365.'"';
+
 
 //SE CONSTRUYE LA TABLA
 
@@ -2870,28 +2873,28 @@ $table.="<tr ><td width='10%' class='numb'  >".$urg30->{'job'}."</td>";
 
 
 $table.=" <td width='10%' class='numb' >
-              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_30.",".$currentDate.");'>".$urg30->{'cuenta'}."</a>
-              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_30.",".$currentDate.");'>(".$value30.")</a>
+              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_30_js.",".$currentDate_js.");'>".$urg30->{'cuenta'}."</a>
+              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_30_js.",".$currentDate_js.");'>(".$value30.")</a>
           </td>
           <td width='10%' class='numb' >
-              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_60.",".$currentDate.");'>".$urg60."</a>
-              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_60.",".$currentDate.");'>(".$value60.")</a>
+              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_60_js.",".$currentDate_js.");'>".$urg60."</a>
+              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_60_js.",".$currentDate_js.");'>(".$value60.")</a>
           </td>
           <td width='10%' class='numb' >
-              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_90.",".$currentDate.");'>".$urg90."</a>
-              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_90.",".$currentDate.");'>(".$value90.")</a>
+              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_90_js.",".$currentDate_js.");'>".$urg90."</a>
+              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_90_js.",".$currentDate_js.");'>(".$value90.")</a>
           </td>
           <td width='10%' class='numb' >
-              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_180.",".$currentDate.");'>".$urg180."</a>
-              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_180.",".$currentDate.");'>(".$value180.")</a>
+              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_180_js.",".$currentDate_js.");'>".$urg180."</a>
+              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_180_js.",".$currentDate_js.");'>(".$value180.")</a>
           </td>
           <td width='10%' class='numb' >
-              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_365.",".$currentDate.");'>".$urg365."</a>
-              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_365.",".$currentDate.");'>(".$value365.")</a>
+              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_365_js.",".$currentDate_js.");'>".$urg365."</a>
+              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_365_js.",".$currentDate_js.");'>(".$value365.")</a>
           </td>
           <td width='10%' class='numb' >
-              <a href='#' onclick='javascript: show_req_urg(".$ID.");'>".$urgTotal."</a>
-              <a href='#' onclick='javascript: show_req_nourg(".$ID.");'>(".$valueTotal.")</a>
+              <a href='#' onclick='javascript: show_req_urg(".$ID.",".$Date_total.",".$currentDate_total.");'>".$urgTotal."</a>
+              <a href='#' onclick='javascript: show_req_nourg(".$ID.",".$Date_total.",".$currentDate_total.");'>(".$valueTotal.")</a>
           </td>";
 
 $table.="</tr>";
