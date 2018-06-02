@@ -847,6 +847,20 @@ return $get_req->{'cuenta'};
 }
 
 
+public function GetQtyReqUrgAll($sort,$limit,$clause){
+
+$sql='SELECT count(*) as cuenta  
+        FROM `REQ_HEADER` as A 
+        '.$clause ;
+
+$get_req = $this->Query($sql);
+
+$get_req = json_decode($get_req[0]);
+
+
+return $get_req->{'cuenta'};
+}
+
 public function get_inv_qty_disp($sort,$limit,$clause){
 
 $sql=' SELECT 
