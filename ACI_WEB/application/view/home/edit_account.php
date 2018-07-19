@@ -431,7 +431,7 @@ var R = confirm('Desea modificar los proyectos asignados a : '+name+' ?');
   if (R==true) {
 
 
-  	for(var i=1; i<theTbl.rows.length-1 ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
+  	for(var i=1; i<theTbl.rows.length ;i++) //BLUCLE PARA LEER LINEA POR LINEA LA TABLA theTbl
 
 	{
 
