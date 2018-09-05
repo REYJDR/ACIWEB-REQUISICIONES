@@ -69,7 +69,7 @@ $res = $this->model->Query($sql);
 foreach ($res as $value) {
 
 	$value = json_decode($value);
-	var_dump($value );
+	
 
 	$id = $value->{'id'};
 	$name = $value->{'name'};
@@ -122,7 +122,7 @@ if($this->model->active_user_role!='admin'){
 if($_POST['flag2']=='1'){
 
 
-	if($this->model->active_user_role!='admin'){ 
+	if($this->model->active_user_role=='admin'){ 
 
 		if($_POST['oc_chk']==true){//notificaciones
 
@@ -293,7 +293,7 @@ self.location="'.URL.'index.php?url=home/edit_account/'.$id.'";
 <div class="col-lg-6">
 <fieldset>
 <legend><h4>Notificaciones</h4></legend>
-<input type="CHECKBOX" name="oc_chk" <?php echo $notif_oc; ?> />&nbsp<label>Requisiciones</label>
+<input type="CHECKBOX" name="oc_chk"  <?php echo $notif_oc; ?> />&nbsp<label>Requisiciones</label>
 
 </fieldset>
 </div>
