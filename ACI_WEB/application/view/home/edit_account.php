@@ -69,6 +69,7 @@ $res = $this->model->Query($sql);
 foreach ($res as $value) {
 
 	$value = json_decode($value);
+	var_dump($value );
 
 	$id = $value->{'id'};
 	$name = $value->{'name'};
@@ -190,8 +191,8 @@ $clause = 'id="'.$_POST['user_2'].'"';
 
 $this->model->update('SAX_USER',$columns,$clause);
 
-var_dump($columns);
-die();
+
+
 
 echo '<script>alert("Se ha actualizado los datos con exito");
 
