@@ -168,8 +168,8 @@ $pass_ck = $this->model->Query_value('SAX_USER','pass','where SAX_USER.onoff="1"
 if($this->model->active_user_role!='admin'){ 
 		
 	$columns  = array( 'name' => $_POST['name2'],
-					'lastname' => $_POST['lastname2'],
-					'pass' => $pass,
+					   'lastname' => $_POST['lastname2'],
+					   'pass' => $pass,
 
 						);
 }else{
@@ -190,7 +190,8 @@ $clause = 'id="'.$_POST['user_2'].'"';
 
 $this->model->update('SAX_USER',$columns,$clause);
 
-
+var_dump($columns);
+die();
 
 echo '<script>alert("Se ha actualizado los datos con exito");
 
