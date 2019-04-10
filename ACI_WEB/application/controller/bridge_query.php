@@ -2080,7 +2080,6 @@ $clause='';
 
 
 
-
 if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
   
    $JobsIn = $this->getProjectByUser($this->model->active_user_id);
@@ -2215,25 +2214,23 @@ filter_reset_button_text: false}
     </thead>
     <tbody>';
 
-    $time_pre = microtime(true);
+$time_pre = microtime(true);
 
-$Item = $this->model->get_req_to_report($sort,$limit,$clause);
+//$Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
-
+$Item = $this->model->get_req_to_report_NEW($sort,$limit,$clause);
 
 
 foreach ($Item as $datos) {
 
-$Item = json_decode($datos);
+  $Item = json_decode($datos);
 
+  // $uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
 
+  // $uinfo = json_decode($uinfo[0]);
 
-  $uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
-
-  $uinfo = json_decode($uinfo[0]);
-
-  $name = $uinfo->{'name'}; 
-  $lastname = $uinfo->{'lastname'}; 
+  $name = $Item->{'name'}; 
+  $lastname = $Item->{'lastname'}; 
 
   $status='';
 
@@ -2241,12 +2238,10 @@ $Item = json_decode($datos);
 
   $URL = '"'.URL.'"';
 
-  
 
 
 //obtengo estatus de la requisicion
 $status = $this->req_status($Item->{'NO_REQ'});
-
 
 
 switch ($status) {
@@ -2277,11 +2272,11 @@ switch ($status) {
 
 if($Item->{'isUrgent'} == '0'){
 
-$notifyUrg = '<label style="color:red;"> ! </label>';
+ $notifyUrg = '<label style="color:red;"> ! </label>';
 
 }else{
 
-$notifyUrg = '';
+ $notifyUrg = '';
 
 }
 
@@ -2299,7 +2294,7 @@ $table.=" <tr>
       }
 
       $time_post = microtime(true);
-    //  $exec_time = $time_post - $time_pre;
+      $exec_time = $time_post - $time_pre;
 
 
 $table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.'</div>'; 
@@ -4306,70 +4301,54 @@ echo '1';
 }
 
 public function get_req_status($id){
-$this->SESSION();
-$i=0;
 
-/*$total_comprado = $this->model->Query_value('PurOrdr_Header_Exp','sum(PurOrdr_Detail_Exp.Quantity)','
-                                              INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-                                              INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
-                                              AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
-                                              WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
-                                              AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-                                              AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""'); */
+  $this->SESSION();
+  $i=0;
 
-$total_comprado = $this->model->Query_value('PurOrdr_Header_Exp','sum(PurOrdr_Detail_Exp.Quantity)','
-                                              INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-                                              WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
-                                              AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-                                              AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
 
-/*repara el caso en el que en una OC se haya pedido mas de lo solicitado*/
-/*$SQL = 'SELECT PurOrdr_Detail_Exp.Quantity, 
-               PurOrdr_Detail_Exp.Item_id
+  $total_comprado = $this->model->Query_value('PurOrdr_Header_Exp','sum(PurOrdr_Detail_Exp.Quantity)','
+                                                INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+                                                WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
+                                                AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
+                                                AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
+
+
+  $SQL = 'SELECT PurOrdr_Detail_Exp.Quantity, 
+                PurOrdr_Detail_Exp.Item_id
           FROM PurOrdr_Header_Exp
           INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-          INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO
-          AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
           WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
           AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-          AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';*/
+          AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';
 
-$SQL = 'SELECT PurOrdr_Detail_Exp.Quantity, 
-               PurOrdr_Detail_Exp.Item_id
-        FROM PurOrdr_Header_Exp
-        INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-        WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
-        AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-        AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';
+  $total_comprado_by_item = $this->model->Query($SQL);
 
-$total_comprado_by_item = $this->model->Query($SQL);
+  foreach ($total_comprado_by_item  as $value) {
+        
+          $value = json_decode($value);
 
-foreach ($total_comprado_by_item  as $value) {
-       
-        $value = json_decode($value);
+          $QTY_BY_ITEM = $this->model->Query_value('REQ_DETAIL','CANTIDAD ', 'WHERE NO_REQ="'.$id.'" 
+                                                                AND ProductID="'.$value->{'Item_id'}.'" 
+                                                                AND ID_compania =  "'.$this->model->id_compania.'";');
+    
+          $REST_BY_ITEM = $QTY_BY_ITEM - $value->{'Quantity'};
 
-        $QTY_BY_ITEM = $this->model->Query_value('REQ_DETAIL','CANTIDAD ', 'WHERE NO_REQ="'.$id.'" 
-                                                              AND ProductID="'.$value->{'Item_id'}.'" 
-                                                              AND ID_compania =  "'.$this->model->id_compania.'";');
-  
-        $REST_BY_ITEM = $QTY_BY_ITEM - $value->{'Quantity'};
+          if($REST_BY_ITEM < 0){
 
-        if($REST_BY_ITEM < 0){
+            $i += (-1)*$REST_BY_ITEM ;
+          }
 
-          $i += (-1)*$REST_BY_ITEM ;
-        }
-
-}
+  }
 
 
 
-$total_comprado = $total_comprado - $i;
+  $total_comprado = $total_comprado - $i;
 
 
 
-$total_REQ = $this->model->Query_value('REQ_DETAIL','sum(CANTIDAD)','WHERE ID_compania="'.$this->model->id_compania.'" and NO_REQ="'.$id.'"');
+  $total_REQ = $this->model->Query_value('REQ_DETAIL','sum(CANTIDAD)','WHERE ID_compania="'.$this->model->id_compania.'" and NO_REQ="'.$id.'"');
 
-$total_restante = $total_REQ - $total_comprado; 
+  $total_restante = $total_REQ - $total_comprado; 
 
 
 //ECHO '<BR>'.$total_restante;
@@ -4414,6 +4393,7 @@ return $total_comprado;
 
 
 public function req_status($id){
+
 $this->SESSION(); 
 //////////////////////////////////////////////////ESTADO DEL PROCESO DE LA REQUISICION //////////////////////////////////////////////////////////
 
@@ -4430,13 +4410,6 @@ if($chk_quota){
 
 
 //CHECO ORDENES DE COMPRAS ASOCIADAS
-/*$chk_po =$this->model->Query_value('PurOrdr_Header_Exp','PurOrdr_Header_Exp.TransactionID',' INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-                                                                                             INNER JOIN REQ_DETAIL ON REQ_DETAIL.NO_REQ = PurOrdr_Header_Exp.CustomerSO AND REQ_DETAIL.ProductID = PurOrdr_Detail_Exp.Item_id
-                                                                                             WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
-                                                                                                AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-                                                                                                AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""'); */
-
-
 $chk_po =$this->model->Query_value('PurOrdr_Header_Exp','PurOrdr_Header_Exp.TransactionID',' WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$id.'"
                                                                                              AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
                                                                                              AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""');
@@ -4448,6 +4421,7 @@ if($chk_po){
 
 //CHECO TOTAL RESTANTE 
 $total_restante = $this->get_req_status($id);
+
 
 if($total_restante == 0 ){
     

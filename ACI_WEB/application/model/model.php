@@ -817,6 +817,28 @@ $get_req = $this->Query($sql);
 return $get_req;
 }
 
+public function get_req_to_report_NEW($sort,$limit,$clause){
+
+$sql=' SELECT 
+        U.name, 
+        U.lastname, 
+        A.*,
+        B.*
+        from  REQ_HEADER A 
+        inner join REQ_DETAIL B ON B.NO_REQ = A.NO_REQ
+        left  join SAX_USER   U ON U.ID = A.USER
+        '.$clause.'
+        group by A.NO_REQ 
+        order by ID '.$sort.' limit '.$limit;
+    
+
+
+$get_req = $this->Query($sql);
+
+
+return $get_req;
+}
+
 public function GetQtyReqUrg($sort,$limit,$clause){
 
 
