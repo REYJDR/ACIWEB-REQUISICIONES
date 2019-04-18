@@ -75,7 +75,7 @@ $(window).load(function(){
 
   <div class="col-lg-3" >
     
-     <label>Sortear</label>
+     <label>Ordenar</label>
      <div class='col-lg-12'>
      <select   id="sort" required>
            
@@ -93,6 +93,14 @@ $(window).load(function(){
      
      <input class='numb' type="number" min="1" max="10000" id="limit" value="200" required/>
      <p class="help-block">Maximo de 10000 registros</p>
+    </div>
+  </div>
+
+  <div class="separador col-lg-12"></div>
+  <div class="col-lg-6" >
+  <label>Descripción (Detalle) </label>
+    <div class='col-lg-12'>
+      <input type="text"  id="desc" />
     </div>
   </div>
 
@@ -129,6 +137,8 @@ var type =  $('#reportType').val();
 var date1 = $('#date1').val();
 var date2 = $('#date2').val();
 var job = $('#proyect').val();
+var desc = $('#desc').val();
+
 
 
 
@@ -143,7 +153,7 @@ $('#table').html('<P>CARGANDO ...</P>');
   $.ajax({
       type: "GET",
       url: link,
-      data: {url:datos, job: job},
+      data: {url:datos, job: job, desc: desc},
       success: function(res){
       
        $('#table').html(res);

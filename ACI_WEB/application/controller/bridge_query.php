@@ -2111,7 +2111,11 @@ if($_GET['job']){
 
 }
 
+if($_GET['desc']){
+  
+   $clause.=  ' and B.DESCRIPCION like "%'.$_GET['desc'].'%"';
 
+}
 
 
  $table.= '<script type="text/javascript">
@@ -3176,6 +3180,11 @@ if($_GET['job']){
 
 }
 
+if($_GET['desc']){
+  
+   $clause.=  ' and PurOrdr_Detail_Exp.Description like "%'.$_GET['desc'].'%"';
+
+}
 
  $table.= '<script type="text/javascript">
 
@@ -5367,7 +5376,6 @@ public function getJobs(){
   $jobs = $this->model->get_JobList(); 
   $list = '';
 
- 
 
   foreach ($jobs as $value) 
   {
@@ -5388,7 +5396,6 @@ public function getJobs(){
     
   }
  
-
   
   echo $list;
 }
