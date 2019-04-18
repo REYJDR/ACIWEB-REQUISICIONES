@@ -2086,28 +2086,28 @@ if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' &&
   
    $JobsIn = $this->getProjectByUser($this->model->active_user_id);
 
-   $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" 
-               and REQ_HEADER.job '.$JobsIn;
+   $clause.= 'where A.ID_compania="'.$this->model->id_compania.'" and B.ID_compania="'.$this->model->id_compania.'" 
+               and A.job '.$JobsIn;
        
 }else{
  
-    $clause.= 'where REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_DETAIL.ID_compania="'.$this->model->id_compania.'" ';
+    $clause.= 'where A.ID_compania="'.$this->model->id_compania.'" and B.ID_compania="'.$this->model->id_compania.'" ';
 
 }
 
 if($date1!=''){
    if($date2!=''){
-      $clause.= ' and  DATE >= "'.$date1.'%" and DATE <= "'.$date2.'%" ';           
+      $clause.= ' and  A.DATE >= "'.$date1.'%" and A.DATE <= "'.$date2.'%" ';           
     }
    if($date2==''){ 
-     $clause.= ' and  DATE like "'.$date1.'%" ';
+     $clause.= ' and  A.DATE like "'.$date1.'%" ';
    }
 }
 
 
 if($_GET['job']){
   
-   $clause.=  ' and REQ_HEADER.job like "'.$_GET['job'].'%"';
+   $clause.=  ' and A.job like "'.$_GET['job'].'%"';
 
 }
 

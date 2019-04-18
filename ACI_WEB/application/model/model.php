@@ -830,7 +830,7 @@ $sql=' SELECT
         group by A.NO_REQ 
         order by ID '.$sort.' limit '.$limit;
     
-die($sql);
+//die($sql);
 
 $get_req = $this->Query($sql);
 
