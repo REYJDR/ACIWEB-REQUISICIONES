@@ -5359,7 +5359,7 @@ public function getJobs(){
   {
     $value = json_decode($value);
 
-    $job = substr($value->{'JOB_ID'},0,2);
+    $job = substr($value->{'JobID'},0,2);
 
     $jobsArr[$job] = $job;
 

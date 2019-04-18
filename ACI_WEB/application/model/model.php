@@ -649,7 +649,6 @@ return $NO_ORDER;
 }
 
 
-
 public function get_JobList(){
 
 $jobs = $this->Query('Select * from Jobs_Exp where ID_compania="'.$this->id_compania.'" and IsActive="1" order by JobID asc'); 
