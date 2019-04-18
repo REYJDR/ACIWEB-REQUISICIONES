@@ -810,7 +810,7 @@ $sql='SELECT * FROM `REQ_HEADER`
 inner join REQ_DETAIL ON REQ_HEADER.NO_REQ = REQ_DETAIL.NO_REQ
 '.$clause.' group by REQ_HEADER.NO_REQ order by ID '.$sort.' limit '.$limit.';';
 
-echo $get_req = $this->Query($sql);
+$get_req = $this->Query($sql);
 
 
 return $get_req;
@@ -830,7 +830,7 @@ $sql=' SELECT
         group by A.NO_REQ 
         order by ID '.$sort.' limit '.$limit;
     
-
+die($sql);
 
 $get_req = $this->Query($sql);
 
