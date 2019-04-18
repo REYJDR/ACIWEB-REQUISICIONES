@@ -5353,7 +5353,7 @@ public function getJobs(){
   $jobs = $this->model->get_JobList(); 
   $list = '';
 
-  var_dump($jobs);
+ 
 
   foreach ($jobs as $value) 
   {
@@ -5365,6 +5365,9 @@ public function getJobs(){
 
   }
   
+  var_dump($jobsArr);
+
+
   foreach ($jobsArr as $value) 
   {
 
