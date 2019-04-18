@@ -5344,6 +5344,38 @@ echo $list;
 }
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+//LISTA DE JOBS, FASES Y CENTRO DE COSTOS
+public function getJobs(){
+  
+  $this->SESSION();
+  
+  $jobs = $this->model->get_JobList(); 
+  $list = '';
+
+  foreach ($jobs as $value) 
+  {
+    $value = json_decode($value);
+
+    $job = substr($value,0,2);
+
+    $jobsArr[$job] = $job;
+
+  }
+  
+  foreach ($jobsArr as $value) 
+  {
+
+    $list.= '<option value="'.$value.'" >'.$value.'</option>';
+    
+  }
+ 
+
+  
+  echo $list;
+}
+
+
 public function get_phaseList(){
 $this->SESSION();
 

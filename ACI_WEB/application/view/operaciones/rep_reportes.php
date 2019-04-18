@@ -1,3 +1,29 @@
+
+<script>
+function getJobs(){
+  
+  URL = document.getElementById('URL').value;
+
+  var datos= "bridge_query/getJobs/";
+    
+  var link= URL+"index.php";
+
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: {url:datos},
+        success: function(res){
+        
+            $('#proyect').html(res);
+
+          }
+    });
+
+}
+</script>
+
+
+
 <div class="page col-xs-12">
 
 <div  class="col-xs-12">
@@ -45,6 +71,17 @@
      <input class='numb' type="date" id="date2" name="name2"  value="<?php echo date('Y-m-d'); ?>"/> 
      </div>
   
+  </div>
+
+  <div class="col-lg-3" >
+    
+     <label>Proyecto</label>
+     <div class='col-lg-12'>
+     <select   id="proyect" required>
+           
+
+         
+    </select>
   </div>
 
   <div class="col-lg-3" >
