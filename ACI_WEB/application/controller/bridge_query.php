@@ -5365,7 +5365,6 @@ public function getJobs(){
 
   }
   
-  var_dump($jobsArr);
 
 
   foreach ($jobsArr as $value) 
