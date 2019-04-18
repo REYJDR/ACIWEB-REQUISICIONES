@@ -100,7 +100,7 @@ $(window).load(function(){
   <div class="col-lg-8" >
   <label>Descripción (Detalle) </label>
     <div class='col-lg-12'>
-      <input class='col-lg-10'> type="text"  id="desc" />
+      <input class='col-lg-10' type="text"  id="desc" />
     </div>
   </div>
 
