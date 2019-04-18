@@ -90,14 +90,14 @@ $(window).load(function(){
   <div class="col-lg-2" >
   <label>Limitar</label>
     <div class='col-lg-12'>
-     
+
      <input class='numb' type="number" min="1" max="10000" id="limit" value="200" required/>
      <p class="help-block">Maximo de 10000 registros</p>
     </div>
   </div>
 
   <div class="separador col-lg-12"></div>
-  <div class="col-lg-12" >
+  <div class="col-lg-10" >
   <label>Descripción (Detalle) </label>
     <div class='col-lg-10'>
       <input type="text"  id="desc" />
