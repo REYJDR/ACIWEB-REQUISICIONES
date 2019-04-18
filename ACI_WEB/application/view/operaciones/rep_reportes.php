@@ -68,7 +68,7 @@ $(window).load(function(){
      <label>Proyecto</label>
      <div class='col-lg-12'>
      <select id="proyect" required>  
-     <option value="" selected>All</option>
+      
      </select>
      </div>
   </div>

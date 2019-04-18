@@ -5379,7 +5379,7 @@ public function getJobs(){
 
   }
   
-
+  $list.= '<option value="" selected>Todos</option>';
 
   foreach ($jobsArr as $value) 
   {
