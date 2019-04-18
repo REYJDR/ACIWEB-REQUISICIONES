@@ -63,8 +63,7 @@ function getJobs(){
 <div id='par_filtro' class="collapse " >
 <div class="col-lg-12"></div>
 <fieldset>
-  <div class="col-lg-5" >
-
+  <div class="col-lg-3" >
      <label>Registros entre</label>
      <div class='col-lg-12'>
      <input class='numb' type="date" id="date1" name="name1"  value="<?php echo date('Y-m-d', strtotime('today - 30 days'));?>" /> -
@@ -74,14 +73,11 @@ function getJobs(){
   </div>
 
   <div class="col-lg-3" >
-    
+
      <label>Proyecto</label>
      <div class='col-lg-12'>
-     <select   id="proyect" required>
-           
-
-         
-    </select>
+     <select id="proyect" required>  
+     </select>
   </div>
 
   <div class="col-lg-3" >
