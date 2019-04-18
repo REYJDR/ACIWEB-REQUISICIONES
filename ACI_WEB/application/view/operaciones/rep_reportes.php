@@ -97,9 +97,9 @@ $(window).load(function(){
   </div>
 
   <div class="separador col-lg-12"></div>
-  <div class="col-lg-6" >
+  <div class="col-lg-12" >
   <label>Descripción (Detalle) </label>
-    <div class='col-lg-12'>
+    <div class='col-lg-10'>
       <input type="text"  id="desc" />
     </div>
   </div>
