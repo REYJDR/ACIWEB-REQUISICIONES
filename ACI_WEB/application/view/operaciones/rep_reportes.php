@@ -78,6 +78,7 @@ function getJobs(){
      <div class='col-lg-12'>
      <select id="proyect" required>  
      </select>
+     </div>
   </div>
 
   <div class="col-lg-3" >
