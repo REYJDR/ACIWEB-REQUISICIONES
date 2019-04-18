@@ -1616,6 +1616,7 @@ public function get_report($type,$sort,$limit,$date1,$date2){
 
 $this->SESSION();
 
+
 switch ($type) {
 
 //CASE 1
@@ -2080,6 +2081,7 @@ $clause='';
 
 
 
+
 if ($this->model->active_user_role != 'admin' && $this->model->rol_campo=='1' && $this->rol_compras !='1') {
   
    $JobsIn = $this->getProjectByUser($this->model->active_user_id);
@@ -2102,6 +2104,12 @@ if($date1!=''){
    }
 }
 
+
+if($_GET['job']){
+  
+   $clause.=  ' and REQ_HEADER.job like "'.$_GET['job'].'%"';
+
+}
 
 
 
@@ -2526,6 +2534,11 @@ if($date1!=''){
 
 }
 
+if($_GET['job']){
+  
+   $clause.=  ' and REQ_HEADER.job like "'.$_GET['job'].'%"';
+
+}
 
 
 
@@ -3161,6 +3174,11 @@ if($date1!=''){
    }
 }
 
+if($_GET['job']){
+  
+   $clause.=  ' and PurOrdr_Detail_Exp.JobID like "'.$_GET['job'].'%"';
+
+}
 
 
  $table.= '<script type="text/javascript">

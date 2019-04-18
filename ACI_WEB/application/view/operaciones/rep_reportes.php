@@ -127,12 +127,13 @@ var sort =  $('#sort').val();
 var type =  $('#reportType').val();
 var date1 = $('#date1').val();
 var date2 = $('#date2').val();
+var job = $('#proyect').val();
 
 
 
 URL = document.getElementById('URL').value;
 
-var datos= "url=bridge_query/get_report/"+type+"/"+sort+"/"+limit+"/"+date1+"/"+date2;
+var datos= "bridge_query/get_report/"+type+"/"+sort+"/"+limit+"/"+date1+"/"+date2;
    
 var link= URL+"index.php";
 
@@ -141,7 +142,7 @@ $('#table').html('<P>CARGANDO ...</P>');
   $.ajax({
       type: "GET",
       url: link,
-      data: datos,
+      data: {url:datos, job: job},
       success: function(res){
       
        $('#table').html(res);
