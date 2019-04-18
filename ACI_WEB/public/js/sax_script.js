@@ -874,3 +874,25 @@ var datos ='url=bridge_query/set_location/'+ALMACEN+'/'+locationAL;
  }
 
 
+function getJobs(){
+  
+  URL = document.getElementById('URL').value;
+
+  var datos= "bridge_query/getJobs/";
+    
+  var link= URL+"index.php";
+
+    $.ajax({
+        type: "GET",
+        url: link,
+        data: {url:datos},
+        success: function(res){
+        
+            $('#proyect').html(res);
+
+          }
+    });
+
+}
+
+
