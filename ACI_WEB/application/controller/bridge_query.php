@@ -2111,7 +2111,7 @@ if($_GET['job']){
 
 }
 
-die($clause);
+
 
 
  $table.= '<script type="text/javascript">
@@ -2225,9 +2225,9 @@ filter_reset_button_text: false}
 
 $time_pre = microtime(true);
 
-//$Item = $this->model->get_req_to_report($sort,$limit,$clause);
+$Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
-$Item = $this->model->get_req_to_report_NEW($sort,$limit,$clause);
+//$Item = $this->model->get_req_to_report_NEW($sort,$limit,$clause);
 
 
 foreach ($Item as $datos) {
