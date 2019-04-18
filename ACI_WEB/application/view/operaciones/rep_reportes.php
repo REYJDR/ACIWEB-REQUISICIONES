@@ -1,5 +1,7 @@
 
 <script>
+getJobs();
+
 function getJobs(){
   
   URL = document.getElementById('URL').value;
