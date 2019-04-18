@@ -5353,6 +5353,8 @@ public function getJobs(){
   $jobs = $this->model->get_JobList(); 
   $list = '';
 
+  var_dump($jobs);
+
   foreach ($jobs as $value) 
   {
     $value = json_decode($value);
