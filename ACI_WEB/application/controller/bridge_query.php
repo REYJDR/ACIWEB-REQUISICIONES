@@ -2111,6 +2111,7 @@ if($_GET['job']){
 
 }
 
+die($clause);
 
 
  $table.= '<script type="text/javascript">
