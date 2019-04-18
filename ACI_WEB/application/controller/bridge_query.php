@@ -2535,11 +2535,6 @@ if($date1!=''){
 
 }
 
-if($_GET['job']){
-  
-   $clause.=  ' and REQ_HEADER.job like "'.$_GET['job'].'%"';
-
-}
 
 
 
