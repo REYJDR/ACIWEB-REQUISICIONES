@@ -1023,7 +1023,7 @@ public function get_OC($sort,$limit,$clause){
 $query ='SELECT distinct 
         PurchaseOrderNumber,
         Total,
-        LAST_CHANGE,
+        PurOrdr_Header_Exp.LAST_CHANGE,
         WorkflowStatusName,
         WorkflowAssignee,
         WorkflowNote,
