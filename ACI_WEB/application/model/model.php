@@ -878,7 +878,7 @@ public function getReqStatus($clause , $sort){
                     SUM(CAST(IFNULL(PO.QtyOrdered, 0) AS decimal(16,2)) ) as QtyOrdered,
                     SUM(CAST(IFNULL(RC.QtyRecieved, 0) AS decimal(16,2)) ) as QtyRecieved,
                     CASE 
-                    WHEN RI.NO_REQ = NULL 
+                    WHEN RI.COUNT > 0 
                     THEN 0 
                     ELSE 1 
                     END as COTIZANDO
@@ -898,8 +898,9 @@ public function getReqStatus($clause , $sort){
                             FROM REQ_RECEPT 
                             GROUP BY NO_REQ) RC ON RC.NO_REQ = A.NO_REQ
                 LEFT JOIN (SELECT 
-                            NO_REQ 
-                            FROM  REQ_QUOTA ) RI ON RI.NO_REQ = A.NO_REQ
+                            NO_REQ,
+                            COUNT(*) AS COUNT 
+                            FROM  REQ_QUOTA GROUP BY NO_REQ ) RI ON RI.NO_REQ = A.NO_REQ
                 ".$clause."
                 GROUP BY A.NO_REQ, U.name, U.lastname, A.DATE, A.NOTA, A.isUrgent, A.isPay, CLOSED, CLOSED_NOTE ORDER BY A.ID ".$sort." ) AS REQST ";
     
