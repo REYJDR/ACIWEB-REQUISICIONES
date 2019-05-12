@@ -903,6 +903,7 @@ public function getReqStatus($clause , $sort){
                 ".$clause."
                 GROUP BY A.NO_REQ, U.name, U.lastname, A.DATE, A.NOTA, A.isUrgent, A.isPay, CLOSED, CLOSED_NOTE ORDER BY A.ID '.$sort.' ) AS REQST ";
     
+                ECHO $sql;
     $get_req = $this->Query($sql);
     
     
