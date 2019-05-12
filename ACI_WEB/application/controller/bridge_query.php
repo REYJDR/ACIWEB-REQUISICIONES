@@ -2232,7 +2232,8 @@ $time_pre = microtime(true);
 //$Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
 //$Item = $this->model->get_req_to_report_NEW($sort,$limit,$clause);
-$Item = getReqStatus($clause);
+$Item = $this->model->getReqStatus($clause);
+
 
 foreach ($Item as $datos) {
 
@@ -2248,7 +2249,7 @@ foreach ($Item as $datos) {
   $URL = '"'.URL.'"';
 
   $status = $Item->{'ESTATUS'};
-  
+
   switch ($status) {
     
       case 'CERRADA':
