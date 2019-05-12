@@ -1027,7 +1027,7 @@ group by PurOrdr_Header_Exp.TransactionID
 Order by PurOrdr_Header_Exp.LAST_CHANGE '.$sort.' limit '.$limit.';';
 
 
-
+ECHO $query;
 $res = $this->Query($query);
 
 
