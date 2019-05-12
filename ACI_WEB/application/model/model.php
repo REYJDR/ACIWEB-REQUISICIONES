@@ -852,6 +852,7 @@ public function getReqStatus($clause , $sort){
                     REQST.QtyOrdered,
                     REQST.QtyRecieved,
                     REQST.COTIZANDO,
+                    REQST.RES_COT,
                     CASE
                         WHEN CLOSED = 1     THEN 'CERRADA' 
                         WHEN QtyOrdered  > 0 AND (QtyRecieved = QtyOrdered OR QtyRecieved > QtyOrdered ) THEN 'FINALIZADO'  
@@ -877,10 +878,11 @@ public function getReqStatus($clause , $sort){
                     SUM(CAST(B.Cantidad AS decimal(16,2))) as QtyRequired,
                     SUM(CAST(IFNULL(PO.QtyOrdered, 0) AS decimal(16,2)) ) as QtyOrdered,
                     SUM(CAST(IFNULL(RC.QtyRecieved, 0) AS decimal(16,2)) ) as QtyRecieved,
+                    RI.NO_REQ AS RES_COT,
                     CASE 
-                    WHEN RI.COUNT > 0 
-                    THEN 0 
-                    ELSE 1 
+                       WHEN RI.COUNT > 0 
+                       THEN 1 
+                       ELSE 0 
                     END as COTIZANDO
                 FROM REQ_HEADER A 
                 INNER JOIN REQ_DETAIL B ON B.NO_REQ = A.NO_REQ 
@@ -902,7 +904,7 @@ public function getReqStatus($clause , $sort){
                             COUNT(*) AS COUNT 
                             FROM  REQ_QUOTA GROUP BY NO_REQ ) RI ON RI.NO_REQ = A.NO_REQ
                 ".$clause."
-                GROUP BY A.NO_REQ, U.name, U.lastname, A.DATE, A.NOTA, A.isUrgent, A.isPay, CLOSED, CLOSED_NOTE ORDER BY A.ID ".$sort." ) AS REQST ";
+                GROUP BY A.NO_REQ, U.name, U.lastname, A.DATE, A.NOTA, A.isUrgent, A.isPay, CLOSED, CLOSED_NOTE , RES_COT ORDER BY A.ID ".$sort." ) AS REQST ";
     ECHO $sql;
                
     $get_req = $this->Query($sql);
