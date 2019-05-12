@@ -2253,7 +2253,7 @@ foreach ($Item as $datos) {
   switch ($status) {
     
       case 'CERRADA':
-         $style = 'style="background-color:#D8D8D8 ;"';//verder
+         $style = 'style="background-color:#D8D8D8 ;"';//gris
         break;
       case 'FINALIZADO':
          $style = 'style="background-color:#BCF5A9;"';//verder
