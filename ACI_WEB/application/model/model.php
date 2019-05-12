@@ -901,7 +901,7 @@ public function getReqStatus($clause , $sort){
                             NO_REQ 
                             FROM  REQ_QUOTA ) RI ON RI.NO_REQ = A.NO_REQ
                 ".$clause."
-                GROUP BY A.NO_REQ, U.name, U.lastname, A.DATE, A.NOTA, A.isUrgent, A.isPay, CLOSED, CLOSED_NOTE ORDER BY A.ID '.$sort.' ) AS REQST ";
+                GROUP BY A.NO_REQ, U.name, U.lastname, A.DATE, A.NOTA, A.isUrgent, A.isPay, CLOSED, CLOSED_NOTE ORDER BY A.ID ".$sort." ) AS REQST ";
     
                 ECHO $sql;
     $get_req = $this->Query($sql);
