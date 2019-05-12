@@ -2231,14 +2231,51 @@ $time_pre = microtime(true);
 
 //$Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
-$Item = $this->model->get_req_to_report_NEW($sort,$limit,$clause);
-
+//$Item = $this->model->get_req_to_report_NEW($sort,$limit,$clause);
+$Item = getReqStatus($clause);
 
 foreach ($Item as $datos) {
 
   $Item = json_decode($datos);
 
-  // $uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
+  $name = $Item->{'name'}; 
+  $lastname = $Item->{'lastname'}; 
+
+  $status='';
+
+  $ID = '"'.$Item->{'NO_REQ'}.'"';
+
+  $URL = '"'.URL.'"';
+
+  $status = $Item->{'ESTATUS'};
+  
+  switch ($status) {
+    
+      case 'CERRADA':
+         $style = 'style="background-color:#D8D8D8 ;"';//verder
+        break;
+      case 'FINALIZADO':
+         $style = 'style="background-color:#BCF5A9;"';//verder
+        break;
+      case 'ORDENADO':
+         $style = 'style="background-color:#F2F5A9;"';//AMARILLO
+        break;
+      case 'ORDENADO / RECEPCION PARCIAL':
+        $style = 'style="background-color:#F2F5A9;"';//AMARILLO
+       break;
+      case 'PARCIALMENTE ORDENADO':
+         $style = 'style="background-color:#F3E2A9;"';//NARANJA
+        break;
+      case 'COTIZANDO':
+         $style = 'style="background-color:#F7BE81;"';//NARANJA
+        break; 
+      case 'POR COTIZAR':
+         $style = 'style="background-color:#F5A9A9;"';//ROJO
+        break; 
+    
+    }
+
+  /*// $uinfo = $this->model->Query('SELECT name, lastname from SAX_USER Where ID="'.$Item->{'USER'}.'"');
 
   // $uinfo = json_decode($uinfo[0]);
 
@@ -2281,7 +2318,7 @@ switch ($status) {
      $style = 'style="background-color:#F5A9A9;"';//ROJO
     break; 
 
-}
+} */
 
 if($Item->{'isUrgent'} == '0'){
 
@@ -2310,7 +2347,7 @@ $table.=" <tr>
       $exec_time = $time_post - $time_pre;
 
 
-$table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div>'.$exec_time.'</div>'; 
+$table.= '</tbody></table> <div class="separador col-lg-12"></div><div id="info"></div><div> Execution time: '.number_format($exec_time, 2).'</div>'; 
 
 
 break;

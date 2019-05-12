@@ -1,0 +1,33 @@
+SELECT 
+    A.NO_REQ,
+    A.DATE,
+    A.NOTA,
+    U.name, 
+    U.lastname, 
+    SUM(B.Cantidad) as QtyRequired,
+    SUM(PO.QtyOrdered),
+
+    (CASE B.Cantidad 
+        WHEN (B.Cantidad < PO.QtyOrdered) THEN 'SOBREORDENADO'  
+        WHEN (B.Cantidad > PO.QtyOrdered  AND PO.QtyOrdered > 0 ) THEN 'ORDENADO PARCIAL'  
+        WHEN (B.Cantidad > PO.QtyOrdered  AND PO.QtyOrdered = 0 ) THEN 'COTIZANDO'  
+        WHEN (B.Cantidad = PO.QtyOrdered ) THEN 'ORDENADO' 
+     END) AS ESTATUS
+
+FROM REQ_HEADER A 
+INNER JOIN REQ_DETAIL B ON B.NO_REQ = A.NO_REQ
+LEFT JOIN  SAX_USER   U ON U.ID = A.USER
+
+
+LEFT JOIN (SELECT 
+            PH.TransactionID,
+            PH.PurchaseOrderNumber,
+            PH.ID_compania,
+            PH.CustomerSO,
+            SUM(PD.Quantity) AS QtyOrdered
+        FROM PurOrdr_Header_Exp PH
+        INNER JOIN PurOrdr_Detail_Exp PD ON PD.TransactionID = PH.TransactionID
+        GROUP BY PH.TransactionID, PH.PurchaseOrderNumber,PH.ID_compania, PH.CustomerSO ) PO ON PO.CustomerSO = A.NO_REQ
+
+WHERE A.ID_compania="1" and  A.DATE >= "2019-04-01%" and A.DATE <= "2019-04-10%"
+GROUP BY A.NO_REQ, U.name, U.lastname, A.DATE, A.NOTA, ESTATUS
