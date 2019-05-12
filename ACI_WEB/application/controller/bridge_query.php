@@ -2232,7 +2232,7 @@ $time_pre = microtime(true);
 //$Item = $this->model->get_req_to_report($sort,$limit,$clause);
 
 //$Item = $this->model->get_req_to_report_NEW($sort,$limit,$clause);
-$Item = $this->model->getReqStatus($clause);
+$Item = $this->model->getReqStatus($clause, $sort);
 
 
 foreach ($Item as $datos) {
