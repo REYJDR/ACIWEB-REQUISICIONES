@@ -855,8 +855,8 @@ public function getReqStatus($clause ){
                     CASE
                         WHEN CLOSED = 1     THEN 'CERRADA' 
                         WHEN QtyOrdered  > 0 AND (QtyRecieved = QtyOrdered OR QtyRecieved > QtyOrdered ) THEN 'FINALIZADO'  
-                        WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'SOBREORDENADO'  
-                        WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'SOBREORDENADO / RECEPCION PARCIAL' 
+                        WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO'  
+                        WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL' 
                         WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO' 
                         WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL'
                         WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved = 0 ) THEN 'PARCIALMENTE ORDENADO'  
