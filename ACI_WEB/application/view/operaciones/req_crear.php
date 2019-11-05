@@ -425,18 +425,39 @@ var x=document.getElementById(UNIID).innerHTML;
 </fieldset>
 </div>
 <!-- //****************************** -->
-<!-- <div class=" col-lg-6">
+<div class=" col-lg-6">
 <fieldset>
 	
 	
 	<legend><h4>Adjuntar soporte</h4></legend>
-
-	<input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="file" id="file" multiple/>
-
-
+    <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="fileToUpload" id="fileToUpload" multiple/>
+    <button onclick='javascript: upload();'></button>
 	
 </fieldset>
-</div>    -->
+</div> 
+
+<script>
+
+function upload(){
+  
+  URL = document.getElementById('URL').value;
+
+    var link= URL+"/public/soportes/upload.php";
+	var fileInput = document.getElementById('fileToUpload');
+	var file = fileInput.files[0];
+	var formData = new FormData();
+    formData.append('file', file);
+
+
+    var xhr = new XMLHttpRequest();
+
+	xhr.open('POST', 'link', true);
+	xhr.send(formData);
+
+
+}
+
+</script>
 
 <!-- //****************************** -->
 
@@ -487,15 +508,13 @@ URL = document.getElementById('URL').value;
 
 function set_job(jobid){
 
-document.getElementById('jobID_db').value = jobid;
-
+ document.getElementById('jobID_db').value = jobid;
 
 }
 
 function set_phase(phaseid){
 
-document.getElementById('phaseID_db').value = phaseid;
-
+ document.getElementById('phaseID_db').value = phaseid;
 
 }
 
