@@ -431,7 +431,7 @@ var x=document.getElementById(UNIID).innerHTML;
 	
 	<legend><h4>Adjuntar soporte</h4></legend>
 
-	<input class=" col-lg-12" accept='png|jpg|pdf|xlsz|xls' type="file" name="file" id="file" />
+	<input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="file" id="file" multiple/>
 
 
 	
