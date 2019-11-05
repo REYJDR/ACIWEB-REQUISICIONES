@@ -454,8 +454,16 @@ function upload(){
 	xhr.open('POST', link, true);
 	xhr.send(formData);
 
-	console.log(xhr.response);
-	console.log(xhr.responseText);
+	xhr.onload = function () {
+    if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200) {
+            console.log(xhr.response);
+            console.log(xhr.responseText);
+        }
+    }
+};
+
+
 
 }
 
