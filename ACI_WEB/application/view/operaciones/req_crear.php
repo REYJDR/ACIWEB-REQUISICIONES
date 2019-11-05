@@ -451,7 +451,7 @@ function upload(){
 
     var xhr = new XMLHttpRequest();
 
-	xhr.open('POST', 'link', true);
+	xhr.open('POST', link, true);
 	xhr.send(formData);
 
 
