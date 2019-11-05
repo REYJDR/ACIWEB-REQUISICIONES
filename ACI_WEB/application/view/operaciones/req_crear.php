@@ -454,6 +454,8 @@ function upload(){
 	xhr.open('POST', link, true);
 	xhr.send(formData);
 
+	console.log(xhr.response);
+	console.log(xhr.responseText);
 
 }
 
