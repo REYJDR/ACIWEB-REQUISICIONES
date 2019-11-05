@@ -424,8 +424,8 @@ var x=document.getElementById(UNIID).innerHTML;
 	
 </fieldset>
 </div>
-
-<div class=" col-lg-6">
+<!-- //****************************** -->
+<!-- <div class=" col-lg-6">
 <fieldset>
 	
 	
@@ -436,12 +436,7 @@ var x=document.getElementById(UNIID).innerHTML;
 
 	
 </fieldset>
-</div>   
-		
-<!-- //****************************** -->
-
-
-
+</div>    -->
 
 <!-- //****************************** -->
 
