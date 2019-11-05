@@ -412,6 +412,8 @@ var x=document.getElementById(UNIID).innerHTML;
 
 
 <div class=" col-lg-4">
+
+<div class=" col-lg-12">
 <fieldset>
 	
 	
@@ -424,6 +426,28 @@ var x=document.getElementById(UNIID).innerHTML;
 	
 </fieldset>
 </div>
+<div class=" col-lg-12">
+<fieldset>
+	
+	
+	<legend><h4>Adjuntar soporte</h4></legend>
+
+	<input type="file" name="file" id="file" />
+
+
+	
+</fieldset>
+</div>
+
+
+</div>
+
+<!-- //****************************** -->
+
+
+
+
+<!-- //****************************** -->
 
 </fieldset>
 
