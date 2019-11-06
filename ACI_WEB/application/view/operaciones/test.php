@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-<!-- //****************************** -->
+
     <div class=" col-lg-6">
     <fieldset>
         
@@ -17,7 +17,7 @@
         <button onclick="uploadFiles('test');" >upload</button>
     </fieldset>
     </div> 
-<!-- //****************************** -->
+
 
 </body>
 </html>
