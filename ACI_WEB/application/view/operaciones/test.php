@@ -110,14 +110,13 @@
     }
   };
 
-removeFile  = function () (id){
+removeFile  = function(id){
 
     fileList.splice(id, 1);
 
     renderFileList();
 
-}
-
+};
 
 })();
 
