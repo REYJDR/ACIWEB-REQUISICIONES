@@ -36,6 +36,7 @@
 
 <script>
 (function () {
+
   var fileCatcher = document.getElementById('file-catcher');
   var fileInput = document.getElementById('file-input');
   var fileListDisplay = document.getElementById('file-list-display');
@@ -81,10 +82,11 @@
                 $('#msg').html(xhr.response);
 			}
         }
-        
+    }
   };
 
 })();
+
 //**************************************************** */
 function uploadFiles(req){
     $('#msg').html('');
