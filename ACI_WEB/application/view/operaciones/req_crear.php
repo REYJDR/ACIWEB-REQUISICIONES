@@ -424,6 +424,7 @@ var x=document.getElementById(UNIID).innerHTML;
 	
 </fieldset>
 </div>
+
 <!-- //****************************** -->
 <div class=" col-lg-6">
 <fieldset>
@@ -431,43 +432,9 @@ var x=document.getElementById(UNIID).innerHTML;
 	
 	<legend><h4>Adjuntar soporte</h4></legend>
     <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="fileToUpload" id="fileToUpload" multiple/>
-    <button onclick='javascript: upload();'></button>
-	
+
 </fieldset>
 </div> 
-
-<script>
-
-function upload(){
-  
-  URL = document.getElementById('URL').value;
-
-    var link= URL+"public/soportes/upload.php";
-	var fileInput = document.getElementById('fileToUpload');
-	var file = fileInput.files[0];
-	var formData = new FormData();
-    formData.append('fileToUpload', file);
-
-
-    var xhr = new XMLHttpRequest();
-
-	xhr.open('POST', link, true);
-	xhr.send(formData);
-
-	xhr.onload = function () {
-    if (xhr.readyState === xhr.DONE) {
-        if (xhr.status === 200) {
-            console.log(xhr.response);
-        }
-    }
-};
-
-
-
-}
-
-</script>
-
 <!-- //****************************** -->
 
 </fieldset>
@@ -527,7 +494,31 @@ function set_phase(phaseid){
 
 }
 
+function uploadFiles(req){
+  
+	URL = document.getElementById('URL').value;
 
+		var link= URL+"public/soportes/upload.php";
+		var fileInput = document.getElementById('fileToUpload');
+		var file = fileInput.files[0];
+		var formData = new FormData();
+		formData.append('fileToUpload', file);
+		formData.append('req', req);
+
+		var xhr = new XMLHttpRequest();
+
+		xhr.open('POST', link, true);
+		xhr.send(formData);
+
+		xhr.onload = function () {
+		if (xhr.readyState === xhr.DONE) {
+			if (xhr.status === 200) {
+				console.log(xhr.response);
+			}
+		}
+	};
+
+}
 
 CHK_VALIDATION = false;
 
@@ -680,7 +671,7 @@ if (r == true) {
         		    console.log('RES:'+res);
 					      
 					if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-									
+						uploadFiles(Req_NO);
 						send_mail(link,Req_NO,set_urgent,isPay);
 					}
 
