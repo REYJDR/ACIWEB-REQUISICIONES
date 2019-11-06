@@ -12,7 +12,6 @@ var button = document.getElementById('send');
     
     $('#msg').html('');
       
-
     //   var fileList = [];
     //   var renderFileList, sendFile;
       

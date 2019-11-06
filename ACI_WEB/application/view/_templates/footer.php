@@ -41,23 +41,5 @@
 
 </body>
 </html>
-
-<?php 
-
-/*date_default_timezone_set('America/Panama');
-
-
-$now = new DateTime();
-$mins = $now->getOffset() / 60;
-
-$sgn = ($mins < 0 ? -1 : 1);
-$mins = abs($mins);
-$hrs = floor($mins / 60);
-$mins -= $hrs * 60;
-
-$offset = sprintf('%+d:%02d', $hrs*$sgn, $mins);
-
-echo $offset;*/
-
-
-?>
+<!-- UPLOAA FILES -->
+<script src="<?php echo URL; ?>js/operaciones/upload.js"></script>
