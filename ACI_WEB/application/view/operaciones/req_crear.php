@@ -426,7 +426,7 @@ var x=document.getElementById(UNIID).innerHTML;
 </div>
 
 <!-- //****************************** -->
-<!-- <div class=" col-lg-12" id='file-catcher' >
+<div class=" col-lg-12" id='file-catcher' >
 
     <div class=" col-lg-6">
         <fieldset> 
@@ -437,7 +437,7 @@ var x=document.getElementById(UNIID).innerHTML;
 
     <div class=" col-lg-12">
       <div id='file-list-display'></div>
-    </div> -->
+    </div> 
     
     <!-- <div class=" col-lg-12">
         <fieldset>
