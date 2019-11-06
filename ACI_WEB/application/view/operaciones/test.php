@@ -90,7 +90,10 @@
       fileListDisplay.appendChild(div);
 
     });
+
+    console.log(fileList);
   };
+
   
   sendFile = function (file) {
   	var formData = new FormData();
