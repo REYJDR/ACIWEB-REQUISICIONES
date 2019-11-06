@@ -114,7 +114,7 @@
 
 function removeFile(id){
 
-    fileInput.splice(id, 1);
+    fileList.splice(id, 1);
 
     renderFileList();
 
