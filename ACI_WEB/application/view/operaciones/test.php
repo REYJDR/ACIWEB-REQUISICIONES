@@ -7,21 +7,27 @@
     <title>Document</title>
 </head>
 <body>
+<div class=" col-lg-12" id='file-catcher' >
 
     <div class=" col-lg-6">
-    <fieldset>
-        
-        
-        <legend><h4>Adjuntar soporte</h4></legend>
-        <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="fileToUpload[]" id="fileToUpload" multiple/>
-        <button onclick="uploadFiles('test');" >upload</button>
-    </fieldset>
+        <fieldset> 
+            <legend><h4>Adjuntar soporte</h4></legend>
+            <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="file-input" id="file-input" multiple/>
+            <button type='submit' >upload</button>
+
+        </fieldset>
     </div> 
+
     <div class=" col-lg-12">
-    <fieldset>
-    <lable id='msg'></label>
-    </fieldset>
+      <div id='file-list-display'></div>
+    </div>
+    
+    <div class=" col-lg-12">
+        <fieldset>
+           <lable id='msg'></label>
+        </fieldset>
     </div> 
+</div> 
 
 
 
@@ -29,6 +35,56 @@
 </html>
 
 <script>
+(function () {
+  var fileCatcher = document.getElementById('file-catcher');
+  var fileInput = document.getElementById('file-input');
+  var fileListDisplay = document.getElementById('file-list-display');
+  
+  var fileList = [];
+  var renderFileList, sendFile;
+  
+  fileCatcher.addEventListener('submit', function (evnt) {
+  	evnt.preventDefault();
+    fileList.forEach(function (file) {
+    	sendFile(file);
+    });
+  });
+  
+  fileInput.addEventListener('change', function (evnt) {
+ 		fileList = [];
+  	for (var i = 0; i < fileInput.files.length; i++) {
+    	fileList.push(fileInput.files[i]);
+    }
+    renderFileList();
+  });
+  
+  renderFileList = function () {
+  	fileListDisplay.innerHTML = '';
+    fileList.forEach(function (file, index) {
+    	var fileDisplayEl = document.createElement('p');
+      fileDisplayEl.innerHTML = (index + 1) + ': ' + file.name;
+      fileListDisplay.appendChild(fileDisplayEl);
+    });
+  };
+  
+  sendFile = function (file) {
+  	var formData = new FormData();
+    var request = new XMLHttpRequest();
+    var link= URL+"public/soportes/upload.php";
+    formData.set('file', file);
+    request.open("POST", link);
+    request.send(formData);
+
+    xhr.onload = function () {
+		if (xhr.readyState === xhr.DONE) {
+			if (xhr.status === 200) {
+                $('#msg').html(xhr.response);
+			}
+        }
+        
+  };
+
+})();
 //**************************************************** */
 function uploadFiles(req){
     $('#msg').html('');
