@@ -13,7 +13,7 @@
         <fieldset> 
             <legend><h4>Adjuntar soporte</h4></legend>
             <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="file-input" id="file-input" multiple/>
-            <button type='submit' >upload</button>
+            <button id='send' type='submit' >upload</button>
 
         </fieldset>
     </div> 
@@ -40,11 +40,12 @@
   var fileCatcher = document.getElementById('file-catcher');
   var fileInput = document.getElementById('file-input');
   var fileListDisplay = document.getElementById('file-list-display');
+  var button = document.getElementById('send');
   
   var fileList = [];
   var renderFileList, sendFile;
   
-  fileCatcher.addEventListener('submit', function (evnt) {
+  button.addEventListener('click', function (evnt) {
   	evnt.preventDefault();
     fileList.forEach(function (file) {
     	sendFile(file);
