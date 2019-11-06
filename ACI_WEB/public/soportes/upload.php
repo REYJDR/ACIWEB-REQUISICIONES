@@ -16,6 +16,7 @@ foreach ($_FILES["fileToUpload"]["name"] as $filename)
 {
 
     $target_file = $target_dir . basename($filename);
+    echo  $target_file;
     $uploadOk = 1;
 
 
