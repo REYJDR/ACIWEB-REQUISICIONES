@@ -70,13 +70,20 @@
     fileList.forEach(function (file, index) {
       var id = index + 1;
 
+      var div = document.createElement('div');
       var fileDisplayEl = document.createElement('p');
-
-
-      fileDisplayEl.innerHTML = id + ' : ' + file.name + '<i onclick="rem2oveFile('+id+');" class="fas fa-trash-alt"></i>';
-
+      var icon = document.createElement('i');
       
-      fileListDisplay.appendChild(fileDisplayEl);
+      icon.setAttribute("class", "fas fa-trash-alt");
+      icon.setAttribute("onclick", "rem2oveFile('+id+');");
+    
+      fileDisplayEl.innerHTML = id + ' : ' + file.name ;
+      
+      div.appendChild(fileDisplayEl);
+      div.appendChild(icon);
+      
+      fileListDisplay.appendChild(div);
+
     });
   };
   
