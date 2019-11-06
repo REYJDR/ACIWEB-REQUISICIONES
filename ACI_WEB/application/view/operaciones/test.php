@@ -75,6 +75,7 @@
       var icon = document.createElement('i');
       
       icon.setAttribute("class", "fas fa-trash-alt");
+      icon.setAttribute("style", "color:red");
       icon.setAttribute("onclick", "rem2oveFile('+id+');");
     
       fileDisplayEl.innerHTML = id + ' : ' + file.name ;
