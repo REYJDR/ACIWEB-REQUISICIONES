@@ -69,11 +69,12 @@
   	fileListDisplay.innerHTML = '';
     fileList.forEach(function (file, index) {
       var id = index + 1;
-      var div = document.createElement('div');
-      var fileDisplayEl = document.createElement('label');
 
-      fileDisplayEl.innerHTML = id + ' : ' + file.name + '<i onclick="removeFile('+id+');" class="fas fa-trash-alt"></i>';
-      div.innerHTML = fileDisplayEl.innerHTML;
+      var fileDisplayEl = document.createElement('p');
+
+
+      fileDisplayEl.innerHTML = id + ' : ' + file.name + '<i onclick="rem2oveFile('+id+');" class="fas fa-trash-alt"></i>';
+
       
       fileListDisplay.appendChild(fileDisplayEl);
     });
