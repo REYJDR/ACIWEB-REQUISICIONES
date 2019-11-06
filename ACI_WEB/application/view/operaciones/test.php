@@ -58,7 +58,9 @@
   fileInput.addEventListener('change', function (evnt) {
  		fileList = [];
   	for (var i = 0; i < fileInput.files.length; i++) {
-    	fileList.push(fileInput.files[i]);
+
+        fileList.push(fileInput.files[i]);
+        
     }
     renderFileList();
   });
@@ -66,8 +68,8 @@
   renderFileList = function () {
   	fileListDisplay.innerHTML = '';
     fileList.forEach(function (file, index) {
-    	var fileDisplayEl = document.createElement('p');
-      fileDisplayEl.innerHTML = (index + 1) + ': ' + file.name;
+      var fileDisplayEl = document.createElement('p');
+      fileDisplayEl.innerHTML = (index + 1) + ': ' + file.name + '<i class="fa fa-erase"></i>';
       fileListDisplay.appendChild(fileDisplayEl);
     });
   };

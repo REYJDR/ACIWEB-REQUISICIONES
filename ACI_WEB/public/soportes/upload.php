@@ -40,8 +40,6 @@ if ($uploadOk == 0) {
 }
 
 
-
-
 echo  '/'.$process;
 
 
