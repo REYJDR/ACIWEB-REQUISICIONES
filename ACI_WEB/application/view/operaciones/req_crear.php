@@ -499,10 +499,12 @@ function uploadFiles(req){
 	URL = document.getElementById('URL').value;
 
 		var link= URL+"public/soportes/upload.php";
-		var fileInput = document.getElementById('fileToUpload');
+		var file = document.getElementById('fileToUpload');
+
 		var file = fileInput.files[0];
+
 		var formData = new FormData();
-		formData.append('fileToUpload', file);
+		formData.append('fileToUpload[]', file);
 		formData.append('req', req);
 
 		var xhr = new XMLHttpRequest();
