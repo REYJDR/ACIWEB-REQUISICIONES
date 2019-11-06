@@ -37,6 +37,9 @@
 <script>
 (function () {
 
+  $('#msg').html('');
+  
+  var URL = document.getElementById('URL').value; 
   var fileCatcher = document.getElementById('file-catcher');
   var fileInput = document.getElementById('file-input');
   var fileListDisplay = document.getElementById('file-list-display');
@@ -74,6 +77,7 @@
     var request = new XMLHttpRequest();
     var link= URL+"public/soportes/upload.php";
     formData.set('file', file);
+    formData.append('req', 'test');
     request.open("POST", link);
     request.send(formData);
 
