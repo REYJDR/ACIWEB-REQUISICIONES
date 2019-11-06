@@ -39,11 +39,13 @@ function uploadFiles(req){
 
         var file = fileInput.files;
         
-console.log(file);
+
 
 		var formData = new FormData();
 		formData.append('fileToUpload[]', file);
-		formData.append('req', req);
+        formData.append('req', req);
+        
+        console.log(formData);
 
 		var xhr = new XMLHttpRequest();
 
