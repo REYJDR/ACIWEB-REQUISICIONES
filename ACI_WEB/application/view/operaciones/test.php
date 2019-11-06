@@ -81,10 +81,10 @@
     request.open("POST", link);
     request.send(formData);
 
-    xhr.onload = function () {
-		if (xhr.readyState === xhr.DONE) {
-			if (xhr.status === 200) {
-                $('#msg').html(xhr.response);
+    request.onload = function () {
+		if (request.readyState === request.DONE) {
+			if (request.status === 200) {
+                $('#msg').html(request.response);
 			}
         }
     }
