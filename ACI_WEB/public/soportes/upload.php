@@ -9,7 +9,7 @@ if (!file_exists($target_dir)) {
 }
 
 
-var_dump($_FILES["fileToUpload"]);
+var_dump($_FILES["fileToUpload"]['name']);
 
 $count=0;
 foreach ($_FILES["fileToUpload"]["name"] as $filename) 
