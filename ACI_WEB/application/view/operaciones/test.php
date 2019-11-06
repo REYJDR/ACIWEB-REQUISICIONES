@@ -13,11 +13,17 @@
         
         
         <legend><h4>Adjuntar soporte</h4></legend>
-        <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="fileToUpload" id="fileToUpload" multiple/>
+        <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="fileToUpload[]" id="fileToUpload[]" multiple/>
         <button onclick="uploadFiles('test');" >upload</button>
     </fieldset>
     </div> 
-<lable id='msg'></label>
+    <div class=" col-lg-12">
+    <fieldset>
+    <lable id='msg'></label>
+    </fieldset>
+    </div> 
+
+
 
 </body>
 </html>
