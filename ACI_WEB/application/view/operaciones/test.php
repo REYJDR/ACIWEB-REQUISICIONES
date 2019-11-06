@@ -37,15 +37,20 @@ function uploadFiles(req){
 		var link= URL+"public/soportes/upload.php";
 		var fileInput = document.getElementById('fileToUpload');
 
+        
+
+
+        var formData = new FormData();
+        
         var file = fileInput.files;
-        
+
+        for(var file in files) {
+         formData.append("fileToUpload", files[file].data);
+        }
 
 
-		var formData = new FormData();
-		formData.append('fileToUpload[]', file);
+
         formData.append('req', req);
-        
-        console.log(formData);
 
 		var xhr = new XMLHttpRequest();
 
