@@ -42,7 +42,7 @@ function uploadFiles(req){
 
         var formData = new FormData();
         
-        var file = fileInput.files;
+        var files = fileInput.files;
 
         for(var file in files) {
          formData.append("fileToUpload", files[file].data);
