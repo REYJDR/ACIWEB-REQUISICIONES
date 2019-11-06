@@ -84,27 +84,25 @@ function uploadFiles(req){
         sendFile(file,req);
     });
 
-    
+} 
 
-    sendFile = function (file,req) {
-        var formData = new FormData();
-      var request = new XMLHttpRequest();
-      var link= URL+"public/soportes/upload.php";
-      formData.set('file', file);
-      formData.append('req', req);
-      request.open("POST", link);
-      request.send(formData);
+function  sendFile (file,req) {
+
+  var formData = new FormData();
+  var request = new XMLHttpRequest();
+  var link= URL+"public/soportes/upload.php";
   
-      request.onload = function () {
-          if (request.readyState === request.DONE) {
-              if (request.status === 200) {
-                  $('#msg').html(request.response);
-              }
+  formData.set('file', file);
+  formData.append('req', req);
+  request.open("POST", link);
+  request.send(formData);
+
+  request.onload = function () {
+      if (request.readyState === request.DONE) {
+          if (request.status === 200) {
+              $('#msg').html(request.response);
           }
       }
-    };
-
-
-
-} 
+  }
+};
     
