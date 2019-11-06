@@ -40,7 +40,7 @@ function uploadFiles(req){
         var file = fileInput.files;
         
 console.log(file);
-return;
+
 		var formData = new FormData();
 		formData.append('fileToUpload[]', file);
 		formData.append('req', req);
