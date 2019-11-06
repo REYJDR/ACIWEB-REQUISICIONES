@@ -13,7 +13,7 @@
         <fieldset> 
             <legend><h4>Adjuntar soporte</h4></legend>
             <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="file-input" id="file-input" multiple/>
-            <button id='send' onclick='uploadFile("test2")' >upload</button>
+            <button id='send' onclick='uploadFiles("test2")' >upload</button>
 
         </fieldset>
     </div> 
