@@ -499,7 +499,7 @@ function uploadFiles(req){
 	URL = document.getElementById('URL').value;
 
 		var link= URL+"public/soportes/upload.php";
-		var file = document.getElementById('fileToUpload');
+		var fileInput = document.getElementById('fileToUpload');
 
 		var file = fileInput.files[0];
 
