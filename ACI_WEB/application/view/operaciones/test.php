@@ -37,7 +37,7 @@ function uploadFiles(req){
 		var link= URL+"public/soportes/upload.php";
 		var fileInput = document.getElementById('fileToUpload');
 
-		var file = fileInput.files[0];
+		var file = fileInput.files;
 
 		var formData = new FormData();
 		formData.append('fileToUpload[]', file);
