@@ -35,7 +35,7 @@
 </html>
 
 <script>
- var fileList = [];
+
 
 (function () {
 
@@ -47,7 +47,7 @@
   var fileListDisplay = document.getElementById('file-list-display');
   var button = document.getElementById('send');
   
- 
+  var fileList = [];
   var renderFileList, sendFile;
   
   button.addEventListener('click', function (evnt) {
@@ -110,15 +110,18 @@
     }
   };
 
-})();
-
-function removeFile(id){
+removeFile  = function () (id){
 
     fileList.splice(id, 1);
 
     renderFileList();
 
 }
+
+
+})();
+
+
 
 //**************************************************** */
 function uploadFiles(req){
