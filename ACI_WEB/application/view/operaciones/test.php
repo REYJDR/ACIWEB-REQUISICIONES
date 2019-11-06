@@ -91,7 +91,7 @@
 
     });
 
-    console.log(fileList);
+   
   };
 
   
@@ -114,7 +114,7 @@
   };
 
 removeFile  = function(id){
-
+    id = id - 1;
     fileList.splice(id, 1);
     for(var i = fileList.length - 1; i >= 0; i--) {
     if(fileList[i] === id) {
