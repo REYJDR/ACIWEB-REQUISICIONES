@@ -76,8 +76,8 @@
       
       icon.setAttribute("class", "fas fa-trash-alt");
       icon.setAttribute("style", "color:red");
-      icon.setAttribute("onclick", "rem2oveFile('+id+');");
-    
+      icon.setAttribute("onclick", "removeFile("+id+");");
+      icon.innerHTML = "rm";
       fileDisplayEl.innerHTML = id + ' : ' + file.name ;
       
       div.appendChild(fileDisplayEl);
