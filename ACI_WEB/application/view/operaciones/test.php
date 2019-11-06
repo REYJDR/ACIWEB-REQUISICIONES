@@ -58,7 +58,7 @@
   });
   
   fileInput.addEventListener('change', function (evnt) {
- 		fileList = [];
+ 	//	fileList = [];
   	for (var i = 0; i < fileInput.files.length; i++) {
 
         fileList.push(fileInput.files[i]);
@@ -113,7 +113,11 @@
 removeFile  = function(id){
 
     fileList.splice(id, 1);
-
+    for(var i = fileList.length - 1; i >= 0; i--) {
+    if(fileList[i] === id) {
+        fileList.splice(i, 1);
+    }
+}
     renderFileList();
 
 };
