@@ -9,8 +9,7 @@ if (!file_exists($target_dir)) {
 }
 
 
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
+
 
 $count=0;
 foreach ($_FILES["fileToUpload"]["name"] as $filename) 
