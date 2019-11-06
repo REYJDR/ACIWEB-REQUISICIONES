@@ -1,4 +1,9 @@
 
+var fileList = [];
+var renderFileList, sendFile;
+
+
+
 (function () {
     
       $('#msg').html('');
@@ -9,15 +14,15 @@
       var fileListDisplay = document.getElementById('file-list-display');
       var button = document.getElementById('send');
       
-      var fileList = [];
-      var renderFileList, sendFile;
+    //   var fileList = [];
+    //   var renderFileList, sendFile;
       
-      button.addEventListener('click', function (evnt) {
-          evnt.preventDefault();
-        fileList.forEach(function (file) {
-            sendFile(file);
-        });
-      });
+    //   button.addEventListener('click', function (evnt) {
+    //       evnt.preventDefault();
+    //     fileList.forEach(function (file) {
+    //         sendFile(file);
+    //     });
+    //   });
       
       fileInput.addEventListener('change', function (evnt) {
          //	fileList = [];
@@ -59,23 +64,7 @@
       };
     
       
-      sendFile = function (file) {
-          var formData = new FormData();
-        var request = new XMLHttpRequest();
-        var link= URL+"public/soportes/upload.php";
-        formData.set('file', file);
-        formData.append('req', 'test');
-        request.open("POST", link);
-        request.send(formData);
-    
-        request.onload = function () {
-            if (request.readyState === request.DONE) {
-                if (request.status === 200) {
-                    $('#msg').html(request.response);
-                }
-            }
-        }
-      };
+
     
     removeFile  = function(id){
         id = id - 1;
@@ -89,7 +78,35 @@
     
     };
     
-    })();
+})();
     
+function uploadFiles(req){
+
+    fileList.forEach(function (file) {
+        sendFile(file,req);
+    });
+
     
+
+    sendFile = function (file,req) {
+        var formData = new FormData();
+      var request = new XMLHttpRequest();
+      var link= URL+"public/soportes/upload.php";
+      formData.set('file', file);
+      formData.append('req', req);
+      request.open("POST", link);
+      request.send(formData);
+  
+      request.onload = function () {
+          if (request.readyState === request.DONE) {
+              if (request.status === 200) {
+                  $('#msg').html(request.response);
+              }
+          }
+      }
+    };
+
+
+
+} 
     

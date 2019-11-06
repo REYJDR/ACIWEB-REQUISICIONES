@@ -432,8 +432,6 @@ var x=document.getElementById(UNIID).innerHTML;
         <fieldset> 
             <legend><h4>Adjuntar soporte</h4></legend>
             <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="file-input" id="file-input" multiple/>
-            <button id='send' type='submit' >upload</button>
-
         </fieldset>
     </div> 
 
@@ -506,35 +504,7 @@ function set_phase(phaseid){
 
 }
 
-//**************************************************** */
-function uploadFiles(req){
-  
-	URL = document.getElementById('URL').value;
 
-		var link= URL+"public/soportes/upload.php";
-		var fileInput = document.getElementById('fileToUpload');
-
-		var file = fileInput.files[0];
-
-		var formData = new FormData();
-		formData.append('fileToUpload[]', file);
-		formData.append('req', req);
-
-		var xhr = new XMLHttpRequest();
-
-		xhr.open('POST', link, true);
-		xhr.send(formData);
-
-		xhr.onload = function () {
-		if (xhr.readyState === xhr.DONE) {
-			if (xhr.status === 200) {
-				console.log(xhr.response);
-			}
-		}
-	};
-
-}
-//**************************************************** */
 
 CHK_VALIDATION = false;
 
