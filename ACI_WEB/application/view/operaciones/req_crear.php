@@ -494,6 +494,7 @@ function set_phase(phaseid){
 
 }
 
+//**************************************************** */
 function uploadFiles(req){
   
 	URL = document.getElementById('URL').value;
@@ -521,6 +522,7 @@ function uploadFiles(req){
 	};
 
 }
+//**************************************************** */
 
 CHK_VALIDATION = false;
 
