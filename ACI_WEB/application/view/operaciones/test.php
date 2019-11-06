@@ -17,7 +17,7 @@
         <button onclick="uploadFiles('test');" >upload</button>
     </fieldset>
     </div> 
-
+<lable id='msg'></label>
 
 </body>
 </html>
@@ -25,7 +25,7 @@
 <script>
 //**************************************************** */
 function uploadFiles(req){
-  
+    $('#msg').html('');
 	URL = document.getElementById('URL').value;
 
 		var link= URL+"public/soportes/upload.php";
@@ -45,7 +45,7 @@ function uploadFiles(req){
 		xhr.onload = function () {
 		if (xhr.readyState === xhr.DONE) {
 			if (xhr.status === 200) {
-				console.log(xhr.response);
+                $('#msg').html(xhr.response);
 			}
 		}
 	};
