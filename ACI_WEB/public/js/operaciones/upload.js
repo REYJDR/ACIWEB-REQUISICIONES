@@ -1,19 +1,18 @@
 
 var fileList = [];
 var renderFileList, sendFile;
-
+var URL = document.getElementById('URL').value; 
+var fileCatcher = document.getElementById('file-catcher');
+var fileInput = document.getElementById('file-input');
+var fileListDisplay = document.getElementById('file-list-display');
+var button = document.getElementById('send');
 
 
 (function () {
     
-      $('#msg').html('');
+    $('#msg').html('');
       
-      var URL = document.getElementById('URL').value; 
-      var fileCatcher = document.getElementById('file-catcher');
-      var fileInput = document.getElementById('file-input');
-      var fileListDisplay = document.getElementById('file-list-display');
-      var button = document.getElementById('send');
-      
+
     //   var fileList = [];
     //   var renderFileList, sendFile;
       
