@@ -9,7 +9,7 @@ if (!file_exists($target_dir)) {
 }
 
 
-//var_dump($_FILES["fileToUpload"]['name']);
+var_dump($_FILES["file"]);
 
 $process = '';
 
