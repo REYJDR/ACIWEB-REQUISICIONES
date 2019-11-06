@@ -68,8 +68,9 @@
   renderFileList = function () {
   	fileListDisplay.innerHTML = '';
     fileList.forEach(function (file, index) {
-      var fileDisplayEl = document.createElement('p');
-      fileDisplayEl.innerHTML = (index + 1) + ': ' + file.name + '<i class="fa fa-erase"></i>';
+      var id = index + 1;
+      var fileDisplayEl = document.createElement('div');
+      fileDisplayEl.innerHTML = id + ' : ' + file.name + '<i onclick="removeFile('+id+');" class="fas fa-trash-alt"></i>';
       fileListDisplay.appendChild(fileDisplayEl);
     });
   };
@@ -93,6 +94,13 @@
   };
 
 })();
+
+function removeFile(id){
+
+    alert(id);
+
+
+}
 
 //**************************************************** */
 function uploadFiles(req){
