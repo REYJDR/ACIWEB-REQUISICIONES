@@ -35,6 +35,8 @@
 </html>
 
 <script>
+ var fileList = [];
+
 (function () {
 
   $('#msg').html('');
@@ -45,7 +47,7 @@
   var fileListDisplay = document.getElementById('file-list-display');
   var button = document.getElementById('send');
   
-  var fileList = [];
+ 
   var renderFileList, sendFile;
   
   button.addEventListener('click', function (evnt) {
@@ -66,18 +68,20 @@
   });
   
   renderFileList = function () {
+
   	fileListDisplay.innerHTML = '';
     fileList.forEach(function (file, index) {
       var id = index + 1;
 
       var div = document.createElement('div');
-      var fileDisplayEl = document.createElement('p');
+      var fileDisplayEl = document.createElement('label');
       var icon = document.createElement('i');
       
       icon.setAttribute("class", "fas fa-trash-alt");
       icon.setAttribute("style", "color:red");
       icon.setAttribute("onclick", "removeFile("+id+");");
       icon.innerHTML = "rm";
+
       fileDisplayEl.innerHTML = id + ' : ' + file.name ;
       
       div.appendChild(fileDisplayEl);
@@ -110,8 +114,9 @@
 
 function removeFile(id){
 
-    alert(id);
+    fileInput.splice(id, 1);
 
+    renderFileList();
 
 }
 
