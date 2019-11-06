@@ -11,6 +11,7 @@ if (!file_exists($target_dir)) {
 
 var_dump($_FILES["fileToUpload"]['name']);
 
+die();
 $count=0;
 foreach ($_FILES["fileToUpload"]["name"] as $filename) 
 {
