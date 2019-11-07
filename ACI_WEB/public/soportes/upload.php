@@ -3,6 +3,8 @@
 $req = $_POST['req'];
 $target_dir = getcwd()."/".$req."/";
 
+$process = '';
+$process .= $target_file.'-';
 
 if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
@@ -10,12 +12,9 @@ if (!file_exists($target_dir)) {
 
 $target_dir = getcwd()."/".$req."/";
 
-$process = '';
 
 $filename = $_FILES["file"]["name"] ;
   
-$process .= $target_file.'-';
-
 $target_file = $target_dir . basename($filename);
 $uploadOk = 1;
 
