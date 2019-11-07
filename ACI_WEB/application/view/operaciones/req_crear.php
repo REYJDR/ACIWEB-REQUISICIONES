@@ -742,7 +742,14 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 //FUNCION PARA SOLICITAR IMPRESION DEL REPORTE
 function msg(link,Req_NO,isPay,flag_urgent){
 
-	uploadFiles(Req_NO);
+    function uploadf(){
+
+	 return	uploadFiles(Req_NO);
+
+   }
+  
+
+  $.when(uploadf()).done(function(){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
 
    spin_hide();
 
@@ -764,7 +771,7 @@ function msg(link,Req_NO,isPay,flag_urgent){
 
 	}
 
-	
+	});
 
 }
 
