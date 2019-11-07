@@ -724,15 +724,12 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 		data: datos,
 		success: function(res){
 									      
-			if(res==0){
-
-			 alert('NO SE HA PODIDO ENVIAR LA NOTIFICACION DE ORDEN DE COMPRA.');
-			 msg(link,Req_NO,isPay,flag_urgent);
-			 
-			}else{  
 			
-			 msg(link,Req_NO,isPay,flag_urgent);
-			}
+			uploadFiles(Req_NO);
+			
+			msg(link,Req_NO,isPay,flag_urgent);
+			 
+			
 
 		}
 	});
@@ -742,14 +739,6 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 //FUNCION PARA SOLICITAR IMPRESION DEL REPORTE
 function msg(link,Req_NO,isPay,flag_urgent){
 
-function uploadf(){
-
-	return	uploadFiles(Req_NO);
-
-}
-  
-
-  $.when(uploadf()).done(function(){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
 
    spin_hide();
 
@@ -771,7 +760,6 @@ function uploadf(){
 
 	}
 
-	});
 
 }
 
