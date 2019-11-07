@@ -727,7 +727,7 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 			
 			uploadFiles(Req_NO);
 			
-			msg(link,Req_NO,isPay,flag_urgent);
+			//msg(link,Req_NO,isPay,flag_urgent);
 			 
 			
 
