@@ -15,7 +15,7 @@ $process = '';
 
 $filename = $_FILES["file"]["name"] ;
   
-$process .= $filename.'-';
+$process .= $target_file .'-';
 
 $target_file = $target_dir . basename($filename);
 $uploadOk = 1;
