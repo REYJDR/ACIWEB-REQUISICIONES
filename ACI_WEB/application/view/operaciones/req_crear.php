@@ -439,13 +439,6 @@ var x=document.getElementById(UNIID).innerHTML;
 		</fieldset>
     </div> 
 
-   
-    
-    <!-- <div class=" col-lg-12">
-        <fieldset>
-           <lable id='msg'></label>
-        </fieldset>
-    </div>  -->
 </div> 
 <!-- //****************************** -->
 
@@ -659,7 +652,7 @@ if (r == true) {
         		    console.log('RES:'+res);
 					      
 					if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
-						uploadFiles(Req_NO);
+						
 						send_mail(link,Req_NO,set_urgent,isPay);
 					}
 
@@ -722,8 +715,9 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 
  //ENVIO POR MAIL 
  var datos= 'url=ges_requisiciones/req_mailing/'+Req_NO+"/"+flag_urgent+"/"+isPay; //LINK A LA PAGINA DE MAILING
-
-	$.ajax({
+ 
+ function sendMail(){
+	return $.ajax({
 		type: "GET",
 		url: link,
 		data: datos,
@@ -741,7 +735,18 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 
 		}
 	}); 
+
+	$.when(sendMail()).done(function(Req_NO){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
+
+		uploadFiles(Req_NO);
+	});
+
+ }
+
+
 	//FIN ENVIO POR MAIL 
+
+
 }		 			
 
 //FUNCION PARA SOLICITAR IMPRESION DEL REPORTE
