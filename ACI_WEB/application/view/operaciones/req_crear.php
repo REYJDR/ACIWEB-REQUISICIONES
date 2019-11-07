@@ -631,7 +631,7 @@ if (r == true) {
 	                                 
 	                                 Req_NO = res;
 
-	                                 console.log(res);
+	                                 //console.log(res);
 
 	                                 $('#req_no_jobid').html(res);
 									
@@ -649,7 +649,7 @@ if (r == true) {
 				 data:  {url: 'bridge_query/set_req_items_test/'+Req_NO.trim() , Data : JSON.stringify(LineArray)}, 
 				 success: function(res){
         		   
-        		    console.log('RES:'+res);
+        		    //console.log('RES:'+res);
 					      
 					if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
 						
@@ -715,11 +715,10 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 
  //ENVIO POR MAIL 
  
- function sendMail(){
-
+ 
 	var datos= 'url=ges_requisiciones/req_mailing/'+Req_NO+"/"+flag_urgent+"/"+isPay; //LINK A LA PAGINA DE MAILING
  
-	return $.ajax({
+	$.ajax({
 		type: "GET",
 		url: link,
 		data: datos,
@@ -736,25 +735,17 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 			}
 
 		}
-	}); 
-
-	$.when(sendMail()).done(function(Req_NO){ //ESPERA QUE TERMINE LA INSERCION DE CABECERA
-
-		uploadFiles(Req_NO);
 	});
-
- }
-
-
-	//FIN ENVIO POR MAIL 
-
 
 }		 			
 
 //FUNCION PARA SOLICITAR IMPRESION DEL REPORTE
 function msg(link,Req_NO,isPay,flag_urgent){
 
-spin_hide();
+	uploadFiles(Req_NO);
+
+   spin_hide();
+
    alert("La orden se ha enviado con exito");
 
 	var R = confirm('Desea imprimir la orden de venta?');
@@ -773,7 +764,7 @@ spin_hide();
 
 	}
 
-
+	
 
 }
 
