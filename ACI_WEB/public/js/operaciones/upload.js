@@ -100,6 +100,7 @@ function  sendFile (file,req) {
   request.onload = function () {
       if (request.readyState === request.DONE) {
           if (request.status === 200) {
+              alert(request.response);
               $('#msg').html(request.response);
           }
       }

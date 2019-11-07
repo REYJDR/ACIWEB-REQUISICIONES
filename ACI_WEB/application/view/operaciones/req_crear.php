@@ -432,12 +432,14 @@ var x=document.getElementById(UNIID).innerHTML;
         <fieldset> 
             <legend><h4>Adjuntar soporte</h4></legend>
             <input class=" col-lg-12" accept='.gif,.jpg,.jpeg,.png,.doc,.docx,.pdf' type="file" name="file-input" id="file-input" multiple/>
-        </fieldset>
+        
+			<div class=" col-lg-12">
+			<div id='file-list-display'></div>
+			</div> 
+		</fieldset>
     </div> 
 
-    <div class=" col-lg-12">
-      <div id='file-list-display'></div>
-    </div> 
+   
     
     <!-- <div class=" col-lg-12">
         <fieldset>
