@@ -3,7 +3,7 @@
 $req = $_POST['req'];
 $dir = $_POST['dir'];
 
-$target_dir = $dir."/".$req."/";
+$target_dir = getcwd()."/".$req."/";
 
 $process = '';
 
