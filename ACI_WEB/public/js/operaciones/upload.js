@@ -45,15 +45,15 @@ var button = document.getElementById('send');
           var icon = document.createElement('i');
           
           icon.setAttribute("class", "fas fa-trash-alt");
-          icon.setAttribute("style", "color:red");
+          icon.setAttribute("style", "color:#FB9079");
           icon.setAttribute("onclick", "removeFile("+id+");");
-          icon.innerHTML = "rm";
     
           fileDisplayEl.innerHTML = id + ' : ' + file.name ;
           
-          div.appendChild(fileDisplayEl);
-          div.appendChild(icon);
           
+          div.appendChild(icon);
+          div.appendChild(fileDisplayEl);
+
           fileListDisplay.appendChild(div);
     
         });
