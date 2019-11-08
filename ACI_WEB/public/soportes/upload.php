@@ -5,7 +5,7 @@ ini_set('post_max_size', '500M');
 ini_set('max_input_time', 4000); // Play with the values
 ini_set('max_execution_time', 4000); // Play with the values
 
-$req = $_POST['req'];
+$req = trim($_POST['req']);
 
 
 $target_dir = getcwd()."/".$req."/";
