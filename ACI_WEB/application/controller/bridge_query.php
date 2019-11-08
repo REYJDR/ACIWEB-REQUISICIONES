@@ -7000,10 +7000,11 @@ function getAttachFiles($req){
 
       foreach($ficheros as $files){
 
-         if ( $files != '.' ) $fileList .= '<i onclick="downloadFile("'.$files.'");" class="fas fa-download"></i><p>&nbsp'.$files.'</p>';
+         if ( $files != '.' && $files != '..' ) $fileList .= '<i onclick="downloadFile("'.$files.'");" class="fas fa-download"></i><p>&nbsp'.$files.'</p>';
         
         
       }
+
     echo $fileList ;
     return $fileList;
   }
