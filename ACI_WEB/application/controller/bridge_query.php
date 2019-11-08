@@ -6991,7 +6991,7 @@ if ($dif >= $difH){
 
 function getAttachFiles($req){
 
-  $dir = APP."public/soportes/".$req;
+  $dir = PUB."soportes/".$req;
   $fileList = '';
 echo $dir;
   if (!file_exists($dir)) {
