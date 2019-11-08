@@ -29,6 +29,8 @@ file_put_contents(getcwd()."/UPLOAD.log", date('Y-m-d H:i:s').'- Se recibió el 
   
 $target_file = $target_dir.basename($filename);
 
+file_put_contents(getcwd()."/UPLOAD.log", date('Y-m-d H:i:s').'- Ubicación del archivo : '.$target_file.' para la carpeta: '.$target_dir.PHP_EOL, FILE_APPEND); //LIMPIO EL ARCHIVO
+
 
 $uploadOk = 1;
 
