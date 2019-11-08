@@ -4739,7 +4739,7 @@ echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td cla
           <tr><th style='text-align:left;'><strong>Para descontar a</strong></th><td class='InfsalesTd'>".$ORDER_detail->{'descont'}."</td><tr>
           <tr><th style='text-align:left;'><strong>Solicitado por:</strong></th><td class='InfsalesTd'>".$name.' '.$lastname.'</td><tr>
           <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status_gen.'</td><tr>
-          <tr><th style="text-align:left;" ><strong>Estado</strong></th><td class="InfsalesTd">'.$files.'</td><tr>';
+          <tr><th style="text-align:left;" ><strong>Soportes</strong></th><td class="InfsalesTd">'.$files.'</td><tr>';
           
 }
 
@@ -7000,7 +7000,7 @@ function getAttachFiles($req){
 
       foreach($ficheros as $files){
 
-         if ( $files != '.' && $files != '..' ) $fileList .= '<p><i onclick="downloadFile("'.$files.'");" class="fas fa-download"></i><label>&nbsp'.$files.'</label><p>';
+         if ( $files != '.' && $files != '..' ) $fileList .= '<p><i style="cursor:pointer;" onclick="downloadFile("'.$files.'");" class="fas fa-download"></i><label>&nbsp'.$files.'</label><p>';
         
         
       }
