@@ -4739,7 +4739,7 @@ echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td cla
           <tr><th style='text-align:left;'><strong>Para descontar a</strong></th><td class='InfsalesTd'>".$ORDER_detail->{'descont'}."</td><tr>
           <tr><th style='text-align:left;'><strong>Solicitado por:</strong></th><td class='InfsalesTd'>".$name.' '.$lastname.'</td><tr>
           <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status_gen.'</td><tr>".
-          <tr><th style="text-align:left;" ><strong>Estado</strong></th><td class="InfsalesTd">'.$status_gen.'</td><tr>';
+          <tr><th style="text-align:left;" ><strong>Estado</strong></th><td class="InfsalesTd">'.$files.'</td><tr>';
           
 }
 
@@ -6999,9 +6999,10 @@ function getAttachFiles($req){
       $ficheros  = scandir($dir);
 
       foreach($ficheros as $files){
-        
-        $fileList .= '<p>'.$files.'</p>';
 
+         if ( $files != '.' ) $fileList .= '<i onclick="downloadFile("'.$files.'");" class="fas fa-download"></i><p>&nbsp'.$files.'</p>';
+        
+        
       }
     echo $fileList ;
     return $fileList;
