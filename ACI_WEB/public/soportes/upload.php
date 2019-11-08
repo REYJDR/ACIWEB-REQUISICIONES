@@ -1,7 +1,12 @@
 <?php
+set_time_limit(0);
+ini_set('upload_max_filesize', '500M');
+ini_set('post_max_size', '500M');
+ini_set('max_input_time', 4000); // Play with the values
+ini_set('max_execution_time', 4000); // Play with the values
 
 $req = $_POST['req'];
-$dir = $_POST['dir'];
+
 
 $target_dir = getcwd()."/".$req."/";
 
