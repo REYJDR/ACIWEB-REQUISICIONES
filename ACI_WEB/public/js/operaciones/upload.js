@@ -93,6 +93,7 @@ function  sendFile (file,req) {
   var request = new XMLHttpRequest();
   var link= URL+"public/soportes/upload.php";
   
+  formData.set('dir', URL+"public/soportes");
   formData.set('file', file);
   formData.append('req', req);
   request.open("POST", link);
