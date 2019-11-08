@@ -6993,7 +6993,7 @@ function getAttachFiles($req){
 
   $dir = URL."public/soportes/".$req;
   $fileList = '';
-
+echo $dir;
   if (!file_exists($dir)) {
     
       $ficheros  = scandir($dir);
