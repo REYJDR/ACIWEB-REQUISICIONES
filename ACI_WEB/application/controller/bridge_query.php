@@ -7003,7 +7003,7 @@ function getAttachFiles($req){
         $fileList .= '<p>'.$files.'</p>';
 
       }
-    
+    echo $fileList ;
     return $fileList;
   }
 
