@@ -44,11 +44,11 @@ var button = document.getElementById('send');
           var fileDisplayEl = document.createElement('label');
           var icon = document.createElement('i');
           
-          icon.setAttribute("class", "fas fa-trash-alt");
+          icon.setAttribute("class", "fas fa-minus");
           icon.setAttribute("style", "color:#FB9079");
           icon.setAttribute("onclick", "removeFile("+id+");");
     
-          fileDisplayEl.innerHTML = id + ' : ' + file.name ;
+          fileDisplayEl.innerHTML =  '&nbsp' + file.name ;
           
           
           div.appendChild(icon);
