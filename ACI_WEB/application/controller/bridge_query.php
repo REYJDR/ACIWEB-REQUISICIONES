@@ -4730,7 +4730,7 @@ if($ORDER_detail->{'DATE_INI'}!=''){
 }
 
 
-
+$files = $this->getAttachFiles($ORDER_detail->{'NO_REQ'});
 
 
 echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td class='InfsalesTd order'>".$ORDER_detail->{'NO_REQ'}."</td><tr>
@@ -4738,8 +4738,9 @@ echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td cla
           <tr><th style='text-align:left;'><strong>Fecha inicio actividad</strong></th><td class='InfsalesTd'>".$data_ini."</td><tr>
           <tr><th style='text-align:left;'><strong>Para descontar a</strong></th><td class='InfsalesTd'>".$ORDER_detail->{'descont'}."</td><tr>
           <tr><th style='text-align:left;'><strong>Solicitado por:</strong></th><td class='InfsalesTd'>".$name.' '.$lastname.'</td><tr>
-          <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status_gen.'</td><tr>';
-
+          <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status_gen.'</td><tr>".
+          <tr><th style="text-align:left;" ><strong>Estado</strong></th><td class="InfsalesTd">'.$status_gen.'</td><tr>';
+          
 }
 
 
@@ -6987,6 +6988,27 @@ if ($dif >= $difH){
 
 }
 
+
+function getAttachFiles($req){
+
+  $dir = URL."public/soportes/".$req;
+  $fileList = '';
+
+  if (!file_exists($dir)) {
+    
+      $ficheros  = scandir($dir);
+
+      foreach($ficheros as $files){
+        
+        $fileList .= '<p>'.$files.'</p>';
+
+      }
+    
+    return $fileList;
+  }
+
+
+}
 
 
 }
