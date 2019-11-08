@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<?php echo URL; ?>css/selectDatatables.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo URL; ?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo URL; ?>css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo URL; ?>css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo URL; ?>/fontawesome/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo URL; ?>dist/css/bootstrap-submenu.min.css">
 <link rel="stylesheet" href="<?php echo URL; ?>css/rowReorder.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo URL; ?>css/responsive.dataTables.min.css" rel="stylesheet">

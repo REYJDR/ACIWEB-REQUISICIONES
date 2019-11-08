@@ -17,7 +17,7 @@ file_put_contents(getcwd()."/UPLOAD.log", '*************************************
   
 if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
-    file_put_contents(getcwd()."/UPLOAD.log", date('dmY h:s:i').'- SE CREA CARPETA :'.$target_dir, FILE_APPEND); //LIMPIO EL ARCHIVO
+    file_put_contents(getcwd()."/UPLOAD.log", date('Y-m-d H:i:s').'- SE CREA CARPETA :'.$target_dir, FILE_APPEND); //LIMPIO EL ARCHIVO
     
 }
 
