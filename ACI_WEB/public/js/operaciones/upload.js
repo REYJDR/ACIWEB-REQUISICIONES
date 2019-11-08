@@ -106,5 +106,28 @@ function  sendFile (file,req) {
           }
       }
   }
-};
+}
     
+function downloadFile($req,$file){
+
+    var formData = new FormData();
+    var request = new XMLHttpRequest();
+    var link= URL+"public/soportes/download.php";
+    
+    formData.append('file', file);
+    formData.append('req', req);
+
+    request.open("POST", link);
+    request.send(formData);
+  
+    request.onload = function () {
+        if (request.readyState === request.DONE) {
+            if (request.status === 200) {
+
+                $('#msg').html(request.response);
+            }
+        }
+    }
+
+
+}
