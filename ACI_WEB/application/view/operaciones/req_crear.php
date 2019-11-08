@@ -652,8 +652,8 @@ if (r == true) {
         		    //console.log('RES:'+res);
 					      
 					if(res==1){//TERMINA EL LLAMADO AL METODO set_req_items SI ESTE DEVUELV UN '1', indica que ya no hay items en el array que procesar.
+						saveFiles(link,Req_NO,set_urgent,isPay);
 						
-						send_mail(link,Req_NO,set_urgent,isPay);
 					}
 
 				   }
@@ -693,7 +693,14 @@ FaltaArray.length = ''; //LIMPIO ARRAY DE ERRORES
 
 }
 /////////////////////////////////////////////////////////////////////////////////////
+function saveFiles(link,Req_NO,set_urgent,isPay){
 
+	uploadFiles(Req_NO);
+	
+	send_mail(link,Req_NO,set_urgent,isPay);
+}	
+
+			
 
 function FIND_COLUMN_NAME(item){
 
@@ -724,13 +731,10 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 		data: datos,
 		success: function(res){
 									      
-			
-			uploadFiles(Req_NO);
-			
+
 			msg(link,Req_NO,isPay,flag_urgent);
 			 
 			
-
 		}
 	});
 
