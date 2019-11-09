@@ -123,8 +123,8 @@ function downloadFile(req,file){
     request.onload = function () {
         if (request.readyState === request.DONE) {
             if (request.status === 200) {
+                console.log(request.response);
 
-                $('#msg').html(request.response);
             }
         }
     }
