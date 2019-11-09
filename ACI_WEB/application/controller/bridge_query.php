@@ -7000,7 +7000,7 @@ function getAttachFiles($req){
 
       foreach($ficheros as $files){
         $REQ = "'".$req."'";
-        $FILE = "'".$file."'";
+        $FILE = "'".$files."'";
 
          if ( $files != '.' && $files != '..' ) $fileList .= '<p><i style="cursor:pointer;" onclick="downloadFile('.$REQ.','.$FILE.');" class="fas fa-download"></i><label>&nbsp'.$files.'</label><p>';
         
