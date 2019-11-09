@@ -7003,7 +7003,7 @@ function getAttachFiles($req){
         $FILE = "'".$files."'";
 
         //  if ( $files != '.' && $files != '..' ) $fileList .= '<p><i style="cursor:pointer;" onclick="downloadFile('.$REQ.','.$FILE.');" class="fas fa-download"></i><label>&nbsp'.$files.'</label><p>';
-         if ( $files != '.' && $files != '..' ) $fileList .= '<p><i style="cursor:pointer;" onclick="downloadFile('.$REQ.','.$FILE.');" class="fas fa-download"></i><label>&nbsp <a href="'.PUB.'/'.$req.'/'.$files.'" download="'.$files.'"></label><p>';
+         if ( $files != '.' && $files != '..' ) $fileList .= '<p><i style="cursor:pointer;"  class="fas fa-download"></i><label>&nbsp <a href="'.PUB.$req.'/'.$files.'" download="'.$files.'">'.$files.'</a></label><p>';
         ;
         
       }
