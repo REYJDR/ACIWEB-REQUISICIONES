@@ -7,7 +7,7 @@ $dir  = getcwd()."/".$req."/".$file;
 echo $dir;
 if (file_exists($dir)) {
     header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
+    header('Content-Type: '.mime_content_type($dir));
     header('Content-Disposition: attachment; filename="'.basename($file).'"');
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
