@@ -6999,8 +6999,10 @@ function getAttachFiles($req){
       $ficheros  = scandir($dir);
 
       foreach($ficheros as $files){
+        $REQ = "'".$req."'";
+        $FILE = "'".$file."'";
 
-         if ( $files != '.' && $files != '..' ) $fileList .= '<p><i style="cursor:pointer;" onclick="downloadFile("'.$req.'","'.$files.'");" class="fas fa-download"></i><label>&nbsp'.$files.'</label><p>';
+         if ( $files != '.' && $files != '..' ) $fileList .= '<p><i style="cursor:pointer;" onclick="downloadFile('.$REQ.','.$FILE.');" class="fas fa-download"></i><label>&nbsp'.$files.'</label><p>';
         
         
       }
