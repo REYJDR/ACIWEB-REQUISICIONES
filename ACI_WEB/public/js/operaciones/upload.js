@@ -108,7 +108,7 @@ function  sendFile (file,req) {
   }
 }
     
-function downloadFile($req,$file){
+function downloadFile(req,file){
 
     var formData = new FormData();
     var request = new XMLHttpRequest();
