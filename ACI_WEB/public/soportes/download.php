@@ -1,7 +1,8 @@
 <?php
 
-$req  = trim($_POST['req']);
-$file = trim($_POST['file']);
+$req  = trim($_REQUEST['req']);
+$file = trim($_REQUEST['file']);
+
 $dir  = getcwd()."/".$req."/".$file;
 echo $dir;
 // if (file_exists($dir)) {
