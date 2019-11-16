@@ -142,11 +142,11 @@ function n(n){
 
 }
 
-if(i > 1){
+/*if(i > 1){
 
 	$('#table_req').html(''); //limpio la tabla 
 
-}
+}*/
 
 while(i <= cantLineas){
 
