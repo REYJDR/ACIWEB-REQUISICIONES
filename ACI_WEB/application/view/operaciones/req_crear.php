@@ -26,11 +26,12 @@ var table = $("#table_req_tb").DataTable({
 
  });
 
+ var rows = table.rows().count();
 
-if(table.data().count()  > 0){
-	console.log(table.rows().count());
+if(rows > 0){
+	
 
-	i = i + table.data().count() ;
+	i = i + rows ;
 
 }
 
