@@ -26,6 +26,11 @@ var table = $("#table_req_tb").dataTable({
 
  });
 
+if(table.data().count()  > 0){
+
+	i = table.data().count() ;
+
+}
 
 });
 
@@ -135,10 +140,8 @@ function n(n){
 
 }
 
-if(table.data().count()  > 0){
+if(i == 0){
 
-	i = table.data().count() ;
-}else{
 	$('#table_req').html(''); //limpio la tabla 
 
 }
