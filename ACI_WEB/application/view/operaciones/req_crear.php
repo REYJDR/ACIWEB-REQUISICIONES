@@ -462,8 +462,32 @@ var x=document.getElementById(UNIID).innerHTML;
 		</tr>
 	</thead>
 	<tbody id="table_req" >	
+	
+		<?php 
+			if($copy = 'X'){
+			
+			foreach ($ORDER as  $value) { 
 
+				$value = json_decode($value);  
+
+
+				$table .= '<tr>
+					<td width="15%" style="padding-right:10px; text-align: left;">'.$value->{'ProductID'}.'</td>
+					<td width="35%" ">'.trim($value->{'DESCRIPCION'}).'</td>
+					<td width="10%" class="numb" style="text-align: center; padding-right">'.number_format($value->{'CANTIDAD'},2).'</td>
+					<td width="10%" style="text-align: center; padding-right">'.$value->{'UNIDAD'}.'</td>
+					<td width="10%" style="text-align: center; padding-right">'.$value->{'JOB'}.'</td>
+					<td width="10%" style="text-align: center; padding-right">'.$value->{'PHASE'}.'</td>
+
+					</tr>';
+
+				}
+
+				echo $table;
+		?>
+	  }
 	</tbody>
+
 </table>
 </fieldset>
 
