@@ -135,9 +135,9 @@ function n(n){
 
 }
 
-if($("#table_req_tb").dataTable().data().count()  > 0){
+if(table.data().count()  > 0){
 
-	i = $("#table_req_tb").dataTable().data().count() ;
+	i = table.data().count() ;
 }else{
 	$('#table_req').html(''); //limpio la tabla 
 
