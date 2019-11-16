@@ -15,7 +15,7 @@ $('#ERROR').hide();
     //lista phases
      
 
-var table = $("#table_req_tb").dataTable({
+var table = $("#table_req_tb").DataTable({
 
       bSort: false,
       responsive: true,
@@ -169,7 +169,7 @@ while(i <= cantLineas){
 			 }     
 
 			var line_table_req = '<tr>'+reglon+
-		        '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable></td>'+
+		    '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable></td>'+
 			'<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="checkInp('+i+');" contenteditable></td>'+
 			'<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni('+i+');" contenteditable></td>'+
 			'<td width="15%" class="rowtable_req"       ><select id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
