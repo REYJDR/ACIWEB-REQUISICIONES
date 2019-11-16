@@ -7,7 +7,7 @@ public $ProductID;
 
 public function req_crear(){
  
-    $copy = '';
+$copy = '';
 
  $res = $this->model->verify_session();
 
@@ -52,10 +52,11 @@ public function req_hist(){
 public function req_copy($reqId){
 
     $res = $this->model->verify_session();
-    $copy = 'X';
+   
     if($res=='0'){
-    
-        $ORDER = $this->model->get_req_to_print($id);
+        $copy = 'X';
+        
+        $ORDER = $this->model->get_req_to_print($reqId);
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/_templates/panel.php';

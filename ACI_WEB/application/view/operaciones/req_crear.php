@@ -483,7 +483,9 @@ var x=document.getElementById(UNIID).innerHTML;
 
 				}
 
-				echo $table;
+				echo $table; 
+			}
+
 		?>
 	  }
 	</tbody>
