@@ -26,7 +26,9 @@ var table = $("#table_req_tb").DataTable({
 
  });
 
+
 if(table.data().count()  > 0){
+	console.log(table.rows().count());
 
 	i = i + table.data().count() ;
 
