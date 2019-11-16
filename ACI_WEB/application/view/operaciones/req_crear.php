@@ -482,10 +482,10 @@ var x=document.getElementById(UNIID).innerHTML;
 				
 				$table .=  '<tr>
 					<td width="15%">'.$value->{'ProductID'}.'</td>
-					<td width="35%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable>'.trim($value->{'DESCRIPCION'}).'</td>'+
-					'<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="checkInp('+i+');" contenteditable>'.number_format($value->{'CANTIDAD'},2).'</td>'+
-					'<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni('+i+');" contenteditable>'.$value->{'UNIDAD'}.'</td>'+
-					'<td width="15%" class="rowtable_req"       >'.$value->{'PHASE'}.'</td>
+					<td width="35%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable>'.trim($value->{'DESCRIPCION'}).'</td>
+					<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="checkInp('+i+');" contenteditable>'.number_format($value->{'CANTIDAD'},2).'</td>
+					<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni('+i+');" contenteditable>'.$value->{'UNIDAD'}.'</td>
+					<td width="15%" class="rowtable_req"       >'.$value->{'PHASE'}.'</td>
 					</tr>';
 
 
