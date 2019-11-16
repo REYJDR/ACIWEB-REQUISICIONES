@@ -47,6 +47,28 @@ public function req_hist(){
 	
 }
 
+
+
+public function req_copy($reqId){
+
+    $res = $this->model->verify_session();
+    
+    if($res=='0'){
+    
+
+        // load views
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/_templates/panel.php';
+        require APP . 'view/operaciones/req_crear.php';
+        require APP . 'view/_templates/footer.php';
+
+
+    }
+
+
+}
+
+
 public function req_print($id,$Pay_flag,$urgent_flag){
 
 
