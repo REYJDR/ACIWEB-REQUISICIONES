@@ -128,7 +128,6 @@ $.ajax({
       
       listitem = res;
 
-$('#table_req').html(''); //limpio la tabla 
 
 function n(n){
 
@@ -136,9 +135,20 @@ function n(n){
 
 }
 
+if(table.rows( '.selected' ).count() > 0){
+
+	i = table.rows( '.selected' ).count();
+}else{
+	$('#table_req').html(''); //limpio la tabla 
+
+}
+
 while(i <= cantLineas){
 
+
+
 		   if(chk==1){ 
+
 				reglon = '<td  width="10%" >'+n(i)+'</td>';  
 
 			}else{
@@ -487,7 +497,9 @@ var x=document.getElementById(UNIID).innerHTML;
 			}
 
 		?>
-	  }
+
+
+
 	</tbody>
 
 </table>
