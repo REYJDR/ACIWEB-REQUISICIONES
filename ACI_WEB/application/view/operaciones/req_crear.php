@@ -1,5 +1,5 @@
 <script type="text/javascript">
-
+var i = 1;
 
 // ********************************************************
 // * Aciones cuando la pagina ya esta cargada
@@ -28,7 +28,7 @@ var table = $("#table_req_tb").DataTable({
 
 if(table.data().count()  > 0){
 
-	i = table.data().count() ;
+	i = i + table.data().count() ;
 
 }
 
@@ -118,7 +118,6 @@ function init(chk)
 {
 
 var listitem = '';
-var i = 1;
 var datos= "url=bridge_query/get_ProductsCode/";
 var reglon = '';
 
