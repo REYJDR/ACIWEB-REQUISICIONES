@@ -479,17 +479,25 @@ var x=document.getElementById(UNIID).innerHTML;
 			foreach ($ORDER as  $value) { 
 
 				$value = json_decode($value);  
-
-
-				$table .= '<tr>
-					<td width="15%" style="padding-right:10px; text-align: left;">'.$value->{'ProductID'}.'</td>
-					<td width="35%" ">'.trim($value->{'DESCRIPCION'}).'</td>
-					<td width="10%" class="numb" style="text-align: center; padding-right">'.number_format($value->{'CANTIDAD'},2).'</td>
-					<td width="10%" style="text-align: center; padding-right">'.$value->{'UNIDAD'}.'</td>
-					<td width="10%" style="text-align: center; padding-right">'.$value->{'JOB'}.'</td>
-					<td width="10%" style="text-align: center; padding-right">'.$value->{'PHASE'}.'</td>
-
+				
+				$table .=  '<tr>
+					<td width="15%">'.$value->{'ProductID'}.'</td>
+					<td width="35%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable>'.trim($value->{'DESCRIPCION'}).'</td>'+
+					'<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="checkInp('+i+');" contenteditable>'.number_format($value->{'CANTIDAD'},2).'</td>'+
+					'<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni('+i+');" contenteditable>'.$value->{'UNIDAD'}.'</td>'+
+					'<td width="15%" class="rowtable_req"       >'.$value->{'PHASE'}.'</td>
 					</tr>';
+
+
+				// $table .= '<tr>
+				// 	<td width="15%" style="padding-right:10px; text-align: left;">'.$value->{'ProductID'}.'</td>
+				// 	<td width="35%" ">'.trim($value->{'DESCRIPCION'}).'</td>
+				// 	<td width="10%" class="numb" style="text-align: center; padding-right">'.number_format($value->{'CANTIDAD'},2).'</td>
+				// 	<td width="10%" style="text-align: center; padding-right">'.$value->{'UNIDAD'}.'</td>
+				// 	<td width="10%" style="text-align: center; padding-right">'.$value->{'JOB'}.'</td>
+				// 	<td width="10%" style="text-align: center; padding-right">'.$value->{'PHASE'}.'</td>
+
+				// 	</tr>';
 
 				}
 
