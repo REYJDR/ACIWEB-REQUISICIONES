@@ -28,7 +28,7 @@ var table = $("#table_req_tb").DataTable({
 
   var rows = table.rows().count();
 
-  for (var y = 0; y < rows; y++) {
+  for (var y = 1; y < rows; y++) {
 
 	  var id= '#PHS'+y;
 
@@ -493,11 +493,11 @@ var x=document.getElementById(UNIID).innerHTML;
 				$value = json_decode($value);  
 				
 				$table .=  '<tr>
-					<td width="15%">'.$value->{'ProductID'}.'</td>
-					<td width="35%" class="rowtable_req"      id="DESC'.$value->{'ProductID'}.'" onkeyup="checkChar('.$value->{'ProductID'}.');" contenteditable>'.trim($value->{'DESCRIPCION'}).'</td>
-					<td width="15%" class="rowtable_req numb" id="QTY'.$value->{'ProductID'}.'"  onfocusout="checkInp('.$value->{'ProductID'}.');" contenteditable>'.number_format($value->{'CANTIDAD'},2).'</td>
-					<td width="15%" class="rowtable_req"      id="UNI'.$value->{'ProductID'}.'"  onkeyup="checkuni('.$value->{'ProductID'}.');" contenteditable>'.$value->{'UNIDAD'}.'</td>
-					<td width="15%" class="rowtable_req"    ><select id="PHS'.$value->{'ProductID'}.'" ><option  value="-" selected>-</option></select></td>
+					<td width="15%">'.ltrim($value->{'ProductID'},0).'</td>
+					<td width="35%" class="rowtable_req"      id="DESC'.ltrim($value->{'ProductID'},0).'" onkeyup="checkChar('.$value->{'ProductID'}.');" contenteditable>'.trim($value->{'DESCRIPCION'}).'</td>
+					<td width="15%" class="rowtable_req numb" id="QTY'.ltrim($value->{'ProductID'},0).'"  onfocusout="checkInp('.$value->{'ProductID'}.');" contenteditable>'.number_format($value->{'CANTIDAD'},2).'</td>
+					<td width="15%" class="rowtable_req"      id="UNI'.ltrim($value->{'ProductID'},0).'"  onkeyup="checkuni('.$value->{'ProductID'}.');" contenteditable>'.$value->{'UNIDAD'}.'</td>
+					<td width="15%" class="rowtable_req"    ><select id="PHS'.ltrim($value->{'ProductID'},0).'" ><option  value="-" selected>-</option></select></td>
 					</tr>';
 
 
