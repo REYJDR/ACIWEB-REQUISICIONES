@@ -519,9 +519,10 @@ var x=document.getElementById(UNIID).innerHTML;
 
 				echo $table; 
 			}
+			die($type );
 			if($copy = 'X' && $type == 'OC'){
 
-			die($type );
+			
 				foreach ($PO as  $value) { 
 
 					$value = json_decode($value);  
