@@ -32,6 +32,8 @@ var table = $("#table_req_tb").DataTable({
 
 	  var id= '#PHS'+y;
 
+	  console.log(PHASES);
+
 	  $('#PHS'+y).append(PHASES); //limpio la tabla 
 	  
   }
