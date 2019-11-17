@@ -530,7 +530,9 @@ var x=document.getElementById(UNIID).innerHTML;
 
 					$line = $key +1;
 
-					if($value->{'RowIndex'} != 'ITBMS'){
+
+
+					if($value->{'ProductID'} != 'ITBMS'){
 
 						$table .=  '<tr>
 						<td width="15%">'.str_pad($line, 2, '0', STR_PAD_LEFT).'</td>
