@@ -30,7 +30,6 @@ $('#ERROR').hide();
   var rows = table.rows().count();
 
 
-
   if(rows > 0){	
 	i = i + rows ;
   }
@@ -102,7 +101,7 @@ function phase(){
 				PHASES = res;
                             
 				if(res){
-console.log(rows);
+					var rows = table.rows().count();
 
 					for (var y = 1; y <= rows; y++) {
 
