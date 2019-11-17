@@ -63,9 +63,11 @@ public function req_copy($Id,$type){
         }else{
 
             $PO = $this->model->get_items_by_OC($Id);
+
+            var_dump($PO);
         }
 
-        
+
 
         // load views
         require APP . 'view/_templates/header.php';
