@@ -28,7 +28,7 @@ var table = $("#table_req_tb").DataTable({
 
   var rows = table.rows().count();
 
-  for (var y = 1; y =< rows; y++) {
+  for (var y = 1; y <= rows; y++) {
 
 	  var id= '#PHS'+y;
 
