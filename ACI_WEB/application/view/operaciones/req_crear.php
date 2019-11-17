@@ -427,7 +427,7 @@ var x=document.getElementById(UNIID).innerHTML;
          	<div class="comment-text-area col-lg-12">
          		<strong>Nota: </strong>
 				 <textarea class="textinput" onkeyup="checkNOTA();" rows="5" cols="70" id="nota" name="nota">			 
-				 <?php if($copy = 'X'){ 
+				 <?php if($copy = 'X' && $type = 'REQ' ){ 
 					 $reqInfo = json_decode($ORDER[0]); 
 				     echo trim($reqInfo->{'NOTA'}); 
 				}?></textarea>
@@ -494,7 +494,7 @@ var x=document.getElementById(UNIID).innerHTML;
 	<tbody id="table_req" >	
 	
 		<?php 
-			if($copy = 'X'){
+			if($copy = 'X' && $type == 'REQ'){
 			
 			foreach ($ORDER as  $value) { 
 
@@ -512,6 +512,29 @@ var x=document.getElementById(UNIID).innerHTML;
 				}
 
 				echo $table; 
+			}
+			if($copy = 'X' && $type == 'OC'){
+
+				var_dump($PO);
+				foreach ($PO as  $value) { 
+
+					
+					
+					$value = json_decode($value);  
+					
+					$table .=  '<tr>
+						<td width="15%">'.$value->{'ProductID'}.'</td>
+						<td width="35%" class="rowtable_req"      id="DESC'.ltrim($value->{'ProductID'},0).'" onkeyup="checkChar('.$value->{'ProductID'}.');" contenteditable>'.trim($value->{'DESCRIPCION'}).'</td>
+						<td width="15%" class="rowtable_req numb" id="QTY'.ltrim($value->{'ProductID'},0).'"  onfocusout="checkInp('.$value->{'ProductID'}.');" contenteditable>'.number_format($value->{'CANTIDAD'},2).'</td>
+						<td width="15%" class="rowtable_req"      id="UNI'.ltrim($value->{'ProductID'},0).'"  onkeyup="checkuni('.$value->{'ProductID'}.');" contenteditable>'.$value->{'UNIDAD'}.'</td>
+						<td width="15%" class="rowtable_req"    ><select id="PHS'.ltrim($value->{'ProductID'},0).'" ><option  value="-" selected>-</option></select></td>
+						</tr>';
+	
+	
+					}
+	
+					echo $table; 
+
 			}
 
 		?>
