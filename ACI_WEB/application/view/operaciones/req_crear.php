@@ -32,7 +32,7 @@ var table = $("#table_req_tb").DataTable({
 
 	  var id= '#PHS'+y;
 
-	  console.log(PHASES);
+	  console.log('#PHS'+y+':'+PHASES);
 
 	  $('#PHS'+y).append(PHASES); //limpio la tabla 
 	  
