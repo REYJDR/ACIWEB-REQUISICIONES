@@ -156,6 +156,12 @@ function n(n){
 
 }
 
+var rows = table.rows().count();
+
+
+  if(rows > 0){	
+	 $("#table_req_tb").html('');
+  }
 
 while(i <= cantLineas){
 
@@ -625,8 +631,7 @@ MSG_ERROR_RELEASE();
 	 CHK_VALIDATION = true;
 	}
 
-console.log(DATE);
-console.log(isFutureDate(DATE));
+
 
 	if (isFutureDate(DATE) == false ) {
 	

@@ -54,6 +54,7 @@ public function req_copy($Id,$type){
     $res = $this->model->verify_session();
    
     if($res=='0'){
+        
         $copy = 'X';
         
         if($type == 'REQ'){
