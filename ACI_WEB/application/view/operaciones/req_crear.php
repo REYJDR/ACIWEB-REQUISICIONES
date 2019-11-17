@@ -433,7 +433,7 @@ var x=document.getElementById(UNIID).innerHTML;
          	<div class="comment-text-area col-lg-12">
          		<strong>Nota: </strong>
 				 <textarea class="textinput" onkeyup="checkNOTA();" rows="5" cols="70" id="nota" name="nota">			 
-				 <?php if($copy = 'X' && $type = 'REQ' ){ 
+				 <?php if($copy == 'X' && $type == 'REQ' ){ 
 					 $reqInfo = json_decode($ORDER[0]); 
 				     echo trim($reqInfo->{'NOTA'}); 
 				}?></textarea>
@@ -500,6 +500,7 @@ var x=document.getElementById(UNIID).innerHTML;
 	<tbody id="table_req" >	
 	
 		<?php 
+		die($type );
 			if($copy = 'X' && $type == 'REQ'){
 			
 			foreach ($ORDER as  $value) { 
@@ -519,7 +520,7 @@ var x=document.getElementById(UNIID).innerHTML;
 
 				echo $table; 
 			}
-			die($type );
+			
 			if($copy = 'X' && $type == 'OC'){
 
 			

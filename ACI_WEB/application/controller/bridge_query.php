@@ -5931,7 +5931,7 @@ $table.= '<button type="button" class="close" aria-label="Close" onclick="CLOSE_
   $table.='</tbody></table>';
 
   $ocInfo = json_decode($oc[0]);
-//var_dump($ocInfo);
+
   $table.= '<div style="float:right;" class="col-md-2">
   <a href="'.URL.'index.php?url=ges_requisiciones/req_copy/'.$ocInfo->{'PurchaseOrderNumber'}.'/OC"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
      <img  class="icon" src="img/File Send.png" />
