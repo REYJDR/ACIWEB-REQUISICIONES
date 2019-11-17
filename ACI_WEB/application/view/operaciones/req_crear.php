@@ -524,18 +524,18 @@ var x=document.getElementById(UNIID).innerHTML;
 			if($copy = 'X' && $type == 'OC'){
 
 			
-				foreach ($PO as  $value) { 
+				foreach ($PO as $key => $value) { 
 
 					$value = json_decode($value);  
 
 					if($value->{'RowIndex'} != 'ITBMS'){
 
 						$table .=  '<tr>
-						<td width="15%">'.$value->{'RowIndex'}.'</td>
-						<td width="35%" class="rowtable_req"      id="DESC'.ltrim($value->{'RowIndex'},0).'" onkeyup="checkChar('.$value->{'RowIndex'}.');" contenteditable>'.trim($value->{'Description'}).'</td>
-						<td width="15%" class="rowtable_req numb" id="QTY'.ltrim($value->{'RowIndex'},0).'"  onfocusout="checkInp('.$value->{'RowIndex'}.');" contenteditable></td>
-						<td width="15%" class="rowtable_req"      id="UNI'.ltrim($value->{'RowIndex'},0).'"  onkeyup="checkuni('.$value->{'RowIndex'}.');" contenteditable></td>
-						<td width="15%" class="rowtable_req"    ><select id="PHS'.ltrim($value->{'RowIndex'},0).'" ><option  value="-" selected>-</option></select></td>
+						<td width="15%">'.$key.'</td>
+						<td width="35%" class="rowtable_req"      id="DESC'.$key.'" onkeyup="checkChar('.$key.');" contenteditable>'.trim($value->{'Description'}).'</td>
+						<td width="15%" class="rowtable_req numb" id="QTY'.$key.'"  onfocusout="checkInp('.$key.');" contenteditable></td>
+						<td width="15%" class="rowtable_req"      id="UNI'.$key.'"  onkeyup="checkuni('.$key.');" contenteditable></td>
+						<td width="15%" class="rowtable_req"    ><select id="PHS'.$key.'" ><option  value="-" selected>-</option></select></td>
 						</tr>';
 	
 	
