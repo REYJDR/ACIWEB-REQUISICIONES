@@ -523,18 +523,18 @@ var x=document.getElementById(UNIID).innerHTML;
 			
 			if($copy = 'X' && $type == 'OC'){
 
-			
+				$line = 0;
 				//var_dump($PO);
-				foreach ($PO as $key => $value) { 
+				foreach ($PO as  $value) { 
 
+					
 					$value = json_decode($value);  
 
-					$line = $key +1;
-
-
+					
 
 					if($value->{'Item_id'} != 'ITBMS'){
-
+						$line = $line + 1;
+						
 						$table .=  '<tr>
 						<td width="15%">'.str_pad($line, 2, '0', STR_PAD_LEFT).'</td>
 						<td width="35%" class="rowtable_req"      id="DESC'.$line.'" onkeyup="checkChar('.$line.');" contenteditable>'.trim($value->{'Description'}).'</td>
