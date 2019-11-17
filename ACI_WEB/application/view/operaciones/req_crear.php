@@ -524,7 +524,7 @@ var x=document.getElementById(UNIID).innerHTML;
 			if($copy = 'X' && $type == 'OC'){
 
 			
-				var_dump($PO);
+				//var_dump($PO);
 				foreach ($PO as $key => $value) { 
 
 					$value = json_decode($value);  
@@ -533,7 +533,7 @@ var x=document.getElementById(UNIID).innerHTML;
 
 
 
-					if($value->{'ProductID'} != 'ITBMS'){
+					if($value->{'Item_id'} != 'ITBMS'){
 
 						$table .=  '<tr>
 						<td width="15%">'.str_pad($line, 2, '0', STR_PAD_LEFT).'</td>
