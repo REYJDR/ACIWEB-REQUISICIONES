@@ -1,6 +1,7 @@
 <script type="text/javascript">
 var i = 1;
-
+var rows;
+var table ;
 // ********************************************************
 // * Aciones cuando la pagina ya esta cargada
 // ********************************************************
@@ -15,7 +16,7 @@ $('#ERROR').hide();
     //lista phases
      
 
-var table = $("#table_req_tb").DataTable({
+ table = $("#table_req_tb").DataTable({
 
       bSort: false,
       responsive: true,
@@ -28,15 +29,6 @@ var table = $("#table_req_tb").DataTable({
 
   var rows = table.rows().count();
 
-  for (var y = 1; y <= rows; y++) {
-
-	  var id= '#PHS'+y;
-
-	  console.log('#PHS'+y+':'+PHASES);
-
-	  $('#PHS'+y).append('<option>test'+PHASES+'</option>'); //limpio la tabla 
-	  
-  }
 
 
   if(rows > 0){	
@@ -110,6 +102,19 @@ function phase(){
 				PHASES = res;
                             
 				if(res){
+
+
+					for (var y = 1; y <= rows; y++) {
+
+						var id= '#PHS'+y;
+
+						console.log('#PHS'+y+':'+PHASES);
+
+						$('#PHS'+y).append('<option>test'+PHASES+'</option>'); //limpio la tabla 
+						
+					}
+
+
 				init(1); //llamo a construir tabla
 				}
 
@@ -121,6 +126,8 @@ function phase(){
 /*PHASES*/
 
 }
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
