@@ -160,7 +160,7 @@ var rows = table.rows().count();
 
 
   if(rows <= 0){	
-	 $("#table_req_tb").html('');
+	table.clear();
   }
 
 while(i <= cantLineas){
