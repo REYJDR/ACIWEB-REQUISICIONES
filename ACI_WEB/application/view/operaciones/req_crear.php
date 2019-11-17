@@ -416,7 +416,21 @@ var x=document.getElementById(UNIID).innerHTML;
          <fieldset>
        	
          	<div class="comment-text-area col-lg-12">
-         		<strong>Nota: </strong><textarea class="textinput" onkeyup="checkNOTA();" rows="5" cols="70" id="nota" name="nota"></textarea>
+         		<strong>Nota: </strong><textarea class="textinput" onkeyup="checkNOTA();" rows="5" cols="70" id="nota" name="nota">
+				 
+				 
+				 <?
+					if($copy = 'X'){
+
+						
+							$reqInfo = json_decode($ORDER[0]);  
+							
+						var_dump($reqInfo);
+						
+
+					}
+				 ?>
+				 </textarea>
         		
          	</div>
          </fieldset>
