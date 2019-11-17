@@ -425,7 +425,7 @@ var x=document.getElementById(UNIID).innerHTML;
 						
 							$reqInfo = json_decode($ORDER[0]);  
 							
-						var_dump($reqInfo);
+						    echo $reqInfo->{'NOTA'};
 						
 
 					}
