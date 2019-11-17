@@ -49,14 +49,24 @@ public function req_hist(){
 
 
 
-public function req_copy($reqId){
+public function req_copy($Id,$type){
 
     $res = $this->model->verify_session();
    
     if($res=='0'){
         $copy = 'X';
         
-        $ORDER = $this->model->get_req_to_print($reqId);
+        if($type == 'REQ'){
+            
+            $ORDER = $this->model->get_req_to_print($Id);
+
+        }else{
+
+            $PO = $this->model->get_items_by_OC($Id);
+        }
+
+        
+
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/_templates/panel.php';

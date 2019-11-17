@@ -109,7 +109,7 @@ function phase(){
 
 						console.log('#PHS'+y+':'+PHASES);
 
-						$('#PHS'+y).append('<option>test'+PHASES+'</option>'); //limpio la tabla 
+						$('#PHS'+y).append('<option>'+PHASES+'</option>'); //limpio la tabla 
 						
 					}
 

@@ -130,7 +130,6 @@ var link = URL+"index.php";
 
 
 
-
   $.ajax({
       type: "GET",
       url: link,
