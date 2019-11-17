@@ -528,6 +528,8 @@ var x=document.getElementById(UNIID).innerHTML;
 
 					$value = json_decode($value);  
 
+					$key = $key +1;
+
 					if($value->{'RowIndex'} != 'ITBMS'){
 
 						$table .=  '<tr>
