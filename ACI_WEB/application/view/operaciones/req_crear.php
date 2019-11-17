@@ -189,7 +189,7 @@ while(i <= cantLineas){
 		    '<td width="30%" class="rowtable_req"      id="DESC'+i+'" onkeyup="checkChar('+i+');" contenteditable></td>'+
 			'<td width="15%" class="rowtable_req numb" id="QTY'+i+'"  onfocusout="checkInp('+i+');" contenteditable></td>'+
 			'<td width="15%" class="rowtable_req"      id="UNI'+i+'"  onkeyup="checkuni('+i+');" contenteditable></td>'+
-			'<td width="15%" class="rowtable_req"       ><select id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
+			'<td width="15%" class="rowtable_req"      ><select id="PHS'+i+'" ><option  value="-" selected>-</option>'+PHASES+'</select></td>'+
 			'</tr>' ;
 
 			 i++
@@ -521,7 +521,7 @@ var x=document.getElementById(UNIID).innerHTML;
 			}
 			if($copy = 'X' && $type == 'OC'){
 
-			
+			die($type );
 				foreach ($PO as  $value) { 
 
 					$value = json_decode($value);  
@@ -540,10 +540,10 @@ var x=document.getElementById(UNIID).innerHTML;
 					}
 				}
 					
-					if ($table != ''){
+				if ($table != ''){
 
-						echo $table; 
-					}
+					echo $table; 
+				}
 	
 				
 
