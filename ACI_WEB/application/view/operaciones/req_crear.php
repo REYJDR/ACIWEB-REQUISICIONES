@@ -102,7 +102,7 @@ function phase(){
 				PHASES = res;
                             
 				if(res){
-
+console.log(rows);
 
 					for (var y = 1; y <= rows; y++) {
 
