@@ -500,7 +500,7 @@ var x=document.getElementById(UNIID).innerHTML;
 	<tbody id="table_req" >	
 	
 		<?php 
-		die($type );
+		
 			if($copy = 'X' && $type == 'REQ'){
 			
 			foreach ($ORDER as  $value) { 
