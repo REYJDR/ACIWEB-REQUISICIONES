@@ -524,6 +524,7 @@ var x=document.getElementById(UNIID).innerHTML;
 			if($copy = 'X' && $type == 'OC'){
 
 			
+				var_dump($PO);
 				foreach ($PO as $key => $value) { 
 
 					$value = json_decode($value);  
