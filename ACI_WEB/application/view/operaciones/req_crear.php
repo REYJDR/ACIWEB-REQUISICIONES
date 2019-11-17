@@ -528,16 +528,16 @@ var x=document.getElementById(UNIID).innerHTML;
 
 					$value = json_decode($value);  
 
-					$key = $key +1;
+					$line = $key +1;
 
 					if($value->{'RowIndex'} != 'ITBMS'){
 
 						$table .=  '<tr>
-						<td width="15%">'.$key.'</td>
-						<td width="35%" class="rowtable_req"      id="DESC'.$key.'" onkeyup="checkChar('.$key.');" contenteditable>'.trim($value->{'Description'}).'</td>
-						<td width="15%" class="rowtable_req numb" id="QTY'.$key.'"  onfocusout="checkInp('.$key.');" contenteditable></td>
-						<td width="15%" class="rowtable_req"      id="UNI'.$key.'"  onkeyup="checkuni('.$key.');" contenteditable></td>
-						<td width="15%" class="rowtable_req"    ><select id="PHS'.$key.'" ><option  value="-" selected>-</option></select></td>
+						<td width="15%">'.$line.'</td>
+						<td width="35%" class="rowtable_req"      id="DESC'.$line.'" onkeyup="checkChar('.$line.');" contenteditable>'.trim($value->{'Description'}).'</td>
+						<td width="15%" class="rowtable_req numb" id="QTY'.$line.'"  onfocusout="checkInp('.$line.');" contenteditable></td>
+						<td width="15%" class="rowtable_req"      id="UNI'.$line.'"  onkeyup="checkuni('.$line.');" contenteditable></td>
+						<td width="15%" class="rowtable_req"    ><select id="PHS'.$line.'" ><option  value="-" selected>-</option></select></td>
 						</tr>';
 	
 	
