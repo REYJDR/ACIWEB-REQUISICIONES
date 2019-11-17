@@ -26,14 +26,20 @@ var table = $("#table_req_tb").DataTable({
 
  });
 
- var rows = table.rows().count();
+  var rows = table.rows().count();
 
-if(rows > 0){
-	
+  for (var y = 0; y < rows; y++) {
 
+	  var id= '#PHS'+y;
+
+	  $(id).append(PHASES); //limpio la tabla 
+	  
+  }
+
+
+  if(rows > 0){	
 	i = i + rows ;
-
-}
+  }
 
 });
 
@@ -142,11 +148,6 @@ function n(n){
 
 }
 
-/*if(i > 1){
-
-	$('#table_req').html(''); //limpio la tabla 
-
-}*/
 
 while(i <= cantLineas){
 
@@ -418,7 +419,10 @@ var x=document.getElementById(UNIID).innerHTML;
          	<div class="comment-text-area col-lg-12">
          		<strong>Nota: </strong>
 				 <textarea class="textinput" onkeyup="checkNOTA();" rows="5" cols="70" id="nota" name="nota">			 
-				 <?php if($copy = 'X'){ $reqInfo = json_decode($ORDER[0]); echo trim($reqInfo->{'NOTA'}); }?></textarea>
+				 <?php if($copy = 'X'){ 
+					 $reqInfo = json_decode($ORDER[0]); 
+				     echo trim($reqInfo->{'NOTA'}); 
+				}?></textarea>
 				
         		
          	</div>
@@ -493,7 +497,7 @@ var x=document.getElementById(UNIID).innerHTML;
 					<td width="35%" class="rowtable_req"      id="DESC'.$value->{'ProductID'}.'" onkeyup="checkChar('.$value->{'ProductID'}.');" contenteditable>'.trim($value->{'DESCRIPCION'}).'</td>
 					<td width="15%" class="rowtable_req numb" id="QTY'.$value->{'ProductID'}.'"  onfocusout="checkInp('.$value->{'ProductID'}.');" contenteditable>'.number_format($value->{'CANTIDAD'},2).'</td>
 					<td width="15%" class="rowtable_req"      id="UNI'.$value->{'ProductID'}.'"  onkeyup="checkuni('.$value->{'ProductID'}.');" contenteditable>'.$value->{'UNIDAD'}.'</td>
-					<td width="15%" class="rowtable_req"       >'.$value->{'PHASE'}.'</td>
+					<td width="15%" class="rowtable_req"    ><select id="PHS'.$value->{'ProductID'}.'" ><option  value="-" selected>-</option></select></td>
 					</tr>';
 
 
