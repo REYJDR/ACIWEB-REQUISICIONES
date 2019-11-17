@@ -159,7 +159,7 @@ function n(n){
 var rows = table.rows().count();
 
 
-  if(rows > 0){	
+  if(rows <= 0){	
 	 $("#table_req_tb").html('');
   }
 
