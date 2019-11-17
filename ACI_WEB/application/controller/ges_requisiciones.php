@@ -64,7 +64,7 @@ public function req_copy($Id,$type){
 
             $PO = $this->model->get_items_by_OC($Id);
 
-            var_dump($PO);die();
+            
         }
 
 
