@@ -32,7 +32,7 @@ var table = $("#table_req_tb").DataTable({
 
 	  var id= '#PHS'+y;
 
-	  $(id).append(PHASES); //limpio la tabla 
+	  $('#PHS'+y).append(PHASES); //limpio la tabla 
 	  
   }
 
@@ -500,16 +500,6 @@ var x=document.getElementById(UNIID).innerHTML;
 					<td width="15%" class="rowtable_req"    ><select id="PHS'.ltrim($value->{'ProductID'},0).'" ><option  value="-" selected>-</option></select></td>
 					</tr>';
 
-
-				// $table .= '<tr>
-				// 	<td width="15%" style="padding-right:10px; text-align: left;">'.$value->{'ProductID'}.'</td>
-				// 	<td width="35%" ">'.trim($value->{'DESCRIPCION'}).'</td>
-				// 	<td width="10%" class="numb" style="text-align: center; padding-right">'.number_format($value->{'CANTIDAD'},2).'</td>
-				// 	<td width="10%" style="text-align: center; padding-right">'.$value->{'UNIDAD'}.'</td>
-				// 	<td width="10%" style="text-align: center; padding-right">'.$value->{'JOB'}.'</td>
-				// 	<td width="10%" style="text-align: center; padding-right">'.$value->{'PHASE'}.'</td>
-
-				// 	</tr>';
 
 				}
 
