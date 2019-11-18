@@ -4795,9 +4795,9 @@ echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td cla
 
 echo "</tbody></table>";
 
-//$ORDER = $this->model->getReqStatusDetail($id);
+$ORDER = $this->model->getReqStatusDetail($id);
 
-$ORDER= $this->model->get_req_to_print($id);
+//$ORDER= $this->model->get_req_to_print($id);
 
 echo '<table id="table_info" class="table table-striped table-bordered" cellspacing="0">
       <thead>
@@ -4821,36 +4821,36 @@ foreach ($ORDER as $datos) {
 
 $ORDER = json_decode($datos);
 
+// //Informacion de ORDEN DE COMPRA PARA ESTE PRODUCTO EN LA REQUISICION
+//   $sql_OC = 'SELECT 
+//   PurOrdr_Header_Exp.PurchaseOrderNumber,
+//   sum(PurOrdr_Detail_Exp.Quantity) as Quantity
+//   FROM PurOrdr_Header_Exp
+//   INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
+//   WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$ORDER_detail->{'NO_REQ'}.'"
+//   AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
+//   AND PurOrdr_Detail_Exp.Item_id = "'.$ORDER->{'ProductID'}.'"
+//   AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';
 
-//Informacion de ORDEN DE COMPRA PARA ESTE PRODUCTO EN LA REQUISICION
-  $sql_OC = 'SELECT 
-  PurOrdr_Header_Exp.PurchaseOrderNumber,
-  sum(PurOrdr_Detail_Exp.Quantity) as Quantity
-  FROM PurOrdr_Header_Exp
-  INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-  WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$ORDER_detail->{'NO_REQ'}.'"
-  AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-  AND PurOrdr_Detail_Exp.Item_id = "'.$ORDER->{'ProductID'}.'"
-  AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';
+//   $INFO_OC = $this->model->Query($sql_OC);
 
-  $INFO_OC = $this->model->Query($sql_OC);
+//   $QTY_TOTAL=0;
 
-  $QTY_TOTAL=0;
+//   unset($Qty_Comprada);
 
-  unset($Qty_Comprada);
+//   foreach ($INFO_OC as $datos) {
 
-  foreach ($INFO_OC as $datos) {
+//       $INFO_OC = json_decode($datos);
+//       $Qty_Comprada[$INFO_OC->{'PurchaseOrderNumber'}] = $INFO_OC->{'Quantity'};
+//        $QTY_TOTAL += $INFO_OC->{'Quantity'};
 
-      $INFO_OC = json_decode($datos);
-      $Qty_Comprada[$INFO_OC->{'PurchaseOrderNumber'}] = $INFO_OC->{'Quantity'};
-       $QTY_TOTAL += $INFO_OC->{'Quantity'};
-
-    }
+//     }
 
 
-//INI STATUS POR ITEM/////////////////////////////////////////////////////////////////////////////////////////////
-$status = $this->req_item_status($ORDER_detail->{'NO_REQ'},$ORDER->{'ProductID'},$ORDER->{'CANTIDAD'});
+// //INI STATUS POR ITEM/////////////////////////////////////////////////////////////////////////////////////////////
+// $status = $this->req_item_status($ORDER_detail->{'NO_REQ'},$ORDER->{'ProductID'},$ORDER->{'CANTIDAD'});
 
+$status = $ORDER->{'ESTATUS'};
 
 switch ($status) {
   case 'CERRADA':
@@ -4886,34 +4886,43 @@ switch ($status) {
 
 
 //Informacion de ORDEN DE COMPRA PARA ESTE PRODUCTO EN LA REQUISICION
-$oc_list='';
+// $oc_list='';
 
-foreach ($Qty_Comprada as $key => $value) {
+// foreach ($Qty_Comprada as $key => $value) {
 
-//$oc_list .='<a href="'.URL.'index.php?url=ges_compras/orden_compras/'.$key.'" target="_blank" ><strong>'.$key.' ('.number_format($value,0,'.',',').')</strong></a><BR>';
+// //$oc_list .='<a href="'.URL.'index.php?url=ges_compras/orden_compras/'.$key.'" target="_blank" ><strong>'.$key.' ('.number_format($value,0,'.',',').')</strong></a><BR>';
 
-$PO_NO = "'".$key."'";
+// $PO_NO = "'".$key."'";
 
-$oc_list .='<a href="javascript:void(0)" onclick="get_OC('.$PO_NO.');"><strong>'.$key.' ('.number_format($value,0,'.',',').')</strong></a><BR>';
+// $oc_list .='<a href="javascript:void(0)" onclick="get_OC('.$PO_NO.');"><strong>'.$key.' ('.number_format($value,0,'.',',').')</strong></a><BR>';
 
-}
+// }
+
+// $ORDER->{'ProductID'};
+// $ORDER->{'DESCRIPCION'};
+// $ORDER->{'UNIDAD'};
+// $ORDER->{'PHASE'};
+// $ORDER->{'NO_REQ'};
+// $ORDER->{'QtyRequired'};
+// $ORDER->{'QtyOrdered'};
+// $ORDER->{'QtyRecieved'};
+
+$PO_NO = "'".$ORDER->{'PoNumber'}."'";
+
+$oc_list .='<a href="javascript:void(0)" onclick="get_OC('.$PO_NO.');"><strong>'.$ORDER->{'PoNumber'}.' ('.number_format($ORDER->{'QtyOrdered'},0,'.',',').')</strong></a><BR>';
 
 
-//cantidad recibida para este item
-$qty_reciv = $this->model->Query_value('REQ_RECEPT','SUM(QTY)','WHERE  ID_compania="'.$this->model->id_compania.'" 
-                                        AND NO_REQ="'.$ORDER_detail->{'NO_REQ'}.'" AND ITEM="'.$ORDER->{'ProductID'}.'"');
-
-$QTY_FALTANTE = $ORDER->{'CANTIDAD'} - $QTY_TOTAL;
+$QTY_FALTANTE = $ORDER->{'QtyRequired'} - $ORDER->{'QtyRecieved'};
 
   echo  "<tr ".$style_row." >
             <td>".$ORDER->{'ProductID'}."</td>
             <td>".$ORDER->{'DESCRIPCION'}."</td>
             <td>".$ORDER->{'UNIDAD'}."</td>
             <td>".$ORDER->{'PHASE'}."</td>
-            <td class='numb'>".number_format($ORDER->{'CANTIDAD'},2,'.',',')."</td>
-            <td class='numb'>".number_format($QTY_TOTAL,2,'.',',')."</td>
+            <td class='numb'>".number_format($ORDER->{'QtyRequired'},2,'.',',')."</td>
+            <td class='numb'>".number_format($ORDER->{'QtyOrdered'},2,'.',',')."</td>
             <td class='numb'>".number_format($QTY_FALTANTE,2,'.',',')."</td>
-            <td class='numb'>".number_format($qty_reciv,2,'.',',')."</td>
+            <td class='numb'>".number_format($ORDER->{'QtyRecieved'},2,'.',',')."</td>
             <td>".$oc_list."</td>
             <td>".$status."</td>
         </tr>";
@@ -4932,7 +4941,7 @@ echo '<div style="float:right;" class="col-md-2">
 </div>';
 
 echo '<div style="float:right;" class="col-md-2">
-<a href="'.URL.'index.php?url=ges_requisiciones/req_print/'.$ORDER->{'NO_REQ'}.'/'.$ORDER->{'isPay'}.'/'.$ORDER->{'isUrgent'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+<a href="'.URL.'index.php?url=ges_requisiciones/req_print/'.$ORDER->{'NO_REQ'}.'/'.$ORDER_detail->{'isPay'}.'/'.$ORDER_detail->{'isUrgent'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
    <img  class="icon" src="img/Printer.png" />
   <span>Imprimir</span>
 </a>
