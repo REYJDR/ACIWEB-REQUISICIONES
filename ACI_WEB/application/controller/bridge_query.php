@@ -4737,7 +4737,6 @@ $clause.= 'where A.NO_REQ="'.$id.'" and A.ID_compania="'.$this->model->id_compan
 
 $ORDER_detail = $this->model->getReqStatus($clause, $sort);
 
-var_dump($ORDER_detail);
 
 foreach ($ORDER_detail as $datos) {
   
@@ -4796,7 +4795,7 @@ echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td cla
 
 echo "</tbody></table>";
 
-
+//$ORDER = $this->model->getReqStatusDetail($id);
 
 $ORDER= $this->model->get_req_to_print($id);
 

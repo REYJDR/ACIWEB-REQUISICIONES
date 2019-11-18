@@ -917,6 +917,87 @@ public function getReqStatus($clause , $sort){
     return $get_req;
 }
 
+public function getReqStatusDetail($clause , $sort){
+    
+    $id_compania = $this->id_compania;
+
+    $sql="SELECT    REQST.isUrgent,
+                    REQST.isPay,
+                    REQST.CLOSED_NOTE,
+                    REQST.NO_REQ,
+                    REQST.DATE,
+                    REQST.DATE_INI,
+                    REQST.NOTA,
+                    REQST.descont,
+                    REQST.name, 
+                    REQST.lastname, 
+                    REQST.QtyRequired,
+                    REQST.QtyOrdered,
+                    REQST.QtyRecieved,
+                    REQST.COTIZANDO,
+                    REQST.RES_COT,
+                    CASE
+                        WHEN CLOSED = 1     THEN 'CERRADA' 
+                        WHEN QtyOrdered  > 0 AND (QtyRecieved = QtyOrdered OR QtyRecieved > QtyOrdered ) THEN 'FINALIZADO'  
+                        WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO'  
+                        WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL' 
+                        WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO' 
+                        WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL'
+                        WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved = 0 ) THEN 'PARCIALMENTE ORDENADO'  
+                        WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved > 0 ) THEN 'PARCIALMENTE ORDENADO / RECEPCION PARCIAL'  
+                        WHEN COTIZANDO = 1  THEN 'COTIZANDO'  
+                        ELSE 'POR COTIZAR'
+                    END AS ESTATUS
+                FROM (  SELECT 
+                    A.isUrgent,
+                    A.isPay,
+                    A.st_closed as CLOSED,
+                    A.desc_closed as CLOSED_NOTE,
+                    A.NO_REQ,
+                    A.DATE,
+                    A.DATE_INI,
+                    A.NOTA,
+                    A.descont,
+                    U.name, 
+                    U.lastname, 
+                    SUM(CAST(B.Cantidad AS decimal(16,2))) as QtyRequired,
+                    SUM(CAST(IFNULL(PO.QtyOrdered, 0) AS decimal(16,2)) ) as QtyOrdered,
+                    SUM(CAST(IFNULL(RC.QtyRecieved, 0) AS decimal(16,2)) ) as QtyRecieved,
+                    RI.NO_REQ AS RES_COT,
+                    CASE 
+                       WHEN RI.COUNT > 0 
+                       THEN 1 
+                       ELSE 0 
+                    END as COTIZANDO
+                FROM REQ_HEADER A 
+                INNER JOIN REQ_DETAIL B ON B.NO_REQ = A.NO_REQ 
+                LEFT JOIN  SAX_USER   U ON U.ID = A.USER
+                LEFT JOIN (SELECT 
+                            PH.CustomerSO,
+                            PH.ID_Compania,
+                            SUM(PD.Quantity) AS QtyOrdered
+                        FROM PurOrdr_Header_Exp PH
+                        INNER JOIN PurOrdr_Detail_Exp PD ON PD.TransactionID = PH.TransactionID and PD.ID_Compania = PH.ID_Compania
+                        GROUP BY PH.CustomerSO, PH.ID_Compania ) PO ON PO.CustomerSO = A.NO_REQ and PO.ID_compania='".$id_compania."'
+                LEFT JOIN (SELECT  
+                            NO_REQ,
+                            SUM(QTY) AS QtyRecieved
+                            FROM REQ_RECEPT 
+                            GROUP BY NO_REQ) RC ON RC.NO_REQ = A.NO_REQ
+                LEFT JOIN (SELECT 
+                            NO_REQ,
+                            COUNT(*) AS COUNT 
+                            FROM  REQ_QUOTA GROUP BY NO_REQ ) RI ON RI.NO_REQ = A.NO_REQ
+                ".$clause."
+                GROUP BY A.NO_REQ, U.name, U.lastname, A.DATE, A.NOTA, A.isUrgent, A.isPay, CLOSED, CLOSED_NOTE , RES_COT ORDER BY A.ID ".$sort." ) AS REQST ";
+    //ECHO $sql;
+               
+    $get_req = $this->Query($sql);
+    
+    
+    return $get_req;
+}
+
 
 public function GetQtyReqUrg($sort,$limit,$clause){
 
