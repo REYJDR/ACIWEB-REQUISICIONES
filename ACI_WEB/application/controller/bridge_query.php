@@ -4696,7 +4696,7 @@ echo '<br/><br/>
   $URL = '"'.URL.'"';
 
   $status='';
-  $status = $status_general;
+ echo $status = $status_general;
   
     switch ($status) {
       
