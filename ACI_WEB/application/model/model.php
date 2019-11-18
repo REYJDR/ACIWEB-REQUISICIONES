@@ -954,7 +954,7 @@ public function getReqStatusDetail($clause){
                 WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved > 0 ) THEN 'PARCIALMENTE ORDENADO / RECEPCION PARCIAL'  
                 WHEN COTIZANDO = 1  THEN 'COTIZANDO'  
                 ELSE 'POR COTIZAR'
-            END ) AS ESTATUS,
+            END ) AS ESTATUS
         FROM (  SELECT 
             A.isUrgent,
             A.isPay,
