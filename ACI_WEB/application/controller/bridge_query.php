@@ -4646,9 +4646,10 @@ return $status;
 }
 
 
-public function get_req_info($id,$status_general){
+public function get_req_info($id){
 $this->SESSION();
 
+$status_general = $_REQUEST['status'];
 
 echo '<script>
 

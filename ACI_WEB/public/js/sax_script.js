@@ -440,13 +440,13 @@ function show_invoice(URL,id){
 function show_req(URL,id,$status){
 
 
-     var datos= "url=bridge_query/get_req_info/"+id+"/"+$status;
+     var datos= "bridge_query/get_req_info/"+id
 
       
        $.ajax({
          type: "GET",
          url: URL+'index.php',
-         data: datos,
+         data: { url: datos , status: status},
          success: function(res){
 
            //$("historial").hide();
