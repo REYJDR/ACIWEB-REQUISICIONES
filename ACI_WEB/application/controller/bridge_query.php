@@ -4650,7 +4650,8 @@ public function get_req_info($id){
 $this->SESSION();
 
 
-$ORDER_detail = $this->model->get_req_to_report('DESC','1','WHERE REQ_HEADER.ID_compania="'.$this->model->id_compania.'" AND  REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.NO_REQ="'.$id.'" and REQ_DETAIL.NO_REQ="'.$id.'"');
+//$ORDER_detail = $this->model->get_req_to_report('DESC','1','WHERE REQ_HEADER.ID_compania="'.$this->model->id_compania.'" AND  REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.NO_REQ="'.$id.'" and REQ_DETAIL.NO_REQ="'.$id.'"');
+
 
 echo '<script>
 
@@ -4679,56 +4680,104 @@ echo '<br/><br/>
 <fieldset><legend>Detalle de Requisicion</legend>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
-  foreach ($ORDER_detail as $datos) {
-    $ORDER_detail = json_decode($datos);
+//   foreach ($ORDER_detail as $datos) {
+//     $ORDER_detail = json_decode($datos);
 
 
-$user = $this->model->Get_User_Info($ORDER_detail->{'USER'}); 
+// $user = $this->model->Get_User_Info($ORDER_detail->{'USER'}); 
 
-foreach ($user as $value) {
-$value = json_decode($value);
-$name= $value->{'name'};
-$lastname = $value->{'lastname'};
-}
+// foreach ($user as $value) {
+// $value = json_decode($value);
+// $name= $value->{'name'};
+// $lastname = $value->{'lastname'};
+// }
 
 
-//obtengo estatus de la requisicion
-$status_gen = $this->req_status($id);
+// //obtengo estatus de la requisicion
+// $status_gen = $this->req_status($id);
 
-switch ($status_gen) {
-  case 'CERRADA':
-     $style = 'style="background-color:#D8D8D8 ;"';//verder
-    break;
-  case 'FINALIZADO':
-     $style = 'style="background-color:#BCF5A9;"';//verder
-    break;
-  case 'ORDENADO':
-     $style = 'style="background-color:#F2F5A9;"';//AMARILLO
-    break;
-  case 'ORDENADO / RECEPCION PARCIAL':
-    $style = 'style="background-color:#F2F5A9;"';//AMARILLO
-   break;
-  case 'PARCIALMENTE ORDENADO':
-     $style = 'style="background-color:#F3E2A9;"';//NARANJA
-    break;
-  case 'COTIZANDO':
-     $style = 'style="background-color:#F7BE81;"';//NARANJA
-    break; 
-  case 'POR COTIZAR':
-     $style = 'style="background-color:#F5A9A9;"';//ROJO
-    break; 
+// switch ($status_gen) {
+//   case 'CERRADA':
+//      $style = 'style="background-color:#D8D8D8 ;"';//verder
+//     break;
+//   case 'FINALIZADO':
+//      $style = 'style="background-color:#BCF5A9;"';//verder
+//     break;
+//   case 'ORDENADO':
+//      $style = 'style="background-color:#F2F5A9;"';//AMARILLO
+//     break;
+//   case 'ORDENADO / RECEPCION PARCIAL':
+//     $style = 'style="background-color:#F2F5A9;"';//AMARILLO
+//    break;
+//   case 'PARCIALMENTE ORDENADO':
+//      $style = 'style="background-color:#F3E2A9;"';//NARANJA
+//     break;
+//   case 'COTIZANDO':
+//      $style = 'style="background-color:#F7BE81;"';//NARANJA
+//     break; 
+//   case 'POR COTIZAR':
+//      $style = 'style="background-color:#F5A9A9;"';//ROJO
+//     break; 
 
-}
+// }
 
-if($ORDER_detail->{'DATE_INI'}!=''){
+// if($ORDER_detail->{'DATE_INI'}!=''){
 
-  $data_ini = date('d/M/Y',strtotime($ORDER_detail->{'DATE_INI'}));
-}else{
+//   $data_ini = date('d/M/Y',strtotime($ORDER_detail->{'DATE_INI'}));
+// }else{
   
-  $data_ini = '';
+//   $data_ini = '';
 
-}
+// }
 
+$clause = "";
+
+$clause.= 'where A.NO_REQ="'.$id.'" and A.ID_compania="'.$this->model->id_compania.'" and B.ID_compania="'.$this->model->id_compania.'" ';
+
+
+$ORDER_detail = $this->model->getReqStatus($clause, $sort);
+
+
+foreach ($ORDER_detail as $datos) {
+  
+    $ORDER_detail = json_decode($datos);
+  
+    $name = $ORDER_detail->{'name'}; 
+    $lastname = $ORDER_detail->{'lastname'}; 
+  
+    $status='';
+  
+    $ID = '"'.$ORDER_detail->{'NO_REQ'}.'"';
+  
+    $URL = '"'.URL.'"';
+  
+    $status = $ORDER_detail->{'ESTATUS'};
+  
+    switch ($status) {
+      
+        case 'CERRADA':
+           $style = 'style="background-color:#D8D8D8 ;"';//gris
+          break;
+        case 'FINALIZADO':
+           $style = 'style="background-color:#BCF5A9;"';//verder
+          break;
+        case 'ORDENADO':
+           $style = 'style="background-color:#F2F5A9;"';//AMARILLO
+          break;
+        case 'ORDENADO / RECEPCION PARCIAL':
+          $style = 'style="background-color:#F2F5A9;"';//AMARILLO
+         break;
+        case 'PARCIALMENTE ORDENADO':
+           $style = 'style="background-color:#F3E2A9;"';//NARANJA
+          break;
+        case 'COTIZANDO':
+           $style = 'style="background-color:#F7BE81;"';//NARANJA
+          break; 
+        case 'POR COTIZAR':
+           $style = 'style="background-color:#F5A9A9;"';//ROJO
+          break; 
+      
+      }
 
 $files = $this->getAttachFiles($ORDER_detail->{'NO_REQ'});
 
