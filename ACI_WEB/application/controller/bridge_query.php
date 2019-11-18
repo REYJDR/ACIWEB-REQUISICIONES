@@ -4787,7 +4787,7 @@ echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td cla
           <tr><th style='text-align:left;'><strong>Fecha inicio actividad</strong></th><td class='InfsalesTd'>".$data_ini."</td><tr>
           <tr><th style='text-align:left;'><strong>Para descontar a</strong></th><td class='InfsalesTd'>".$ORDER_detail->{'descont'}."</td><tr>
           <tr><th style='text-align:left;'><strong>Solicitado por:</strong></th><td class='InfsalesTd'>".$name.' '.$lastname.'</td><tr>
-          <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status_gen.'</td><tr>
+          <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status.'</td><tr>
           <tr><th style="text-align:left;" ><strong>Soportes</strong></th><td class="InfsalesTd">'.$files.'</td><tr>';
           
 }
