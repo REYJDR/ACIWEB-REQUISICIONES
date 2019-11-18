@@ -4683,9 +4683,11 @@ echo '<br/><br/>
 
   $ORDER = $this->model->getReqStatusDetail($clause);
 
+
+echo  var_dump($ORDER);
+
   $ORDER_detail = json_decode($ORDER[0]);
 
-echo  var_dump($ORDER_detail);
     
   $name = $ORDER_detail->{'name'}; 
   $lastname = $ORDER_detail->{'lastname'}; 
