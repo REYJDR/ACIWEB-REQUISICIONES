@@ -929,6 +929,8 @@ public function getReqStatusDetail($clause){
             REQST.CLOSED_NOTE, 
             REQST.DATE,
             REQST.DATE_INI,
+            REQST.NOTA,
+            REQST.descont,
             REQST.ProductID,
             REQST.DESCRIPCION,
             REQST.UNIDAD,
