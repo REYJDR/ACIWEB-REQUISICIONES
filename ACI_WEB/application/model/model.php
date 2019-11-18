@@ -991,7 +991,7 @@ public function getReqStatusDetail($clause){
                     NO_REQ,
                     COUNT(*) AS COUNT 
                     FROM  REQ_QUOTA GROUP BY NO_REQ ) RI ON RI.NO_REQ = A.NO_REQ
-        '".$clause."'
+        ".$clause."
         ORDER BY A.ID  ) AS REQST";
                 
         echo $sql;
