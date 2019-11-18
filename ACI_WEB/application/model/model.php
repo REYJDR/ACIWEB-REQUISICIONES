@@ -923,7 +923,7 @@ public function getReqStatusDetail($clause){
     $this->verify_session();
 
 
-      $sql="SELECT  
+  echo    $sql="SELECT  
             REQST.isUrgent,
             REQST.isPay,
             REQST.CLOSED_NOTE, 
