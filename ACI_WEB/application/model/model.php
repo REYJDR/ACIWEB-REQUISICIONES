@@ -915,13 +915,20 @@ public function getReqStatus($clause , $sort){
     
     
     return $get_req;
+
 }
 
 public function getReqStatusDetail($clause){
     
     $this->verify_session();
 
-      $sql="SELECT   
+
+      $sql="SELECT  
+            REQST.isUrgent,
+            REQST.isPay,
+            REQST.CLOSED_NOTE, 
+            REQST.DATE,
+            REQST.DATE_INI,
             REQST.ProductID,
             REQST.DESCRIPCION,
             REQST.UNIDAD,
@@ -931,6 +938,7 @@ public function getReqStatusDetail($clause){
             REQST.QtyOrdered,
             REQST.QtyRecieved,
             REQST.PoNumber,
+            REQST.RES_COT,
         ( CASE
                 WHEN CLOSED = 1     THEN 'CERRADA' 
                 WHEN QtyOrdered  > 0 AND (QtyRecieved = QtyRequired OR QtyRecieved > QtyRequired ) THEN 'FINALIZADO'  

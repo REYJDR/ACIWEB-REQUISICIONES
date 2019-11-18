@@ -4642,7 +4642,6 @@ if($chk_closed =='1'){
 return $status;
 
 
-
 }
 
 
@@ -4683,7 +4682,7 @@ $clause = "";
 $clause.= 'where A.NO_REQ="'.$id.'" and A.ID_compania="'.$this->model->id_compania.'" and B.ID_compania="'.$this->model->id_compania.'" ';
 
 
-$ORDER_detail = $this->model->getReqStatus($clause, $sort);
+$ORDER_detail = $this->model->getReqStatusDetail($clause);
 
 
 foreach ($ORDER_detail as $datos) {
@@ -4745,7 +4744,6 @@ echo "</tbody></table>";
 
 $ORDER = $this->model->getReqStatusDetail($clause);
 
-//$ORDER= $this->model->get_req_to_print($id);
 
 echo '<table id="table_info" class="table table-striped table-bordered" cellspacing="0">
       <thead>
@@ -4768,35 +4766,6 @@ echo '<table id="table_info" class="table table-striped table-bordered" cellspac
 foreach ($ORDER as $datos) {
 
 $ORDER = json_decode($datos);
-
-// //Informacion de ORDEN DE COMPRA PARA ESTE PRODUCTO EN LA REQUISICION
-//   $sql_OC = 'SELECT 
-//   PurOrdr_Header_Exp.PurchaseOrderNumber,
-//   sum(PurOrdr_Detail_Exp.Quantity) as Quantity
-//   FROM PurOrdr_Header_Exp
-//   INNER JOIN PurOrdr_Detail_Exp ON PurOrdr_Header_Exp.TransactionID = PurOrdr_Detail_Exp.TransactionID
-//   WHERE PurOrdr_Header_Exp.CustomerSO =  "'.$ORDER_detail->{'NO_REQ'}.'"
-//   AND PurOrdr_Header_Exp.ID_compania =  "'.$this->model->id_compania.'"
-//   AND PurOrdr_Detail_Exp.Item_id = "'.$ORDER->{'ProductID'}.'"
-//   AND PurOrdr_Header_Exp.PurchaseOrderNumber <> ""';
-
-//   $INFO_OC = $this->model->Query($sql_OC);
-
-//   $QTY_TOTAL=0;
-
-//   unset($Qty_Comprada);
-
-//   foreach ($INFO_OC as $datos) {
-
-//       $INFO_OC = json_decode($datos);
-//       $Qty_Comprada[$INFO_OC->{'PurchaseOrderNumber'}] = $INFO_OC->{'Quantity'};
-//        $QTY_TOTAL += $INFO_OC->{'Quantity'};
-
-//     }
-
-
-// //INI STATUS POR ITEM/////////////////////////////////////////////////////////////////////////////////////////////
-// $status = $this->req_item_status($ORDER_detail->{'NO_REQ'},$ORDER->{'ProductID'},$ORDER->{'CANTIDAD'});
 
 $status = $ORDER->{'ESTATUS'};
 
@@ -4832,28 +4801,6 @@ switch ($status) {
 
 }
 
-
-//Informacion de ORDEN DE COMPRA PARA ESTE PRODUCTO EN LA REQUISICION
-// $oc_list='';
-
-// foreach ($Qty_Comprada as $key => $value) {
-
-// //$oc_list .='<a href="'.URL.'index.php?url=ges_compras/orden_compras/'.$key.'" target="_blank" ><strong>'.$key.' ('.number_format($value,0,'.',',').')</strong></a><BR>';
-
-// $PO_NO = "'".$key."'";
-
-// $oc_list .='<a href="javascript:void(0)" onclick="get_OC('.$PO_NO.');"><strong>'.$key.' ('.number_format($value,0,'.',',').')</strong></a><BR>';
-
-// }
-
-// $ORDER->{'ProductID'};
-// $ORDER->{'DESCRIPCION'};
-// $ORDER->{'UNIDAD'};
-// $ORDER->{'PHASE'};
-// $ORDER->{'NO_REQ'};
-// $ORDER->{'QtyRequired'};
-// $ORDER->{'QtyOrdered'};
-// $ORDER->{'QtyRecieved'};
 
 $PO_NO = "'".$ORDER->{'PoNumber'}."'";
 
