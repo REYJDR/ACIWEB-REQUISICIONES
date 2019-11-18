@@ -4743,7 +4743,7 @@ echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td cla
 
 echo "</tbody></table>";
 
-$ORDER = $this->model->getReqStatusDetail($id);
+$ORDER = $this->model->getReqStatusDetail($clause);
 
 //$ORDER= $this->model->get_req_to_print($id);
 

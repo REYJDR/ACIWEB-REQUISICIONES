@@ -921,7 +921,7 @@ public function getReqStatusDetail($clause , $sort){
     
     $this->verify_session();
 
-     echo       $sql="SELECT   
+      $sql="SELECT   
             REQST.ProductID,
             REQST.DESCRIPCION,
             REQST.UNIDAD,
