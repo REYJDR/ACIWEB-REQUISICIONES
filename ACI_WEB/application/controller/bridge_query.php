@@ -4677,28 +4677,24 @@ echo '<br/><br/>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
 
-$clause = "";
+  $clause = "";
 
-$clause.= 'where A.NO_REQ="'.$id.'" and A.ID_compania="'.$this->model->id_compania.'" and B.ID_compania="'.$this->model->id_compania.'" ';
+  $clause.= 'where A.NO_REQ="'.$id.'" and A.ID_compania="'.$this->model->id_compania.'" and B.ID_compania="'.$this->model->id_compania.'" ';
 
+  $ORDER = $this->model->getReqStatusDetail($clause);
 
-$ORDER_detail = $this->model->getReqStatusDetail($clause);
+  $ORDER_detail = json_decode($ORDER[0]);
 
+echo  $ORDER_detail;
+    
+  $name = $ORDER_detail->{'name'}; 
+  $lastname = $ORDER_detail->{'lastname'}; 
+    
+  $ID = '"'.$ORDER_detail->{'NO_REQ'}.'"';
+  $URL = '"'.URL.'"';
 
-foreach ($ORDER_detail as $datos) {
-  
-    $ORDER_detail = json_decode($datos);
-  
-    $name = $ORDER_detail->{'name'}; 
-    $lastname = $ORDER_detail->{'lastname'}; 
-  
-    $status='';
-  
-    $ID = '"'.$ORDER_detail->{'NO_REQ'}.'"';
-  
-    $URL = '"'.URL.'"';
-  
-    $status = $ORDER_detail->{'ESTATUS'};
+  $status='';
+  $status = $ORDER_detail->{'ESTATUS_GENERAL'};
   
     switch ($status) {
       
@@ -4737,12 +4733,12 @@ echo     "<tr><th style='text-align:left;' ><strong>No. Req</strong></th><td cla
           <tr><th style="text-align:left;" ><strong>Estado</strong></th><td '.$style.' class="InfsalesTd">'.$status.'</td><tr>
           <tr><th style="text-align:left;" ><strong>Soportes</strong></th><td class="InfsalesTd">'.$files.'</td><tr>';
           
-}
+
 
 
 echo "</tbody></table>";
 
-$ORDER = $this->model->getReqStatusDetail($clause);
+
 
 
 echo '<table id="table_info" class="table table-striped table-bordered" cellspacing="0">
