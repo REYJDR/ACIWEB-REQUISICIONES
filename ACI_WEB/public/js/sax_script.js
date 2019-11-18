@@ -437,10 +437,10 @@ function show_invoice(URL,id){
 
 
  }
-function show_req(URL,id){
+function show_req(URL,id,$status){
 
 
-     var datos= "url=bridge_query/get_req_info/"+id;
+     var datos= "url=bridge_query/get_req_info/"+id+"/"+$status;
 
       
        $.ajax({

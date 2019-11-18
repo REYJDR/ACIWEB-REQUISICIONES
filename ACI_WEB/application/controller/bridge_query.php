@@ -2248,8 +2248,9 @@ foreach ($Item as $datos) {
 
   $URL = '"'.URL.'"';
 
+ 
   $status = $Item->{'ESTATUS'};
-
+  $statusGen = '"'.$status .'"';
   switch ($status) {
     
       case 'CERRADA':
@@ -2334,7 +2335,7 @@ if($Item->{'isUrgent'} == '0'){
 
 
 $table.=" <tr>
-              <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.");'>".$notifyUrg." ".$Item->{'NO_REQ'}."</a></td>
+              <td width='10%' ><a href='#' onclick='javascript: show_req(".$URL.",".$ID.",".$statusGen.");'>".$notifyUrg." ".$Item->{'NO_REQ'}."</a></td>
               <td width='10%' >".date('d/M/Y g:i a',strtotime($Item->{'DATE'}))."</td>
               <td width='45%' >".$Item->{'NOTA'}.'</td>
               <td width="25%" >'.$name.' '.$lastname.'</td>
@@ -4645,7 +4646,7 @@ return $status;
 }
 
 
-public function get_req_info($id){
+public function get_req_info($id,$status_general){
 $this->SESSION();
 
 
@@ -4696,7 +4697,7 @@ echo '<br/><br/>
   $URL = '"'.URL.'"';
 
   $status='';
-  $status = $ORDER_detail->{'ESTATUS_GENERAL'};
+  $status = $status_general;
   
     switch ($status) {
       

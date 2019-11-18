@@ -923,7 +923,7 @@ public function getReqStatusDetail($clause){
     $this->verify_session();
 
 
-  echo    $sql="SELECT  
+      $sql="SELECT  
             REQST.isUrgent,
             REQST.isPay,
             REQST.CLOSED_NOTE, 
@@ -931,6 +931,8 @@ public function getReqStatusDetail($clause){
             REQST.DATE_INI,
             REQST.NOTA,
             REQST.descont,
+            REQST.name, 
+            REQST.lastname, 
             REQST.ProductID,
             REQST.DESCRIPCION,
             REQST.UNIDAD,
@@ -953,18 +955,6 @@ public function getReqStatusDetail($clause){
                 WHEN COTIZANDO = 1  THEN 'COTIZANDO'  
                 ELSE 'POR COTIZAR'
             END ) AS ESTATUS,
-            ( CASE
-                WHEN CLOSED = 1     THEN 'CERRADA' 
-                WHEN QtyOrdered  > 0 AND (QtyRecieved = QtyRequired OR QtyRecieved > QtyRequired ) THEN 'FINALIZADO'  
-                WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO'  
-                WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL' 
-                WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO' 
-                WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL'
-                WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved = 0 ) THEN 'PARCIALMENTE ORDENADO'  
-                WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved > 0 ) THEN 'PARCIALMENTE ORDENADO / RECEPCION PARCIAL'  
-                WHEN COTIZANDO = 1  THEN 'COTIZANDO'  
-                ELSE 'POR COTIZAR'
-            END ) AS ESTATUS_GENERAL
         FROM (  SELECT 
             A.isUrgent,
             A.isPay,
