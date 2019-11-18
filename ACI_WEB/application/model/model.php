@@ -919,80 +919,80 @@ public function getReqStatus($clause , $sort){
 
 public function getReqStatusDetail($clause , $sort){
     
-    $id_compania = $this->id_compania;
+    $this->verify_session();
 
-        $sql="SELECT   
-        REQST.ProductID,
-        REQST.DESCRIPCION,
-        REQST.UNIDAD,
-        REQST.PHASE,
-        REQST.NO_REQ,
-        REQST.QtyRequired,
-        REQST.QtyOrdered,
-        REQST.QtyRecieved,
-        REQST.PoNumber,
-    ( CASE
-            WHEN CLOSED = 1     THEN 'CERRADA' 
-            WHEN QtyOrdered  > 0 AND (QtyRecieved = QtyRequired OR QtyRecieved > QtyRequired ) THEN 'FINALIZADO'  
-            WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO'  
-            WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL' 
-            WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO' 
-            WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL'
-            WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved = 0 ) THEN 'PARCIALMENTE ORDENADO'  
-            WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved > 0 ) THEN 'PARCIALMENTE ORDENADO / RECEPCION PARCIAL'  
-            WHEN COTIZANDO = 1  THEN 'COTIZANDO'  
-            ELSE 'POR COTIZAR'
-        END ) AS ESTATUS
-    FROM (  SELECT 
-        A.isUrgent,
-        A.isPay,
-        A.st_closed as CLOSED,
-        A.desc_closed as CLOSED_NOTE,
-        A.NO_REQ,
-        A.DATE,
-        A.DATE_INI,
-        A.NOTA,
-        A.descont,
-        B.ProductID,
-        B.DESCRIPCION,
-        B.UNIDAD,
-        B.PHASE,
-        PO.PoNumber,
-        U.name, 
-        U.lastname, 
-        CAST(B.Cantidad AS decimal(16,2)) as QtyRequired,
-        CAST(IFNULL(PO.QtyOrdered, 0) AS decimal(16,2))  as QtyOrdered,
-        CAST(IFNULL(RC.QtyRecieved, 0) AS decimal(16,2))  as QtyRecieved,
-        RI.NO_REQ AS RES_COT,
-        CASE 
-        WHEN RI.COUNT > 0 
-        THEN 1 
-        ELSE 0 
-        END as COTIZANDO
-    FROM REQ_HEADER A 
-    INNER JOIN REQ_DETAIL B ON B.NO_REQ = A.NO_REQ 
-    LEFT JOIN  SAX_USER   U ON U.ID = A.USER
-    LEFT JOIN (SELECT
-                PH.PurchaseOrderNumber AS PoNumber,
-                PD.Item_id,
-                PH.CustomerSO,
-                PH.ID_Compania,
-                SUM(PD.Quantity) AS QtyOrdered
-            FROM PurOrdr_Header_Exp PH
-            INNER JOIN PurOrdr_Detail_Exp PD ON PD.TransactionID = PH.TransactionID  and PD.ID_Compania = PH.ID_Compania
-            GROUP BY PH.CustomerSO, PH.ID_Compania, PD.Item_id ,PH.PurchaseOrderNumber) PO ON PO.CustomerSO = A.NO_REQ and PO.Item_id =  B.ProductID  and PO.ID_compania='".$this->id_compania."'
-    LEFT JOIN (SELECT  
-                NO_REQ,
-                ITEM,
-                SUM(QTY) AS QtyRecieved
-                FROM REQ_RECEPT 
-                GROUP BY NO_REQ, ITEM) RC ON RC.NO_REQ = A.NO_REQ AND RC.ITEM = B.ProductID
-    LEFT JOIN (SELECT 
-                NO_REQ,
-                COUNT(*) AS COUNT 
-                FROM  REQ_QUOTA GROUP BY NO_REQ ) RI ON RI.NO_REQ = A.NO_REQ
-    '".$clause."'
-    ORDER BY A.ID  ) AS REQST";
+            $sql="SELECT   
+            REQST.ProductID,
+            REQST.DESCRIPCION,
+            REQST.UNIDAD,
+            REQST.PHASE,
+            REQST.NO_REQ,
+            REQST.QtyRequired,
+            REQST.QtyOrdered,
+            REQST.QtyRecieved,
+            REQST.PoNumber,
+        ( CASE
+                WHEN CLOSED = 1     THEN 'CERRADA' 
+                WHEN QtyOrdered  > 0 AND (QtyRecieved = QtyRequired OR QtyRecieved > QtyRequired ) THEN 'FINALIZADO'  
+                WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO'  
+                WHEN (QtyRequired < QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL' 
+                WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved = 0 )  THEN 'ORDENADO' 
+                WHEN (QtyRequired = QtyOrdered ) AND ( QtyRecieved > 0 )  THEN 'ORDENADO / RECEPCION PARCIAL'
+                WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved = 0 ) THEN 'PARCIALMENTE ORDENADO'  
+                WHEN (QtyRequired > QtyOrdered AND QtyOrdered > 0 ) AND ( QtyRecieved > 0 ) THEN 'PARCIALMENTE ORDENADO / RECEPCION PARCIAL'  
+                WHEN COTIZANDO = 1  THEN 'COTIZANDO'  
+                ELSE 'POR COTIZAR'
+            END ) AS ESTATUS
+        FROM (  SELECT 
+            A.isUrgent,
+            A.isPay,
+            A.st_closed as CLOSED,
+            A.desc_closed as CLOSED_NOTE,
+            A.NO_REQ,
+            A.DATE,
+            A.DATE_INI,
+            A.NOTA,
+            A.descont,
+            B.ProductID,
+            B.DESCRIPCION,
+            B.UNIDAD,
+            B.PHASE,
+            PO.PoNumber,
+            U.name, 
+            U.lastname, 
+            CAST(B.Cantidad AS decimal(16,2)) as QtyRequired,
+            CAST(IFNULL(PO.QtyOrdered, 0) AS decimal(16,2))  as QtyOrdered,
+            CAST(IFNULL(RC.QtyRecieved, 0) AS decimal(16,2))  as QtyRecieved,
+            RI.NO_REQ AS RES_COT,
+            CASE 
+            WHEN RI.COUNT > 0 
+            THEN 1 
+            ELSE 0 
+            END as COTIZANDO
+        FROM REQ_HEADER A 
+        INNER JOIN REQ_DETAIL B ON B.NO_REQ = A.NO_REQ 
+        LEFT JOIN  SAX_USER   U ON U.ID = A.USER
+        LEFT JOIN (SELECT
+                    PH.PurchaseOrderNumber AS PoNumber,
+                    PD.Item_id,
+                    PH.CustomerSO,
+                    PH.ID_Compania,
+                    SUM(PD.Quantity) AS QtyOrdered
+                FROM PurOrdr_Header_Exp PH
+                INNER JOIN PurOrdr_Detail_Exp PD ON PD.TransactionID = PH.TransactionID  and PD.ID_Compania = PH.ID_Compania
+                GROUP BY PH.CustomerSO, PH.ID_Compania, PD.Item_id ,PH.PurchaseOrderNumber) PO ON PO.CustomerSO = A.NO_REQ and PO.Item_id =  B.ProductID  and PO.ID_compania='".$this->id_compania."'
+        LEFT JOIN (SELECT  
+                    NO_REQ,
+                    ITEM,
+                    SUM(QTY) AS QtyRecieved
+                    FROM REQ_RECEPT 
+                    GROUP BY NO_REQ, ITEM) RC ON RC.NO_REQ = A.NO_REQ AND RC.ITEM = B.ProductID
+        LEFT JOIN (SELECT 
+                    NO_REQ,
+                    COUNT(*) AS COUNT 
+                    FROM  REQ_QUOTA GROUP BY NO_REQ ) RI ON RI.NO_REQ = A.NO_REQ
+        '".$clause."'
+        ORDER BY A.ID  ) AS REQST";
                 
         $get_req = $this->Query($sql);
         

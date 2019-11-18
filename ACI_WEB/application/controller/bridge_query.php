@@ -4650,9 +4650,6 @@ public function get_req_info($id){
 $this->SESSION();
 
 
-//$ORDER_detail = $this->model->get_req_to_report('DESC','1','WHERE REQ_HEADER.ID_compania="'.$this->model->id_compania.'" AND  REQ_HEADER.ID_compania="'.$this->model->id_compania.'" and REQ_HEADER.NO_REQ="'.$id.'" and REQ_DETAIL.NO_REQ="'.$id.'"');
-
-
 echo '<script>
 
 var table = $("#table_info").dataTable({
@@ -4680,55 +4677,6 @@ echo '<br/><br/>
 <fieldset><legend>Detalle de Requisicion</legend>
 <table  class="display nowrap table table-striped table-bordered" cellspacing="0"  ><tbody>';
 
-//   foreach ($ORDER_detail as $datos) {
-//     $ORDER_detail = json_decode($datos);
-
-
-// $user = $this->model->Get_User_Info($ORDER_detail->{'USER'}); 
-
-// foreach ($user as $value) {
-// $value = json_decode($value);
-// $name= $value->{'name'};
-// $lastname = $value->{'lastname'};
-// }
-
-
-// //obtengo estatus de la requisicion
-// $status_gen = $this->req_status($id);
-
-// switch ($status_gen) {
-//   case 'CERRADA':
-//      $style = 'style="background-color:#D8D8D8 ;"';//verder
-//     break;
-//   case 'FINALIZADO':
-//      $style = 'style="background-color:#BCF5A9;"';//verder
-//     break;
-//   case 'ORDENADO':
-//      $style = 'style="background-color:#F2F5A9;"';//AMARILLO
-//     break;
-//   case 'ORDENADO / RECEPCION PARCIAL':
-//     $style = 'style="background-color:#F2F5A9;"';//AMARILLO
-//    break;
-//   case 'PARCIALMENTE ORDENADO':
-//      $style = 'style="background-color:#F3E2A9;"';//NARANJA
-//     break;
-//   case 'COTIZANDO':
-//      $style = 'style="background-color:#F7BE81;"';//NARANJA
-//     break; 
-//   case 'POR COTIZAR':
-//      $style = 'style="background-color:#F5A9A9;"';//ROJO
-//     break; 
-
-// }
-
-// if($ORDER_detail->{'DATE_INI'}!=''){
-
-//   $data_ini = date('d/M/Y',strtotime($ORDER_detail->{'DATE_INI'}));
-// }else{
-  
-//   $data_ini = '';
-
-// }
 
 $clause = "";
 
