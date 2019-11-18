@@ -994,7 +994,7 @@ public function getReqStatusDetail($clause){
         ".$clause."
         ORDER BY A.ID  ) AS REQST";
                 
-        echo $sql;
+      
         $get_req = $this->Query($sql);
         
         

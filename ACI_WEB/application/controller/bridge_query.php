@@ -4857,7 +4857,7 @@ switch ($status) {
 
 $PO_NO = "'".$ORDER->{'PoNumber'}."'";
 
-$oc_list .='<a href="javascript:void(0)" onclick="get_OC('.$PO_NO.');"><strong>'.$ORDER->{'PoNumber'}.' ('.number_format($ORDER->{'QtyOrdered'},0,'.',',').')</strong></a><BR>';
+$oc_list ='<a href="javascript:void(0)" onclick="get_OC('.$PO_NO.');"><strong>'.$ORDER->{'PoNumber'}.' ('.number_format($ORDER->{'QtyOrdered'},0,'.',',').')</strong></a><BR>';
 
 
 $QTY_FALTANTE = $ORDER->{'QtyRequired'} - $ORDER->{'QtyRecieved'};
