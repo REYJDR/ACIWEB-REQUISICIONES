@@ -917,7 +917,7 @@ public function getReqStatus($clause , $sort){
     return $get_req;
 }
 
-public function getReqStatusDetail($clause , $sort){
+public function getReqStatusDetail($clause){
     
     $this->verify_session();
 
@@ -994,6 +994,7 @@ public function getReqStatusDetail($clause , $sort){
         '".$clause."'
         ORDER BY A.ID  ) AS REQST";
                 
+        echo $sql;
         $get_req = $this->Query($sql);
         
         
