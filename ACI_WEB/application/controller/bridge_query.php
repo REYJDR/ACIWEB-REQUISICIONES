@@ -4679,7 +4679,7 @@ echo '<br/><br/>
 
   $clause = "";
 
-  $clause.= 'where A.NO_REQ="'.$id.'" and A.ID_compania="'.$this->model->id_compania.'" and B.ID_compania="'.$this->model->id_compania.'" ';
+  $clause = ' where A.NO_REQ="'.$id.'" and A.ID_compania="'.$this->model->id_compania.'" and B.ID_compania="'.$this->model->id_compania.'" ';
 
   $ORDER = $this->model->getReqStatusDetail($clause);
 
