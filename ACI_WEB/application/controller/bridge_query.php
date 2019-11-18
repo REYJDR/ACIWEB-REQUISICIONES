@@ -4752,6 +4752,7 @@ foreach ($ORDER_detail as $datos) {
     $URL = '"'.URL.'"';
   
     $status = $ORDER_detail->{'ESTATUS'};
+    $data_ini = $ORDER_detail->{'DATE_INI'};
   
     switch ($status) {
       
