@@ -4649,6 +4649,7 @@ return $status;
 public function get_req_info($id){
 $this->SESSION();
 
+die( $_REQUEST['status']);
 $status_general = $_REQUEST['status'];
 
 echo '<script>
@@ -4685,8 +4686,6 @@ echo '<br/><br/>
 
   $ORDER = $this->model->getReqStatusDetail($clause);
 
-
-
   $ORDER_detail = json_decode($ORDER[0]);
 
     
@@ -4697,7 +4696,8 @@ echo '<br/><br/>
   $URL = '"'.URL.'"';
 
   $status='';
- echo $status = $status_general;
+        
+  echo $status = $status_general;
   
     switch ($status) {
       

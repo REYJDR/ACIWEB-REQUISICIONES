@@ -456,7 +456,7 @@ function show_req(URL,id,$status){
                  }
             });
 
- $('html, body').animate({
+     $('html, body').animate({
         scrollTop: $("#info").offset().top
      },  2000);
 
