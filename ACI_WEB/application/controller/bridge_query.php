@@ -4685,7 +4685,7 @@ echo '<br/><br/>
 
   $ORDER_detail = json_decode($ORDER[0]);
 
-echo  $ORDER_detail;
+echo  var_dump($ORDER_detail);
     
   $name = $ORDER_detail->{'name'}; 
   $lastname = $ORDER_detail->{'lastname'}; 
