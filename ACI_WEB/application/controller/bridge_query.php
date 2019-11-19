@@ -4649,7 +4649,7 @@ return $status;
 public function get_req_info($id){
 $this->SESSION();
 
-die( $_REQUEST['status']);
+
 $status_general = $_REQUEST['status'];
 
 echo '<script>

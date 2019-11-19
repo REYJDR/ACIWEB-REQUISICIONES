@@ -160,12 +160,10 @@ var rows = table.rows().count();
 
 
   if(rows <= 0){	
-	table.clear();
+	table.html();
   }
 
 while(i <= cantLineas){
-
-
 
 		   if(chk==1){ 
 
@@ -533,6 +531,7 @@ var x=document.getElementById(UNIID).innerHTML;
 					
 
 					if($value->{'Item_id'} != 'ITBMS'){
+
 						$line = $line + 1;
 						
 						$table .=  '<tr>
