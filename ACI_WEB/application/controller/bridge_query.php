@@ -4841,16 +4841,20 @@ echo '<div style="float:right;" class="col-md-2">
 </a>
 </div>';
 
-if($ORDER_detail->{'st_closed'}=='0' && $status !='FINALIZADO'){
+
+
+echo 'status closed: '.$ORDER_detail->{'st_closed'};
+
+if($ORDER_detail->{'st_closed'} =='0' && $status !='FINALIZADO'){
 
 if($this->model->rol_campo=='1'){ 
 
-echo '<div style="float:right;" class="col-md-2">
-<a href="'.URL.'index.php?url=ges_requisiciones/req_reception/'.$ORDER->{'NO_REQ'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
-   <img  class="icon" src="img/Box Down.png" />
-  <span>Registrar entradas</span>
-</a>
-</div>';
+  echo '<div style="float:right;" class="col-md-2">
+  <a href="'.URL.'index.php?url=ges_requisiciones/req_reception/'.$ORDER->{'NO_REQ'}.'"  class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right btn-single text-left">
+    <img  class="icon" src="img/Box Down.png" />
+    <span>Registrar entradas</span>
+  </a>
+  </div>';
 
 }
 
