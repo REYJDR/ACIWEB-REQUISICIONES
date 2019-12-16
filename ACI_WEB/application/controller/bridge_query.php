@@ -4843,9 +4843,7 @@ echo '<div style="float:right;" class="col-md-2">
 
 
 
-echo 'status closed: '.$ORDER_detail->{'st_closed'};
-
-if($ORDER_detail->{'st_closed'} =='0' && $status !='FINALIZADO'){
+if(( $ORDER_detail->{'st_closed'} =='0' || $ORDER_detail->{'st_closed'} == null )  && $status !='FINALIZADO'){
 
 if($this->model->rol_campo=='1'){ 
 
