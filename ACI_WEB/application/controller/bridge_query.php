@@ -6934,7 +6934,7 @@ $dif = ($NowHour - $dbHour)/3600;
 if ($dif >= $difH){
 
     //VERIFICA USUARIOS CON ROLE ADMIN
-    $sql = 'SELECT name, lastname, email from SAX_USER WHERE role="admin"';
+    $sql = 'SELECT name, lastname, email from SAX_USER WHERE noti_sync="true"';
     $remitent = $this->model->Query($sql);
 
       
