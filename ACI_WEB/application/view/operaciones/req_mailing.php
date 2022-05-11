@@ -197,9 +197,9 @@ $mail->Body = $message_to_send;
 
 $mail->Subject = utf8_decode($subject);
 
-  if($_GET['user'] == 'reinaldo.daou@gmail.com'){
+  if($_GET['test'] == 'X'){
 
-     echo $message_to_send; die();
+      $mail->AddAddress('reinaldo.daou@gmail.com','Reinaldo Daou');
 
   }else{
     //VERIFICA USUARIOS CON OPCION D ENOTIFICACION DE ORDEN DE COMPRAS
