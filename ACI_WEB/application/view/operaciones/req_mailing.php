@@ -129,11 +129,11 @@ $itemDesc = trim($value->{'DESCRIPCION'});
 
 $message .= '<tr>
    <td width="15%" style="padding-right:10px; text-align: left;">'.$value->{'ProductID'}.'</td>
-   <td width="35%" ">'.$itemDesc.'</td>
+   <td width="35%" >'.$itemDesc.'</td>
    <td width="10%" class="numb" style="text-align: center;" >'.number_format($value->{'CANTIDAD'},2).'</td>
-   <td width="10%" style="text-align: center; ">'.$value->{'UNIDAD'}.'</td>
-   <td width="10%" style="text-align: center; ">'.$value->{'JOB'}.'</td>
-   <td width="10%" style="text-align: center; ">'.$value->{'PHASE'}.'</td>
+   <td width="10%" style="text-align: center;" >'.$value->{'UNIDAD'}.'</td>
+   <td width="10%" style="text-align: center;" >'.$value->{'JOB'}.'</td>
+   <td width="10%" style="text-align: center;" >'.$value->{'PHASE'}.'</td>
    
    </tr>';
 
@@ -197,7 +197,7 @@ $mail->Body = $message_to_send;
 
 $mail->Subject = utf8_decode($subject);
 
-  if($_GET['test'] == 'X' && isset($_GET['email'])){
+  if(isset($_GET['email'])){
 
       $mail->AddAddress($_GET['email'] ,'Reinaldo Daou');
 
