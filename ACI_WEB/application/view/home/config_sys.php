@@ -110,8 +110,8 @@ echo '<script> alert("Se ha actualizado con exito"); window.open("'.URL.'index.p
 }
 
 //GET LAST SYNC
-$date_db =  $this->model->Query_value('CompanyLogSync','LastSync',' limit 1');	  
-
+$date_db =   $this->model->Query_value('CompanyLogSync','LastSync',' limit 1');	  
+$lastPoUpdate =  $this->model->Query_value('PurOrdr_Header_Exp','LAST_CHANGE','order by LAST_CHANGE desc limit 1');	
 ?>	
 
 
@@ -535,7 +535,7 @@ if(r==true){
 <div class="col-lg-12">
  <div class="col-lg-10">
 	 Esta opcion borra las tablas referentes a los registros de Ordenes de Compras sincronizadas desde Peachtree 
-	 <p class='help-block'>La ultima sincronizacion fue: <?php 
+	 <p class='help-block'><?php 
 
    // $date = $this->model->GetLocalTime('MST',$date_db);
     $date = $date_db;
@@ -545,16 +545,34 @@ if(r==true){
 
     if(!$date_db){
 
-     echo '<i style="font-weight:bold; color:red; font-size:12; ">Tablas NO han sincronizado aún</i>';
+     echo '<i style="font-weight:bold; color:red; font-size:12; ">Sage no se ha conectado</i>';
 
     }else{
 
-     echo '<i style="font-weight:bold; color:green; font-size:12;">'.$dateInLocal.'</i>';
+     echo 'La ultima conexion de Sage Connect: <i style="font-weight:bold; color:green; font-size:12;">'.$dateInLocal.'</i>';
 
     }
 
-
 	 ?></p>
+  <p class='help-block'><?php 
+
+    // $date = $this->model->GetLocalTime('MST',$date_db);
+    $podate = $lastPoUpdate;
+    $podate = strtotime($date);
+    $PodateInLocal = date('d/M/Y g:i a',$podate);
+
+
+    if(!$date_db){
+
+      echo '<i style="font-weight:bold; color:red; font-size:12; ">PO NO SE HAN ACTUALIZADO AUN</i>';
+
+    }else{
+
+      echo 'PO Actualizadas al : <i style="font-weight:bold; color:green; font-size:12;">'.$PodateInLocal.'</i>';
+
+    }
+
+    ?></p>
  </div>
  <div class="col-lg-2">
  <input type="submit"  onclick='del_po_tbl(1);' value="Limpiar toda la tabla" class="btn btn-danger  btn-block text-lef" id="poreset" name="preset"  />
