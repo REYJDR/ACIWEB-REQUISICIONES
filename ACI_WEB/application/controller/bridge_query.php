@@ -6933,7 +6933,7 @@ $dif = ($NowHour - $dbHour)/3600;
 
 if ($dif >= $difH){
 
-  var_dump([$dif,$difH]); die();
+  var_dump(['lastUpdate' => $dbHour, 'now' => $NowHour]); die();
 
     // //VERIFICA USUARIOS CON ROLE ADMIN
     // $sql = 'SELECT name, lastname, email from SAX_USER WHERE noti_sync="true"';
