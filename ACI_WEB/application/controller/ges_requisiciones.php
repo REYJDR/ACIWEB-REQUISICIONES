@@ -150,7 +150,7 @@ public function req_print($id,$Pay_flag,$urgent_flag){
 
 public function req_mailing($id,$flag,$Pay_flag){
 
-
+ 
  $res = $this->model->verify_session();
 
       if($res=='0'){

@@ -47,6 +47,7 @@ if ($Pay_flag == 0) {
   
   $Pay_req = 'Si';
   $SubjectPay = ' - pago x adelantado ';
+
 }else{
 
   $Pay_req = 'No';
@@ -123,11 +124,12 @@ $message .='<h2 class="h_invoice_header" >Requisicion</h2>
 foreach ($ORDER as  $value) { 
 
 $value = json_decode($value);  
-
+ 
+$itemDesc = trim($value->{'DESCRIPCION'});
 
 $message .= '<tr>
    <td width="15%" style="padding-right:10px; text-align: left;">'.$value->{'ProductID'}.'</td>
-   <td width="35%" ">'.trim($value->{'DESCRIPCION'}).'</td>
+   <td width="35%" ">'.$itemDesc.'</td>
    <td width="10%" class="numb" style="text-align: center;" >'.number_format($value->{'CANTIDAD'},2).'</td>
    <td width="10%" style="text-align: center; ">'.$value->{'UNIDAD'}.'</td>
    <td width="10%" style="text-align: center; ">'.$value->{'JOB'}.'</td>
@@ -195,15 +197,21 @@ $mail->Body = $message_to_send;
 
 $mail->Subject = utf8_decode($subject);
 
+  if($_GET['user'] == 'reinaldo.daou@gmail.com'){
 
-//VERIFICA USUARIOS CON OPCION D ENOTIFICACION DE ORDEN DE COMPRAS
-$sql = 'SELECT name, lastname, email from SAX_USER WHERE notif_oc="1" and onoff="1"';
-$address = $this->model->Query($sql);
+    $mail->AddAddress('reinaldo.daou@gmail.com','Reinaldo Daou');
 
-foreach ($address as  $value) {
-$value = json_decode($value);
+  }else{
+    //VERIFICA USUARIOS CON OPCION D ENOTIFICACION DE ORDEN DE COMPRAS
+    $sql = 'SELECT name, lastname, email from SAX_USER WHERE notif_oc="1" and onoff="1"';
+    $address = $this->model->Query($sql);
+    
+    foreach ($address as  $value) {
+    $value = json_decode($value);
+    
+    $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
+  }
 
-$mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
 
 }
 

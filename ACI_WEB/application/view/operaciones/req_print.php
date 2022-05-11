@@ -184,6 +184,7 @@ foreach ($comp as $value) {
 
 
                     $table .= '<tr>
+                    
                        <td width="15%" style="padding-right:10px; text-align: left;">'.$value->{'ProductID'}.'</td>
                        <td width="35%" ">'.trim($value->{'DESCRIPCION'}).'</td>
                        <td width="10%" class="numb" style="text-align: center; padding-right">'.number_format($value->{'CANTIDAD'},2).'</td>

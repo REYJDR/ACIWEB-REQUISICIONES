@@ -818,7 +818,7 @@ function send_mail(link,Req_NO,flag_urgent,isPay){
 
  //ENVIO POR MAIL 
  
- 
+	
 	var datos= 'url=ges_requisiciones/req_mailing/'+Req_NO+"/"+flag_urgent+"/"+isPay; //LINK A LA PAGINA DE MAILING
  
 	$.ajax({
