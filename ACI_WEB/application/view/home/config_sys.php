@@ -558,11 +558,11 @@ if(r==true){
 
     // $date = $this->model->GetLocalTime('MST',$date_db);
     $podate = $lastPoUpdate;
-    $podate = strtotime($date);
+    $podate = strtotime($podate);
     $PodateInLocal = date('d/M/Y g:i a',$podate);
 
 
-    if(!$date_db){
+    if(!$lastPoUpdate){
 
       echo '<i style="font-weight:bold; color:red; font-size:12; ">PO NO SE HAN ACTUALIZADO AUN</i>';
 
