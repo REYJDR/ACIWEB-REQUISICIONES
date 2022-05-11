@@ -6933,32 +6933,32 @@ $dif = ($NowHour - $dbHour)/3600;
 
 if ($dif >= $difH){
 
-  var_dump(['PO' => $date_db,'lastUpdate' => $date ,'lastUpdateH' => $dbHour, 'now' => $NowHour]); die();
+  // var_dump(['PO' => $date_db,'lastUpdate' => $date ,'lastUpdateH' => $dbHour, 'now' => $NowHour]); die();
 
-    // //VERIFICA USUARIOS CON ROLE ADMIN
-    // $sql = 'SELECT name, lastname, email from SAX_USER WHERE noti_sync="true"';
-    // $remitent = $this->model->Query($sql);
-
-      
-    //   $address =array();
-
-    //   foreach ($remitent as  $value) {
-    //       $value = json_decode($value);
-
-    //       $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
-
-    //       array_push($address, $to);
-    
-    //   }
+    //VERIFICA USUARIOS CON ROLE ADMIN
+    $sql = 'SELECT name, lastname, email from SAX_USER WHERE noti_sync="true"';
+    $remitent = $this->model->Query($sql);
 
       
-    //   $subject = 'NOTIFICACION DE ACIWEB: Tabla de PO No ha sido sincronizada';
-    //   $title = 'Tabla de PO No ha sido sincrnizada';
-    //   $message = 'Si le llego esta notificacion es debido a que el sistema Aciweb no ha recibido sincronizacion en la tabla de Ordenes de Compras con Peachtree desde hace mas de '.$difH.' horas.'."\n". 
-    //              'Por favor verifique el estado de conexion de los dispositivos involucrados en la sincronizacion.';
+      $address =array();
+
+      foreach ($remitent as  $value) {
+          $value = json_decode($value);
+
+          $to = $value->{'email'}.';'.$value->{'name'}.';'.$value->{'lastname'}; //FORMATO REQUERIDO PARA PASAR LAS DIRECCIONES AL METODO
+
+          array_push($address, $to);
+    
+      }
+
+      
+      $subject = 'NOTIFICACION DE ACIWEB: Tabla de PO No ha sido sincronizada';
+      $title = 'Tabla de PO No ha sido sincrnizada';
+      $message = 'Si le llego esta notificacion es debido a que el sistema Aciweb no ha recibido sincronizacion en la tabla de Ordenes de Compras con Peachtree desde hace mas de '.$difH.' horas.'."\n". 
+                 'Por favor verifique el estado de conexion de los dispositivos involucrados en la sincronizacion.';
     
     
-    //   $res = $this->model->send_mail($address,$subject,$title,$message);
+      $res = $this->model->send_mail($address,$subject,$title,$message);
 
 
      echo $res ;
