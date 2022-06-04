@@ -5113,6 +5113,7 @@ $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 $smtp= $this->model->Query($sql);
 
 foreach ($smtp as $smtp_val) {
+
   $smtp_val= json_decode($smtp_val);
 
   $mail->Host =     $smtp_val->{'HOSTNAME'};
@@ -5120,7 +5121,9 @@ foreach ($smtp as $smtp_val) {
   $mail->Username = $smtp_val->{'USERNAME'};
   $mail->Password = $smtp_val->{'PASSWORD'};
   $mail->SMTPAuth = $smtp_val->{'Auth'};
-  $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
+  //$mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
+
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
 
   $mail->SetFrom($smtp_val->{'USERNAME'},$smtp_val->{'NAME'});
