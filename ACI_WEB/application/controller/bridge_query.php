@@ -5155,18 +5155,18 @@ $smtp= $this->model->Query($sql);
   $mail->AddAddress($emailtest);
   
 
-  // if(!$mail->send()) {
+  if(!$mail->send()) {
    
   
-  //    $alert .= 'El correo no puede ser enviado.';
-  //    $alert .= 'Error: ' . $mail->ErrorInfo;
+     $alert .= 'El correo no puede ser enviado.';
+     $alert .= 'Error: ' . $mail->ErrorInfo;
   
      
   
-  // } else {
+  } else {
     
-  //   $alert = 'El correo de verificacion ha sido enviado';
-  // }
+    $alert = 'El correo de verificacion ha sido enviado';
+  }
   
   echo $alert;
 
