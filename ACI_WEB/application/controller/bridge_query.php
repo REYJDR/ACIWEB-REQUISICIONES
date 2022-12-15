@@ -5122,7 +5122,7 @@ $smtp= $this->model->Query($sql);
 
     $smtp_val= json_decode($smtp_val);
 
-    $mail->Host =     $smtp_val->{'HOSTNAME'};
+    $mail->Host =     "ssl://".$smtp_val->{'HOSTNAME'};
     $mail->Port =     $smtp_val->{'PORT'};
     $mail->Username = $smtp_val->{'USERNAME'};
     $mail->Password = $smtp_val->{'PASSWORD'};
