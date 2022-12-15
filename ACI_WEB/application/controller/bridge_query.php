@@ -5135,7 +5135,9 @@ $smtp= $this->model->Query($sql);
     //       'verify_peer_name' => false,
     //       'allow_self_signed' => true
     //   ));
-    // }
+    // 
+  
+  }
 
   $mail->SetFrom($smtp_val->{'USERNAME'},$smtp_val->{'NAME'});
 
