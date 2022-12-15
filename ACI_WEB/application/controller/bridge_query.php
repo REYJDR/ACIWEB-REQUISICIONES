@@ -5103,6 +5103,10 @@ public function send_test_mail($emailtest){
 
 try{
   
+if ( !extension_loaded('openssl')) 
+ die( "Not Available" );
+} 
+
 require 'PHP_mailer/PHPMailerAutoload.php';
 $mail = new PHPMailer(true);
 
@@ -5124,7 +5128,7 @@ $smtp= $this->model->Query($sql);
     $mail->Password = $smtp_val->{'PASSWORD'};
     $mail->SMTPAuth = $smtp_val->{'Auth'};
     $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
-
+    $mail->SMTPAutoTLS = false;
   // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
     
