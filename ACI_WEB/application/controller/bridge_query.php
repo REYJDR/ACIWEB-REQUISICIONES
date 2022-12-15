@@ -5103,7 +5103,7 @@ public function send_test_mail($emailtest){
 
 try{
   
-if ( !extension_loaded('openssl')) 
+if ( !extension_loaded('openssl')) {
  die( "Not Available" );
 } 
 
