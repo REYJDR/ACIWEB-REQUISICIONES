@@ -5101,6 +5101,8 @@ $this->model->update($table,$columns,$clause);
 //PROCESO DE ENVIO DE EMAIL (TEST)
 public function send_test_mail($emailtest){
 
+try{
+  
 require 'PHP_mailer/PHPMailerAutoload.php';
 $mail = new PHPMailer;
 
@@ -5112,66 +5114,78 @@ $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 
 $smtp= $this->model->Query($sql);
 
-foreach ($smtp as $smtp_val) {
+  foreach ($smtp as $smtp_val) {
 
-  $smtp_val= json_decode($smtp_val);
+    $smtp_val= json_decode($smtp_val);
 
-  $mail->Host =     $smtp_val->{'HOSTNAME'};
-  $mail->Port =     $smtp_val->{'PORT'};
-  $mail->Username = $smtp_val->{'USERNAME'};
-  $mail->Password = $smtp_val->{'PASSWORD'};
-  $mail->SMTPAuth = $smtp_val->{'Auth'};
-  $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
+    $mail->Host =     $smtp_val->{'HOSTNAME'};
+    $mail->Port =     $smtp_val->{'PORT'};
+    $mail->Username = $smtp_val->{'USERNAME'};
+    $mail->Password = $smtp_val->{'PASSWORD'};
+    $mail->SMTPAuth = $smtp_val->{'Auth'};
+    $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
 
- // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-  $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
-  
-  echo var_dump($mail);
+  // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
+    
 
-  $mail->SMTPOptions = array(
-    'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => true
-    ));
+
+    $mail->SMTPOptions = array(
+      'ssl' => array(
+          'verify_peer' => false,
+          'verify_peer_name' => false,
+          'allow_self_signed' => true
+      ));
+    }
 
   $mail->SetFrom($smtp_val->{'USERNAME'},$smtp_val->{'NAME'});
 
-}
+  $mail->Subject = utf8_decode('Prueba de configurarión SMTP (ACI-WEB)');
 
-
-
-$mail->Subject = utf8_decode('Prueba de configurarión SMTP (ACI-WEB)');
-
-$message_to_send ='<html>
-<head>
-<meta charset="UTF-8">
-<title>Prueba de configurarión SMTP (ACI-WEB)</title>
-</head>
-<body>Este es un correo de prueba del sistema ACI-WEB de APCON Consulting, 
-para certificar el funcionamiento de su configuracion SMTP.</body>
-</html>';
-
-$mail->Body = $message_to_send;
-
-$mail->AddAddress($emailtest);
-
-
-
-if(!$mail->send()) {
- 
-
-   $alert .= 'El correo no puede ser enviado.';
-   $alert .= 'Error: ' . $mail->ErrorInfo;
-
-   
-
-} else {
+  $message_to_send ='<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Prueba de configurarión SMTP (ACI-WEB)</title>
+  </head>
+  <body>Este es un correo de prueba del sistema ACI-WEB de APCON Consulting, 
+  para certificar el funcionamiento de su configuracion SMTP.</body>
+  </html>';
   
-  $alert = 'El correo de verificacion ha sido enviado';
-}
+  $mail->Body = $message_to_send;
+  
+  $mail->AddAddress($emailtest);
+  
 
-echo $alert;
+  if(!$mail->send()) {
+   
+  
+     $alert .= 'El correo no puede ser enviado.';
+     $alert .= 'Error: ' . $mail->ErrorInfo;
+  
+     
+  
+  } else {
+    
+    $alert = 'El correo de verificacion ha sido enviado';
+  }
+  
+  echo $alert;
+
+
+  }catch (phpmailerException $e) {
+
+  echo $e->errorMessage(); //Pretty error messages from PHPMailer
+
+  } catch (Exception $e) {
+
+  echo $e->getMessage(); //Boring error messages from anything else!
+
+  }
+
+
+
+
+
 
 }
 
