@@ -5125,6 +5125,8 @@ foreach ($smtp as $smtp_val) {
 
  // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
+  
+  echo var_dump($mail);
 
   $mail->SMTPOptions = array(
     'ssl' => array(
