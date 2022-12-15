@@ -5104,7 +5104,7 @@ public function send_test_mail($emailtest){
 try{
   
 require 'PHP_mailer/PHPMailerAutoload.php';
-$mail = new PHPMailer;
+$mail = new PHPMailer(true);
 
 $mail->IsSMTP(); // enable SMTP
 $mail->IsHTML(true);
