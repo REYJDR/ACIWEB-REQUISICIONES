@@ -5125,7 +5125,13 @@ foreach ($smtp as $smtp_val) {
 
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
-
+  $mail->SMTPOptions = array(
+    'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    ));
+    
   $mail->SetFrom($smtp_val->{'USERNAME'},$smtp_val->{'NAME'});
 
 }
