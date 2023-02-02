@@ -172,7 +172,7 @@ foreach ($smtp as $smtp_val) {
   $mail->Username = $smtp_val->{'USERNAME'};
   $mail->Password = $smtp_val->{'PASSWORD'};
   $mail->SMTPAuth = $smtp_val->{'Auth'};
-  $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
+  //$mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
   $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
 
   $mail->SetFrom("compras@contratistasciviles.com","Compras");
