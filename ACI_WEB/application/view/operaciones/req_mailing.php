@@ -197,7 +197,7 @@ $smtp= $this->model->Query($sql);
       $mail->Username = $smtp_val->{'PASSWORD'};
     }
 
-    if( $smtp_val->{'Auth'} ){ 
+    if( $smtp_val->{'Auth'} != false ){ 
       $mail->SMTPAuth = $smtp_val->{'Auth'};
     }
 
