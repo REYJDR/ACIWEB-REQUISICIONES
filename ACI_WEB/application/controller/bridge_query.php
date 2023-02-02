@@ -5143,7 +5143,7 @@ $smtp= $this->model->Query($sql);
   
   }
 
-  $mail->SetFrom($smtp_val->{'USERNAME'},$smtp_val->{'NAME'});
+  $mail->SetFrom("compras@contratistasciviles.com","Compras");
 
   $mail->Subject = utf8_decode('Prueba de configurarión SMTP (ACI-WEB)');
 
