@@ -5123,22 +5123,26 @@ $smtp= $this->model->Query($sql);
 
     $mail->Host =     $smtp_val->{'HOSTNAME'};
     $mail->Port =     $smtp_val->{'PORT'};
-    $mail->Username = $smtp_val->{'USERNAME'};
-    $mail->Password = $smtp_val->{'PASSWORD'};
-    $mail->SMTPAuth = $smtp_val->{'Auth'};
+
+    $mail->SMTPAuth = false;
+    $mail->SMTPAutoTLS = false;   
+
+    // $mail->Username = $smtp_val->{'USERNAME'};
+    // $mail->Password = $smtp_val->{'PASSWORD'};
+    // $mail->SMTPAuth = $smtp_val->{'Auth'};
 
    // $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
 
   // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
    // $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
     
-   $mail->SMTPOptions = array(
-    'ssl' => array(
-    'verify_peer' => false,
-    'verify_peer_name' => false,
-    'allow_self_signed' => true
-    )
-    );
+  //  $mail->SMTPOptions = array(
+  //   'ssl' => array(
+  //   'verify_peer' => false,
+  //   'verify_peer_name' => false,
+  //   'allow_self_signed' => true
+  //   )
+  //   );
 
  
 
