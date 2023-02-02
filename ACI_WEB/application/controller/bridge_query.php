@@ -5118,8 +5118,7 @@ $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 
 $smtp= $this->model->Query($sql);
 
-  foreach ($smtp as $smtp_val) {
-
+    $smtp_val = $smtp[0];
     $smtp_val= json_decode($smtp_val);
 
     $mail->Host =     $smtp_val->{'HOSTNAME'};
@@ -5130,7 +5129,7 @@ $smtp= $this->model->Query($sql);
 
     var_dump($mail);
    // $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
-    //$mail->SMTPAutoTLS = false;
+    $mail->SMTPAutoTLS = false;
   // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
    // $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
     
@@ -5143,7 +5142,7 @@ $smtp= $this->model->Query($sql);
     //   ));
     // 
   
-  }
+ 
 
   $mail->SetFrom("compras@contratistasciviles.com","Compras");
 
