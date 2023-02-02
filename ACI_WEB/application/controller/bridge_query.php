@@ -5127,21 +5127,19 @@ $smtp= $this->model->Query($sql);
     $mail->Password = $smtp_val->{'PASSWORD'};
     $mail->SMTPAuth = $smtp_val->{'Auth'};
 
-    var_dump($mail);
    // $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
-    $mail->SMTPAutoTLS = false;
+
   // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
    // $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
     
+   $mail->SMTPOptions = array(
+    'ssl' => array(
+    'verify_peer' => false,
+    'verify_peer_name' => false,
+    'allow_self_signed' => true
+    )
+    );
 
-    // $mail->SMTPOptions = array(
-    //   'ssl' => array(
-    //       'verify_peer' => false,
-    //       'verify_peer_name' => false,
-    //       'allow_self_signed' => true
-    //   ));
-    // 
-  
  
 
   $mail->SetFrom("compras@contratistasciviles.com","Compras");
