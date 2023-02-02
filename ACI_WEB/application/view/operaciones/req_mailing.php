@@ -164,21 +164,55 @@ $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 
 $smtp= $this->model->Query($sql);
 
-foreach ($smtp as $smtp_val) {
-  $smtp_val= json_decode($smtp_val);
+// foreach ($smtp as $smtp_val) {
+//   $smtp_val= json_decode($smtp_val);
 
-  $mail->Host =     $smtp_val->{'HOSTNAME'};
-  $mail->Port =     $smtp_val->{'PORT'};
-  $mail->Username = $smtp_val->{'USERNAME'};
-  $mail->Password = $smtp_val->{'PASSWORD'};
-  $mail->SMTPAuth = $smtp_val->{'Auth'};
-  $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
-  $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
+//   $mail->Host =     $smtp_val->{'HOSTNAME'};
+//   $mail->Port =     $smtp_val->{'PORT'};
+//   $mail->Username = $smtp_val->{'USERNAME'};
+//   $mail->Password = $smtp_val->{'PASSWORD'};
+//   $mail->SMTPAuth = $smtp_val->{'Auth'};
+//   $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
+//   $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
 
-  $mail->SetFrom("compras@contratistasciviles.com","Compras");
-  $mail->SingleTo = true;
+//   $mail->SetFrom("compras@contratistasciviles.com","Compras");
+//   $mail->SingleTo = true;
 
-}
+// }
+
+    $smtp_val = $smtp[0];
+    $smtp_val= json_decode($smtp_val);
+
+    $mail->Host =     $smtp_val->{'HOSTNAME'};
+    $mail->Port =     $smtp_val->{'PORT'};
+
+    $mail->SMTPAuth = false;
+    $mail->SMTPAutoTLS = false;   
+
+    if( $smtp_val->{'USERNAME'} != ''){ 
+      $mail->Username = $smtp_val->{'USERNAME'};
+    }
+
+    if( $smtp_val->{'PASSWORD'} != ''){ 
+      $mail->Username = $smtp_val->{'PASSWORD'};
+    }
+
+    if( $smtp_val->{'Auth'}  != ''){ 
+      $mail->SMTPAuth = $smtp_val->{'Auth'};
+    }
+
+    if( $smtp_val->{'SMTPSecure'}  != ''){ 
+      $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
+    }
+
+    if( $smtp_val->{'SMTPSDebug'} != ''){ 
+      $mail->SMTPDebug=$smtp_val->{'SMTPSDebug'};
+    }
+
+
+    $mail->SetFrom("compras@contratistasciviles.com","Compras");
+
+
 
 $mail->Body = $message_to_send;
 
