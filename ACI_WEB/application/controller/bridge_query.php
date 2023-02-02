@@ -5122,7 +5122,7 @@ $smtp= $this->model->Query($sql);
 
     $smtp_val= json_decode($smtp_val);
 
-    $mail->Host =     "ssl://".$smtp_val->{'HOSTNAME'};
+    $mail->Host =     $smtp_val->{'HOSTNAME'};
     $mail->Port =     $smtp_val->{'PORT'};
     $mail->Username = $smtp_val->{'USERNAME'};
     $mail->Password = $smtp_val->{'PASSWORD'};
@@ -5130,7 +5130,7 @@ $smtp= $this->model->Query($sql);
     $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
     $mail->SMTPAutoTLS = false;
   // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
+   // $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
     
 
     // $mail->SMTPOptions = array(
