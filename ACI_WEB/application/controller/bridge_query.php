@@ -5127,8 +5127,8 @@ $smtp= $this->model->Query($sql);
     $mail->Username = $smtp_val->{'USERNAME'};
     $mail->Password = $smtp_val->{'PASSWORD'};
     $mail->SMTPAuth = $smtp_val->{'Auth'};
-    $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
-    $mail->SMTPAutoTLS = false;
+   // $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
+    //$mail->SMTPAutoTLS = false;
   // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
    // $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
     
