@@ -5125,7 +5125,7 @@ $smtp= $this->model->Query($sql);
     $mail->Port =     $smtp_val->{'PORT'};
 
     $mail->SMTPAuth = false;
-    $mail->SMTPAutoTLS = false;   
+    // $mail->SMTPAutoTLS = false;   
 
     if( $smtp_val->{'USERNAME'} != ''){ 
       $mail->Username = $smtp_val->{'USERNAME'};
@@ -5135,7 +5135,7 @@ $smtp= $this->model->Query($sql);
       $mail->Username = $smtp_val->{'PASSWORD'};
     }
 
-    if( $smtp_val->{'Auth'}  != ''){ 
+    if( $smtp_val->{'Auth'}){ 
       $mail->SMTPAuth = $smtp_val->{'Auth'};
     }
 
@@ -5146,7 +5146,7 @@ $smtp= $this->model->Query($sql);
     if( $smtp_val->{'SMTPSDebug'} != ''){ 
       $mail->SMTPDebug=$smtp_val->{'SMTPSDebug'};
     }
-
+    $mail->SMTPAutoTLS = false;  
 
   $mail->SetFrom("compras@contratistasciviles.com","Compras");
 

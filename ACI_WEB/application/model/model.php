@@ -1270,18 +1270,18 @@ require 'PHP_mailer/PHPMailerAutoload.php';
     $mail->Host =     $smtp_val->{'HOSTNAME'};
     $mail->Port =     $smtp_val->{'PORT'};
 
-    $mail->SMTPAuth = false;
+    // $mail->SMTPAuth = false;
     $mail->SMTPAutoTLS = false;   
 
     if( $smtp_val->{'USERNAME'} != ''){ 
-    $mail->Username = $smtp_val->{'USERNAME'};
+     $mail->Username = $smtp_val->{'USERNAME'};
     }
 
     if( $smtp_val->{'PASSWORD'} != ''){ 
     $mail->Username = $smtp_val->{'PASSWORD'};
     }
 
-    if( $smtp_val->{'Auth'}  != ''){ 
+    if( $smtp_val->{'Auth'} ){ 
     $mail->SMTPAuth = $smtp_val->{'Auth'};
     }
 
