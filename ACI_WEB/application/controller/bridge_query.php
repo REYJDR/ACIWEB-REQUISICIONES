@@ -5126,7 +5126,7 @@ $smtp= $this->model->Query($sql);
 
     $mail->SMTPAuth = false;
     $mail->SMTPAutoTLS = false;   
-
+    $mail->SMTPDebug  = 2;
 
     // if( $smtp_val->{'USERNAME'} != ''){ 
     //   $mail->Username = $smtp_val->{'USERNAME'};
