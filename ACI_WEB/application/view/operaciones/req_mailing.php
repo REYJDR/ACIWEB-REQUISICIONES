@@ -249,8 +249,6 @@ $smtp= $this->model->Query($sql);
 
 
 }
-var_dump($mail->send());
-exit();
 
 
 if(!$mail->send()) {
@@ -268,6 +266,8 @@ if(!$mail->send()) {
    // echo '<script> alert("Message has been sent"); </script>';
 }
 
+var_dump($mail->ErrorInfo);
+exit();
 
 
 function get_string_between($string, $start, $end){
