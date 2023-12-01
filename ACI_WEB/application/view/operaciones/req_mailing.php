@@ -238,8 +238,7 @@ $smtp= $this->model->Query($sql);
     $sql = 'SELECT name, lastname, email from SAX_USER WHERE notif_oc="1" and onoff="1"';
     $address = $this->model->Query($sql);
     
-    var_dump($address);
-    exit();
+
     foreach ($address as  $value) {
    
       $value = json_decode($value);
@@ -249,7 +248,8 @@ $smtp= $this->model->Query($sql);
 
 
 }
-
+var_dump($mail);
+exit();
 
 
 if(!$mail->send()) {
@@ -283,3 +283,5 @@ function get_string_between($string, $start, $end){
 
 </div>
 </div>
+
+
