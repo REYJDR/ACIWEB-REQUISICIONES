@@ -210,11 +210,9 @@ $smtp= $this->model->Query($sql);
     // }
 
 
-    $mail->SetFrom("compras@contratistasciviles.com","Compras");
+  $mail->SetFrom("compras@contratistasciviles.com","Compras");
 
-
-
-$mail->Body = $message_to_send;
+  $mail->Body = $message_to_send;
 
   if ($flag == 0) {
   
@@ -229,7 +227,7 @@ $mail->Body = $message_to_send;
 
   }
 
-$mail->Subject = utf8_decode($subject);
+  $mail->Subject = utf8_decode($subject);
 
   if(isset($_GET['email'])){
 
@@ -240,10 +238,13 @@ $mail->Subject = utf8_decode($subject);
     $sql = 'SELECT name, lastname, email from SAX_USER WHERE notif_oc="1" and onoff="1"';
     $address = $this->model->Query($sql);
     
+    var_dump($address);
+    exit();
     foreach ($address as  $value) {
-    $value = json_decode($value);
+   
+      $value = json_decode($value);
     
-    $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
+      $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
   }
 
 
