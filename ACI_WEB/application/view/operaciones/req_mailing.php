@@ -244,7 +244,8 @@ $smtp= $this->model->Query($sql);
    
       $value = json_decode($value);
     
-      $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
+     // $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
+     $mail->AddAddress($value->{'email'});
   }
 
 
