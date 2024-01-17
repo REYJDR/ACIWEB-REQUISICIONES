@@ -167,13 +167,15 @@ if(isset($_GET['email'])){
 $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 $smtp= $this->model->Query($sql);
 
-var_dump( $address ); die();
+
 sendMessage( "rvallarino@contratistasciviles.com", $mail, $message_to_send , $address , $testemail, $flag, $smtp);
 
 
 
-function sendMessage($fromEmail, $mailerObject, $message, $addresses, $flag , $smtp){
+function sendMessage($fromEmail, $mailerObject, $message, $addresses, $testemail, $flag , $smtp){
+  
   try{
+
     $mail = $mailerObject;
 
     $mail->IsSMTP(); // enable SMTP
@@ -208,7 +210,7 @@ function sendMessage($fromEmail, $mailerObject, $message, $addresses, $flag , $s
   
     $mail->Subject = utf8_decode($subject);
   
-    $test = [];
+   
    
     if($testemail != ''){
   
