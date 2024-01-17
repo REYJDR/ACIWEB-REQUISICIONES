@@ -168,11 +168,11 @@ $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 $smtp= $this->model->Query($sql);
 
 
-sendMessage( "rvallarino@contratistasciviles.com", $mail, $message_to_send , $address , $testemail, $flag, $smtp);
+sendMessage( "rvallarino@contratistasciviles.com", $mail, $message_to_send , $address , $testemail, $flag, $smtp, false);
 
 
 
-function sendMessage($fromEmail, $mailerObject, $message, $addresses, $testemail, $flag , $smtp){
+function sendMessage($fromEmail, $mailerObject, $message, $addresses, $testemail, $flag , $smtp, $debug){
   
   try{
 
@@ -188,8 +188,12 @@ function sendMessage($fromEmail, $mailerObject, $message, $addresses, $testemail
     $mail->Port =     $smtp_val->{'PORT'};
 
     $mail->SMTPAuth = false;
-    $mail->SMTPAutoTLS = false;   
-    $mail->SMTPDebug  = 2;
+    $mail->SMTPAutoTLS = false;  
+    if($debug == true) {
+
+      $mail->SMTPDebug  = 2;
+    }
+    
   
     $mail->SetFrom($fromEmail,"Compras");
   
