@@ -194,7 +194,7 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
     $mail->Port =     "25";
  
     $mail->SMTPAuth = false;
-   // $mail->SMTPAutoTLS = false;  
+    $mail->SMTPAutoTLS = false;  
     $mail->SMTPSecure = 'none';
 
     if($debug == true) {
@@ -209,9 +209,9 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
   
     if ($flag == 0) {
     
-      $mail->Priority = 1;
-      $mail->AddCustomHeader("X-MSMail-Priority: High");
-      $mail->AddCustomHeader("Importance: High");
+      // $mail->Priority = 1;
+      // $mail->AddCustomHeader("X-MSMail-Priority: High");
+      // $mail->AddCustomHeader("Importance: High");
       $subject ='Pedido Urgente!. Requisicion-'.$ref;
       
     }else{
