@@ -172,7 +172,7 @@ sendMessage( "rvallarino@contratistasciviles.com", $mail, $message_to_send , $ad
 
 
 
-function sendMessage($fromEmail, $mailerObject, $message, $addresses, $testemail, $flag , $smtp, $debug){
+function sendMessage($fromEmail, $mailerObject, $message, $address , $testemail, $flag , $smtp, $debug){
   
   try{
 
