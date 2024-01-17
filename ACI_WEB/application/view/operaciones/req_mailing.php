@@ -154,13 +154,8 @@ $message_to_send ='<html>
 <body>'.$message.'</body>
 </html>';
 
-$message_to_send ='<html>
-<head>
-<meta charset="UTF-8">
-<title>Requisicion de materiales</title>
-</head>
-<body>test</body>
-</html>';
+echo $message;
+echo '1';
 
 
 $mail->IsSMTP(); // enable SMTP
@@ -255,7 +250,7 @@ $smtp= $this->model->Query($sql);
       array_push($test, $value->{'email'});
     
       $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
-     //$mail->AddAddress($value->{'email'});
+
   }
 
 
