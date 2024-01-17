@@ -192,10 +192,13 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
     $mail->Port =     $smtp_val->{'PORT'};
 
     $mail->SMTPAuth = false;
-    $mail->SMTPAutoTLS = false;  
+   // $mail->SMTPAutoTLS = false;  
+    $mail->SMTPSecure = 'none';
     if($debug == true) {
 
       $mail->SMTPDebug  = 2;
+    }else{
+      $mail->SMTPDebug  = 1;
     }
     
   
