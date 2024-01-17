@@ -167,6 +167,7 @@ if(isset($_GET['email'])){
 $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 $smtp= $this->model->Query($sql);
 
+var_dump( $address ); die();
 sendMessage( "rvallarino@contratistasciviles.com", $mail, $message_to_send , $address , $testemail, $flag, $smtp);
 
 
