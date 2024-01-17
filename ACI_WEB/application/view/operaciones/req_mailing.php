@@ -190,11 +190,13 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
 
    
     
-    $mail->Host =     "a2plcpnl0776.prod.iad2.secureserver.net";
-    $mail->Port =     "25";
+    // $mail->Host =     $smtp_val->{'HOSTNAME'}";
+
+    $mail->Host =   "relay-hosting.secureserver.net";
+    $mail->Port =     $smtp_val->{'PORT'};
  
     $mail->SMTPAuth = false;
-    $mail->SMTPAutoTLS = false;  
+   // $mail->SMTPAutoTLS = false;  
     $mail->SMTPSecure = 'none';
 
     if($debug == true) {
@@ -209,9 +211,9 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
   
     if ($flag == 0) {
     
-      // $mail->Priority = 1;
-      // $mail->AddCustomHeader("X-MSMail-Priority: High");
-      // $mail->AddCustomHeader("Importance: High");
+      $mail->Priority = 1;
+      $mail->AddCustomHeader("X-MSMail-Priority: High");
+      $mail->AddCustomHeader("Importance: High");
       $subject ='Pedido Urgente!. Requisicion-'.$ref;
       
     }else{
