@@ -1294,7 +1294,7 @@ require 'PHP_mailer/PHPMailerAutoload.php';
     // }
 
 
-    $mail->SetFrom("compras@contratistasciviles.com","Compras");
+    $mail->SetFrom("rvallarino@contratistasciviles.com","Compras");
 
 
     $mail->Body = $message_to_send;

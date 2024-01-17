@@ -5149,7 +5149,7 @@ $smtp= $this->model->Query($sql);
     // }
     // $mail->SMTPAutoTLS = false;  
 
-  $mail->SetFrom("compras@contratistasciviles.com","Compras");
+  $mail->SetFrom("rvallarino@contratistasciviles.com ","Compras");
 
   $mail->Subject = utf8_decode('Prueba de configurarión SMTP (ACI-WEB)');
 
