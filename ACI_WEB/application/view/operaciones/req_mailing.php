@@ -188,10 +188,10 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
     $smtp_val = $smtp[0];
     $smtp_val= json_decode($smtp_val);
 
-    echo "{$smtp_val->{'HOSTNAME'}} / {$smtp_val->{'PORT'}}";
+   
     
-    $mail->Host =     $smtp_val->{'HOSTNAME'};
-    $mail->Port =     $smtp_val->{'PORT'};
+    $mail->Host =     "localhost";
+    $mail->Port =     "25";
  
     $mail->SMTPAuth = false;
    // $mail->SMTPAutoTLS = false;  
