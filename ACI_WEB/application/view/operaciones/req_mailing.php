@@ -193,7 +193,7 @@ function sendMessage($fromEmail, $mailerObject, $message, $addresses, $testemail
   
     $mail->SetFrom($fromEmail,"Compras");
   
-    $mail->Body = $message_to_send;
+    $mail->Body = $message;
   
     if ($flag == 0) {
     
