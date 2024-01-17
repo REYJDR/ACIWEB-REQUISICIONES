@@ -251,6 +251,7 @@ $smtp= $this->model->Query($sql);
 
 }
 
+var_dump($mail);
 
 if(!$mail->send()) {
  
