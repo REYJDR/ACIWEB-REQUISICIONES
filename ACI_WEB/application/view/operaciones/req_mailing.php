@@ -1,5 +1,6 @@
 <?php 
 
+
 $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
 
@@ -153,7 +154,13 @@ $message_to_send ='<html>
 <body>'.$message.'</body>
 </html>';
 
-
+$message_to_send ='<html>
+<head>
+<meta charset="UTF-8">
+<title>Requisicion de materiales</title>
+</head>
+<body>test</body>
+</html>';
 
 
 $mail->IsSMTP(); // enable SMTP
@@ -188,7 +195,7 @@ $smtp= $this->model->Query($sql);
 
     $mail->SMTPAuth = false;
     $mail->SMTPAutoTLS = false;   
-    
+    $mail->SMTPDebug  = 2;
     //$mail->SMTPDebug  = 2;
     // if( $smtp_val->{'USERNAME'} != ''){ 
     //   $mail->Username = $smtp_val->{'USERNAME'};
@@ -229,6 +236,7 @@ $smtp= $this->model->Query($sql);
   }
 
   $mail->Subject = utf8_decode($subject);
+
   $test = [];
   if(isset($_GET['email'])){
 

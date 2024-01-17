@@ -157,7 +157,7 @@ public function req_mailing($id,$flag,$Pay_flag){
 
 
       require 'PHP_mailer/PHPMailerAutoload.php';
-      $mail = new PHPMailer;
+      $mail = new PHPMailer(true);
 
 
       $ORDER = $this->model->get_req_to_print($id);
