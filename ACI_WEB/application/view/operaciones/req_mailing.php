@@ -164,20 +164,19 @@ if(isset($_GET['email'])){
   $testemail = $_GET['email'];
 }
 
-sendMessage( "rvallarino@contratistasciviles.com", $mail, $message_to_send , $address , $testemail, $flag);
+$sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
+$smtp= $this->model->Query($sql);
+
+sendMessage( "rvallarino@contratistasciviles.com", $mail, $message_to_send , $address , $testemail, $flag, $smtp);
 
 
 
-function sendMessage($fromEmail, $mailerObject, $message, $addresses, $flag){
+function sendMessage($fromEmail, $mailerObject, $message, $addresses, $flag , $smtp){
   try{
     $mail = $mailerObject;
 
     $mail->IsSMTP(); // enable SMTP
     $mail->IsHTML(true);
-  
-    $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
-  
-    $smtp= $this->model->Query($sql);
   
     $smtp_val = $smtp[0];
     $smtp_val= json_decode($smtp_val);
