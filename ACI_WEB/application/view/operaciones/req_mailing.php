@@ -36,12 +36,12 @@ foreach ($ORDER as  $value) {
     $descont = $value->{'descont'};
 }
 
-// ?>
+
 
 // <div  class="page-print col-xs-11">
 // <div  class="col-xs-12">
 
-// <?php
+
 
 
 if ($Pay_flag == 0) {
