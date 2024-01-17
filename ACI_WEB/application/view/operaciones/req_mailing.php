@@ -154,34 +154,31 @@ $message_to_send ='<html>
 <body>'.$message.'</body>
 </html>';
 
-echo $message;
-echo '1';
+//VERIFICA USUARIOS CON OPCION D ENOTIFICACION DE ORDEN DE COMPRAS
+$sql = 'SELECT name, lastname, email from SAX_USER WHERE notif_oc="1" and onoff="1"';
+$address = $this->model->Query($sql);
+
+$testemail = '';
+
+if(isset($_GET['email'])){
+  $testemail = $_GET['email'];
+}
+
+sendMessage( "rvallarino@contratistasciviles.com", $mail, $message_to_send , $address , $testemail, $flag);
 
 
-$mail->IsSMTP(); // enable SMTP
-$mail->IsHTML(true);
 
+function sendMessage($fromEmail, $mailerObject, $message, $addresses, $flag){
+  try{
+    $mail = $mailerObject;
 
-$sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
-
-$smtp= $this->model->Query($sql);
-
-// foreach ($smtp as $smtp_val) {
-//   $smtp_val= json_decode($smtp_val);
-
-//   $mail->Host =     $smtp_val->{'HOSTNAME'};
-//   $mail->Port =     $smtp_val->{'PORT'};
-//   $mail->Username = $smtp_val->{'USERNAME'};
-//   $mail->Password = $smtp_val->{'PASSWORD'};
-//   $mail->SMTPAuth = $smtp_val->{'Auth'};
-//   $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
-//   $mail->SMTPDebug= $smtp_val->{'SMTPSDebug'};
-
-//   $mail->SetFrom("compras@contratistasciviles.com","Compras");
-//   $mail->SingleTo = true;
-
-// }
-
+    $mail->IsSMTP(); // enable SMTP
+    $mail->IsHTML(true);
+  
+    $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
+  
+    $smtp= $this->model->Query($sql);
+  
     $smtp_val = $smtp[0];
     $smtp_val= json_decode($smtp_val);
 
@@ -191,89 +188,73 @@ $smtp= $this->model->Query($sql);
     $mail->SMTPAuth = false;
     $mail->SMTPAutoTLS = false;   
     $mail->SMTPDebug  = 2;
-    //$mail->SMTPDebug  = 2;
-    // if( $smtp_val->{'USERNAME'} != ''){ 
-    //   $mail->Username = $smtp_val->{'USERNAME'};
-    // }
-
-    // if( $smtp_val->{'PASSWORD'} != ''){ 
-    //   $mail->Username = $smtp_val->{'PASSWORD'};
-    // }
-
-    // if( $smtp_val->{'Auth'} != false ){ 
-    //   $mail->SMTPAuth = $smtp_val->{'Auth'};
-    // }
-
-    // if( $smtp_val->{'SMTPSecure'}  != ''){ 
-    //   $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
-    // }
-
-    // if( $smtp_val->{'SMTPSDebug'} != ''){ 
-    //   $mail->SMTPDebug=$smtp_val->{'SMTPSDebug'};
-    // }
-
-
-  $mail->SetFrom("rvallarino@contratistasciviles.com","Compras");
-
-  $mail->Body = $message_to_send;
-
-  if ($flag == 0) {
   
-    $mail->Priority = 1;
-    $mail->AddCustomHeader("X-MSMail-Priority: High");
-    $mail->AddCustomHeader("Importance: High");
-    $subject ='Pedido Urgente!. Requisicion-'.$ref;
+    $mail->SetFrom($fromEmail,"Compras");
+  
+    $mail->Body = $message_to_send;
+  
+    if ($flag == 0) {
     
-  }else{
-
-    $subject ='Requisicion-'.$ref.' '.$SubjectPay;
-
-  }
-
-  $mail->Subject = utf8_decode($subject);
-
-  $test = [];
-  if(isset($_GET['email'])){
-
-      $mail->AddAddress($_GET['email'] ,'Reinaldo Daou');
-
-  }else{
-    //VERIFICA USUARIOS CON OPCION D ENOTIFICACION DE ORDEN DE COMPRAS
-    $sql = 'SELECT name, lastname, email from SAX_USER WHERE notif_oc="1" and onoff="1"';
-    $address = $this->model->Query($sql);
-    
-
-    foreach ($address as  $value) {
+      $mail->Priority = 1;
+      $mail->AddCustomHeader("X-MSMail-Priority: High");
+      $mail->AddCustomHeader("Importance: High");
+      $subject ='Pedido Urgente!. Requisicion-'.$ref;
+      
+    }else{
+  
+      $subject ='Requisicion-'.$ref.' '.$SubjectPay;
+  
+    }
+  
+    $mail->Subject = utf8_decode($subject);
+  
+    $test = [];
    
-      $value = json_decode($value);
-
-      array_push($test, $value->{'email'});
+    if($testemail != ''){
+  
+      $mail->AddAddress($testemail ,'test email');
     
-      $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
+    }else{
+    
+      foreach ($address as  $value) {
+      
+        $value = json_decode($value);
+      
+        $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
+      
+      }
+    }
+  
+    if(!$mail->send()) {
+    
+    
+      $alert .= 'Message could not be sent.';
+      $alert .= 'Mailer Error: ' . $mail->ErrorInfo;
+    
+      //echo '<script> alert("'.$alert.'"); </script>';
+    
+    } else {
+    
+      return '1';
+    
+      // echo '<script> alert("Message has been sent"); </script>';
+    }
+
+  }catch (phpmailerException $e) {
+
+  echo $e->errorMessage(); //Pretty error messages from PHPMailer
+
+  } catch (Exception $e) {
+
+  echo $e->getMessage(); //Boring error messages from anything else!
 
   }
 
 
+
+
+
 }
-
-var_dump($test);
-
-if(!$mail->send()) {
- 
-
-   $alert .= 'Message could not be sent.';
-   $alert .= 'Mailer Error: ' . $mail->ErrorInfo;
-
-  //echo '<script> alert("'.$alert.'"); </script>';
-
-} else {
-
-  ECHO '1';
-
-   // echo '<script> alert("Message has been sent"); </script>';
-}
-
-
 
 
 function get_string_between($string, $start, $end){

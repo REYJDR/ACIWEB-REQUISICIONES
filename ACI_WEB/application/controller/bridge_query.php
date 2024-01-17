@@ -5113,7 +5113,6 @@ $mail = new PHPMailer(true);
 $mail->IsSMTP(); // enable SMTP
 $mail->IsHTML(true);
 
-
 $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 
 $smtp= $this->model->Query($sql);
@@ -5128,26 +5127,6 @@ $smtp= $this->model->Query($sql);
     $mail->SMTPAutoTLS = false;   
     $mail->SMTPDebug  = 2;
 
-    // if( $smtp_val->{'USERNAME'} != ''){ 
-    //   $mail->Username = $smtp_val->{'USERNAME'};
-    // }
-
-    // if( $smtp_val->{'PASSWORD'} != ''){ 
-    //   $mail->Username = $smtp_val->{'PASSWORD'};
-    // }
-
-    // if( $smtp_val->{'Auth'} != false ){ 
-    //   $mail->SMTPAuth = $smtp_val->{'Auth'};
-    // }
-
-    // if( $smtp_val->{'SMTPSecure'}  != ''){ 
-    //   $mail->SMTPSecure=$smtp_val->{'SMTPSecure'};
-    // }
-
-    // if( $smtp_val->{'SMTPSDebug'} != ''){ 
-    //   $mail->SMTPDebug=$smtp_val->{'SMTPSDebug'};
-    // }
-    // $mail->SMTPAutoTLS = false;  
 
   $mail->SetFrom("rvallarino@contratistasciviles.com ","Compras");
 
