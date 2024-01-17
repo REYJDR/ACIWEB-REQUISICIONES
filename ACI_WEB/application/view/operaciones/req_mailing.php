@@ -163,12 +163,15 @@ $testemail = '';
 if(isset($_GET['email'])){
   $testemail = $_GET['email'];
 }
+if(isset($_GET['debug'])){
+  $debug = $_GET['debug'];
+}
 
 $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 $smtp= $this->model->Query($sql);
 
 
-echo sendMessage( "rvallarino@contratistasciviles.com", $mail,$ref,$message_to_send , $address , $testemail, $flag, $smtp, true);
+echo sendMessage( "rvallarino@contratistasciviles.com", $mail,$ref,$message_to_send , $address , $testemail, $flag, $smtp, $debug);
 
 
 
