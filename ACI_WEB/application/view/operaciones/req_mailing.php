@@ -229,7 +229,7 @@ $smtp= $this->model->Query($sql);
   }
 
   $mail->Subject = utf8_decode($subject);
-
+  $test = [];
   if(isset($_GET['email'])){
 
       $mail->AddAddress($_GET['email'] ,'Reinaldo Daou');
@@ -243,6 +243,8 @@ $smtp= $this->model->Query($sql);
     foreach ($address as  $value) {
    
       $value = json_decode($value);
+
+      array_push($test, $value->{'email'});
     
       $mail->AddAddress($value->{'email'}, $value->{'name'}.' '.$value->{'lastname'});
      //$mail->AddAddress($value->{'email'});
@@ -251,7 +253,7 @@ $smtp= $this->model->Query($sql);
 
 }
 
-var_dump($mail);
+var_dump($test);
 
 if(!$mail->send()) {
  
