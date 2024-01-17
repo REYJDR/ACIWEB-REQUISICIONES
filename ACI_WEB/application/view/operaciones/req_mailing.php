@@ -190,7 +190,7 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
 
    
     
-    $mail->Host =     "localhost";
+    $mail->Host =     "a2plcpnl0776.prod.iad2.secureserver.net";
     $mail->Port =     "25";
  
     $mail->SMTPAuth = false;
