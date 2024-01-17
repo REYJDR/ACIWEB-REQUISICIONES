@@ -192,11 +192,15 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
     
     // $mail->Host =     $smtp_val->{'HOSTNAME'}";
 
-    $mail->Host =   "relay-hosting.secureserver.net";
-    $mail->Port =     $smtp_val->{'PORT'};
- 
+    $mail->Host =    $smtp_val->{'HOSTNAME'};
+    $mail->Port =    $smtp_val->{'PORT'};
+    
+    $mail->Username = "";
+    $mail->Password = "";
+
     $mail->SMTPAuth = false;
-   // $mail->SMTPAutoTLS = false;  
+    $mail->SMTPAutoTLS = false;  
+   
     $mail->SMTPSecure = 'none';
 
     if($debug == true) {
