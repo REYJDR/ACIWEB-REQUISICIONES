@@ -168,7 +168,7 @@ $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 $smtp= $this->model->Query($sql);
 
 
-echo sendMessage( "rvallarino@contratistasciviles.com", $mail,$ref,$message_to_send , $address , $testemail, $flag, $smtp, false);
+echo sendMessage( "rvallarino@contratistasciviles.com", $mail,$ref,$message_to_send , $address , $testemail, $flag, $smtp, true);
 
 
 
