@@ -5128,7 +5128,7 @@ $smtp= $this->model->Query($sql);
     $mail->Password =  $smtp_val->{'PASSWORD'};
 
 
-    $mail->SMTPAutoTLS = false;   
+    $mail->SMTPAutoTLS = true;   
     $mail->SMTPDebug  = 2;
 
     echo var_dump($mail);
