@@ -5128,8 +5128,8 @@ $smtp= $this->model->Query($sql);
     $mail->Password =  $smtp_val->{'PASSWORD'};
 
 
-    $mail->SMTPAutoTLS = false;   
-    $mail->SMTPDebug  = 1;
+    // $mail->SMTPAutoTLS = false;   
+    $mail->SMTPDebug  = 2;
 
   
   $mail->SetFrom("rvallarino@contratistasciviles.com ","Compras");
