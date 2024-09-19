@@ -5132,7 +5132,7 @@ $smtp= $this->model->Query($sql);
     $mail->SMTPDebug  = 1;
 
     echo var_dump($mail);
-
+     die();
   $mail->SetFrom("rvallarino@contratistasciviles.com ","Compras");
 
   $mail->Subject = utf8_decode('Prueba de configurarión SMTP (ACI-WEB)');
