@@ -5131,6 +5131,7 @@ $smtp= $this->model->Query($sql);
     $mail->SMTPAutoTLS = false;   
     $mail->SMTPDebug  = 2;
 
+    echo var_dump($mail);
 
   $mail->SetFrom("rvallarino@contratistasciviles.com ","Compras");
 
