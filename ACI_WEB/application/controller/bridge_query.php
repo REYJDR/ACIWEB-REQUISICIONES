@@ -5123,7 +5123,11 @@ $smtp= $this->model->Query($sql);
     $mail->Host =     $smtp_val->{'HOSTNAME'};
     $mail->Port =     $smtp_val->{'PORT'};
 
-    $mail->SMTPAuth = false;
+    $mail->SMTPAuth = true;
+    $mail->Username =  $smtp_val->{'USERNAME'};
+    $mail->Password =  $smtp_val->{'PASSWORD'};
+
+
     $mail->SMTPAutoTLS = false;   
     $mail->SMTPDebug  = 2;
 

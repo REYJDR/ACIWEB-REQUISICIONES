@@ -188,17 +188,14 @@ function sendMessage($fromEmail, $mailerObject, $ref,$message, $address , $teste
     $smtp_val = $smtp[0];
     $smtp_val= json_decode($smtp_val);
 
-   
-    
-    // $mail->Host =     $smtp_val->{'HOSTNAME'}";
-
     $mail->Host =    $smtp_val->{'HOSTNAME'};
     $mail->Port =    $smtp_val->{'PORT'};
     
-    $mail->Username = "";
-    $mail->Password = "";
+    $mail->SMTPAuth = true;
+    $mail->Username =  $smtp_val->{'USERNAME'};
+    $mail->Password =  $smtp_val->{'PASSWORD'};
 
-    $mail->SMTPAuth = false;
+   
     $mail->SMTPAutoTLS = false;  
    
     $mail->SMTPSecure = 'none';
