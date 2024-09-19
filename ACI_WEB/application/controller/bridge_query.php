@@ -5129,7 +5129,7 @@ $smtp= $this->model->Query($sql);
 
 
     $mail->SMTPAutoTLS = true;   
-    $mail->SMTPDebug  = 2;
+    $mail->SMTPDebug  = 1;
 
     echo var_dump($mail);
 
