@@ -50,8 +50,8 @@ foreach ($comp as $value) {
 <div  class="page-print col-xs-11">
 <div  class="col-xs-12">
 <!-- contenido -->
-<page size="A4">
-
+<!-- <page size="A4"> -->
+<page size="Letter">
 <div class=" col-xs-12">
 
 <div style="float:right;" class="print_button col-md-2">
