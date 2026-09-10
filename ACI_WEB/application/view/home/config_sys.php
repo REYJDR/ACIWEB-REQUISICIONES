@@ -335,6 +335,7 @@ $('#notificacion').html('<P>Enviando...</P>');
       type: "GET",
       url: link,
       data: datos,
+      cache: false,
       success: function(res){
       
        $('#notificacion').html(res);
