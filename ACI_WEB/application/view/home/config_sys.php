@@ -340,7 +340,14 @@ $('#notificacion').html('<P>Enviando...</P>');
        $('#notificacion').html(res);
        // alert(res);
 
-        }
+        },
+      error: function(xhr,status,err){
+
+       $('#notificacion').html('<p style="color:red;">Error al enviar (status '+xhr.status+'): '+err+'</p>');
+       console.error('send_test error', xhr.status, xhr.responseText);
+
+        },
+      timeout: 30000
    });
 
 }
