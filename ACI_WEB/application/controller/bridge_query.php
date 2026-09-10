@@ -5118,7 +5118,7 @@ if(!file_exists(PUB.'PHP_mailer/PHPMailerAutoload.php')){
 
 echo 'DIAG:ARCHIVO_OK;';
 
-require PUB.'PHP_mailer/PHPMailerAutoload.php';
+require_once PUB.'PHP_mailer/PHPMailerAutoload.php';
 
 echo 'DIAG:REQUIRE_OK;';
 
