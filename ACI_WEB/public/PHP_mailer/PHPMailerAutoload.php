@@ -1,4 +1,5 @@
 <?php
+echo 'DIAG:AUTOLOAD_FILE_INICIO;';
 error_reporting(1);
 /**
  * PHPMailer SPL autoloader.
@@ -38,6 +39,7 @@ function PHPMailerAutoload($classname)
 }
 
 if (version_compare(PHP_VERSION, '5.1.2', '>=')) {
+    echo 'DIAG:AUTOLOAD_VERCHECK_OK;';
 
     //SPL autoloading was introduced in PHP 5.1.2
     if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
