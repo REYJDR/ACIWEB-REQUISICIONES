@@ -5112,10 +5112,17 @@ $mail = new PHPMailer(true);
 
 $mail->IsSMTP(); // enable SMTP
 $mail->IsHTML(true);
+$mail->Timeout = 10; // evita que la petición quede colgada si el SMTP no responde
+$mail->SMTPKeepAlive = false;
 
 $sql = "SELECT * FROM CONF_SMTP WHERE ID='1'";
 
 $smtp= $this->model->Query($sql);
+
+    if(empty($smtp)){
+        echo 'No existe configuracion SMTP (tabla CONF_SMTP, ID=1). Debe configurarla primero.';
+        return;
+    }
 
     $smtp_val = $smtp[0];
     $smtp_val= json_decode($smtp_val);
