@@ -15,6 +15,3 @@ if($_SESSION['EMAIL']){
 echo "<script>self.location='control.php';</script>";
 
 }
-
-
-?> 

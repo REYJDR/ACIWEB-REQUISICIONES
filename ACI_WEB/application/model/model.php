@@ -1341,5 +1341,3 @@ if(!$mail->send()) {
 }
 //CORCHETE DE FIN DE LA CLASE
 }
-?>
-
