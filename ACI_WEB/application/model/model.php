@@ -26,6 +26,9 @@ class Model
     {
         try {
            
+           // restaura el comportamiento pre-8.1: mysqli_query devuelve false en vez de lanzar excepción
+           mysqli_report(MYSQLI_REPORT_OFF);
+
            $this->db = $db;
            $this->dbname = $dbname;
 
@@ -756,7 +759,8 @@ public function Get_sales_conf_Info(){
 
 $saleinfo = $this->Query('SELECT * FROM sale_tax;');
 
-return $saleinfo;
+// tabla legacy 'sale_tax' ya no existe/es relevante; evita foreach sobre null en las vistas
+return is_array($saleinfo) ? $saleinfo : array();
 
 }
 
@@ -1031,7 +1035,7 @@ $sql='SELECT
         count(*) as cuenta, 
         A.job
         FROM `REQ_HEADER` as A 
-        '.$clause.' group by A.job order by A.ID '.$sort.' ';
+        '.$clause.' group by A.job order by A.job '.$sort.' ';
 
 $get_req = $this->Query($sql);
 
