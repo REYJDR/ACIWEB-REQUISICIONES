@@ -156,7 +156,7 @@ public function req_mailing($id,$flag,$Pay_flag){
       if($res=='0'){
 
 
-      require 'PHP_mailer/PHPMailerAutoload.php';
+      require PUB.'PHP_mailer/PHPMailerAutoload.php';
       $mail = new PHPMailer(true);
 
 

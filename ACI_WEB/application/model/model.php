@@ -1266,7 +1266,7 @@ $message_to_send ='<html>
 </html>';
 
 
-require 'PHP_mailer/PHPMailerAutoload.php';
+require PUB.'PHP_mailer/PHPMailerAutoload.php';
       
     $mail = new PHPMailer;
 

@@ -5107,7 +5107,12 @@ if ( !extension_loaded('openssl')) {
  die( "Not Available" );
 } 
 
-require 'PHP_mailer/PHPMailerAutoload.php';
+if(!file_exists(PUB.'PHP_mailer/PHPMailerAutoload.php')){
+    echo 'No se encontro PHPMailer en: '.PUB.'PHP_mailer/PHPMailerAutoload.php';
+    return;
+}
+
+require PUB.'PHP_mailer/PHPMailerAutoload.php';
 $mail = new PHPMailer(true);
 
 $mail->IsSMTP(); // enable SMTP
