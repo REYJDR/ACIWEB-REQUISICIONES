@@ -141,7 +141,7 @@ $con = $this->Query_value(' CompanySession ',' isConnected ',' order by LAST_CHA
         public function Query($query){
         //$this->verify_session();
             
-        $ERROR = '';
+        $ERROR = array();
        
         $i=0;
         $JSON = array();
