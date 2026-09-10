@@ -335,7 +335,9 @@ foreach ($res as $value) {
 
     $this->update('SAX_USER',$columns,'id='.$id);
 
-    session_start();
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
 
 
     $_SESSION['ID_USER'] = $id;
@@ -369,7 +371,9 @@ foreach ($res as $value) {
 
 public function verify_session(){
 
-session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
         if(!$_SESSION){
 

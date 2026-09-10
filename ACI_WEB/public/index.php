@@ -1,5 +1,11 @@
 <?php
 error_reporting(0);
+
+// debe iniciarse antes de cualquier salida HTML para que la cookie de sesión llegue al navegador
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
 /**
  * MINI - an extremely simple naked PHP application
  *

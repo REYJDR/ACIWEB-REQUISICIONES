@@ -16,7 +16,9 @@ public function index($temp_url=''){
 public function login_out(){
 
 
-		session_start();
+		if (session_status() !== PHP_SESSION_ACTIVE) {
+			session_start();
+		}
 
 		if($_SESSION['EMAIL']){
 
