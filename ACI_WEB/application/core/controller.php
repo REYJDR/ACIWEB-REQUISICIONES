@@ -37,6 +37,12 @@ class Controller
                                         DB_NAME); 
         $this->dbname = DB_NAME;
 
+        // el codigo legacy usa SELECT * + GROUP BY en muchas queries, incompatible con
+        // el sql_mode=ONLY_FULL_GROUP_BY que trae MySQL 8+ por defecto
+        if ($this->db) {
+            mysqli_query($this->db, "SET SESSION sql_mode = ''");
+        }
+
     }
 
     /**
