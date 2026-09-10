@@ -141,6 +141,7 @@ $con = $this->Query_value(' CompanySession ',' isConnected ',' order by LAST_CHA
         $ERROR = '';
        
         $i=0;
+        $JSON = array();
 
          $res = $this->connect($query);
 
@@ -157,6 +158,11 @@ $con = $this->Query_value(' CompanySession ',' isConnected ',' order by LAST_CHA
           
         }else{
              file_put_contents("LOG_ERROR/TEMP_LOG.json",''); //LIMPIO EL ARCHIVO
+
+             // UPDATE/INSERT/DELETE devuelven true (sin result set), no hay columnas que leer
+             if(!($res instanceof mysqli_result)){
+                 return $JSON;
+             }
 
              $columns = mysqli_fetch_fields($res);
          
