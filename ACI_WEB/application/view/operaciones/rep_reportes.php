@@ -146,6 +146,7 @@ URL = document.getElementById('URL').value;
 
 var datos= "bridge_query/get_report/"+type+"/"+sort+"/"+limit+"/"+date1+"/"+date2;
    
+   console.log(datos);
 var link= URL+"index.php";
 
 $('#table').html('<P>CARGANDO ...</P>');
