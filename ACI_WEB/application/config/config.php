@@ -41,7 +41,12 @@ if (ENVIRONMENT == 'development' || ENVIRONMENT == 'dev') {
  */
 
 define('URL_PUBLIC_FOLDER', 'public');
-define('URL_PROTOCOL', 'http://');
+
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https')
+    || (!empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
+
+define('URL_PROTOCOL', $isHttps ? 'https://' : 'http://');
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
 define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
 define('URL', str_replace('\\', '/', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER));
