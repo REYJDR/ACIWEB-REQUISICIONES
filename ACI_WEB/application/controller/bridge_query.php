@@ -5101,40 +5101,20 @@ $this->model->update($table,$columns,$clause);
 //PROCESO DE ENVIO DE EMAIL (TEST)
 public function send_test_mail($emailtest){
 
-echo 'DIAG:INICIO;'; // marcador temporal para confirmar que la funcion se ejecuta
-
 try{
   
 if ( !extension_loaded('openssl')) {
  die( "Not Available" );
 } 
 
-echo 'DIAG:OPENSSL_OK;';
-
 if(!file_exists(PUB.'PHP_mailer/PHPMailerAutoload.php')){
     echo 'No se encontro PHPMailer en: '.PUB.'PHP_mailer/PHPMailerAutoload.php';
     return;
 }
 
-echo 'DIAG:ARCHIVO_OK;';
-
-$phpMailerPath = PUB.'PHP_mailer/PHPMailerAutoload.php';
-echo 'DIAG:PATH='.$phpMailerPath.';';
-echo 'DIAG:IS_READABLE='.(is_readable($phpMailerPath)?'1':'0').';';
-echo 'DIAG:REALPATH='.realpath($phpMailerPath).';';
-echo 'DIAG:FILEPERMS='.substr(sprintf('%o', fileperms($phpMailerPath)), -4).';';
-
-echo 'DIAG:BEFORE_INCLUDE;';
-$includeResult = include $phpMailerPath;
-echo 'DIAG:AFTER_INCLUDE='.var_export($includeResult, true).';';
-echo 'DIAG:FUNC_EXISTS='.(function_exists('PHPMailerAutoload')?'1':'0').';';
-echo 'DIAG:CLASS_EXISTS='.(class_exists('PHPMailer', false)?'1':'0').';';
-
-echo 'DIAG:REQUIRE_OK;';
+require_once PUB.'PHP_mailer/PHPMailerAutoload.php';
 
 $mail = new PHPMailer(true);
-
-echo 'DIAG:INSTANCIA_OK;';
 
 $mail->IsSMTP(); // enable SMTP
 $mail->IsHTML(true);
