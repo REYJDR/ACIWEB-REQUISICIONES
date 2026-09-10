@@ -5186,6 +5186,11 @@ $smtp= $this->model->Query($sql);
 
   echo $e->getMessage(); //Boring error messages from anything else!
 
+  } catch (\Throwable $e) {
+
+  // captura fatales tipo \Error (TypeError, class not found, etc.) que \Exception no cubre
+  echo 'Error fatal: '.$e->getMessage().' en '.$e->getFile().':'.$e->getLine();
+
   }
 
 
