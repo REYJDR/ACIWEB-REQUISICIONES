@@ -483,7 +483,14 @@ $('#reqInfo').html('<P>CARGANDO ...</P>');
        $('#reqInfo').html(res);
        // alert(res);
 
-        }
+        },
+      error: function(xhr,status,err){
+
+       $('#reqInfo').html('<p style="color:red;">Error al cargar (status '+xhr.status+'): '+err+'</p>');
+       console.error('show_req_urg error', xhr.status, xhr.responseText);
+
+        },
+      timeout: 30000
    });
 
 
@@ -514,7 +521,14 @@ $('#reqInfo').html('<P>CARGANDO ...</P>');
        $('#reqInfo').html(res);
        // alert(res);
 
-        }
+        },
+      error: function(xhr,status,err){
+
+       $('#reqInfo').html('<p style="color:red;">Error al cargar (status '+xhr.status+'): '+err+'</p>');
+       console.error('show_req_nourg error', xhr.status, xhr.responseText);
+
+        },
+      timeout: 30000
    });
 
  $('html, body').animate({

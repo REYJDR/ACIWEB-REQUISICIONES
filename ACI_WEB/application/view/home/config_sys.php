@@ -327,7 +327,7 @@ var email = document.getElementById('emailtest').value;
 
 var datos= "url=bridge_query/send_test_mail/"+email;
    
-var link= +"index.php";
+var link= URL+"index.php";
 
 $('#notificacion').html('<P>Enviando...</P>');
 
