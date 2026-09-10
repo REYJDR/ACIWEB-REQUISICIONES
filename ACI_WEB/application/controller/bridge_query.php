@@ -5118,7 +5118,13 @@ if(!file_exists(PUB.'PHP_mailer/PHPMailerAutoload.php')){
 
 echo 'DIAG:ARCHIVO_OK;';
 
-require_once PUB.'PHP_mailer/PHPMailerAutoload.php';
+$phpMailerPath = PUB.'PHP_mailer/PHPMailerAutoload.php';
+echo 'DIAG:PATH='.$phpMailerPath.';';
+echo 'DIAG:IS_READABLE='.(is_readable($phpMailerPath)?'1':'0').';';
+echo 'DIAG:REALPATH='.realpath($phpMailerPath).';';
+echo 'DIAG:FILEPERMS='.substr(sprintf('%o', fileperms($phpMailerPath)), -4).';';
+
+require_once $phpMailerPath;
 
 echo 'DIAG:REQUIRE_OK;';
 
