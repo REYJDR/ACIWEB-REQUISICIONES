@@ -5101,19 +5101,30 @@ $this->model->update($table,$columns,$clause);
 //PROCESO DE ENVIO DE EMAIL (TEST)
 public function send_test_mail($emailtest){
 
+echo 'DIAG:INICIO;'; // marcador temporal para confirmar que la funcion se ejecuta
+
 try{
   
 if ( !extension_loaded('openssl')) {
  die( "Not Available" );
 } 
 
+echo 'DIAG:OPENSSL_OK;';
+
 if(!file_exists(PUB.'PHP_mailer/PHPMailerAutoload.php')){
     echo 'No se encontro PHPMailer en: '.PUB.'PHP_mailer/PHPMailerAutoload.php';
     return;
 }
 
+echo 'DIAG:ARCHIVO_OK;';
+
 require PUB.'PHP_mailer/PHPMailerAutoload.php';
+
+echo 'DIAG:REQUIRE_OK;';
+
 $mail = new PHPMailer(true);
+
+echo 'DIAG:INSTANCIA_OK;';
 
 $mail->IsSMTP(); // enable SMTP
 $mail->IsHTML(true);
